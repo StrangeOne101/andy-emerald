@@ -343,7 +343,7 @@
 #define B_MISSING_BADGE_CATCH_MALUS     GEN_LATEST // In Gen9, a penalty is added to the catch rate if trying to catch a mon 5 levels above the current obedience level, based on the number of gym badges obtained.
 #define B_CRITICAL_CAPTURE              TRUE       // If set to TRUE, Critical Capture will be enabled.
 #define B_CRITICAL_CAPTURE_LOCAL_DEX    TRUE       // If set to FALSE, Critical Capture % is based off of the National Pokedex estimated by enabled generations.
-#define B_CRITICAL_CAPTURE_IF_OWNED     GEN_LATEST // In Gen9, a capture appear critical if the Pokémon you are trying to catch already has a dex entry (has already been caught)
+#define B_CRITICAL_CAPTURE_IF_OWNED     GEN_3 // In Gen9, a capture appear critical if the pokemon you are trying to catch already has a dex entry (has already been caught)
 
 #define B_LAST_USED_BALL            TRUE       // If TRUE, the "last used ball" feature from Gen 7 will be implemented
 #define B_LAST_USED_BALL_BUTTON     R_BUTTON   // If last used ball is implemented, this button (or button combo) will trigger throwing the last used ball.
@@ -352,6 +352,8 @@
 #define B_CATCH_SWAP_CHECK_HMS      TRUE       // If TRUE, the catch swap feature above will prevent returning mons to the box if they know HMs.
 
 // Other settings
+#define B_DOUBLE_WILD_CHANCE            2          // % chance of encountering two Pokémon in a Wild Encounter.
+#define B_DOUBLE_WILD_REQUIRE_2_MONS    FALSE      // If set to TRUE, Wild Double Battles will default to Single Battles when the player only has 1 usable Pokémon, ignoring B_DOUBLE_WILD_CHANCE and B_FLAG_FORCE_DOUBLE_WILD.
 #define B_MULTI_BATTLE_WHITEOUT         GEN_LATEST // In Gen4+, multi battles end when the Player and also their Partner don't have any more Pokémon to fight.
 #define B_EVOLUTION_AFTER_WHITEOUT      GEN_LATEST // In Gen6+, Pokemon that qualify for evolution after battle will evolve even if the player loses.
 #define B_AFFECTION_MECHANICS           TRUE       // In Gen6+, there's a stat called affection that can trigger different effects in battle. From LGPE onwards, those effects use friendship instead.
@@ -413,8 +415,8 @@
 
 #define B_POOL_SETTING_CONSISTENT_RNG       FALSE    // If set to true, the same trainer will always generate the same pool on the same save file
 #define B_POOL_SETTING_USE_FIXED_SEED       FALSE    // If set to true, will use the fixed seed defined in B_POOL_SETTING_FIXED_SEED
-#define B_POOL_SETTING_FIXED_SEED           0x1D4127 // "Random" number, unless a mistake was made, it's へだら in Emerald charmap which should spell he-da-ra
-#define B_POOL_RULE_SPECIES_CLAUSE          FALSE    // Only pick a single Pokémon of a unique NatDex number
+#define B_POOL_SETTING_FIXED_SEED           0x1FAD4C // "Random" number, unless a mistake was made, it's へだら in Emerald charmap which should spell he-da-ra
+#define B_POOL_RULE_SPECIES_CLAUSE          FALSE    // Only pick a single pokemon of a unique NatDex number
 #define B_POOL_RULE_EXCLUDE_FORMS           FALSE    // Exclude different forms from the Species Clause
 #define B_POOL_RULE_ITEM_CLAUSE             FALSE    // Only allow each item to be picked once
 #define B_POOL_RULES_USE_ITEM_EXCLUSIONS    FALSE    // Exclude items listed in poolItemClauseExclusions

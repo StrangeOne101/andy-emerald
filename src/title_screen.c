@@ -29,6 +29,7 @@ enum {
     TAG_VERSION = 1000,
     TAG_PRESS_START_COPYRIGHT,
     TAG_LOGO_SHINE,
+    TAG_ANDREW,
 };
 
 #define VERSION_BANNER_RIGHT_TILEOFFSET 64
@@ -62,10 +63,10 @@ static void SpriteCB_PokemonLogoShine(struct Sprite *sprite);
 // const rom data
 static const u16 sUnusedUnknownPal[] = INCGFX_U16("graphics/title_screen/unused.pal", ".gbapal");
 
-static const u32 sTitleScreenRayquazaGfx[] = INCGFX_U32("graphics/title_screen/rayquaza.png", ".4bpp.smol");
-static const u32 sTitleScreenRayquazaTilemap[] = INCGFX_U32("graphics/title_screen/rayquaza.bin", ".smolTM");
+static const u32 sTitleScreenRayquazaGfx[] = INCGFX_U32("graphics/title_screen/city_tiles.png", ".4bpp.smol");
+static const u32 sTitleScreenRayquazaTilemap[] = INCBIN_U32("graphics/title_screen/city_tiles.bin.smolTM");
 static const u32 sTitleScreenLogoShineGfx[] = INCGFX_U32("graphics/title_screen/logo_shine.png", ".4bpp.smol");
-static const u32 sTitleScreenCloudsGfx[] = INCGFX_U32("graphics/title_screen/clouds.png", ".4bpp.smol");
+static const u32 sTitleScreenAndrewGfx[] = INCGFX_U32("graphics/title_screen/andrew_16_tiles.png", ".4bpp.smol");
 
 
 
@@ -191,6 +192,16 @@ static const struct CompressedSpriteSheet sSpriteSheet_EmeraldVersion[] =
     },
     {},
 };
+
+static const struct CompressedSpriteSheet sSpriteSheet_Andrew[] =
+        {
+                {
+                        .data = gTitleScreenAndrewGfx,
+                        .size = 0x4000,
+                        .tag = TAG_VERSION
+                },
+                {},
+        };
 
 static const struct OamData sOamData_CopyrightBanner =
 {
@@ -430,6 +441,121 @@ static void CreatePressStartBanner(s16 x, s16 y)
     }
 }
 
+static void CreateAndrew(s16 x, s16 y)
+{
+    //TODO
+    const struct OamData TL = {
+            .bpp = ST_OAM_4BPP,
+            .affineMode = ST_OAM_AFFINE_OFF,
+            .objMode = ST_OAM_OBJ_NORMAL,
+            .mosaic = FALSE,
+            .shape = SPRITE_SHAPE(64x64),
+            .x = x,
+            .y = y,
+            .matrixNum = 0,
+            .size = SPRITE_SIZE(64x64),
+            .tileNum = 0,
+            .paletteNum = 4,
+            .priority = 0,
+    };
+    const struct OamData TR = {
+            .bpp = ST_OAM_4BPP,
+            .affineMode = ST_OAM_AFFINE_OFF,
+            .objMode = ST_OAM_OBJ_NORMAL,
+            .mosaic = FALSE,
+            .shape = SPRITE_SHAPE(64x64),
+            .x = x + 64,
+            .y = y,
+            .matrixNum = 0,
+            .size = SPRITE_SIZE(64x64),
+            .tileNum = 0,
+            .paletteNum = 4,
+            .priority = 0,
+    };
+    const struct OamData BL = {
+            .bpp = ST_OAM_4BPP,
+            .affineMode = ST_OAM_AFFINE_OFF,
+            .objMode = ST_OAM_OBJ_NORMAL,
+            .mosaic = FALSE,
+            .shape = SPRITE_SHAPE(64x64),
+            .x = x,
+            .y = y + 64,
+            .matrixNum = 0,
+            .size = SPRITE_SIZE(64x64),
+            .tileNum = 0,
+            .paletteNum = 4,
+            .priority = 0,
+    };
+    const struct OamData BR = {
+            .bpp = ST_OAM_4BPP,
+            .affineMode = ST_OAM_AFFINE_OFF,
+            .objMode = ST_OAM_OBJ_NORMAL,
+            .mosaic = FALSE,
+            .shape = SPRITE_SHAPE(64x64),
+            .x = x + 64,
+            .y = y + 64,
+            .matrixNum = 0,
+            .size = SPRITE_SIZE(64x64),
+            .tileNum = 0,
+            .paletteNum = 4,
+            .priority = 0,
+    };
+    static const union AnimCmd TL_Anim[] =
+            {
+                    ANIMCMD_FRAME(0, 0),
+                    ANIMCMD_END,
+            };
+    static const union AnimCmd TR_Anim[] =
+            {
+                    ANIMCMD_FRAME(64, 0),
+                    ANIMCMD_END,
+            };
+    static const union AnimCmd BL_Anim[] =
+            {
+                    ANIMCMD_FRAME(0, 64),
+                    ANIMCMD_END,
+            };
+    static const union AnimCmd BR_Anim[] =
+            {
+                    ANIMCMD_FRAME(64, 64),
+                    ANIMCMD_END,
+            };
+
+    const struct SpriteTemplate TL_SpriteTemplate =
+            {
+                    .tileTag = TAG_ANDREW,
+                    .paletteTag = TAG_ANDREW,
+                    .oam = &TL,
+                    .anims = const union AnimCmd *const { TL_Anim }
+            };
+    const struct SpriteTemplate TR_SpriteTemplate =
+            {
+                    .tileTag = TAG_ANDREW,
+                    .paletteTag = TAG_ANDREW,
+                    .oam = &TR,
+                    .anims = const union AnimCmd *const { TR_Anim }
+            };
+    const struct SpriteTemplate BL_SpriteTemplate =
+            {
+                    .tileTag = TAG_ANDREW,
+                    .paletteTag = TAG_ANDREW,
+                    .oam = &BL,
+                    .anims = const union AnimCmd *const { BL_Anim }
+            };
+    const struct SpriteTemplate BR_SpriteTemplate =
+            {
+                    .tileTag = TAG_ANDREW,
+                    .paletteTag = TAG_ANDREW,
+                    .oam = &BR,
+                    .anims = const union AnimCmd *const { BR_Anim }
+            };
+
+    u8 tl_sprite = CreateSprite(&TL_SpriteTemplate, x, y, 0);
+    u8 tr_sprite = CreateSprite(&TR_SpriteTemplate, x + 64, y, 0);
+    u8 bl_sprite = CreateSprite(&BL_SpriteTemplate, x, y + 64, 0);
+    u8 br_sprite = CreateSprite(&BR_SpriteTemplate, x + 64, y + 64, 0);
+}
+
 static void CreateCopyrightBanner(s16 x, s16 y)
 {
     u8 i;
@@ -602,8 +728,9 @@ void CB2_InitTitleScreen(void)
         DecompressDataWithHeaderVram(sTitleScreenRayquazaGfx, (void *)(BG_CHAR_ADDR(2)));
         DecompressDataWithHeaderVram(sTitleScreenRayquazaTilemap, (void *)(BG_SCREEN_ADDR(26)));
         // bg1
-        DecompressDataWithHeaderVram(sTitleScreenCloudsGfx, (void *)(BG_CHAR_ADDR(3)));
-        DecompressDataWithHeaderVram(gTitleScreenCloudsTilemap, (void *)(BG_SCREEN_ADDR(27)));
+        //DecompressDataWithHeaderVram(sTitleScreenAndrewGfx, (void *)(BG_CHAR_ADDR(2) + PLTT_SIZE_4BPP));
+        //DecompressDataWithHeaderVram(gTitleScreenAndrewTilemap, (void *)(BG_SCREEN_ADDR(27)));
+        //LoadPalette(gTitleScreenAndrewPal, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
         ScanlineEffect_Stop();
         ResetTasks();
         ResetSpriteData();
@@ -612,7 +739,9 @@ void CB2_InitTitleScreen(void)
         LoadCompressedSpriteSheet(&sSpriteSheet_EmeraldVersion[0]);
         LoadCompressedSpriteSheet(&sSpriteSheet_PressStart[0]);
         LoadCompressedSpriteSheet(&sPokemonLogoShineSpriteSheet[0]);
+        LoadCompressedSpriteSheet(&sSpriteSheet_Andrew[0]);
         LoadPalette(gTitleScreenEmeraldVersionPal, OBJ_PLTT_ID(0), PLTT_SIZE_4BPP);
+        LoadPalette(gTitleScreenAndrewPal, OBJ_PLTT_ID(4), PLTT_SIZE_4BPP);
         LoadSpritePalette(&sSpritePalette_PressStart[0]);
         gMain.state = 2;
         break;
@@ -664,7 +793,7 @@ void CB2_InitTitleScreen(void)
         if (!UpdatePaletteFade())
         {
             StartPokemonLogoShine(SHINE_MODE_SINGLE_NO_BG_COLOR);
-            ScanlineEffect_InitWave(0, DISPLAY_HEIGHT, 4, 4, 0, SCANLINE_EFFECT_REG_BG1HOFS, TRUE);
+            //ScanlineEffect_InitWave(0, DISPLAY_HEIGHT, 4, 4, 0, SCANLINE_EFFECT_REG_BG1HOFS, TRUE);
             SetMainCallback2(MainCB2);
         }
         break;
@@ -739,6 +868,9 @@ static void Task_TitleScreenPhase2(u8 taskId)
         gTasks[taskId].tCounter = 0;
     }
 
+    //gBattle_BG1_Y = DISPLAY_HEIGHT - 88;
+    //gBattle_BG1_X = 24;
+
     if (gTasks[taskId].tCounter != 0)
     {
         gTasks[taskId].tCounter--;
@@ -746,8 +878,8 @@ static void Task_TitleScreenPhase2(u8 taskId)
     else
     {
         gTasks[taskId].tSkipToNext = TRUE;
-        SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG0 | BLDCNT_TGT2_BD);
-        SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(6, 15));
+        //SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG0 | BLDCNT_TGT2_BD);
+        //SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(6, 15));
         SetGpuReg(REG_OFFSET_BLDY, 0);
         SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_1
                                     | DISPCNT_OBJ_1D_MAP
@@ -757,10 +889,13 @@ static void Task_TitleScreenPhase2(u8 taskId)
                                     | DISPCNT_OBJ_ON);
         CreatePressStartBanner(START_BANNER_X, 108);
         CreateCopyrightBanner(START_BANNER_X, 148);
+        CreateAndrew(64, 160 - 88);
         if (QUICKSTART && QUICKSTART_HUD)
             CreateQuickstartHud();
         gTasks[taskId].tBg1Y = 0;
         gTasks[taskId].func = Task_TitleScreenPhase3;
+        m4aSongNumStop(MUS_TITLE);
+        m4aSongNumStart(MUS_VS_RAYQUAZA); //Wii channel music
     }
 
     if (!(gTasks[taskId].tCounter & 3) && gTasks[taskId].tPointless != 0)
@@ -810,12 +945,12 @@ static void Task_TitleScreenPhase3(u8 taskId)
     {
         SetGpuReg(REG_OFFSET_BG2Y_L, 0);
         SetGpuReg(REG_OFFSET_BG2Y_H, 0);
-        if (++gTasks[taskId].tCounter & 1)
+        /*if (++gTasks[taskId].tCounter & 1)
         {
             gTasks[taskId].tBg1Y++;
             gBattle_BG1_Y = gTasks[taskId].tBg1Y / 2;
             gBattle_BG1_X = 0;
-        }
+        }*/
         UpdateLegendaryMarkingColor(gTasks[taskId].tCounter);
         if ((gMPlayInfo_BGM.status & 0xFFFF) == 0)
         {
@@ -827,6 +962,8 @@ static void Task_TitleScreenPhase3(u8 taskId)
 
 static void CB2_GoToMainMenu(void)
 {
+    gBattle_BG1_Y = 0;
+    gBattle_BG1_X = 0;
     if (!UpdatePaletteFade())
         SetMainCallback2(CB2_InitMainMenu);
 }
@@ -860,6 +997,7 @@ static void CB2_GoToBerryFixScreen(void)
 
 static void UpdateLegendaryMarkingColor(u8 frameNum)
 {
+    return;
     if ((frameNum % 4) == 0) // Change color every 4th frame
     {
         s32 intensity = Cos(frameNum, Q_8_8(0.5)) + Q_8_8(0.5);

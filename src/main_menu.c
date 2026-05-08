@@ -1322,7 +1322,7 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
     gTasks[taskId].tPlayerSpriteId = SPRITE_NONE;
     gTasks[taskId].data[3] = 0xFF;
     gTasks[taskId].tTimer = 0xD8;
-    PlayBGM(MUS_ROUTE122);
+    PlayBGM(MUS_RG_VICTORY_TRAINER);
     ShowBg(0);
     ShowBg(1);
 }
@@ -1338,7 +1338,7 @@ static void Task_NewGameBirchSpeech_WaitToShowBirch(u8 taskId)
     else
     {
         spriteId = gTasks[taskId].tBirchSpriteId;
-        gSprites[spriteId].x = 136;
+        gSprites[spriteId].x = 120;
         gSprites[spriteId].y = 60;
         gSprites[spriteId].invisible = FALSE;
         gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
@@ -1369,7 +1369,7 @@ static void Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome(u8 taskId)
             NewGameBirchSpeech_ClearWindow(0);
             StringExpandPlaceholders(gStringVar4, gText_Birch_Welcome);
             AddTextPrinterForMessage(TRUE);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_ThisIsAPokemon;
+            gTasks[taskId].func = Task_NewGameBirchSpeech_MainSpeech;
         }
     }
 }
@@ -1391,7 +1391,7 @@ static void Task_NewGameBirchSpeech_MainSpeech(u8 taskId)
     {
         StringExpandPlaceholders(gStringVar4, gText_Birch_MainSpeech);
         AddTextPrinterForMessage(TRUE);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_AndYouAre;
+        gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
     }
 }
 
@@ -1541,13 +1541,13 @@ static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
         PlaySE(SE_SELECT);
         gSaveBlock2Ptr->playerGender = gender;
         NewGameBirchSpeech_ClearGenderWindow(1, 1);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+        gTasks[taskId].func = Task_NewGameBirchSpeech_ReshowBirchLotad;
         break;
     case FEMALE:
         PlaySE(SE_SELECT);
         gSaveBlock2Ptr->playerGender = gender;
         NewGameBirchSpeech_ClearGenderWindow(1, 1);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+        gTasks[taskId].func = Task_NewGameBirchSpeech_ReshowBirchLotad;
         break;
     default: //repeat task if nothing is selected
         break;
@@ -1697,15 +1697,15 @@ static void Task_NewGameBirchSpeech_ReshowBirchLotad(u8 taskId)
         gSprites[gTasks[taskId].tBrendanSpriteId].invisible = TRUE;
         gSprites[gTasks[taskId].tMaySpriteId].invisible = TRUE;
         spriteId = gTasks[taskId].tBirchSpriteId;
-        gSprites[spriteId].x = 136;
+        gSprites[spriteId].x = 120;
         gSprites[spriteId].y = 60;
         gSprites[spriteId].invisible = FALSE;
         gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
         spriteId = gTasks[taskId].tLotadSpriteId;
-        gSprites[spriteId].x = 100;
+        /*gSprites[spriteId].x = 100;
         gSprites[spriteId].y = 75;
         gSprites[spriteId].invisible = FALSE;
-        gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+        gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;*/
         NewGameBirchSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
         NewGameBirchSpeech_StartFadePlatformOut(taskId, 1);
         NewGameBirchSpeech_ClearWindow(0);
