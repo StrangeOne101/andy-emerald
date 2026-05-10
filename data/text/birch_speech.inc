@@ -3,10 +3,10 @@ gText_Birch_Welcome::
 	.string "..\p"
 	.string "...\p"
 	.string "A human? What are you doing here?\p"
-	.string "..."
+	.string "...\n"
 	.string "You don't know why you are here\n"
-	.string "either?\l"
-	.string "How mysterious..."
+	.string "either?\p"
+	.string "How mysterious...\p"
 	.string "$"
 
 gText_Birch_Pokemon::

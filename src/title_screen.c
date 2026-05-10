@@ -457,12 +457,12 @@ static const union AnimCmd TL_Anim[] =
 };
 static const union AnimCmd BL_Anim[] =
 {
-    ANIMCMD_FRAME(1, 30),
+    ANIMCMD_FRAME(64, 30),
     ANIMCMD_END,
 };
 static const union AnimCmd BR_Anim[] =
 {
-    ANIMCMD_FRAME(2, 30),
+    ANIMCMD_FRAME(128, 30),
     ANIMCMD_END,
 };
 

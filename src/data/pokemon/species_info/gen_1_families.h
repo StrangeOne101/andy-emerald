@@ -7843,17 +7843,17 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     #endif
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = TRUE,
-        .speciesName = _("Primeape"),
+        .speciesName = _("Presape"),
         .cryId = CRY_PRIMEAPE,
         .natDexNum = NATIONAL_DEX_PRIMEAPE,
         .categoryName = _("Pig Monkey"),
         .height = 10,
         .weight = 320,
         .description = COMPOUND_STRING(
-            "When it becomes furious, its blood\n"
-            "circulation becomes more robust, and\n"
-            "its muscles are made stronger. But it\n"
-            "also becomes much less intelligent."),
+            "I will build a great wall - and nobody\n"
+            "builds walls better than me, believe\n"
+            "me. And mexico is going to pay for\n"
+            "this wall!"),
         .pokemonScale = 326,
         .pokemonOffset = 10,
         .trainerScale = 256,
