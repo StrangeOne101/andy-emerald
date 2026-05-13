@@ -4,6 +4,7 @@
 #include "constants/battle.h"
 #include "battle_bg.h"
 #include "task.h"
+#include "rtc.h"
 
 struct BattleEnvironment
 {
@@ -15,7 +16,7 @@ struct BattleEnvironment
     u16 camouflageBlend;
     struct BattleBackgroundEntry entry;
     struct BattleBackground background;
-    const void *palette;
+    const void *palette[TIMES_OF_DAY_COUNT];
     TaskFunc battleIntroSlide;
 };
 

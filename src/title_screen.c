@@ -194,15 +194,14 @@ static const struct CompressedSpriteSheet sSpriteSheet_EmeraldVersion[] =
 };
 
 static const struct CompressedSpriteSheet sSpriteSheet_Andrew[] =
-{
-    {
-            .data = gTitleScreenAndrewGfx,
-            .size = 0x3000,
-            .tag = TAG_ANDREW
-    },
-    {},
-    {}
-};
+        {
+                {
+                        .data = gTitleScreenAndrewGfx,
+                        .size = 0x4000,
+                        .tag = TAG_VERSION
+                },
+                {},
+        };
 
 static const struct OamData sOamData_CopyrightBanner =
 {
@@ -315,14 +314,6 @@ static const struct SpritePalette sSpritePalette_PressStart[] =
     {
         .data = gTitleScreenPressStartPal,
         .tag = TAG_PRESS_START_COPYRIGHT
-    },
-    {},
-};
-static const struct SpritePalette sSpritePalette_Andrew[] =
-{
-    {
-        .data = gTitleScreenAndrewPal,
-        .tag = TAG_ANDREW
     },
     {},
 };
@@ -450,95 +441,117 @@ static void CreatePressStartBanner(s16 x, s16 y)
     }
 }
 
-static const union AnimCmd TL_Anim[] =
-{
-    ANIMCMD_FRAME(0, 30),
-    ANIMCMD_END,
-};
-static const union AnimCmd BL_Anim[] =
-{
-    ANIMCMD_FRAME(64, 30),
-    ANIMCMD_END,
-};
-static const union AnimCmd BR_Anim[] =
-{
-    ANIMCMD_FRAME(128, 30),
-    ANIMCMD_END,
-};
-
-const union AnimCmd *const TL_Anim_Table[] = { TL_Anim, };
-const union AnimCmd *const BL_Anim_Table[] = { BL_Anim, };
-const union AnimCmd *const BR_Anim_Table[] = { BR_Anim, };
-
 static void CreateAndrew(s16 x, s16 y)
 {
     //TODO
     const struct OamData TL = {
-        .bpp = ST_OAM_4BPP,
-        .affineMode = ST_OAM_AFFINE_OFF,
-        .objMode = ST_OAM_OBJ_NORMAL,
-        .mosaic = FALSE,
-        .shape = SPRITE_SHAPE(64x64),
-        .x = 0,
-        .y = 0,
-        .matrixNum = 0,
-        .size = SPRITE_SIZE(64x64),
-        .tileNum = 0,
-        .paletteNum = 0,
-        .priority = 0,
+            .bpp = ST_OAM_4BPP,
+            .affineMode = ST_OAM_AFFINE_OFF,
+            .objMode = ST_OAM_OBJ_NORMAL,
+            .mosaic = FALSE,
+            .shape = SPRITE_SHAPE(64x64),
+            .x = x,
+            .y = y,
+            .matrixNum = 0,
+            .size = SPRITE_SIZE(64x64),
+            .tileNum = 0,
+            .paletteNum = 4,
+            .priority = 0,
+    };
+    const struct OamData TR = {
+            .bpp = ST_OAM_4BPP,
+            .affineMode = ST_OAM_AFFINE_OFF,
+            .objMode = ST_OAM_OBJ_NORMAL,
+            .mosaic = FALSE,
+            .shape = SPRITE_SHAPE(64x64),
+            .x = x + 64,
+            .y = y,
+            .matrixNum = 0,
+            .size = SPRITE_SIZE(64x64),
+            .tileNum = 0,
+            .paletteNum = 4,
+            .priority = 0,
     };
     const struct OamData BL = {
-        .bpp = ST_OAM_4BPP,
-        .affineMode = ST_OAM_AFFINE_OFF,
-        .objMode = ST_OAM_OBJ_NORMAL,
-        .mosaic = FALSE,
-        .shape = SPRITE_SHAPE(64x64),
-        .x = 0,
-        .y = 64,
-        .matrixNum = 0,
-        .size = SPRITE_SIZE(64x64),
-        .tileNum = 0,
-        .paletteNum = 0,
-        .priority = 0,
+            .bpp = ST_OAM_4BPP,
+            .affineMode = ST_OAM_AFFINE_OFF,
+            .objMode = ST_OAM_OBJ_NORMAL,
+            .mosaic = FALSE,
+            .shape = SPRITE_SHAPE(64x64),
+            .x = x,
+            .y = y + 64,
+            .matrixNum = 0,
+            .size = SPRITE_SIZE(64x64),
+            .tileNum = 0,
+            .paletteNum = 4,
+            .priority = 0,
     };
     const struct OamData BR = {
-        .bpp = ST_OAM_4BPP,
-        .affineMode = ST_OAM_AFFINE_OFF,
-        .objMode = ST_OAM_OBJ_NORMAL,
-        .mosaic = FALSE,
-        .shape = SPRITE_SHAPE(64x64),
-        .x = 0,
-        .y = 128,
-        .matrixNum = 0,
-        .size = SPRITE_SIZE(64x64),
-        .tileNum = 0,
-        .paletteNum = 0,
-        .priority = 0,
+            .bpp = ST_OAM_4BPP,
+            .affineMode = ST_OAM_AFFINE_OFF,
+            .objMode = ST_OAM_OBJ_NORMAL,
+            .mosaic = FALSE,
+            .shape = SPRITE_SHAPE(64x64),
+            .x = x + 64,
+            .y = y + 64,
+            .matrixNum = 0,
+            .size = SPRITE_SIZE(64x64),
+            .tileNum = 0,
+            .paletteNum = 4,
+            .priority = 0,
     };
+    static const union AnimCmd TL_Anim[] =
+            {
+                    ANIMCMD_FRAME(0, 0),
+                    ANIMCMD_END,
+            };
+    static const union AnimCmd TR_Anim[] =
+            {
+                    ANIMCMD_FRAME(64, 0),
+                    ANIMCMD_END,
+            };
+    static const union AnimCmd BL_Anim[] =
+            {
+                    ANIMCMD_FRAME(0, 64),
+                    ANIMCMD_END,
+            };
+    static const union AnimCmd BR_Anim[] =
+            {
+                    ANIMCMD_FRAME(64, 64),
+                    ANIMCMD_END,
+            };
 
     const struct SpriteTemplate TL_SpriteTemplate =
-    {
-        .tileTag = TAG_ANDREW,
-        .paletteTag = TAG_ANDREW,
-        .oam = &TL,
-        .anims = TL_Anim_Table
-    };
+            {
+                    .tileTag = TAG_ANDREW,
+                    .paletteTag = TAG_ANDREW,
+                    .oam = &TL,
+                    .anims = const union AnimCmd *const { TL_Anim }
+            };
+    const struct SpriteTemplate TR_SpriteTemplate =
+            {
+                    .tileTag = TAG_ANDREW,
+                    .paletteTag = TAG_ANDREW,
+                    .oam = &TR,
+                    .anims = const union AnimCmd *const { TR_Anim }
+            };
     const struct SpriteTemplate BL_SpriteTemplate =
-    {
-        .tileTag = TAG_ANDREW,
-        .paletteTag = TAG_ANDREW,
-        .oam = &BL,
-        .anims = BL_Anim_Table
-    };
+            {
+                    .tileTag = TAG_ANDREW,
+                    .paletteTag = TAG_ANDREW,
+                    .oam = &BL,
+                    .anims = const union AnimCmd *const { BL_Anim }
+            };
     const struct SpriteTemplate BR_SpriteTemplate =
-    {
-        .tileTag = TAG_ANDREW,
-        .paletteTag = TAG_ANDREW,
-        .oam = &BR,
-        .anims = BR_Anim_Table
-    };
+            {
+                    .tileTag = TAG_ANDREW,
+                    .paletteTag = TAG_ANDREW,
+                    .oam = &BR,
+                    .anims = const union AnimCmd *const { BR_Anim }
+            };
 
     u8 tl_sprite = CreateSprite(&TL_SpriteTemplate, x, y, 0);
+    u8 tr_sprite = CreateSprite(&TR_SpriteTemplate, x + 64, y, 0);
     u8 bl_sprite = CreateSprite(&BL_SpriteTemplate, x, y + 64, 0);
     u8 br_sprite = CreateSprite(&BR_SpriteTemplate, x + 64, y + 64, 0);
 }
@@ -722,15 +735,14 @@ void CB2_InitTitleScreen(void)
         ResetTasks();
         ResetSpriteData();
         FreeAllSpritePalettes();
-        gReservedSpritePaletteCount = 10;
+        gReservedSpritePaletteCount = 9;
         LoadCompressedSpriteSheet(&sSpriteSheet_EmeraldVersion[0]);
         LoadCompressedSpriteSheet(&sSpriteSheet_PressStart[0]);
         LoadCompressedSpriteSheet(&sPokemonLogoShineSpriteSheet[0]);
         LoadCompressedSpriteSheet(&sSpriteSheet_Andrew[0]);
         LoadPalette(gTitleScreenEmeraldVersionPal, OBJ_PLTT_ID(0), PLTT_SIZE_4BPP);
-        //LoadPalette(gTitleScreenAndrewPal, OBJ_PLTT_ID(4), PLTT_SIZE_4BPP);
+        LoadPalette(gTitleScreenAndrewPal, OBJ_PLTT_ID(4), PLTT_SIZE_4BPP);
         LoadSpritePalette(&sSpritePalette_PressStart[0]);
-        LoadSpritePalette(&sSpritePalette_Andrew[0]);
         gMain.state = 2;
         break;
     case 2:
