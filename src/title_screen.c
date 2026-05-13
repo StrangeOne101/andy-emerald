@@ -550,10 +550,9 @@ static void CreateAndrew(s16 x, s16 y)
                     .anims = const union AnimCmd *const { BR_Anim }
             };
 
-    u8 tl_sprite = CreateSprite(&TL_SpriteTemplate, x, y, 0);
-    u8 tr_sprite = CreateSprite(&TR_SpriteTemplate, x + 64, y, 0);
-    u8 bl_sprite = CreateSprite(&BL_SpriteTemplate, x, y + 64, 0);
-    u8 br_sprite = CreateSprite(&BR_SpriteTemplate, x + 64, y + 64, 0);
+    CreateSprite(&TL_SpriteTemplate, x, y, 0);
+    CreateSprite(&BL_SpriteTemplate, x, y + 64, 0);
+    CreateSprite(&BR_SpriteTemplate, x + 64, y + 64, 0);
 }
 
 static void CreateCopyrightBanner(s16 x, s16 y)

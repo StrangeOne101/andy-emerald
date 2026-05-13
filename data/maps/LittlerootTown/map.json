@@ -17,15 +17,15 @@
     {
       "map": "MAP_ROUTE101",
       "offset": 0,
-      "direction": "up"
+      "direction": "down"
     }
   ],
   "object_events": [
     {
       "local_id": "LOCALID_LITTLEROOT_TWIN",
       "graphics_id": "OBJ_EVENT_GFX_TWIN",
-      "x": 16,
-      "y": 10,
+      "x": 13,
+      "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 1,

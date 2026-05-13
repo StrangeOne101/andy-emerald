@@ -3,7 +3,7 @@ gText_Birch_Welcome::
 	.string "..\p"
 	.string "...\p"
 	.string "A human? What are you doing here?\p"
-	.string "...\n"
+	.string "...\p"
 	.string "You don't know why you are here\n"
 	.string "either?\p"
 	.string "How mysterious...\p"
