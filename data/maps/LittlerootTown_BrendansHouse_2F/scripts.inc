@@ -271,7 +271,7 @@ PlayersHouse_2F_EventScript_GameCube::
 
 PlayersHouse_2F_Text_ClockIsStopped:
 	.string "The clock is stopped…\p"
-	.string "Better set it and start it!$"
+	.string "Was there a power cut?$"
 
 PlayersHouse_2F_Text_HowDoYouLikeYourRoom:
 	.string "MOM: {PLAYER}, how do you like your\n"
@@ -296,6 +296,6 @@ Common_Text_LookCloserAtMap:
 	.string "{REGION} region map.$"
 
 PlayersHouse_2F_Text_ItsAGameCube:
-	.string "It's a Nintendo GameCube.\p"
-	.string "A Game Boy Advance is connected to\n"
-	.string "serve as the Controller.$"
+	.string "It's a Steam Machine!\p"
+	.string "Although its got a Nintendo\n"
+	.string "GameCube skin on it...$"

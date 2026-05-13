@@ -2446,6 +2446,42 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wally = {
     .images = sPicTable_Wally,
 };
 
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Paul = {
+        .tileTag = TAG_NONE,
+        .paletteTag = OBJ_EVENT_PAL_TAG_PAUL,
+        .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+        .size = 256,
+        .width = 16,
+        .height = 32,
+        .paletteSlot = PALSLOT_NPC_SPECIAL,
+        .shadowSize = SHADOW_SIZE_M,
+        .inanimate = FALSE,
+        .compressed = FALSE,
+        .tracks = TRACKS_FOOT,
+        .oam = &gObjectEventBaseOam_16x32,
+        .subspriteTables = sOamTables_16x32,
+        .anims = sAnimTable_Standard,
+        .images = sPicTable_Paul,
+};
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Jennifer = {
+        .tileTag = TAG_NONE,
+        .paletteTag = OBJ_EVENT_PAL_TAG_JENNIFER,
+        .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+        .size = 256,
+        .width = 16,
+        .height = 32,
+        .paletteSlot = PALSLOT_NPC_SPECIAL_REFLECTION,
+        .shadowSize = SHADOW_SIZE_M,
+        .inanimate = FALSE,
+        .compressed = FALSE,
+        .tracks = TRACKS_FOOT,
+        .oam = &gObjectEventBaseOam_16x32,
+        .subspriteTables = sOamTables_16x32,
+        .anims = sAnimTable_Standard,
+        .images = sPicTable_Jennifer,
+};
+
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RubySapphireLittleBoy = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_1,
