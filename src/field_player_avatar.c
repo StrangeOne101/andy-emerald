@@ -2192,6 +2192,14 @@ static u8 TrySpinPlayerForWarp(struct ObjectEvent *object, s16 *delayTimer)
     return sSpinDirections[object->facingDirection];
 }
 
+
+void SetPlayerSleeping()
+{
+    EndORASDowsing();
+    ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], OBJ_EVENT_GFX_BRENDAN_SLEEPING);
+    StartSpriteAnim(&gSprites[gPlayerAvatar.spriteId], 0);
+}
+
 //sideways stairs
 enum Direction GetRightSideStairsDirection(enum Direction direction)
 {

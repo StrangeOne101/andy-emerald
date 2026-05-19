@@ -11,13 +11,21 @@ LittlerootTown_MapScripts::
 	@ 4: Received Running Shoes
 
 	@ State descriptions for VAR_LITTLEROOT_INTRO_STATE
-	@ 1: In truck male
-	@ 2: In truck female
-	@ 3: Entered house
-	@ 4: Told to go set clock
-	@ 5: Entered 2F to set clock
-	@ 6: Set clock
-	@ 7: Told to go meet rival
+	@ VANILLA STATES:
+	@   1: In truck male
+	@   2: In truck female
+	@   3: Entered house
+	@   4: Told to go set clock
+	@   5: Entered 2F to set clock
+	@   6: Set clock
+	@   7: Told to go meet rival
+	@ NEW STATES:
+	@   1: Yelled at by Mum
+	@   2: Gone downstairs
+	@   3: Made to go set clock
+	@   4: Entered 2F to set clock
+	@   5: Set clock
+	@   6: Told to go househunting with May
 
 	@ State descriptions for VAR_LITTLEROOT_HOUSES_STATE_MAY
 	@                    and VAR_LITTLEROOT_HOUSES_STATE_BRENDAN
@@ -989,7 +997,8 @@ LittlerootTown_Text_TownSign:
 	.string "“A town that can't be shaded any hue.”$"
 
 LittlerootTown_Text_ProfBirchsLab:
-	.string "PROF. BIRCH'S POKéMON LAB$"
+	.string "For Sale.\n"
+	.string "Contact Barry for inquiries.$"
 
 LittlerootTown_Text_PlayersHouse:
 	.string "BLACKLER HOUSE$"

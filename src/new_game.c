@@ -51,9 +51,12 @@
 #include "constants/items.h"
 #include "difficulty.h"
 #include "follower_npc.h"
+#include "field_player_avatar.h"
+#include "field_screen_effect.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 extern const u8 EventScript_ResetAllMapFlagsFrlg[];
+extern const u8 LittlerootTown_BrendansHouse_2F_Wakeup[];
 
 static void ClearFrontierRecord(void);
 static void WarpToTruck(void);
@@ -139,8 +142,11 @@ static void WarpToTruck(void)
         SetWarpDestination(MAP_GROUP(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), WARP_ID_NONE, 6, 6);
     else
         SetWarpDestination(MAP_GROUP(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F), MAP_NUM(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F), WARP_ID_NONE, 1, 4);
-    //ExecuteTruckSequence();
+
     WarpIntoMap();
+    FadeInFromBlack();
+    SetPlayerSleeping();
+    //RunScriptImmediately(LittlerootTown_BrendansHouse_2F_Wakeup);
 }
 
 void Sav2_ClearSetDefault(void)

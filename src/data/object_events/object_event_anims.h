@@ -7,6 +7,26 @@ static const union AnimCmd sAnim_StayStill[] =
     ANIMCMD_JUMP(0),
 };
 
+static const union AnimCmd sAnim_Sleeping[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(1, 8),
+    ANIMCMD_FRAME(1, 8),
+    ANIMCMD_FRAME(2, 8),
+    ANIMCMD_FRAME(2, 8),
+    ANIMCMD_FRAME(3, 8),
+    ANIMCMD_FRAME(3, 8),
+    ANIMCMD_FRAME(3, 8),
+    ANIMCMD_FRAME(3, 8),
+    ANIMCMD_FRAME(1, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_JUMP(14),
+};
+
 static const union AnimCmd sAnim_QuintyPlumpFaceSouth[] =
 {
     ANIMCMD_FRAME(0, 16),
@@ -1650,4 +1670,8 @@ static const union AnimCmd *const sAnimTable_RedGreenVSSeeker[] = {
 
 static const union AnimCmd *const sAnimTable_RedGreenVSSeekerBike[] = {
     sAnim_VSSeekerBike,
+};
+
+static const union AnimCmd *const sAnimTable_PlayerSleeping[] = {
+    sAnim_Sleeping,
 };

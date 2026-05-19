@@ -4,11 +4,32 @@ LittlerootTown_BrendansHouse_2F_MapScripts::
 	.byte 0
 
 LittlerootTown_BrendansHouse_2F_OnTransition:
+	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 0, LittlerootTown_BrendansHouse_2F_Wakeup
 	call_if_lt VAR_LITTLEROOT_RIVAL_STATE, 2, LittlerootTown_BrendansHouse_2F_EventScript_CheckSetReadyToMeetBrendan
 	call_if_ge VAR_LITTLEROOT_RIVAL_STATE, 3, LittlerootTown_BrendansHouse_2F_EventScript_CheckShouldUpdateBrendanPos
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 4, PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet
 	call SecretBase_EventScript_SetDecorationFlags
 	setvar VAR_SECRET_BASE_INITIALIZED, 0
+	end
+
+@Wakeup from bed
+LittlerootTown_BrendansHouse_2F_Wakeup::
+	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_POKE_BALL
+	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 1
+	@lock
+	@delay 40
+	@msgbox PlayersHouse_2F_Text_Wakeup, MSGBOX_DEFAULT
+	@closemessage
+	@release
+	return
+
+LittlerootTown_BrendansHouse_2F_GetYelledOut::
+	setvar VAR_LITTLEROOT_INTRO_STATE, 1
+	msgbox PlayersHouse_2F_Text_GetDownHere, MSGBOX_DEFAULT
+	closemessage
 	end
 
 LittlerootTown_BrendansHouse_2F_EventScript_CheckShouldUpdateBrendanPos::
@@ -271,7 +292,11 @@ PlayersHouse_2F_EventScript_GameCube::
 
 PlayersHouse_2F_Text_ClockIsStopped:
 	.string "The clock is stopped…\p"
-	.string "Was there a power cut?$"
+	.string "You put in the new batteries!$"
+
+PlayersHouse_2F_Text_ClockNoBatteries:
+    .string "The clock is stopped…\p"
+    .string "Probably needs new batteries.$"
 
 PlayersHouse_2F_Text_HowDoYouLikeYourRoom:
 	.string "MOM: {PLAYER}, how do you like your\n"
@@ -286,9 +311,9 @@ PlayersHouse_2F_Text_HowDoYouLikeYourRoom:
 PlayersHouse_2F_Text_Notebook:
 	.string "{PLAYER} flipped open the notebook.\p"
 	.string "ADVENTURE RULE NO. 1\n"
-	.string "Open the MENU with START.\p"
+	.string "YOU SHALL NOT PASS!\p"
 	.string "ADVENTURE RULE NO. 2\n"
-	.string "Record your progress with SAVE.\p"
+	.string "kill yourself\p"
 	.string "The remaining pages are blank…$"
 
 Common_Text_LookCloserAtMap:
@@ -299,3 +324,10 @@ PlayersHouse_2F_Text_ItsAGameCube:
 	.string "It's a Steam Machine!\p"
 	.string "Although its got a Nintendo\n"
 	.string "GameCube skin on it...$"
+
+PlayersHouse_2F_Text_Wakeup:
+	.string "That was a weird dream...$"
+
+PlayersHouse_2F_Text_GetDownHere:
+	.string "Mom: {PLAYER}! Hurry up and\n"
+	.string "get down here!$"
