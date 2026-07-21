@@ -1,0 +1,36 @@
+.2byte: Defines a two-byte value.
+.4byte: Defines a four-byte value.
+.align: Aligns the next data to a boundary.
+.arm: Indicates ARM code (used for ARM processor instructions).
+.braille: Converts a ASCII string into a braille string
+.byte: Defines a single-byte value.
+.else: Marks the beginning of else branch in conditional assembly.
+.elseif: Specifies additional conditions in conditional assembly.
+.endif: Ends a conditional assembly block.
+.endm: Ends a macro definition.
+.endr: Ends a repeat block in assembly.
+.equ: Defines a constant value or symbol in assembly.
+.equiv: Establishes equivalence for values or symbols.
+.error: Throws an error message during assembly.
+.global: Declares a symbol as global, allowing access from other files.
+.if: Starts a conditional assembly block if the condition is true.
+.ifb: Checks for blank arguments in conditional assembly.
+.ifdef: Starts a conditional block if the symbol is defined.
+.ifgt: Starts a conditional block if the value is greater than zero.
+.ifnb: Checks for non-blank arguments in conditional assembly.
+.ifndef: Starts a conditional block if the symbol is not defined.
+.incbin: Includes raw binary data from a file.
+.include: Includes the content of a source file.
+.irp: Starts an iterative, repeat block for parameters in macros.
+.macro: Defines a new macro
+.rept: Repeats a block of code a specified number of times.
+.rodata: Refers to read-only data section.
+.section: Defines a new section for data or code.
+.set: Assigns a value to a symbol.
+.size: Specifies the size of a symbol.
+.space: Allocates uninitialized space in memory.
+.string: Defines a null-terminated string.
+.thumb: Indicates Thumb code (used for ARM processors in Thumb mode).
+.thumb_func: Specifies a function located in Thumb code section.
+.type: Assigns a type to a symbol.
+.warning: Displays a warning message during assembly.
