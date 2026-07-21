@@ -159,6 +159,38 @@ RustboroCity_EventScript_Man1::
 	release
 	end
 
+RustboroCity_EventScript_ITM1::
+    lock
+    faceplayer
+    msgbox RustboroCity_Text_ITM_Blocker1, MSGBOX_DEFAULT
+    applymovement LOCALID_RUSTBURO_ITMBLOCKER_1, Common_Movement_FaceOriginalDirection
+    waitmovement 0
+    end
+
+RustboroCity_EventScript_ITM2::
+    lock
+    faceplayer
+    msgbox RustboroCity_Text_ITM_Blocker2, MSGBOX_DEFAULT
+    applymovement LOCALID_RUSTBURO_ITMBLOCKER_2, Common_Movement_FaceOriginalDirection
+    waitmovement 0
+    end
+
+RustboroCity_EventScript_ITM3::
+    lock
+    faceplayer
+    msgbox RustboroCity_Text_ITM_Blocker3, MSGBOX_DEFAULT
+    applymovement LOCALID_RUSTBURO_ITMBLOCKER_3, Common_Movement_FaceOriginalDirection
+    waitmovement 0
+    end
+
+RustboroCity_EventScript_ITM4::
+    lock
+    faceplayer
+    msgbox RustboroCity_Text_ITM_Blocker4, MSGBOX_DEFAULT
+    applymovement LOCALID_RUSTBURO_ITMBLOCKER_4, Common_Movement_FaceOriginalDirection
+    waitmovement 0
+    end
+
 RustboroCity_EventScript_Man1HaveBadge::
 	msgbox RustboroCity_Text_HeyThatsRustborosGymBadge, MSGBOX_DEFAULT
 	release
@@ -1288,3 +1320,19 @@ RustboroCity_Text_YouCanHave2On2Battle:
 	.string "they'll both challenge you.\p"
 	.string "Don't you think it'd be cool if you\n"
 	.string "could beat two TRAINERS by yourself?$"
+
+RustboroCity_Text_ITM_Blocker1:
+    .string "I've been here for hours...\p"
+    .string "What is taking them so long?$"
+
+RustboroCity_Text_ITM_Blocker2:
+    .string "I cut the line, but don't tell\n"
+    .string "anyone!$"
+
+RustboroCity_Text_ITM_Blocker3:
+    .string "The guy in front of me thinks he\n"
+    .string "is so slick...\p"
+    .string "But I saw!$"
+
+RustboroCity_Text_ITM_Blocker4:
+    .string "I hope I get home before dark...$"
