@@ -33,7 +33,8 @@ gText_Birch_WhatsYourName::
 	.string "What's your name, child?$"
 
 gText_Birch_SoItsPlayer::
-	.string "So it's {PLAYER}{KUN}?$"
+	.string "So it's {PLAYER}{KUN}?\p"
+    .string "No, it isn't! It's Andrew!"
 
 gText_Birch_YourePlayer::
 	.string "{PLAYER}{KUN}... Hmm...\l"
