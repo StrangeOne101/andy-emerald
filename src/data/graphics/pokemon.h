@@ -4,6 +4,10 @@
 #define INCGFX_COMP INCGFX_U32
 #endif
 
+const u32 gMonBackPic_Yourself[] = INCGFX_U32("graphics/pokemon/yourself/back.png", ".4bpp.smol");
+const u16 gMonPalette_Yourself[] = INCGFX_U16("graphics/pokemon/yourself/normal.pal", ".gbapal");
+
+
 const u32 gMonFrontPic_CircledQuestionMark[] = INCGFX_U32("graphics/pokemon/question_mark/circled/anim_front.png", ".4bpp.smol");
 const u32 gMonBackPic_CircledQuestionMark[] = INCGFX_U32("graphics/pokemon/question_mark/circled/back.png", ".4bpp.smol");
 const u16 gMonPalette_CircledQuestionMark[] = INCGFX_U16("graphics/pokemon/question_mark/circled/normal.pal", ".gbapal");
@@ -267,7 +271,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 
 #if P_FAMILY_SQUIRTLE
 #if !P_GBA_STYLE_SPECIES_GFX
-    const u32 gMonFrontPic_Squirtle[] = INCGFX_U32("graphics/pokemon/squirtle/front.png", ".4bpp.smol");
+    const u32 gMonFrontPic_Squirtle[] = INCGFX_U32("graphics/pokemon/squirtle/anim_front.png", ".4bpp.smol");
     const u16 gMonPalette_Squirtle[] = INCGFX_U16("graphics/pokemon/squirtle/normal.pal", ".gbapal");
     const u32 gMonBackPic_Squirtle[] = INCGFX_U32("graphics/pokemon/squirtle/back.png", ".4bpp.smol");
     const u16 gMonShinyPalette_Squirtle[] = INCGFX_U16("graphics/pokemon/squirtle/shiny.pal", ".gbapal");

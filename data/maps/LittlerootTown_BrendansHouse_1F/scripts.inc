@@ -5,14 +5,11 @@ LittlerootTown_BrendansHouse_1F_MapScripts::
 	.byte 0
 
 LittlerootTown_BrendansHouse_1F_OnLoad:
-	call_if_lt VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_SetMovingBoxes
 	call_if_set FLAG_RECEIVED_RUNNING_SHOES, LittlerootTown_BrendansHouse_1F_EventScript_CheckShowShoesManual
 	end
 
-LittlerootTown_BrendansHouse_1F_EventScript_SetMovingBoxes::
-	setmetatile 5, 4, METATILE_BrendansMaysHouse_MovingBox_Open, TRUE
-	setmetatile 5, 2, METATILE_BrendansMaysHouse_MovingBox_Closed, TRUE
-	return
+LittleRoot_ThisDoesNothing:
+    return
 
 LittlerootTown_BrendansHouse_1F_EventScript_CheckShowShoesManual::
 	checkplayergender
@@ -24,10 +21,16 @@ LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual::
 	return
 
 LittlerootTown_BrendansHouse_1F_OnTransition:
+    call_if_eq VAR_LITTLEROOT_INTRO_STATE, 1, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToSink
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV
 	end
+
+LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToSink:
+    setobjectxyperm LOCALID_PLAYERS_HOUSE_1F_MOM, 1, 3
+    setobjectmovementtype LOCALID_PLAYERS_HOUSE_1F_MOM, MOVEMENT_TYPE_FACE_UP
+    return
 
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs::
 	setobjectxyperm LOCALID_PLAYERS_HOUSE_1F_MOM, 8, 4
@@ -47,12 +50,45 @@ LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor::
 @ Many of the below scripts have no gender check because they assume youre in the correct house
 @ The below SS Ticket script uses Mays house state by accident(?), but theyre both set identically after the intro
 LittlerootTown_BrendansHouse_1F_OnFrame:
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_EnterHouseMovingIn
+    map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, LittlerootTown_BrendansHouse_1F_TalkToPlayerAboutMay
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_PetalburgGymReport
 	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_MAY, 1, LittlerootTown_BrendansHouse_1F_EventScript_YoureNewNeighbor
 	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_MAY, 3, PlayersHouse_1F_EventScript_GetSSTicketAndSeeLatiTV
 	.2byte 0
+
+@Soon as the player walks down the stairs
+LittlerootTown_BrendansHouse_1F_TalkToPlayerAboutMay:
+    lockall
+    applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, Common_Movement_FaceRight
+    waitmovement 0
+    applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, Common_Movement_ExclamationMark
+    waitmovement 0
+    applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, Common_Movement_Delay48
+    waitmovement 0
+    setspeaker SP_NAME_MOM
+    msgbox PlayersHouse_1F_Text_AboutTime, MSGBOX_DEFAULT
+    closemessage
+    applymovement LOCALID_PLAYER, Common_Movement_FaceLeft
+    applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, LittlerootTown_BrendansHouse_1F_Movement_FromSinkToPlayer
+    waitmovement 0
+    setspeaker SP_NAME_MOM
+    msgbox PlayersHouse_1F_Text_Househunting, MSGBOX_DEFAULT
+    closemessage
+    applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, LittlerootTown_BrendansHouse_1F_Movement_FromPlayerToSink
+    applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, MOVEMENT_TYPE_FACE_UP
+    waitmovement 0
+    setvar VAR_LITTLEROOT_INTRO_STATE, 2
+    releaseall
+    end
+
+PlayersHouse_1F_EventScript_Dad::
+	lock
+	faceplayer
+	goto_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, PlayersHouse_1F_EventScript_GiveBatteries @Give batteries
+	msgbox PlayerHouse_1F_DadNormal, MSGBOX_DEFAULT
+	release
+	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock::
 	lockall
@@ -68,6 +104,25 @@ LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock::
 
 LittlerootTown_BrendansHouse_1F_Movement_PushTowardStairs:
 	walk_up
+	step_end
+
+LittlerootTown_BrendansHouse_1F_Movement_FromSinkToPlayer:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+LittlerootTown_BrendansHouse_1F_Movement_FromPlayerToSink:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_up
 	step_end
 
 LittlerootTown_BrendansHouse_1F_EventScript_EnterHouseMovingIn::
@@ -110,6 +165,7 @@ LittlerootTown_BrendansHouse_1F_Movement_RivalMomApproach:
 	walk_right
 	step_end
 
+@ When they try to leave without setting clock
 LittlerootTown_BrendansHouse_1F_EventScript_GoSeeRoom::
 	lockall
 	setvar VAR_0x8004, LOCALID_PLAYERS_HOUSE_1F_MOM
@@ -169,6 +225,27 @@ LittlerootTown_BrendansHouse_1F_EventScript_MeetRival::
 	fadedefaultbgm
 	releaseall
 	end
+
+@Dad speech for batteries
+PlayersHouse_1F_EventScript_GiveBatteries:
+    setspeaker SP_NAME_DAD
+    msgbox PlayerHouse_1F_DadBatteries, MSGBOX_DEFAULT
+    setspeaker NULL
+    playfanfare MUS_OBTAIN_ITEM
+    message PlayerHouse_1F_DadBatteries2
+    waitfanfare
+    setvar VAR_LITTLEROOT_INTRO_STATE, 3
+    releaseall
+    end
+
+PlayerHouse_1F_DadBatteries:
+    .string "Here you go. Good luck house hunting.$"
+
+PlayerHouse_1F_DadBatteries2:
+    .string "You obtained the new AA batteries.$"
+
+PlayerHouse_1F_DadNormal:
+    .string "Have a good one.$"
 
 LittlerootTown_BrendansHouse_1F_EventScript_PlayerFaceBrendan::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
@@ -298,12 +375,12 @@ PlayersHouse_1F_Text_MoversPokemonGoSetClock:
 	.string "Don't forget to set it!$"
 
 PlayersHouse_1F_Text_ArentYouInterestedInRoom:
-	.string "MOM: Well, {PLAYER}?\p"
-	.string "Aren't you interested in seeing your\n"
-	.string "very own room?$"
+	.string "Oi, don't be lazy, {PLAYER}!\p"
+	.string "Go set the clock in your room!\n"
+	.string "Then you can go.$"
 
 PlayersHouse_1F_Text_GoSetTheClock:
-	.string "MOM: {PLAYER}.\p"
+	.string "Mum: {PLAYER}.\p"
 	.string "Go set the clock in your room, honey.$"
 
 PlayersHouse_1F_Text_OhComeQuickly:
@@ -360,12 +437,6 @@ PlayersHouse_1F_Text_IsThatAPokenav:
 PlayersHouse_1F_Text_RegisteredMom:
 	.string "Registered MOM\n"
 	.string "in the POKéNAV.$"
-
-PlayersHouse_1F_Text_Vigoroth1:
-	.string "Fugiiiiih!$"
-
-PlayersHouse_1F_Text_Vigoroth2:
-	.string "Huggoh, uggo uggo…$"
 
 PlayersHouse_1F_Text_ReportFromPetalburgGym:
 	.string "INTERVIEWER: …We brought you this\n"
@@ -434,3 +505,16 @@ PlayersHouse_1F_Text_WhatColorDidTheySay:
 PlayersHouse_1F_Text_StillUnknownPokemon:
 	.string "MOM: Well, isn't that something!\n"
 	.string "There are still unknown POKéMON.$"
+
+PlayersHouse_1F_Text_AboutTime:
+	.string "About time you got up!$"
+
+PlayersHouse_1F_Text_Househunting:
+    .string "Remember May from next door?\p"
+    .string "She is going to go house hunting\n"
+    .string "with you today. She should be over\p"
+    .string "in a few minutes.\p"
+    .string "Also, Dad got new batteries for the\n"
+    .string "clock in your room. Remember to get\p"
+    .string "them and re-set the clock.$"
+

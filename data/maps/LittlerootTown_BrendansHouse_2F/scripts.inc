@@ -7,7 +7,7 @@ LittlerootTown_BrendansHouse_2F_OnTransition:
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 0, LittlerootTown_BrendansHouse_2F_Wakeup
 	call_if_lt VAR_LITTLEROOT_RIVAL_STATE, 2, LittlerootTown_BrendansHouse_2F_EventScript_CheckSetReadyToMeetBrendan
 	call_if_ge VAR_LITTLEROOT_RIVAL_STATE, 3, LittlerootTown_BrendansHouse_2F_EventScript_CheckShouldUpdateBrendanPos
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 4, PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet
+	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 3, PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet
 	call SecretBase_EventScript_SetDecorationFlags
 	setvar VAR_SECRET_BASE_INITIALIZED, 0
 	end
@@ -19,6 +19,7 @@ LittlerootTown_BrendansHouse_2F_Wakeup::
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_POKE_BALL
 	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 1
+	setflag FLAG_SYS_B_DASH
 	@lock
 	@delay 40
 	@msgbox PlayersHouse_2F_Text_Wakeup, MSGBOX_DEFAULT
@@ -28,6 +29,7 @@ LittlerootTown_BrendansHouse_2F_Wakeup::
 
 LittlerootTown_BrendansHouse_2F_GetYelledOut::
 	setvar VAR_LITTLEROOT_INTRO_STATE, 1
+	setspeaker SP_NAME_MOM
 	msgbox PlayersHouse_2F_Text_GetDownHere, MSGBOX_DEFAULT
 	closemessage
 	end
@@ -299,7 +301,7 @@ PlayersHouse_2F_Text_ClockNoBatteries:
     .string "Probably needs new batteries.$"
 
 PlayersHouse_2F_Text_HowDoYouLikeYourRoom:
-	.string "MOM: {PLAYER}, how do you like your\n"
+	.string "MUM: {PLAYER}, how do you like your\n"
 	.string "new room?\p"
 	.string "Good! Everything's put away neatly!\p"
 	.string "They finished moving everything in\n"
@@ -329,5 +331,4 @@ PlayersHouse_2F_Text_Wakeup:
 	.string "That was a weird dream...$"
 
 PlayersHouse_2F_Text_GetDownHere:
-	.string "Mom: {PLAYER}! Hurry up and\n"
-	.string "get down here!$"
+	.string "{PLAYER}! Hurry up and get down here!$"

@@ -67,6 +67,7 @@
 #include "constants/event_objects.h"
 #include "constants/map_types.h"
 #include "constants/party_menu.h"
+#include "intro.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(struct ScriptContext *ctx);
@@ -3421,5 +3422,31 @@ bool8 ScrCmd_getbraillestringwidth(struct ScriptContext * ctx)
         msg = (u8 *)ctx->data[0];
 
     gSpecialVar_0x8004 = GetStringWidth(FONT_BRAILLE, msg, -1);
+    return FALSE;
+}
+
+bool8 ScrCmd_checkpartymon(struct ScriptContext *ctx)
+{
+    u16 species = ScriptReadHalfword(ctx);
+    u8 leadmononly = ScriptReadByte(ctx);
+    u8 i;
+    u8 slots = (leadmononly == TRUE) ? 1 : PARTY_SIZE;
+
+    for (i = 0; i < slots; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, 0) == species)
+        {
+            gSpecialVar_0x8000 = i;
+            gSpecialVar_Result = TRUE;
+            return TRUE;
+        }
+    }
+    gSpecialVar_Result = FALSE;
+    return FALSE;
+}
+
+bool8 ScrCmd_goto_titlescreen(struct ScriptContext *ctx)
+{
+    CB2_InitCopyrightScreenAfterTitleScreen();
     return FALSE;
 }

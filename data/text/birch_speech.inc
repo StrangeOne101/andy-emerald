@@ -1,50 +1,56 @@
 gText_Birch_Welcome::
-	.string ".\p"
-	.string "..\p"
-	.string "...\p"
-	.string "A human? What are you doing here?\p"
-	.string "...\p"
-	.string "You don't know why you are here\n"
-	.string "either?\p"
-	.string "How mysterious...\p"
+	.string "Hi! Sorry to keep you waiting!\p"
+	.string "Welcome to the world of POKéMON!\p"
+	.string "My name is {EMOJI_SQUARE}{EMOJI_SQUARE}{EMOJI_SQUARE}{EMOJI_SQUARE}{EMOJI_SQUARE}{EMOJI_SQUARE}.\p"
+	.string "But everyone calls me Not-A-Rickroll!\p"
 	.string "$"
 
 gText_Birch_Pokemon::
-	.string "ERROR: gTextBirchPokemon USED”\p"
+	.string "This is what we call a “POKéMON.”\p"
+	.string "\n"
 	.string "$"
 
 gText_Birch_MainSpeech::
-	.string "You don't seem to be here\n"
-	.string "physically. Are you sure\n"
-	.string "you are not a POKéMON?\p"
-	.string "...\p"
-	.string "Well, no matter.\p"
+	.string "This world is widely inhabited by\n"
+	.string "creatures known as POKéMON.\p"
+	.string "Humans live alongside POKéMON,\n"
+	.string "at times as friendly playmates, and\l"
+	.string "at times as cooperative workmates.\p"
+	.string "And sometimes, we band together\n"
+	.string "and battle others like us.\p"
+	.string "But despite our closeness, we don't\n"
+	.string "know everything about POKéMON.\p"
+	.string "In fact, there are many, many\n"
+	.string "secrets surrounding POKéMON.\p"
 	.string "$"
 
 gText_Birch_AndYouAre::
-	.string "ERROR: gText_Birch_AndYouAre USED”\p"
-	.string "$"
+	.string "And you are?$"
 
 gText_Birch_BoyOrGirl::
 	.string "Are you a boy?\n"
-	.string "Or are you a girl?$"
+	.string "Or are you a boy?$"
 
 gText_Birch_WhatsYourName::
-	.string "What's your name, child?$"
+	.string "All right.\n"
+	.string "What's your name?$"
 
 gText_Birch_SoItsPlayer::
-	.string "So it's {PLAYER}{KUN}?\p"
-    .string "No, it isn't! It's Andrew!"
+	.string "So your name is {PLAYER}{KUN}?$"
 
 gText_Birch_YourePlayer::
-	.string "{PLAYER}{KUN}... Hmm...\l"
-	.string "I will remember this.\p"
+	.string "No, it's not! It's Andrew!$"
+	.string "You're {PLAYER}{KUN} who's hallucinating\n"
+	.string "in your bed, somewhere in LITTLEROOT.\l"
+	.string "Get it together!\p"
 	.string "$"
 
 gText_Birch_AreYouReady::
-	.string "While I don't know how you\n"
-    .string "appeared here, I am sure we\p"
-    .string "are fated to meet again\n"
-    .string "in the future.\p"
-    .string "Until then, {PLAYER}{KUN}.\l"
+	.string "All right, are you ready?\p"
+	.string "Your very own adventure is about\n"
+	.string "to unfold.\p"
+	.string "Take courage, and leap into the\n"
+	.string "world of POKéMON where dreams,\l"
+	.string "adventure, and friendships await!\p"
+	.string "I will never see you again!\p"
 	.string "$"

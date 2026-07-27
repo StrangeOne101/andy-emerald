@@ -4,12 +4,12 @@ const u16 gIntro3Bg_Pal[16][16] = INCGFX_U16("graphics/intro/scene_3/bg.pal", ".
 const u16 gIntroVolbeat_Pal[] = INCGFX_U16("graphics/intro/scene_2/volbeat.png", ".gbapal");
 const u16 gIntroTorchic_Pal[] = INCGFX_U16("graphics/intro/scene_2/torchic.png", ".gbapal");
 const u16 gIntroManectric_Pal[] = INCGFX_U16("graphics/intro/scene_2/manectric.png", ".gbapal");
-const u16 gIntroFlygon_Pal[] = INCGFX_U16("graphics/intro/scene_2/flygon.png", ".gbapal");
+const u16 gIntroFlygon_Pal[] = INCGFX_U16("graphics/intro/scene_2/latias.png", ".gbapal");
 
 const u32 gIntroVolbeat_Gfx[] = INCGFX_U32("graphics/intro/scene_2/volbeat.png", ".4bpp.smol");
 const u32 gIntroTorchic_Gfx[] = INCGFX_U32("graphics/intro/scene_2/torchic.png", ".4bpp.smol");
 const u32 gIntroManectric_Gfx[] = INCGFX_U32("graphics/intro/scene_2/manectric.png", ".4bpp.smol");
-const u32 gIntroFlygon_Gfx[] = INCGFX_U32("graphics/intro/scene_2/flygon.png", ".4bpp.smol");
+const u32 gIntroFlygon_Gfx[] = INCGFX_U32("graphics/intro/scene_2/latias.png", ".4bpp.smol");
 const u32 gIntroBrendan_Gfx[] = INCGFX_U32("graphics/intro/scene_2/brendan.png", ".4bpp.smol");
 const u32 gIntroMay_Gfx[] = INCGFX_U32("graphics/intro/scene_2/may.png", ".4bpp.smol");
 
@@ -43,5 +43,5 @@ const u32 gIntroRayquazaClouds_Tilemap[] = INCGFX_U32("graphics/intro/scene_3/ra
 const u32 gIntroBubbles_Gfx[] = INCGFX_U32("graphics/intro/scene_3/bubbles.png", ".4bpp.smol");
 const u16 gIntroBubbles_Pal[] = INCGFX_U16("graphics/intro/scene_3/bubbles.png", ".gbapal");
 
-const u32 gIntroFlygonSilhouette_Gfx[] = INCGFX_U32("graphics/intro/scene_1/flygon.png", ".4bpp.smol");
+const u32 gIntroFlygonSilhouette_Gfx[] = INCGFX_U32("graphics/intro/scene_1/lati.png", ".4bpp.smol");
 const u32 gIntroSparkle_Gfx[] = INCGFX_U32("graphics/intro/scene_1/sparkle.png", ".4bpp.smol");

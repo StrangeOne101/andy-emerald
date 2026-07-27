@@ -176,8 +176,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     /* You may add any custom species below this point based on the following structure: */
 
-    /*
-    [SPECIES_NONE] =
+
+    [SPECIES_YOURSELF] =
     {
         .baseHP        = 1,
         .baseAttack    = 1,
@@ -187,52 +187,41 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseSpDefense = 1,
         .types = MON_TYPES(TYPE_MYSTERY),
         .catchRate = 255,
-        .expYield = 67,
+        .expYield = 0,
         .evYield_HP = 1,
         .evYield_Defense = 1,
         .evYield_SpDefense = 1,
         .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
+        .eggCycles = 1,
         .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
+        .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_NONE, ABILITY_CURSED_BODY, ABILITY_DAMP },
+        .abilities = { ABILITY_NONE, ABILITY_STALL },
         .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("??????????"),
-        .cryId = CRY_NONE,
+        .speciesName = _("Yourself"),
+        .cryId = CRY_YOURSELF,
         .natDexNum = NATIONAL_DEX_NONE,
         .categoryName = _("Unknown"),
         .height = 0,
         .weight = 0,
         .description = COMPOUND_STRING(
-            "This is a newly discovered Pokémon.\n"
-            "It is currently under investigation.\n"
-            "No detailed information is available\n"
-            "at this time."),
+            "You scanned yourself with the pokedex.\n"
+            "Good job."
+            ),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 256,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_CircledQuestionMark,
+        .frontPic = gMonBackPic_Yourself,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_None,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_CircledQuestionMark,
+        .backPic = gMonBackPic_Yourself,
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 7,
-#if P_GENDER_DIFFERENCES
-        .frontPicFemale = gMonFrontPic_CircledQuestionMark,
-        .frontPicSizeFemale = MON_COORDS_SIZE(64, 64),
-        .backPicFemale = gMonBackPic_CircledQuestionMarkF,
-        .backPicSizeFemale = MON_COORDS_SIZE(64, 64),
-        .paletteFemale = gMonPalette_CircledQuestionMarkF,
-        .shinyPaletteFemale = gMonShinyPalette_CircledQuestionMarkF,
-        .iconSpriteFemale = gMonIcon_QuestionMarkF,
-        .iconPalIndexFemale = 1,
-#endif //P_GENDER_DIFFERENCES
         .backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_CircledQuestionMark,
+        .palette = gMonPalette_Yourself,
         .shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_QuestionMark,
         .iconPalIndex = 0,
@@ -245,7 +234,6 @@ const struct SpeciesInfo gSpeciesInfo[] =
         //.formChangeTable = sNoneFormChangeTable,
         //.perfectIVCount = NUM_STATS,
     },
-    */
 };
 
 const struct EggData gEggDatas[EGG_ID_COUNT] =

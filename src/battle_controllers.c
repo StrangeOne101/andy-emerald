@@ -151,8 +151,12 @@ void SetUpBattleVarsAndBirchZigzagoon(void)
     BattleAI_SetupItems();
     BattleAI_SetupFlags();
 
-    if (!IS_FRLG && gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
+    if (!IS_FRLG && gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE) {
         CreateWildMon(SPECIES_ZIGZAGOON, 2);
+    } else if (!FlagGet(FLAG_RESCUED_BIRCH)) {
+        CreateWildMon(SPECIES_RATICATE, 100);
+    }
+
 }
 
 void InitBattleControllers(void)

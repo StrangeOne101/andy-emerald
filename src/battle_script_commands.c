@@ -73,7 +73,10 @@
 #include "data/battle_move_effects.h"
 #include "test/battle.h"
 #include "follower_npc.h"
+#include "intro.h"
 #include "load_save.h"
+#include "title_screen.h"
+#include "test/test_runner_battle.h"
 
 // Helper for accessing command arguments and advancing gBattlescriptCurrInstr.
 //
@@ -312,7 +315,7 @@ static const s32 sExperienceScalingFactors[] =
     159767,
 };
 
-static const u16 sWhiteOutBadgeMoney[9] = { 8, 16, 24, 36, 48, 64, 80, 100, 120 };
+static const u16 sWhiteOutBadgeMoney[9] = { 100, 250, 550, 1200, 1800, 2200, 2600, 3200, 3600 };
 
 enum GiveCaughtMonStates
 {
@@ -3630,6 +3633,8 @@ static void Cmd_tryfaintmon(void)
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
     }
+
+
 }
 
 static void Cmd_dofaintanimation(void)

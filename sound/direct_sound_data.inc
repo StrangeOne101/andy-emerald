@@ -8738,6 +8738,10 @@ Cry_Pecharunt::
 	.incbin "sound/direct_sound_samples/cries/pecharunt.bin"
 .endif
 .endif @ P_FAMILY_PECHARUNT
+Cry_Yourself::
+.if TESTING == FALSE
+	.incbin "sound/direct_sound_samples/cries/yourself.bin"
+.endif
 .endif @ P_CRIES_ENABLED
 
 .if TESTING == TRUE

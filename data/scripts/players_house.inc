@@ -2,21 +2,6 @@ PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet::
 	setvar VAR_LITTLEROOT_INTRO_STATE, 5
 	return
 
-PlayersHouse_1F_EventScript_EnterHouseMovingIn::
-	msgbox PlayersHouse_1F_Text_IsntItNiceInHere, MSGBOX_DEFAULT
-	applymovement VAR_0x8004, Common_Movement_FacePlayer
-	waitmovement 0
-	call_if_eq VAR_0x8005, MALE, PlayersHouse_1F_EventScript_MomFacePlayerMovingInMale
-	call_if_eq VAR_0x8005, FEMALE, PlayersHouse_1F_EventScript_MomFacePlayerMovingInFemale
-	msgbox PlayersHouse_1F_Text_MoversPokemonGoSetClock, MSGBOX_DEFAULT
-	closemessage
-	setvar VAR_LITTLEROOT_INTRO_STATE, 4
-	applymovement LOCALID_PLAYER, PlayersHouse_1F_Movement_PlayerWalkIn
-	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	releaseall
-	end
-
 PlayersHouse_1F_EventScript_MomFacePlayerMovingInMale::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
@@ -31,7 +16,9 @@ PlayersHouse_1F_Movement_PlayerWalkIn:
 	walk_up
 	step_end
 
+@ If they try leave without setting the clock
 PlayersHouse_1F_EventScript_MomGoSeeRoom::
+    setspeaker SP_NAME_MOM
 	msgbox PlayersHouse_1F_Text_ArentYouInterestedInRoom, MSGBOX_DEFAULT
 	closemessage
 	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFasterUp
@@ -58,13 +45,8 @@ PlayersHouse_2F_EventScript_WallClock::
 	msgbox PlayersHouse_2F_Text_ClockIsStopped, MSGBOX_DEFAULT
 	call PlayersHouse_2F_EventScript_SetWallClock
 	delay 30
-	setvar VAR_LITTLEROOT_INTRO_STATE, 6
+	setvar VAR_LITTLEROOT_INTRO_STATE, 4
 	setflag FLAG_SET_WALL_CLOCK
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, PlayersHouse_2F_EventScript_MomComesUpstairsMale
-	call_if_eq VAR_RESULT, FEMALE, PlayersHouse_2F_EventScript_MomComesUpstairsFemale
-	playse SE_EXIT
-	removeobject VAR_0x8008
 	releaseall
 	end
 
@@ -366,26 +348,6 @@ PlayersHouse_1F_EventScript_HealParty::
 
 PlayersHouse_1F_EventScript_DidYouMeetProfBirch::
 	msgbox PlayersHouse_1F_Text_DidYouMeetProfBirch, MSGBOX_DEFAULT
-	release
-	end
-
-PlayersHouse_1F_EventScript_Vigoroth1::
-	lock
-	faceplayer
-	waitse
-	playmoncry SPECIES_VIGOROTH, CRY_MODE_NORMAL
-	msgbox PlayersHouse_1F_Text_Vigoroth1, MSGBOX_DEFAULT
-	waitmoncry
-	release
-	end
-
-PlayersHouse_1F_EventScript_Vigoroth2::
-	lock
-	faceplayer
-	waitse
-	playmoncry SPECIES_VIGOROTH, CRY_MODE_NORMAL
-	msgbox PlayersHouse_1F_Text_Vigoroth2, MSGBOX_DEFAULT
-	waitmoncry
 	release
 	end
 

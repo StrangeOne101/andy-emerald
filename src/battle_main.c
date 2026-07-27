@@ -32,6 +32,7 @@
 #include "gpu_regs.h"
 #include "international_string_util.h"
 #include "item.h"
+#include "intro.h"
 #include "link.h"
 #include "link_rfu.h"
 #include "load_save.h"
@@ -91,7 +92,8 @@ static void CB2_HandleStartMultiBattle(void);
 static void CB2_HandleStartBattle(void);
 static void TryCorrectShedinjaLanguage(struct Pokemon *mon);
 static enum BattleTrainer GetBattlerTrainerFromParty(struct Pokemon *party);
-static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum);
+static void TryGivePlayerYourselfIfPartyEmpty(void);
+static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer);
 static void BattleMainCB1(void);
 static void CB2_EndLinkBattle(void);
 static void EndLinkBattleInSteps(void);
@@ -509,6 +511,24 @@ void CB2_InitBattle(void)
     }
 }
 
+static void TryGivePlayerYourselfIfPartyEmpty(void)
+{
+    if (CalculatePartyCount(gPlayerParty) == 0)
+    {
+        u32 personality = GetMonPersonality(SPECIES_YOURSELF, MALE, NATURE_ADAMANT, RANDOM_UNOWN_LETTER);
+        CreateMon(&gPlayerParty[0], SPECIES_YOURSELF, 1, personality, OTID_STRUCT_PLAYER_ID);
+        CalculateMonStats(&gPlayerParty[0]);
+        enum Move moves[MAX_MON_MOVES] = {MOVE_PUNCH, MOVE_CRY};
+        SetBoxMonData(&gPlayerParty[0].box, MON_DATA_MOVE1, &moves[0]);
+        SetBoxMonData(&gPlayerParty[0].box, MON_DATA_MOVE2, &moves[1]);
+        u32 pp = GetMovePP(moves[0]);
+        SetBoxMonData(&gPlayerParty[0].box, MON_DATA_PP1, &pp);
+        SetBoxMonData(&gPlayerParty[0].box, MON_DATA_PP2, &pp);
+
+        CalculatePlayerPartyCount();
+    }
+}
+
 static void CB2_InitBattleInternal(void)
 {
     s32 i;
@@ -570,6 +590,8 @@ static void CB2_InitBattleInternal(void)
         gBattleEnvironment = BATTLE_ENVIRONMENT_BUILDING;
     if (TestRunner_Battle_GetForcedEnvironment())
         gBattleEnvironment = TestRunner_Battle_GetForcedEnvironment() - 1;
+
+    TryGivePlayerYourselfIfPartyEmpty();
 
     InitBattleBgsVideo();
     LoadBattleTextboxAndBackground();
@@ -5588,7 +5610,6 @@ static void FreeResetData_ReturnToOvOrDoEvolutions(void)
         ResetSpriteData();
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK
                                   | BATTLE_TYPE_RECORDED_LINK
-                                  | BATTLE_TYPE_FIRST_BATTLE
                                   | BATTLE_TYPE_SAFARI
                                   | BATTLE_TYPE_FRONTIER
                                   | BATTLE_TYPE_EREADER_TRAINER
@@ -5601,7 +5622,13 @@ static void FreeResetData_ReturnToOvOrDoEvolutions(void)
         }
         else
         {
-            gBattleMainFunc = ReturnFromBattleToOverworld;
+            if (gBattleOutcome == B_OUTCOME_LOST && GetBoxMonData(&gPlayerParty[0].box, MON_DATA_SPECIES) == SPECIES_YOURSELF) {
+                //TODO
+                gBattleMainFunc = CB2_InitCopyrightScreenAfterTitleScreen;
+            } else {
+                gBattleMainFunc = ReturnFromBattleToOverworld;
+            }
+
             return;
         }
     }

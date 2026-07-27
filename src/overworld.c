@@ -49,6 +49,7 @@
 #include "new_game.h"
 #include "oras_dowse.h"
 #include "palette.h"
+#include "pokemon.h"
 #include "play_time.h"
 #include "random.h"
 #include "roamer.h"
@@ -74,6 +75,7 @@
 #include "wild_encounter_ow.h"
 #include "vs_seeker.h"
 #include "frontier_util.h"
+#include "intro.h"
 #include "constants/abilities.h"
 #include "constants/event_object_movement.h"
 #include "constants/event_objects.h"
@@ -1958,6 +1960,12 @@ void CB2_WhiteOut(void)
         FieldClearVBlankHBlankCallbacks();
         StopMapMusic();
         ResetSafariZoneFlag_();
+
+        if (GetBoxMonData(&gPlayerParty[0].box, MON_DATA_SPECIES) == SPECIES_YOURSELF) {
+            DoSoftReset();
+            return;
+        }
+
         DoWhiteOut();
         ResetInitialPlayerAvatarState();
         ScriptContext_Init();

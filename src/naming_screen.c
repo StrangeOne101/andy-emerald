@@ -304,6 +304,27 @@ static const u8 sKeyboardChars[KBPAGE_COUNT][KBROW_COUNT][KBCOL_COUNT] = {
     }
 };
 
+static const u8 sKeyboardCharsFAKE[KBPAGE_COUNT][KBROW_COUNT][KBCOL_COUNT] = {
+    [KEYBOARD_LETTERS_LOWER] = {
+        __("abc ef ."),
+        __("ghijkl ,"),
+        __("mnopqrs "),
+        __("tuvwxyz "),
+    },
+    [KEYBOARD_LETTERS_UPPER] = {
+        __("ABC EF ."),
+        __("GHIJKL ,"),
+        __("MNOPQRS "),
+        __("TUVWXYZ "),
+    },
+    [KEYBOARD_SYMBOLS] = {
+        __("01234   "),
+        __("56789   "),
+        __("!?♂♀/-  "),
+        __("…“”‘'   "),
+    }
+};
+
 static const u8 sPageColumnCounts[KBPAGE_COUNT] = {
     [KEYBOARD_LETTERS_LOWER] = KBCOL_COUNT,
     [KEYBOARD_LETTERS_UPPER] = KBCOL_COUNT,
@@ -330,6 +351,7 @@ static const struct SpriteTemplate sSpriteTemplate_InputArrow;
 static const struct SpriteTemplate sSpriteTemplate_Underscore;
 static const struct SpriteTemplate sSpriteTemplate_PCIcon;
 static const u8 *const sNamingScreenKeyboardText[KBPAGE_COUNT][KBROW_COUNT];
+static const u8 *const sNamingScreenKeyboardTextFake[KBPAGE_COUNT][KBROW_COUNT];
 static const struct SpriteSheet sSpriteSheets[];
 static const struct SpritePalette sSpritePalettes[];
 
@@ -1847,6 +1869,9 @@ static void DrawGenderIcon(void)
 
 static u8 GetCharAtKeyboardPos(s16 x, s16 y)
 {
+    if (sNamingScreen->templateNum == NAMING_SCREEN_PLAYER) {
+        return sKeyboardCharsFAKE[CurrentPageToKeyboardId()][y][x];
+    }
     return sKeyboardChars[CurrentPageToKeyboardId()][y][x];
 }
 
@@ -2016,8 +2041,14 @@ static void PrintKeyboardKeys(u8 window, u8 page)
 
     FillWindowPixelBuffer(window, sFillValues[page]);
 
-    for (i = 0; i < KBROW_COUNT; i++)
-        AddTextPrinterParameterized3(window, FONT_NORMAL, 0, i * 16 + 1, sKeyboardTextColors[page], 0, sNamingScreenKeyboardText[page][i]);
+    for (i = 0; i < KBROW_COUNT; i++) {
+        if (i == 0 && sNamingScreen->templateNum == NAMING_SCREEN_PLAYER) {
+            AddTextPrinterParameterized3(window, FONT_NORMAL, 0, i * 16 + 1, sKeyboardTextColors[page], 0, sNamingScreenKeyboardTextFake[page][i]);
+        } else {
+            AddTextPrinterParameterized3(window, FONT_NORMAL, 0, i * 16 + 1, sKeyboardTextColors[page], 0, sNamingScreenKeyboardText[page][i]);
+        }
+    }
+
 
     PutWindowTilemap(window);
 }
@@ -2606,6 +2637,31 @@ static const u8 *const sNamingScreenKeyboardText[KBPAGE_COUNT][KBROW_COUNT] =
     [KEYBOARD_LETTERS_UPPER] =
     {
         gText_NamingScreenKeyboard_ABCDEF,
+        gText_NamingScreenKeyboard_GHIJKL,
+        gText_NamingScreenKeyboard_MNOPQRS,
+        gText_NamingScreenKeyboard_TUVWXYZ
+    },
+    [KEYBOARD_SYMBOLS] =
+    {
+        gText_NamingScreenKeyboard_01234,
+        gText_NamingScreenKeyboard_56789,
+        gText_NamingScreenKeyboard_Symbols1,
+        gText_NamingScreenKeyboard_Symbols2
+    },
+};
+
+static const u8 *const sNamingScreenKeyboardTextFake[KBPAGE_COUNT][KBROW_COUNT] =
+{
+    [KEYBOARD_LETTERS_LOWER] =
+    {
+        gText_NamingScreenKeyboard_abcdefFAKE,
+        gText_NamingScreenKeyboard_ghijkl,
+        gText_NamingScreenKeyboard_mnopqrs,
+        gText_NamingScreenKeyboard_tuvwxyz
+    },
+    [KEYBOARD_LETTERS_UPPER] =
+    {
+        gText_NamingScreenKeyboard_ABCDEFFAKE,
         gText_NamingScreenKeyboard_GHIJKL,
         gText_NamingScreenKeyboard_MNOPQRS,
         gText_NamingScreenKeyboard_TUVWXYZ
