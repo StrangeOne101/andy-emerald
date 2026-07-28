@@ -23,9 +23,9 @@
   "object_events": [
     {
       "local_id": "LOCALID_LITTLEROOT_TWIN",
-      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "graphics_id": "OBJ_EVENT_GFX_TWIN",
       "x": 9,
-      "y": 3,
+      "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 1,
@@ -91,7 +91,7 @@
     },
     {
       "local_id": "LOCALID_LITTLEROOT_BIRCH",
-      "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
+      "graphics_id": "OBJ_EVENT_GFX_PROF_OAK",
       "x": 14,
       "y": 10,
       "elevation": 3,
@@ -102,6 +102,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
       "flag": "FLAG_HIDE_LITTLEROOT_TOWN_BIRCH"
+    },
+    {
+      "local_id": "LOCALID_LITTLEROOT_LATIAS",
+      "graphics_id": "OBJ_EVENT_GFX_LATIAS",
+      "x": 3,
+      "y": 0,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -120,7 +134,7 @@
       "dest_warp_id": "1"
     },
     {
-      "x": 7,
+      "x": 6,
       "y": 16,
       "elevation": 0,
       "dest_map": "MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB",
@@ -160,6 +174,14 @@
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "LittlerootTown_EventScript_MaysHouseSign"
+    },
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 16,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "LittlerootTown_EventScript_SpareHouseDoor"
     }
   ]
 }

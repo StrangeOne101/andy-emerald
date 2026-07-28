@@ -51,8 +51,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor::
 @ The below SS Ticket script uses Mays house state by accident(?), but theyre both set identically after the intro
 LittlerootTown_BrendansHouse_1F_OnFrame:
     map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, LittlerootTown_BrendansHouse_1F_TalkToPlayerAboutMay
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_PetalburgGymReport
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 4, LittlerootTown_BrendansHouse_1F_EventScript_PetalburgGymReport
 	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_MAY, 1, LittlerootTown_BrendansHouse_1F_EventScript_YoureNewNeighbor
 	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_MAY, 3, PlayersHouse_1F_EventScript_GetSSTicketAndSeeLatiTV
 	.2byte 0
@@ -125,18 +124,13 @@ LittlerootTown_BrendansHouse_1F_Movement_FromPlayerToSink:
 	face_up
 	step_end
 
-LittlerootTown_BrendansHouse_1F_EventScript_EnterHouseMovingIn::
-	lockall
-	setvar VAR_0x8004, LOCALID_PLAYERS_HOUSE_1F_MOM
-	setvar VAR_0x8005, MALE
-	goto PlayersHouse_1F_EventScript_EnterHouseMovingIn
-	end
-
 LittlerootTown_BrendansHouse_1F_EventScript_PetalburgGymReport::
 	lockall
-	setvar VAR_0x8004, MALE
-	setvar VAR_0x8005, LOCALID_PLAYERS_HOUSE_1F_MOM
-	goto PlayersHouse_1F_EventScript_PetalburgGymReportMale
+	applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, Common_Movement_FaceRight
+	setspeaker SP_NAME_MOM
+	msgbox PlayersHouse_1F_Text_HaveAGoodDay, MSGBOX_DEFAULT
+	setvar VAR_LITTLEROOT_INTRO_STATE, 5
+	releaseall
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_YoureNewNeighbor::
@@ -517,4 +511,7 @@ PlayersHouse_1F_Text_Househunting:
     .string "Also, Dad got new batteries for the\n"
     .string "clock in your room. Remember to get\p"
     .string "them and re-set the clock.$"
+
+PlayersHouse_1F_Text_HaveAGoodDay:
+    .string "Have a good day!$"
 

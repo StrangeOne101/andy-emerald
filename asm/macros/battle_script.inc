@@ -2110,3 +2110,12 @@
 	.macro trywakebattlersuproar
 	callnative BS_TryWakeBattlersUproar
 	.endm
+
+    @ Checks the player's party for the specified species.
+    @ If 'leadmononly' is set to 'TRUE', checks only for the first Pokemon in the party.
+    @ Sets VAR_RESULT as TRUE/FALSE whether the species is found, and stores the slot of the Pokemon in VAR_0x8000.
+    .macro checkpartymon species:req, leadmononly:req
+    callnative ScrCmd_checkpartymon
+    .2byte \species
+    .byte \leadmononly
+    .endm

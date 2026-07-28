@@ -54,7 +54,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
+      "script": "PlayersHouse_1F_EventScript_Dad",
       "flag": "FLAG_HIDE_PLAYERS_HOUSE_DAD"
     },
     {
@@ -115,7 +115,7 @@
       "y": 8,
       "elevation": 0,
       "var": "VAR_LITTLEROOT_INTRO_STATE",
-      "var_value": "4",
+      "var_value": "2",
       "script": "LittlerootTown_BrendansHouse_1F_EventScript_GoSeeRoom"
     },
     {
@@ -144,6 +144,15 @@
       "var": "VAR_LITTLEROOT_RIVAL_STATE",
       "var_value": "2",
       "script": "LittlerootTown_BrendansHouse_1F_EventScript_MeetRival2"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_LITTLEROOT_INTRO_STATE",
+      "var_value": "3",
+      "script": "LittlerootTown_BrendansHouse_1F_EventScript_GoSeeRoom"
     }
   ],
   "bg_events": []

@@ -99,6 +99,15 @@ Common_Movement_WalkUp4:
 	walk_up
 	step_end
 
+Common_Movement_WalkLeft6:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
 Common_Movement_Delay32:
 	delay_16
 	delay_16
@@ -174,3 +183,7 @@ Common_Movement_WalkRightFaster::
 Common_Movement_WalkLeftFaster::
 	walk_faster_left
 	step_end
+
+Common_Movement_SetInvisible::
+    set_invisible
+    step_end

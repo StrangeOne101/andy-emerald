@@ -296,7 +296,7 @@
 
 	.macro if_most_jamming_move destination:req
 	.byte 0x30
-	.4bye \destination
+	.4byte \destination
 	.endm
 
 @ number of hearts the current move's appeal would provide
