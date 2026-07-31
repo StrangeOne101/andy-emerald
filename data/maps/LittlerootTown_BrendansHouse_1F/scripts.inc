@@ -61,6 +61,7 @@ LittlerootTown_BrendansHouse_1F_TalkToPlayerAboutMay:
     lockall
     applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, Common_Movement_FaceRight
     waitmovement 0
+    playse SE_PIN
     applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, Common_Movement_ExclamationMark
     waitmovement 0
     applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, Common_Movement_Delay48

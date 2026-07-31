@@ -9,12 +9,14 @@ LittlerootTown_MapScripts::
 @ Test
 LittlerootTown_EventScript_LatiasFlyover::
     lockall
+    fadeoutbgm 2
     playmoncry SPECIES_LATIAS, 0
     waitse
-    delay 60
+    delay 50
     applymovement LOCALID_PLAYER, Common_Movement_QuestionMark
-    delay 60
-    showobjectat LOCALID_LITTLEROOT_LATIAS, MAP_LITTLEROOT_TOWN
+    playse SE_PIN
+    delay 30
+    addobject LOCALID_LITTLEROOT_LATIAS
     applymovement LOCALID_LITTLEROOT_LATIAS, LittlerootTown_Latias_Movement
     waitmovementall
     applymovement LOCALID_PLAYER, Common_Movement_ExclamationMark
@@ -25,6 +27,7 @@ LittlerootTown_EventScript_LatiasFlyover::
     waitmovement 0
     playmoncry SPECIES_LATIAS, 0
     hideobjectat LOCALID_LITTLEROOT_LATIAS, MAP_LITTLEROOT_TOWN
+    addobject LOCALID_LITTLEROOT_RIVAL
     setobjectxy LOCALID_LITTLEROOT_RIVAL, 13, 9
     showobjectat LOCALID_LITTLEROOT_RIVAL, MAP_LITTLEROOT_TOWN
     delay 120
@@ -32,16 +35,21 @@ LittlerootTown_EventScript_LatiasFlyover::
     waitmovement 0
     applymovement LOCALID_PLAYER, Common_Movement_FaceRight
     setspeaker SP_NAME_MAY
+    fadeinbgm 2
     msgbox LittlerootTown_Text_MaySawLatias, MSGBOX_DEFAULT
     applymovement LOCALID_LITTLEROOT_RIVAL, LittlerootTown_MayMovementPostLatias
     waitmovement 0
     hideobjectat LOCALID_LITTLEROOT_RIVAL, MAP_LITTLEROOT_TOWN
     setvar VAR_LITTLEROOT_INTRO_STATE, 6
+    removeobject LOCALID_LITTLEROOT_RIVAL
+    removeobject LOCALID_LITTLEROOT_LATIAS
     releaseall
     end
 
 
 LittlerootTown_Latias_Movement:
+    walk_faster_down
+    walk_faster_down
     walk_faster_down
     walk_faster_down
     walk_faster_down
@@ -54,6 +62,9 @@ LittlerootTown_MayMovementPostLatias:
     walk_fast_right
     walk_fast_right
     walk_fast_right
+    walk_fast_down
+    walk_fast_down
+    walk_fast_down
     walk_fast_down
     walk_fast_down
     walk_fast_down
@@ -610,7 +621,7 @@ LittlerootTown_Text_BirchSpendsDaysInLab:
 
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 	.string "I swear there used to be a path\n"
-	.string "upwards from here...?$"
+	.string "upwards from here…?$"
 
 LittlerootTown_Text_CanYouGoSeeWhatsHappening:
 	.string "Um, hi!\p"

@@ -138,9 +138,9 @@
                 "species": "SPECIES_ZIGZAGOON_GALAR"
               },
               {
-                "min_level": 3,
-                "max_level": 3,
-                "species": "SPECIES_ZIGZAGOON_GALAR"
+                "min_level": 100,
+                "max_level": 100,
+                "species": "SPECIES_RATICATE"
               }
             ]
           }
@@ -207,9 +207,9 @@
                 "species": "SPECIES_ZIGZAGOON"
               },
               {
-                "min_level": 3,
-                "max_level": 3,
-                "species": "SPECIES_ZIGZAGOON"
+                "min_level": 100,
+                "max_level": 100,
+                "species": "SPECIES_RATICATE"
               }
             ]
           }
@@ -276,9 +276,9 @@
                 "species": "SPECIES_ZIGZAGOON_GALAR"
               },
               {
-                "min_level": 3,
-                "max_level": 3,
-                "species": "SPECIES_ZIGZAGOON_GALAR"
+                "min_level": 100,
+                "max_level": 100,
+                "species": "SPECIES_RATICATE"
               }
             ]
           }
@@ -345,9 +345,9 @@
                 "species": "SPECIES_ZIGZAGOON_GALAR"
               },
               {
-                "min_level": 3,
-                "max_level": 3,
-                "species": "SPECIES_ZIGZAGOON_GALAR"
+                "min_level": 100,
+                "max_level": 100,
+                "species": "SPECIES_RATICATE"
               }
             ]
           }
