@@ -23,7 +23,7 @@ Route101_EventScript_StartBirchRescue::
 	closemessage
 	@setobjectxy LOCALID_ROUTE101_BIRCH, 0, 15
 	@setobjectxy LOCALID_ROUTE101_ZIGZAGOON, 0, 16
-	applymovement LOCALID_PLAYER, Route101_Movement_EnterScene
+	@applymovement LOCALID_PLAYER, Route101_Movement_EnterScene
 	@applymovement LOCALID_ROUTE101_BIRCH, Route101_Movement_BirchRunAway1
 	@applymovement LOCALID_ROUTE101_ZIGZAGOON, Route101_Movement_ZigzagoonChase1
 	waitmovement 0
@@ -35,7 +35,7 @@ Route101_EventScript_StartBirchRescue::
 	@applymovement LOCALID_ROUTE101_ZIGZAGOON, Route101_Movement_ZigzagoonFaceBirch
 	@applymovement LOCALID_ROUTE101_BIRCH, Route101_Movement_BirchFaceZigzagoon
 	waitmovement 0
-	msgbox Route101_Text_PleaseHelp, MSGBOX_DEFAULT
+	@msgbox Route101_Text_PleaseHelp, MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_ROUTE101_STATE, 2
 	releaseall

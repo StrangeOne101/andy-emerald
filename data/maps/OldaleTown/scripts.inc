@@ -6,7 +6,7 @@ OldaleTown_OnTransition:
 	call Common_EventScript_SetupRivalGfxId
 	setflag FLAG_VISITED_OLDALE_TOWN
 	call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance
-	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
+	call_if_unset FLAG_VISITED_PETALBURG_CITY, OldaleTown_EventScript_MoveMartEmployee
 	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
 	end
 
@@ -18,10 +18,11 @@ OldaleTown_EventScript_SetOldaleState::
 OldaleTown_EventScript_BlockWestEntrance::
 	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 1, 11
 	setobjectmovementtype LOCALID_FOOTPRINTS_MAN, MOVEMENT_TYPE_FACE_LEFT
+	clearflag FLAG_HIDE_OLDALE_TOWN_RIVAL
 	return
 
 OldaleTown_EventScript_MoveMartEmployee::
-	setobjectxyperm LOCALID_OLDALE_MART_EMPLOYEE, 13, 14
+	@setobjectxyperm LOCALID_OLDALE_MART_EMPLOYEE, 13, 14
 	setobjectmovementtype LOCALID_OLDALE_MART_EMPLOYEE, MOVEMENT_TYPE_FACE_DOWN
 	return
 
@@ -33,113 +34,30 @@ OldaleTown_EventScript_Girl::
 	msgbox OldaleTown_Text_SavingMyProgress, MSGBOX_NPC
 	end
 
+OldaleTown_EventScript_Man::
+	msgbox OldaleTown_Text_TwinTowers, MSGBOX_NPC
+	end
+
 OldaleTown_EventScript_MartEmployee::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_ExplainPotion
-	goto_if_set FLAG_TEMP_1, OldaleTown_EventScript_ExplainPotion
-	setflag FLAG_TEMP_1
-	playbgm MUS_FOLLOW_ME, FALSE
-	msgbox OldaleTown_Text_IWorkAtPokemonMart, MSGBOX_DEFAULT
-	closemessage
-	switch VAR_FACING
-	case DIR_SOUTH, OldaleTown_EventScript_GoToMartSouth
-	case DIR_NORTH, OldaleTown_EventScript_GoToMartNorth
-	case DIR_EAST, OldaleTown_EventScript_GoToMartEast
+	msgbox OldaleTown_Text_IWorkAtPokemonMart, MSGBOX_NPC
+	applymovement LOCALID_OLDALE_MART_EMPLOYEE, Common_Movement_FaceDown
 	end
 
-OldaleTown_EventScript_GoToMartSouth::
-	applymovement LOCALID_OLDALE_MART_EMPLOYEE, OldaleTown_Movement_EmployeeSouth
-	applymovement LOCALID_PLAYER, OldaleTown_Movement_PlayerSouth
-	waitmovement 0
-	goto OldaleTown_EventScript_ExplainPokemonMart
-	end
-
-OldaleTown_EventScript_GoToMartNorth::
-	applymovement LOCALID_OLDALE_MART_EMPLOYEE, OldaleTown_Movement_EmployeeNorth
-	applymovement LOCALID_PLAYER, OldaleTown_Movement_PlayerNorth
-	waitmovement 0
-	goto OldaleTown_EventScript_ExplainPokemonMart
-	end
-
-OldaleTown_EventScript_GoToMartEast::
-	applymovement LOCALID_PLAYER, OldaleTown_Movement_PlayerEast
-	applymovement LOCALID_OLDALE_MART_EMPLOYEE, OldaleTown_Movement_EmployeeEast
-	waitmovement 0
-	goto OldaleTown_EventScript_ExplainPokemonMart
-	end
-
-OldaleTown_EventScript_ExplainPokemonMart::
-	msgbox OldaleTown_Text_ThisIsAPokemonMart, MSGBOX_DEFAULT
-	giveitem ITEM_POTION
-	goto_if_eq VAR_RESULT, FALSE, OldaleTown_EventScript_BagIsFull
-	msgbox OldaleTown_Text_PotionExplanation, MSGBOX_DEFAULT
-	setflag FLAG_RECEIVED_POTION_OLDALE
-	fadedefaultbgm
-	release
-	end
-
-OldaleTown_EventScript_ExplainPotion::
-	msgbox OldaleTown_Text_PotionExplanation, MSGBOX_DEFAULT
-	release
-	end
-
-OldaleTown_EventScript_BagIsFull::
-	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
-	fadedefaultbgm
-	release
-	end
-
-OldaleTown_Movement_EmployeeEast:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_in_place_faster_down
-	step_end
-
-OldaleTown_Movement_EmployeeSouth:
-	walk_left
-	walk_up
-	walk_up
-	walk_right
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_in_place_faster_down
-	step_end
-
-OldaleTown_Movement_EmployeeNorth:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_in_place_faster_down
-	step_end
-
-OldaleTown_Movement_Unknown1:
-	walk_up
-	walk_up
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	delay_8
-	walk_in_place_faster_down
-	step_end
+OdaleTown_EventScript_RefuseEntry::
+    lock
+    playse SE_PIN
+    applymovement LOCALID_OLDALE_MART_EMPLOYEE, Common_Movement_ExclamationMark
+    waitmovement 0
+    applymovement LOCALID_OLDALE_MART_EMPLOYEE, Common_Movement_FaceRight
+    waitmovement 0
+    msgbox OldaleTown_Text_IWorkAtPokemonMart, MSGBOX_DEFAULT
+    applymovement LOCALID_PLAYER, Common_Movement_WalkDown
+    applymovement LOCALID_OLDALE_MART_EMPLOYEE, Common_Movement_FaceDown
+    waitmovementall
+    closemessage
+    end
 
 OldaleTown_Movement_PlayerEast:
 	walk_right
@@ -167,20 +85,6 @@ OldaleTown_Movement_PlayerNorth:
 	walk_up
 	walk_up
 	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-OldaleTown_Movement_Unknown2:
-	walk_left
-	walk_up
-	walk_up
-	walk_right
-	walk_right
-	walk_right
-	walk_right
 	walk_up
 	walk_up
 	walk_up
@@ -219,60 +123,24 @@ OldaleTown_EventScript_Rival::
 	lockall
 	applymovement LOCALID_OLDALE_RIVAL, Common_Movement_FacePlayer
 	waitmovement 0
-	setvar VAR_0x8009, 0
-	goto OldaleTown_EventScript_ShowRivalMessage
+	goto OldaleTown_EventScript_ShowMayMessage
 	end
 
 OldaleTown_EventScript_RivalTrigger1::
 	lockall
-	applymovement LOCALID_OLDALE_RIVAL, OldaleTown_Movement_RivalApproachPlayer1
+	applymovement LOCALID_OLDALE_RIVAL, Common_Movement_FaceLeft
 	waitmovement 0
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	setvar VAR_0x8009, 1
-	goto OldaleTown_EventScript_ShowRivalMessage
-	end
-
-OldaleTown_EventScript_RivalTrigger2::
-	lockall
-	applymovement LOCALID_OLDALE_RIVAL, OldaleTown_Movement_RivalApproachPlayer2
-	waitmovement 0
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	setvar VAR_0x8009, 1
-	goto OldaleTown_EventScript_ShowRivalMessage
-	end
-
-OldaleTown_EventScript_RivalTrigger3::
-	lockall
-	applymovement LOCALID_OLDALE_RIVAL, OldaleTown_Movement_RivalApproachPlayer3
-	waitmovement 0
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	setvar VAR_0x8009, 1
-	goto OldaleTown_EventScript_ShowRivalMessage
-	end
-
-OldaleTown_EventScript_ShowRivalMessage::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, OldaleTown_EventScript_ShowMayMessage
-	goto_if_eq VAR_RESULT, FEMALE, OldaleTown_EventScript_ShowBrendanMessage
+	goto OldaleTown_EventScript_ShowMayMessage
 	end
 
 OldaleTown_EventScript_ShowMayMessage::
-	msgbox OldaleTown_Text_MayLetsGoBack, MSGBOX_DEFAULT
-	goto OldaleTown_EventScript_RivalFinish
-	end
-
-OldaleTown_EventScript_ShowBrendanMessage::
-	msgbox OldaleTown_Text_BrendanLetsGoBack, MSGBOX_DEFAULT
+    setspeaker SP_NAME_MAY
+	msgbox OldaleTown_Text_MayLetsGoBack, MSGBOX_NPC
 	goto OldaleTown_EventScript_RivalFinish
 	end
 
 OldaleTown_EventScript_RivalFinish::
 	closemessage
-	call_if_eq VAR_0x8009, 0, OldaleTown_EventScript_DoExitMovement1
-	call_if_eq VAR_0x8009, 1, OldaleTown_EventScript_DoExitMovement2
 	applymovement LOCALID_OLDALE_RIVAL, OldaleTown_Movement_RivalExit
 	waitmovement 0
 	removeobject LOCALID_OLDALE_RIVAL
@@ -288,23 +156,10 @@ OldaleTown_EventScript_DoExitMovement1::
 	return
 
 OldaleTown_EventScript_DoExitMovement2::
-	applymovement LOCALID_PLAYER, OldaleTown_Movement_WatchRivalExit
+	applymovement LOCALID_PLAYER, Common_Movement_FaceDown
 	applymovement LOCALID_OLDALE_RIVAL, OldaleTown_Movement_RivalExit
 	waitmovement 0
 	return
-
-OldaleTown_Movement_RivalApproachPlayer1:
-	walk_left
-	walk_left
-	step_end
-
-OldaleTown_Movement_RivalApproachPlayer2:
-	walk_left
-	step_end
-
-OldaleTown_Movement_RivalApproachPlayer3:
-	face_left
-	step_end
 
 OldaleTown_Movement_RivalExit:
 	walk_down
@@ -315,15 +170,9 @@ OldaleTown_Movement_RivalExit:
 	walk_down
 	step_end
 
-OldaleTown_Movement_WatchRivalExit:
-	delay_8
-	delay_4
-	walk_in_place_faster_down
-	step_end
-
 OldaleTown_Movement_PlayerStepBack:
 	delay_8
-	walk_right
+    walk_faster_right
 	step_end
 
 OldaleTown_Movement_BackUp:
@@ -340,58 +189,42 @@ OldaleTown_Movement_ReturnToOriginalPosition:
 	step_end
 
 OldaleTown_Text_SavingMyProgress:
-	.string "I want to take a rest, so I'm saving my\n"
-	.string "progress.$"
+	.string "Make sure you talk to everyone and\n"
+	.string "everything! Who knows what you'll\l"
+	.string "find out!$"
 
 OldaleTown_Text_IWorkAtPokemonMart:
-	.string "Hi!\n"
-	.string "I work at a POKéMON MART.\p"
-	.string "Can I get you to come with me?$"
-
-OldaleTown_Text_ThisIsAPokemonMart:
-	.string "This is a POKéMON MART.\n"
-	.string "Just look for our blue roof.\p"
-	.string "We sell a variety of goods including\n"
-	.string "POKé BALLS for catching POKéMON.\p"
-	.string "Here, I'd like you to have this as\n"
-	.string "a promotional item.$"
-
-OldaleTown_Text_PotionExplanation:
-	.string "A POTION can be used anytime, so it's\n"
-	.string "even more useful than a POKéMON CENTER\l"
-	.string "in certain situations.$"
+	.string "Hi there. The POKéMON MART is\n"
+	.string "currently closed.\p"
+	.string "Why?\p"
+	.string "A customer let off a ten-ton nuclear\n"
+	.string "diarrhea explosion and the cleaning\l"
+	.string "crews are still working.\p"
+	.string "Come back again later.$"
 
 OldaleTown_Text_WaitDontComeInHere:
-	.string "Aaaaah! Wait!\n"
-	.string "Please don't come in here.\p"
-	.string "I just discovered the footprints of\n"
-	.string "a rare POKéMON!\p"
-	.string "Wait until I finish sketching\n"
-	.string "them, okay?$"
+	.string "FUCK OFF!!!\n"
 
 OldaleTown_Text_DiscoveredFootprints:
-	.string "I just discovered the footprints of\n"
-	.string "a rare POKéMON!\p"
-	.string "Wait until I finish sketching\n"
-	.string "them, okay?$"
+	.string "I JUST FOUND A FUCKING SHINY!!!\p"
+	.string "DON'T YOU DARE GET IN MY WAY!\n"
+	.string "MOVE OUT OF THE WAY! IT'S MINE!$"
 
 OldaleTown_Text_FinishedSketchingFootprints:
-	.string "I finished sketching the footprints of\n"
-	.string "a rare POKéMON.\p"
-	.string "But it turns out they were only my\n"
-	.string "own footprints…$"
+	.string "Some local shithead just painted\n"
+	.string "it… It wasn't a shiny at all…\p"
+	.string "Fuck my big chungus life.$"
 
 OldaleTown_Text_MayLetsGoBack:
-	.string "MAY: {PLAYER}{KUN}!\n"
-	.string "Over here!\l"
-	.string "Let's hurry home!$"
-
-OldaleTown_Text_BrendanLetsGoBack:
-	.string "BRENDAN: I'm heading back to my dad's\n"
-	.string "LAB now.\l"
-	.string "{PLAYER}, you should hustle back, too.$"
+	.string "{PLAYER}{KUN}, we're going to continue\n"
+	.string "south down ROUTE 103. Good job not\n"
+	.string "running into any POKéMON!\p"
+	.string "…\p"
+	.string "Keep up!$"
 
 OldaleTown_Text_TownSign:
 	.string "OLDALE TOWN\n"
-	.string "“Where things start off scarce.”$"
+	.string "“You expected it to be different?”$"
 
+OldaleTown_Text_TwinTowers:
+    .string "It's going to hit the second tower!$"
