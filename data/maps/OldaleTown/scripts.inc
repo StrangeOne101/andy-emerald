@@ -18,7 +18,6 @@ OldaleTown_EventScript_SetOldaleState::
 OldaleTown_EventScript_BlockWestEntrance::
 	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 1, 11
 	setobjectmovementtype LOCALID_FOOTPRINTS_MAN, MOVEMENT_TYPE_FACE_LEFT
-	clearflag FLAG_HIDE_OLDALE_TOWN_RIVAL
 	return
 
 OldaleTown_EventScript_MoveMartEmployee::
@@ -217,7 +216,7 @@ OldaleTown_Text_FinishedSketchingFootprints:
 
 OldaleTown_Text_MayLetsGoBack:
 	.string "{PLAYER}{KUN}, we're going to continue\n"
-	.string "south down ROUTE 103. Good job not\n"
+	.string "south down ROUTE 103. Good job not\l"
 	.string "running into any POKéMON!\p"
 	.string "…\p"
 	.string "Keep up!$"
@@ -227,4 +226,6 @@ OldaleTown_Text_TownSign:
 	.string "“You expected it to be different?”$"
 
 OldaleTown_Text_TwinTowers:
-    .string "It's going to hit the second tower!$"
+    .string "Did you know that different POKéMON\n"
+    .string "come out at night? Now the RTC is\l"
+    .string "actually useful in Emerald!$"

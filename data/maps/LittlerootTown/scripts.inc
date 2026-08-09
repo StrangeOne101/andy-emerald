@@ -111,6 +111,7 @@ LittlerootTown_MayMovementPostLatias:
 
 LittlerootTown_OnTransition:
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
 	hideobjectat LOCALID_LITTLEROOT_LATIAS, MAP_LITTLEROOT_TOWN @ Always hide Latias
 	call Common_EventScript_SetupRivalGfxId
 	@ call_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, LittlerootTown_EventScript_MoveMomToMaysDoor
@@ -143,8 +144,6 @@ LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent::
 LittlerootTown_EventScript_MoveMomToMaysDoor::
 	setobjectxyperm LOCALID_LITTLEROOT_MOM, 14, 8
 	return
-
-
 
 LittlerootTown_EventScript_SetMomStandingInFrontOfDoorPos::
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
@@ -262,6 +261,10 @@ LittlerootTown_EventScript_GoodLuck::
 
 LittlerootTown_EventScript_TownSign::
 	msgbox LittlerootTown_Text_TownSign, MSGBOX_SIGN
+	end
+
+LittlerootTown_EventScript_MaysHouseDoor::
+	msgbox LittlerootTown_Text_MaysHouseDoor, MSGBOX_SIGN
 	end
 
 LittlerootTown_EventScript_BirchsLabSign::
@@ -647,6 +650,10 @@ LittlerootTown_Text_PlayersHouse:
 
 LittlerootTown_Text_ProfBirchsHouse:
 	.string "MAY'S HOUSE$"
+
+LittlerootTown_Text_MaysHouseDoor:
+    .string "(You probably shouldn't enter unless\n"
+    .string "you need to.)$"
 
 LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "PROF. BIRCH: Well, well, {PLAYER}{KUN}!\n"

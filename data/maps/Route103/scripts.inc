@@ -5,11 +5,14 @@ Route103_MapScripts::
 
 Route103_OnTransition:
 	call Common_EventScript_SetupRivalGfxId
-	call ProfBirch_EventScript_UpdateLocation
+	@call ProfBirch_EventScript_UpdateLocation
+	hideobjectat LOCALID_ROUTE103_LATIAS, MAP_ROUTE103
+	hideobjectat LOCALID_ROUTE103_BAG, MAP_ROUTE103
 	end
 
 Route103_OnLoad:
 	call_if_set FLAG_SYS_GAME_CLEAR, Route103_EventScript_OpenAlteringCave
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
 	end
 
 Route103_EventScript_OpenAlteringCave::
@@ -17,46 +20,91 @@ Route103_EventScript_OpenAlteringCave::
 	setmetatile 45, 6, METATILE_General_CaveEntrance_Bottom, FALSE
 	return
 
-Route103_EventScript_Rival::
-	lockall
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, Route103_EventScript_RivalMay
-	goto_if_eq VAR_RESULT, FEMALE, Route103_EventScript_RivalBrendan
-	end
+Route103_Latias_Movement:
+    walk_faster_right
+    walk_faster_right
+    walk_faster_right
+    walk_faster_right
+    walk_faster_right
+    walk_faster_right
+    step_end
+
+Route103_Bag_Movement:
+    walk_slow_down
+    walk_down
+    walk_fast_down
+    step_end
 
 Route103_EventScript_RivalMay::
+    lockall
+    faceplayer
+    setspeaker SP_NAME_MAY
 	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
 	closemessage
+	fadeoutbgm 1
+	playmoncry SPECIES_LATIAS, 0
+    waitse
+    delay 40
+    addobject LOCALID_ROUTE103_LATIAS
+    applymovement LOCALID_ROUTE103_LATIAS, Route103_Latias_Movement
+    playse SE_PIN
+    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FaceUp
+    waitmovement LOCALID_ROUTE103_RIVAL
+    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+    waitmovement LOCALID_ROUTE103_RIVAL
+    delay 30
+    playmoncry SPECIES_LATIAS, 0
+    addobject LOCALID_ROUTE103_BAG
+    setobjectxy LOCALID_ROUTE103_BAG, 8, 12
+    playse SE_FALL
+    getplayerxy VAR_TEMP_0, VAR_TEMP_1
+    call_if_eq VAR_TEMP_0, 8, Route103_CheckPlayerY
+    applymovement LOCALID_ROUTE103_LATIAS, Route103_Latias_Movement
+    applymovement LOCALID_ROUTE103_BAG, Route103_Bag_Movement
+    waitmovement 0
+    playse SE_UNLOCK
+    waitse
+    removeobject LOCALID_ROUTE103_LATIAS
+    delay 60
+    faceplayer
+    fadeinbgm 1
+    setspeaker SP_NAME_MAY
+    msgbox Route103_Text_MayRoute103Bag, MSGBOX_NPC
+    playmoncry SPECIES_TOTODILE, 0
+    delay 60
+    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+    waitmovement 0
+    delay 50
+    setspeaker SP_NAME_MAY
+    msgbox Route103_Text_MayRoute103Bag2, MSGBOX_NPC
+    setflag FLAG_SYS_POKEMON_GET
+    setflag FLAG_RESCUED_BIRCH
+    @setflag FLAG_ADVENTURE_STARTED
+    setvar VAR_OLDALE_TOWN_STATE, 1
+    fadescreen FADE_TO_BLACK
+    special ChooseStarter
+    waitstate
+    fadescreen FADE_FROM_BLACK
+    setspeaker SP_NAME_MAY
+    msgbox Route103_Text_MayRoute103Bag3, MSGBOX_NPC
 	playbgm MUS_ENCOUNTER_MAY, TRUE
 	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
 	waitmovement 0
-	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-	waitmovement 0
-	msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route103_EventScript_StartMayBattleTreecko
 	case 1, Route103_EventScript_StartMayBattleTorchic
 	case 2, Route103_EventScript_StartMayBattleMudkip
+	releaseall
 	end
 
-Route103_EventScript_RivalBrendan::
-	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
-	closemessage
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-	waitmovement 0
-	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-	waitmovement 0
-	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route103_EventScript_StartBrendanBattleTreecko
-	case 1, Route103_EventScript_StartBrendanBattleTorchic
-	case 2, Route103_EventScript_StartBrendanBattleMudkip
-	end
+Route103_CheckPlayerY:
+    call_if_eq VAR_TEMP_1, 15, Route103_BumpPlayer
+    return
+
+Route103_BumpPlayer:
+    applymovement LOCALID_PLAYER, Common_Movement_WalkRightFaster
+    applymovement LOCALID_PLAYER, Common_Movement_FaceLeft
+    return
 
 Route103_EventScript_StartMayBattleTreecko::
 	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TREECKO, Route103_Text_MayDefeated
@@ -73,28 +121,8 @@ Route103_EventScript_StartMayBattleMudkip::
 	goto Route103_EventScript_AfterMayBattle
 	end
 
-Route103_EventScript_StartBrendanBattleTreecko::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TREECKO, Route103_Text_BrendanDefeated
-	goto Route103_EventScript_AfterBrendanBattle
-	end
-
-Route103_EventScript_StartBrendanBattleTorchic::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TORCHIC, Route103_Text_BrendanDefeated
-	goto Route103_EventScript_AfterBrendanBattle
-	end
-
-Route103_EventScript_StartBrendanBattleMudkip::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_MUDKIP, Route103_Text_BrendanDefeated
-	goto Route103_EventScript_AfterBrendanBattle
-	end
-
 Route103_EventScript_AfterMayBattle::
 	msgbox Route103_Text_MayTimeToHeadBack, MSGBOX_DEFAULT
-	goto Route103_EventScript_RivalExit
-	end
-
-Route103_EventScript_AfterBrendanBattle::
-	msgbox Route103_Text_BrendanTimeToHeadBack, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	end
 
@@ -106,6 +134,40 @@ Route103_EventScript_RivalExit::
 	case DIR_WEST, Route103_EventScript_RivalExitFacingEastOrWest
 	case DIR_EAST, Route103_EventScript_RivalExitFacingEastOrWest
 	end
+
+Route103_EventScript_Bag::
+    call_if_set FLAG_VISITED_RUSTBORO_CITY, Route103_GetSecondMon
+    msgbox Route103_Text_BagNotEmpty, MSGBOX_DEFAULT
+    closemessage
+    delay 60
+    msgbox Route103_Text_BagNotEmpty2, MSGBOX_DEFAULT
+    closemessage
+    end
+
+Route103_GetSecondMon:
+    call_if_unset FLAG_GOT_SECOND_STARTER, Route103_BattleSecondMon
+    setflag FLAG_GOT_SECOND_STARTER
+    msgbox Route103_Text_BagEmpty, MSGBOX_DEFAULT
+    closemessage
+    end
+
+Route103_BattleSecondMon:
+    switch VAR_STARTER_MON
+    case 0, Route103_Prepare_Totodile
+    case 1, Route103_Prepare_Chikorita
+    case 2, Route103_Prepare_Cyndaquil
+    dowildbattle
+    return
+
+Route103_Prepare_Chikorita::
+    setwildbattle SPECIES_CHIKORITA, 5
+
+Route103_Prepare_Totodile::
+    setwildbattle SPECIES_TOTODILE, 5
+
+Route103_Prepare_Cyndaquil::
+    setwildbattle SPECIES_CYNDAQUIL, 5
+
 
 Route103_EventScript_RivalExitFacingNorth::
 	applymovement LOCALID_PLAYER, Route103_Movement_WatchRivalExitFacingNorth
@@ -287,21 +349,38 @@ Route103_EventScript_Isabelle::
 	end
 
 Route103_Text_MayRoute103Pokemon:
-	.string "MAY: Let's see… The POKéMON found\n"
-	.string "on ROUTE 103 include…$"
+	.string "So… I think I screwed up coming here.\l"
+	.string "There is no way back for you without\n"
+	.string "going through the grass…\lOops.$"
 
-Route103_Text_MayLetsBattle:
-	.string "Oh, hi, {PLAYER}{KUN}!\p"
-	.string "…Oh, I see, my dad gave you\n"
-	.string "a POKéMON as a gift.\p"
-	.string "Since we're here, let's have a quick\n"
-	.string "battle!\p"
-	.string "I'll give you a taste of what being\n"
-	.string "a TRAINER is like.$"
+Route103_Text_MayRoute103Bag:
+    .string "What the heck!?\p"
+    .string "Why did this bag just drop out of\n"
+    .string "the sky?$"
+
+Route103_Text_MayRoute103Bag2:
+    .string "Holy Arceus! It has pokemon in it!\p"
+    .string "Quick, Andrew! Grab one so we can get\l"
+    .string "out of the grass!$"
+
+Route103_Text_MayRoute103Bag3:
+    .string "You chose one?\p"
+    .string "Sweet! Let's have a quick POKéMON\n"
+    .string "battle! I'll go easy on you and even\l"
+    .string "use one of these POKéMON, too!$"
 
 Route103_Text_MayDefeated:
-	.string "Wow! That's great!\n"
-	.string "{PLAYER}{KUN}, you're pretty good!$"
+	.string "Nice one!\n"
+	.string "You managed to beat me!$"
+
+Route103_Text_BagEmpty:
+	.string "(The bag is empty)$"
+
+Route103_Text_BagNotEmpty:
+	.string "(You want another one? Seriously?)$"
+
+Route103_Text_BagNotEmpty2:
+	.string "(Check back later…)$"
 
 Route103_Text_MayTimeToHeadBack:
 	.string "MAY: I think I know why my dad has\n"
@@ -312,31 +391,6 @@ Route103_Text_MayTimeToHeadBack:
 	.string "kind of POKéMON easily.\p"
 	.string "Well, it's time to head back to\n"
 	.string "the LAB.$"
-
-Route103_Text_BrendanRoute103Pokemon:
-	.string "BRENDAN: Okay, so it's this one and\n"
-	.string "that one that live on ROUTE 103…$"
-
-Route103_Text_BrendanLetsBattle:
-	.string "Hey, it's {PLAYER}!\p"
-	.string "…Oh, yeah, Dad gave you a POKéMON.\p"
-	.string "Since we're here, how about a little\n"
-	.string "battle?\p"
-	.string "I'll teach you what being a TRAINER's\n"
-	.string "about!$"
-
-Route103_Text_BrendanDefeated:
-	.string "Huh, {PLAYER}, you're not too shabby.$"
-
-Route103_Text_BrendanTimeToHeadBack:
-	.string "BRENDAN: I think I get it.\n"
-	.string "I think I know why my dad has his eye\l"
-	.string "out for you now.\p"
-	.string "Look, your POKéMON already likes you,\n"
-	.string "even though you just got it.\p"
-	.string "{PLAYER}, I get the feeling that you\n"
-	.string "could befriend any POKéMON with ease.\p"
-	.string "We should head back to the LAB.$"
 
 Route103_Text_ShouldHaveBroughtPotion:
 	.string "My POKéMON is staggeringly tired…\n"
