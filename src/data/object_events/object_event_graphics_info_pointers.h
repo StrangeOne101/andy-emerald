@@ -136,6 +136,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Steven;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wally;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Paul;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Jennifer;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Max;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RubySapphireLittleBoy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanFishing;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayFishing;
@@ -797,6 +798,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
 #endif // IS_FRLG
     [OBJ_EVENT_GFX_PAUL] =                     &gObjectEventGraphicsInfo_Paul,
     [OBJ_EVENT_GFX_JENNIFER] =                 &gObjectEventGraphicsInfo_Jennifer,
+    [OBJ_EVENT_GFX_MAX] =                      &gObjectEventGraphicsInfo_Max,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

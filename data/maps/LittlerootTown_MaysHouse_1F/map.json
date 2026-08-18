@@ -58,11 +58,11 @@
       "flag": "FLAG_HIDE_PLAYERS_HOUSE_DAD"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
-      "x": 9,
-      "y": 5,
+      "graphics_id": "OBJ_EVENT_GFX_MAX",
+      "x": 4,
+      "y": 3,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_WANDER_DOWN_AND_UP",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -74,9 +74,9 @@
       "local_id": "LOCALID_RIVALS_HOUSE_1F_RIVAL",
       "graphics_id": "OBJ_EVENT_GFX_RIVAL_MAY_NORMAL",
       "x": 2,
-      "y": 8,
+      "y": 2,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -112,38 +112,11 @@
     {
       "type": "trigger",
       "x": 2,
-      "y": 8,
-      "elevation": 0,
-      "var": "VAR_LITTLEROOT_INTRO_STATE",
-      "var_value": "4",
-      "script": "LittlerootTown_MaysHouse_1F_EventScript_GoSeeRoom"
-    },
-    {
-      "type": "trigger",
-      "x": 1,
       "y": 3,
       "elevation": 0,
-      "var": "VAR_LITTLEROOT_RIVAL_STATE",
-      "var_value": "2",
-      "script": "LittlerootTown_MaysHouse_1F_EventScript_MeetRival0"
-    },
-    {
-      "type": "trigger",
-      "x": 2,
-      "y": 4,
-      "elevation": 0,
-      "var": "VAR_LITTLEROOT_RIVAL_STATE",
-      "var_value": "2",
-      "script": "LittlerootTown_MaysHouse_1F_EventScript_MeetRival1"
-    },
-    {
-      "type": "trigger",
-      "x": 3,
-      "y": 3,
-      "elevation": 0,
-      "var": "VAR_LITTLEROOT_RIVAL_STATE",
-      "var_value": "2",
-      "script": "LittlerootTown_MaysHouse_1F_EventScript_MeetRival2"
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "LittlerootTown_MaysHouse_1F_EventScript_TryGoUpstairs"
     }
   ],
   "bg_events": []

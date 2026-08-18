@@ -292,6 +292,13 @@ PlayersHouse_2F_EventScript_GameCube::
 	msgbox PlayersHouse_2F_Text_ItsAGameCube, MSGBOX_SIGN
 	end
 
+PlayersHouse_2F_EventScript_MewTwo::
+    setwildbattle SPECIES_MEWTWO, 50
+    dowildbattle
+    setflag FLAG_LITTLEROOT_MEWTWO
+    end
+
+
 PlayersHouse_2F_Text_ClockIsStopped:
 	.string "The clock is stopped…\p"
 	.string "You put in the new batteries!$"

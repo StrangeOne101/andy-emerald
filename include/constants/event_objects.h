@@ -415,6 +415,8 @@ enum
     OBJ_EVENT_GFX_BREAKABLE_ROCK_FRLG,
     OBJ_EVENT_GFX_PAUL,
     OBJ_EVENT_GFX_JENNIFER,
+    OBJ_EVENT_GFX_BRENDAN_SLEEPING,
+    OBJ_EVENT_GFX_MAX,
     NUM_OBJ_EVENT_GFX,
 };
 
@@ -574,6 +576,7 @@ enum
 //TODO
 #define OBJ_EVENT_PAL_TAG_PAUL                    0x1134
 #define OBJ_EVENT_PAL_TAG_JENNIFER                0x1135
+#define OBJ_EVENT_PAL_TAG_MAX                     0x1136
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

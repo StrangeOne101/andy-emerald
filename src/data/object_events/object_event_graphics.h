@@ -41,6 +41,7 @@ const u16 gObjectEventPal_RubySapphireMay[] = INCGFX_U16("graphics/object_events
 const u16 gUnusedObjectEventPalette[] = INCGFX_U16("graphics/object_events/palettes/unused_palette.pal", ".gbapal");
 const u16 gObjectEventPal_Paul[] = INCGFX_U16("graphics/object_events/palettes/paul.pal", ".gbapal");
 const u16 gObjectEventPal_Jennifer[] = INCGFX_U16("graphics/object_events/palettes/jennifer.pal", ".gbapal");
+const u16 gObjectEventPal_Max[] = INCGFX_U16("graphics/object_events/palettes/max.pal", ".gbapal");
 const u16 gObjectEventPal_Null16[16] = {};
 const u16 gObjectEventPal_Null17[16] = {};
 const u16 gObjectEventPal_Null18[16] = {};
@@ -397,6 +398,7 @@ const u16 gObjectEventPaletteNeonLight[] = INCGFX_U16("graphics/object_events/pa
 
 const u32 gObjectEventPic_Paul[] = INCGFX_U32("graphics/object_events/pics/people/paul.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_Jennifer[] = INCGFX_U32("graphics/object_events/pics/people/jennifer.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_Max[] = INCGFX_U32("graphics/object_events/pics/people/max.png", ".4bpp", "-mwidth 2 -mheight 2");
 
 #if OW_FOLLOWERS_POKEBALLS
 const u32 gObjectEventPic_MasterBall[] = INCGFX_U32("graphics/object_events/pics/misc/ball_master.png", ".4bpp", "-mwidth 2 -mheight 4");
