@@ -1532,22 +1532,25 @@ static void Task_NewGameBirchSpeech_WaitToShowGenderMenu(u8 taskId)
 
 static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
 {
-    enum Gender gender = NewGameBirchSpeech_ProcessGenderMenuInput();
-    enum Gender gender2;
+    s8 gender = NewGameBirchSpeech_ProcessGenderMenuInput();
+
+    while (gender < 0) {
+        enum Gender gender2 = Menu_GetCursorPos();
+        if (gender2 != gTasks[taskId].tPlayerGender)
+        {
+            gTasks[taskId].tPlayerGender = gender2;
+            gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+            NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 0);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_SlideOutOldGenderSprite;
+        }
+        return;
+    }
 
     PlaySE(SE_SELECT);
     gSaveBlock2Ptr->playerGender = MALE;
     NewGameBirchSpeech_ClearGenderWindow(1, 1);
     gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
 
-    gender2 = Menu_GetCursorPos();
-    if (gender2 != gTasks[taskId].tPlayerGender)
-    {
-        gTasks[taskId].tPlayerGender = gender2;
-        gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
-        NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 0);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_SlideOutOldGenderSprite;
-    }
 }
 
 static void Task_NewGameBirchSpeech_SlideOutOldGenderSprite(u8 taskId)

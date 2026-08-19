@@ -1534,9 +1534,8 @@ void LoadWallyZigzagoon(void)
     monData = MOVE_TACKLE;
     SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE1, &monData);
     monData = MOVE_NONE;
-    SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE2, &monData);
-    SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE3, &monData);
-    SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE4, &monData);
+    monData = TRUE;
+    SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_IS_SHINY, &monData);
 }
 
 bool8 IsStarterInParty(void)

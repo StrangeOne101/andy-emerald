@@ -188,6 +188,24 @@
       "var": "VAR_OLDALE_TOWN_STATE",
       "var_value": "0",
       "script": "OdaleTown_EventScript_RefuseEntry"
+    },
+    {
+      "type": "trigger",
+      "x": 0,
+      "y": 10,
+      "elevation": 3,
+      "var": "VAR_OLDALE_TOWN_STATE",
+      "var_value": "1",
+      "script": "OldaleTown_EventScript_BlockedPath"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 7,
+      "elevation": 3,
+      "var": "VAR_OLDALE_TOWN_STATE",
+      "var_value": "1",
+      "script": "OdaleTown_EventScript_RefuseEntry"
     }
   ],
   "bg_events": [

@@ -1,5 +1,6 @@
 
 LittlerootTown_MapScripts::
+    map_script MAP_SCRIPT_ON_LOAD, LittlerootTown_OnLoad
     map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_OnTransition
     map_script MAP_SCRIPT_ON_FRAME_TABLE, LittlerootTown_OnFrame
     map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LittlerootTown_OnWarp
@@ -94,36 +95,29 @@ LittlerootTown_MayMovementPostLatias:
 @   5: Set clock
 @   6: Told to go househunting with May
 
-@ State descriptions for VAR_LITTLEROOT_HOUSES_STATE_MAY
-@                    and VAR_LITTLEROOT_HOUSES_STATE_BRENDAN
-@ 1: On Truck (and is corresponding gender)
-@ 2: Met Rival's Mom (and is corresponding gender)
-@ 3: Entered Hall of Fame
-@ 4: Completed Lati TV / SS Ticket event
-@ 5: Exited house after above event
-
 @ State descriptions for VAR_LITTLEROOT_RIVAL_STATE
 @ 1: Never occurs
-@ 2: Entered Rival's bedroom
-@ 3: Met Rival
-@ 4: Received Pokedex
+@ 2: Kidnapped
+@ 3: Outside her house playing with Torchic
+@ 4: Not yet used
 
 
 LittlerootTown_OnTransition:
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
+	setflag FLAG_HIDE_LITTLEROOT_TORCHIC
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
 	hideobjectat LOCALID_LITTLEROOT_LATIAS, MAP_LITTLEROOT_TOWN @ Always hide Latias
 	call Common_EventScript_SetupRivalGfxId
-	@ call_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, LittlerootTown_EventScript_MoveMomToMaysDoor
-	@ call_if_eq VAR_LITTLEROOT_TOWN_STATE, 3, LittlerootTown_EventScript_SetMomStandingInFrontOfDoorPos
 	@call_if_eq VAR_LITTLEROOT_HOUSES_STATE_MAY, 4, LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent
 	@call_if_eq VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 4, LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent
-	call_if_eq VAR_LITTLEROOT_RIVAL_STATE, 3, LittlerootTown_EventScript_SetRivalLeftForRoute103
+	call_if_eq VAR_LITTLEROOT_RIVAL_STATE, 3, LittlerootTown_EventScript_MayPlayOutside
 	call_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_EventScript_HideMapNamePopup
 	call_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_EventScript_LeftLabAfterDexUpgrade
-	hideobjectat LOCALID_LITTLEROOT_LATIAS, MAP_LITTLEROOT_TOWN
-	call_if_set FLAG_DEFEATED_RIVAL_ROUTE103, LittlerootTown_Unlock_MayDoor
 	end
+
+LittlerootTown_OnLoad:
+    call_if_set FLAG_DEFEATED_RIVAL_ROUTE103, LittlerootTown_Unlock_MayDoor
+    end
 
 LittlerootTown_Unlock_MayDoor:
     setmetatile 14, 8, 0x248, TRUE
@@ -138,23 +132,11 @@ LittlerootTown_EventScript_HideMapNamePopup::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	return
 
-LittlerootTown_EventScript_SetRivalLeftForRoute103::
-	setflag FLAG_RIVAL_LEFT_FOR_ROUTE103
-	return
-
-LittlerootTown_EventScript_MoveMomToMaysDoor::
-	setobjectxyperm LOCALID_LITTLEROOT_MOM, 14, 8
-	return
-
-LittlerootTown_EventScript_SetMomStandingInFrontOfDoorPos::
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
-	setobjectmovementtype LOCALID_LITTLEROOT_MOM, MOVEMENT_TYPE_FACE_DOWN
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
-	return
-
-LittlerootTown_EventScript_SetMomInFrontOfDoorMale::
-	setobjectxyperm LOCALID_LITTLEROOT_MOM, 5, 9
+LittlerootTown_EventScript_MayPlayOutside::
+    setobjectxyperm LOCALID_LITTLEROOT_RIVAL, 18, 6
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
+	clearflag FLAG_HIDE_LITTLEROOT_TORCHIC
+	setobjectmovementtype LOCALID_LITTLEROOT_RIVAL, MOVEMENT_TYPE_FACE_RIGHT
 	return
 
 LittlerootTown_OnFrame:
@@ -214,12 +196,6 @@ LittlerootTown_EventScript_Twin::
 	lock
 	faceplayer
 	msgbox LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut, MSGBOX_DEFAULT
-	release
-	end
-
-LittlerootTown_EventScript_YouSavedBirch::
-	special GetPlayerBigGuyGirlString
-	msgbox LittlerootTown_Text_YouSavedBirch, MSGBOX_DEFAULT
 	release
 	end
 
@@ -286,57 +262,6 @@ LittlerootTown_EventScript_SetHomeDoorCoordsMale::
 
 LittlerootTown_EventScript_MomNoticePlayerMale::
 	applymovement LOCALID_LITTLEROOT_MOM, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	return
-
-LittlerootTown_EventScript_MomApproachPlayerMale::
-	call_if_eq VAR_0x8008, 0, LittlerootTown_EventScript_MomApproachPlayer0
-	call_if_eq VAR_0x8008, 1, LittlerootTown_EventScript_MomApproachPlayer1
-	call_if_eq VAR_0x8008, 2, LittlerootTown_EventScript_MomApproachPlayerMale2
-	call_if_eq VAR_0x8008, 3, LittlerootTown_EventScript_MomApproachPlayerMale3
-	call_if_eq VAR_0x8008, 4, LittlerootTown_EventScript_MomApproachPlayerMale4
-	call_if_eq VAR_0x8008, 5, LittlerootTown_EventScript_MomApproachPlayerMale5
-	return
-
-LittlerootTown_EventScript_MomApproachPlayer0::
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	applymovement LOCALID_LITTLEROOT_MOM, LittlerootTown_Movement_MomApproachPlayer0
-	waitmovement 0
-	return
-
-LittlerootTown_EventScript_MomApproachPlayer1::
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	applymovement LOCALID_LITTLEROOT_MOM, LittlerootTown_Movement_MomApproachPlayer1
-	waitmovement 0
-	return
-
-LittlerootTown_EventScript_MomApproachPlayerMale2::
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	applymovement LOCALID_LITTLEROOT_MOM, LittlerootTown_Movement_MomApproachPlayerMale2
-	waitmovement 0
-	return
-
-LittlerootTown_EventScript_MomApproachPlayerMale3::
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	applymovement LOCALID_LITTLEROOT_MOM, LittlerootTown_Movement_MomApproachPlayerMale3
-	waitmovement 0
-	return
-
-LittlerootTown_EventScript_MomApproachPlayerMale4::
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	applymovement LOCALID_LITTLEROOT_MOM, LittlerootTown_Movement_MomApproachPlayerMale4
-	waitmovement 0
-	return
-
-LittlerootTown_EventScript_MomApproachPlayerMale5::
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	applymovement LOCALID_LITTLEROOT_MOM, LittlerootTown_Movement_MomApproachPlayerMale5
 	waitmovement 0
 	return
 
@@ -577,15 +502,6 @@ LittlerootTown_Text_BirchSpendsDaysInLab:
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 	.string "I swear there used to be a path\n"
 	.string "upwards from here…?$"
-
-LittlerootTown_Text_CanYouGoSeeWhatsHappening:
-	.string "Um, hi!\p"
-	.string "There are scary POKéMON outside!\n"
-	.string "I can hear their cries!\p"
-	.string "I want to go see what's going on,\n"
-	.string "but I don't have any POKéMON…\p"
-	.string "Can you go see what's happening\n"
-	.string "for me?$"
 
 LittlerootTown_Text_YouSavedBirch:
 	.string "You saved PROF. BIRCH!\n"

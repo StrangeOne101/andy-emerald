@@ -11,21 +11,26 @@ LittlerootTown_MaysHouse_1F_EventScript_CheckShowShoesManual::
 	return
 
 LittlerootTown_MaysHouse_1F_OnTransition:
-    call_if_unset FLAG_MAY_REPRINTED, LittlerootTown_MaysHouse_1F_ReprintMay
 	end
 
 LittlerootTown_MaysHouse_1F_ReprintMay:
     lockall
+    setvar VAR_LITTLEROOT_INTRO_STATE, 7
     playse SE_PIN
     applymovement LOCALID_RIVALS_HOUSE_1F_MOM, Common_Movement_ExclamationMark
     waitmovement 0
     delay 40
-    applymovement LOCALID_RIVALS_HOUSE_1F_MOM, LittlerootTown_MaysHouse_1F_Movement_RivalMomApproach
-    waitmovement 0
+    @applymovement LOCALID_RIVALS_HOUSE_1F_MOM, LittlerootTown_MaysHouse_1F_Movement_RivalMomApproach
+    @waitmovement 0
     setspeaker MaysMumName
     msgbox RivalsHouse_1F_Text_RivalMum_KidnappedMay, MSGBOX_DEFAULT
+    applymovement LOCALID_PLAYER, LittlerootTown_MaysHouse_1F_Movement_PlayerSitDown
+    waitmovement 0
+    setspeaker MaysMumName
+    msgbox RivalsHouse_1F_Text_RivalMum_KidnappedMay2, MSGBOX_DEFAULT
     applymovement LOCALID_RIVALS_HOUSE_1F_MOM, LittlerootTown_MaysHouse_1F_Movement_ApproachButton
     waitmovement 0
+    applymovement LOCALID_PLAYER, Common_Movement_FaceUp
     delay 30
     playse SE_SWITCH
     delay 80
@@ -85,17 +90,20 @@ LittlerootTown_MaysHouse_1F_ReprintMay:
     removeobject LOCALID_RIVALS_HOUSE_1F_RIVAL
     playse SE_EXIT
     delay 80
-    applymovement LOCALID_RIVALS_HOUSE_1F_MOM, LittlerootTown_MaysHouse_1F_Movement_ApproachPlayer
+    applymovement LOCALID_RIVALS_HOUSE_1F_MOM, LittlerootTown_MaysHouse_1F_Movement_MumSitDownAgain
     setspeaker MaysMumName
     msgbox LittlerootTown_MaysHouse_1F_Text_MayReborn5, MSGBOX_DEFAULT
-    applymovement LOCALID_RIVALS_HOUSE_1F_MOM, LittlerootTown_MaysHouse_1F_Movement_SitDownAgain
     setflag FLAG_MAY_REPRINTED
+    setflag FLAG_ADVENTURE_STARTED
+    setvar VAR_OLDALE_TOWN_STATE, 2
+    setvar VAR_OLDALE_RIVAL_STATE, 3
     releaseall
     end
 
 
 @ Many of the below scripts have no gender check because they assume youre in the correct house
 LittlerootTown_MaysHouse_1F_OnFrame:
+    map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_MaysHouse_1F_ReprintMay
 	.2byte 0
 
 LittlerootTown_MaysHouse_1F_Movement_PushTowardStairs:
@@ -113,41 +121,41 @@ LittlerootTown_MaysHouse_1F_Movement_RivalMomApproach:
 
 LittlerootTown_MaysHouse_1F_Movement_ApproachButton:
 	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	walk_up
 	walk_up
-	walk_up
-	walk_up
-	walk_right
-	walk_right
 	walk_up
 	face_left
 	step_end
 
-LittlerootTown_MaysHouse_1F_Movement_ApproachPlayer:
-    walk_down
-    walk_down
-    walk_down
-    walk_down
-    walk_down
-    walk_left
-    walk_left
-    face_down
-
-LittlerootTown_MaysHouse_1F_Movement_SitDownAgain:
-    walk_right
-    walk_right
-    walk_right
-    walk_down
-    walk_right
-    walk_right
-    walk_right
-    walk_right
+LittlerootTown_MaysHouse_1F_Movement_PlayerSitDown:
     walk_up
+    walk_up
+    walk_up
+    walk_right
+    walk_right
+    walk_right
+    walk_down
+    face_right
+    step_end
+
+LittlerootTown_MaysHouse_1F_Movement_MumSitDownAgain:
+    walk_down
+    walk_down
+    walk_right
+    walk_right
+    walk_right
+    walk_right
+    walk_right
+    walk_down
     face_left
+    step_end
 
 LittlerootTown_MaysHouse_1F_Movement_MomMoveToNewMay:
     walk_down
-    walk_left
     walk_left
     step_end
 
@@ -188,15 +196,6 @@ RivalsHouse_1F_EventScript_MaxScript2:
     release
     end
 
-LittlerootTown_MaysHouse_1F_EventScript_GoSeeRoom::
-	lockall
-	setvar VAR_0x8004, LOCALID_PLAYERS_HOUSE_1F_MOM
-	setvar VAR_0x8005, FEMALE
-	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	goto PlayersHouse_1F_EventScript_MomGoSeeRoom
-	end
-
 LittlerootTown_MaysHouse_1F_EventScript_PlayerFaceMay::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
@@ -222,11 +221,17 @@ LittlerootTown_MaysHouse_1F_EventScript_MayGoUpstairs2::
 
 LittlerootTown_MaysHouse_1F_EventScript_TryGoUpstairs::
     lock
+    playse SE_PIN
+    applymovement LOCALID_PLAYER, Common_Movement_ExclamationMark
+    waitmovement 0
+    applymovement LOCALID_RIVALS_HOUSE_1F_RIVAL, Common_Movement_Delay48
+    waitmovement 0
     setspeaker MaysMumName
     msgbox LittlerootTown_MaysHouse_1F_Text_Secret, MSGBOX_DEFAULT
     applymovement LOCALID_PLAYER, Common_Movement_WalkDown
+    waitmovement 0
     release
-
+    end
 
 LittlerootTown_MaysHouse_1F_Movement_PlayerWatchMayExit0:
 	delay_16
@@ -278,7 +283,7 @@ LittlerootTown_MaysHouse_1F_Movement_MayGoUpstairs2:
 	step_end
 
 RivalsHouse_1F_Text_LikeChildLikeFather:
-	.string "Don't worry about May. Just focus\p"
+	.string "Don't worry about May. Just focus\n"
 	.string "on other things!$"
 
 LittlerootTown_MaysHouse_1F_Text_Secret:
@@ -304,12 +309,15 @@ LittlerootTown_MaysHouse_1F_Text_MayReborn5:
     .string "about it!\p"
     .string "Oh! And I see you got your own POKéMON\n"
     .string "now, too! Awesome! Make sure to get\l"
-    .string "yourself a POKéDEX, too. I'm sure it\n"
+    .string "yourself a POKéDEX, too. I'm sure it\p"
     .string "will come in handy on your journey!$"
 
 RivalsHouse_1F_Text_RivalMum_KidnappedMay:
     .string "Oh, hello Andrew!\p"
     .string "What brings you here?\p"
+    .string "Come, grab a seat!$"
+RivalsHouse_1F_Text_RivalMum_KidnappedMay2:
+    .string "Now, what were you saying?"
     .string "…\p"
     .string "…\p"
     .string "…\p"
@@ -323,8 +331,6 @@ RivalsHouse_1F_Text_RivalMum_KidnappedMay:
 RivalsHouse_1F_Text_MaxText1:
 	.string "Believe it or not, this is not the first\n"
 	.string "time May has been kidnapped.\p"
-	.string "…\p"
-	.string "…\p"
 	.string "…\p"
 	.string "Do you think there is just a collection\n"
 	.string "of Mays out there somewhere?$"

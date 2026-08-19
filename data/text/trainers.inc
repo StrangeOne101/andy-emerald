@@ -35,16 +35,15 @@ Route102_Text_CalvinRematchPostBattle:
 	.string "I'll get stronger, too.$"
 
 Route102_Text_AllenIntro:
-	.string "Did you just become a TRAINER?\n"
-	.string "We're both beginners!$"
+	.string "Why am I called {LQ}NPC B{RQ}?\n"
+	.string "My name is Allen!$"
 
 Route102_Text_AllenDefeated:
-	.string "I called you because I thought\n"
-	.string "I could beat you…$"
+	.string "Maybe I am just an NPC…$"
 
 Route102_Text_AllenPostBattle:
-	.string "I haven't won once yet…\n"
-	.string "I wish I would win soon…$"
+	.string "How come you get to keep your\n"
+	.string "name but I don't?$"
 
 Route102_Text_RickIntro:
 	.string "Hahah! Our eyes met!\n"
@@ -58,16 +57,15 @@ Route102_Text_RickPostBattle:
 	.string "you have to challenge! It's a rule!$"
 
 Route102_Text_TianaIntro:
-	.string "I'm going to keep winning and aim\n"
-	.string "to be the best TRAINER.\p"
-	.string "Help me further my career!$"
+	.string "I'm important enough that I get to\n"
+	.string "keep my name! Battle me!$"
 
 Route102_Text_TianaDefeated:
-	.string "I ended up furthering your career…$"
+	.string "Not important enough, apparently…$"
 
 Route102_Text_TianaPostBattle:
-	.string "To keep winning my way up, I see that\n"
-	.string "I have to catch more POKéMON.$"
+	.string "Do you think I'm important enough\n"
+	.string "to appear again in the game?$"
 
 Route103_Text_DaisyIntro:
 	.string "Did you feel the tug of our\n"

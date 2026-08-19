@@ -17,6 +17,7 @@ Route103_HideBag:
 Route103_OnLoad:
 	call_if_set FLAG_SYS_GAME_CLEAR, Route103_EventScript_OpenAlteringCave
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
+	call_if_unset FLAG_SYS_POKEMON_GET, Route103_HideBag
 	end
 
 Route103_EventScript_OpenAlteringCave::
@@ -94,9 +95,12 @@ Route103_EventScript_RivalMay::
     msgbox Route103_Text_MayRoute103Bag, MSGBOX_NPC
     playmoncry SPECIES_TOTODILE, 0
     delay 60
+    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FaceRight
+    waitmovement 0
     applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
     waitmovement 0
     delay 50
+    faceplayer
     setspeaker SP_NAME_MAY
     msgbox Route103_Text_MayRoute103Bag2, MSGBOX_NPC
     setflag FLAG_SYS_POKEMON_GET
@@ -146,18 +150,19 @@ Route103_EventScript_StartMayBattleMudkip::
 
 Route103_EventScript_AfterMayBattle::
     lock
+    fadedefaultbgm
     setspeaker SP_NAME_MAY
 	msgbox Route103_Text_MayTimeToHeadBack, MSGBOX_DEFAULT
+	closemessage
 	@special HealPlayerParty
     setflag FLAG_DEFEATED_RIVAL_ROUTE103
     setvar VAR_OLDALE_RIVAL_STATE, 1
-    playbgm MUS_DUMMY, TRUE
-    fadedefaultbgm
+    fadeoutbgm 3
 	playmoncry SPECIES_LATIAS, 0
 	addobject LOCALID_ROUTE103_LATIAS
 	setobjectxy LOCALID_ROUTE103_LATIAS, 7, 19
 	applymovement LOCALID_ROUTE103_LATIAS, Route103_Kidnap_Movement
-	delay 60
+	delay 20
 	applymovement LOCALID_ROUTE103_LATIAS, Route103_Kidnap_Movement2
 	delay 2
 	applymovement LOCALID_ROUTE103_RIVAL, Route103_Kidnap_Movement2
@@ -166,12 +171,13 @@ Route103_EventScript_AfterMayBattle::
 	playse SE_PIN
     setspeaker SP_NAME_MAY
     msgbox Route103_Text_MayKidnapped, MSGBOX_DEFAULT
-    delay 100
+    delay 20
     removeobject LOCALID_ROUTE103_RIVAL
     removeobject LOCALID_ROUTE103_LATIAS
     closemessage
     delay 60
     msgbox Route103_Text_MayKidnapped2, MSGBOX_DEFAULT
+    playbgm MUS_ROUTE101, TRUE
     release
 	end
 

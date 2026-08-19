@@ -39,7 +39,7 @@ gText_Birch_SoItsPlayer::
 	.string "So your name is {PLAYER}{KUN}?$"
 
 gText_Birch_YourePlayer::
-	.string "No, it's not! It's Andrew!$"
+	.string "No, it's not! It's Andrew!\p"
 	.string "You're {PLAYER}{KUN} who's hallucinating\n"
 	.string "in your bed, somewhere in LITTLEROOT.\l"
 	.string "Get it together!\p"

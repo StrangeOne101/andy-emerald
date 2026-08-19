@@ -6083,16 +6083,16 @@ IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
 
 
 === TRAINER_CALVIN_1 ===
-Name: CALVIN
+Name: NPC A
 Class: Youngster
-Pic: Youngster
+Pic: youngster
 Gender: Male
 Music: Male
 Double Battle: No
 AI: Check Bad Move
 
 Poochyena
-Level: 5
+Level: 4
 
 
 === TRAINER_BILLY ===
@@ -6356,9 +6356,9 @@ Level: 16
 
 
 === TRAINER_ALLEN ===
-Name: ALLEN
+Name: NPC C
 Class: Youngster
-Pic: Youngster
+Pic: youngster
 Gender: Male
 Music: Male
 Double Battle: No
@@ -11232,9 +11232,9 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 
 === TRAINER_TIANA ===
-Name: TIANA
+Name: NPC TIANA
 Class: Lass
-Pic: Lass
+Pic: lass
 Gender: Female
 Music: Female
 Double Battle: No
@@ -11244,7 +11244,7 @@ Zigzagoon
 Level: 4
 
 Shroomish
-Level: 4
+Level: 5
 
 
 === TRAINER_HALEY_1 ===
@@ -11439,9 +11439,9 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 
 === TRAINER_RICK ===
-Name: RICK
+Name: NPC B
 Class: Bug Catcher
-Pic: Bug Catcher
+Pic: bug_catcher
 Gender: Male
 Music: Male
 Double Battle: No
