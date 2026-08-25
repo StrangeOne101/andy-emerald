@@ -273,7 +273,7 @@ static const u8 sSparkleCoords[][2] =
 };
 static const struct CompressedSpriteSheet sSpriteSheet_RunningPokemon[] =
 {
-    {gIntroVolbeat_Gfx, 0x400, TAG_VOLBEAT},
+    {gIntroVolbeat_Gfx, 0x800, TAG_VOLBEAT},
     {gIntroTorchic_Gfx, 0xC00, TAG_TORCHIC},
     {gIntroManectric_Gfx, 0x2000, TAG_MANECTRIC},
     {},
@@ -292,10 +292,10 @@ static const struct OamData sOamData_Volbeat =
     .objMode = ST_OAM_OBJ_NORMAL,
     .mosaic = FALSE,
     .bpp = ST_OAM_4BPP,
-    .shape = SPRITE_SHAPE(32x32),
+    .shape = SPRITE_SHAPE(64x64),
     .x = 0,
     .matrixNum = 0,
-    .size = SPRITE_SIZE(32x32),
+    .size = SPRITE_SIZE(64x64),
     .tileNum = 0,
     .priority = 1,
     .paletteNum = 0,
@@ -303,9 +303,8 @@ static const struct OamData sOamData_Volbeat =
 };
 static const union AnimCmd sAnim_Volbeat[] =
 {
-    ANIMCMD_FRAME(0, 2),
-    ANIMCMD_FRAME(16, 2),
-    ANIMCMD_JUMP(0),
+    ANIMCMD_FRAME(0, 30),
+    ANIMCMD_END,
 };
 static const union AnimCmd *const sAnims_Volbeat[] =
 {
@@ -1396,7 +1395,7 @@ static void Task_Scene2_CreateSprites(u8 taskId)
     gSprites[spriteId].callback = SpriteCB_PlayerOnBicycle;
     gSprites[spriteId].anims = sAnims_PlayerBicycle;
     gTasks[taskId].tPlayerSpriteId = spriteId;
-    CreateSprite(&sSpriteTemplate_Volbeat, DISPLAY_WIDTH + 32, 80, 4);
+    CreateSprite(&sSpriteTemplate_Volbeat, DISPLAY_WIDTH + 32, 60, 4);
     spriteId = CreateIntroFlygonSprite(-64, 60);
     gSprites[spriteId].callback = SpriteCB_Flygon;
     gTasks[taskId].tFlygonSpriteId = spriteId;
@@ -1771,7 +1770,7 @@ static void Task_Scene3_LoadGroudon(u8 taskId)
         DecompressDataWithHeaderVram(gIntroGroudon_Gfx, (void *)VRAM);
         DecompressDataWithHeaderVram(gIntroGroudon_Tilemap, (void *)(BG_CHAR_ADDR(3)));
         DecompressDataWithHeaderVram(gIntroLegendBg_Gfx, (void *)(BG_CHAR_ADDR(1)));
-        DecompressDataWithHeaderVram(gIntroGroudonBg_Tilemap, (void *)(BG_SCREEN_ADDR(28)));
+        DecompressDataWithHeaderVram(gIntroKyogreBg_Tilemap, (void *)(BG_SCREEN_ADDR(28)));
         LoadCompressedSpriteSheetUsingHeap(&gBattleAnimTable[GET_TRUE_SPRITE_INDEX(ANIM_TAG_ROCKS)].pic);
         LoadSpritePalette(&gBattleAnimTable[GET_TRUE_SPRITE_INDEX(ANIM_TAG_ROCKS)].palette);
         CpuCopy16(gIntro3Bg_Pal, gPlttBufferUnfaded, sizeof(gIntro3Bg_Pal));
@@ -1926,8 +1925,7 @@ static void Task_Scene3_Groudon(u8 taskId)
             tScreenX = 80;
             tScreenY = 41;
             tDelay = 16;
-            if (IsSpeciesEnabled(SPECIES_GROUDON))
-                PlayCryInternal(SPECIES_GROUDON, 0, 100, CRY_PRIORITY_NORMAL, CRY_MODE_NORMAL);
+            PlayCryInternal(SPECIES_KYOGRE, 0, 100, CRY_PRIORITY_NORMAL, CRY_MODE_NORMAL);
             tState++;
         }
         break;
@@ -2049,7 +2047,7 @@ static void Task_Scene3_LoadKyogre(u8 taskId)
     ResetSpriteData();
     DecompressDataWithHeaderVram(gIntroKyogre_Gfx, (void *)VRAM);
     DecompressDataWithHeaderVram(gIntroKyogre_Tilemap, (void *)(BG_CHAR_ADDR(3)));
-    DecompressDataWithHeaderVram(gIntroKyogreBg_Tilemap, (void *)(BG_SCREEN_ADDR(28)));
+    DecompressDataWithHeaderVram(gIntroGroudonBg_Tilemap, (void *)(BG_SCREEN_ADDR(28)));
     LoadCompressedSpriteSheet(sSpriteSheet_Bubbles);
     LoadSpritePalette(sSpritePalette_Bubbles);
     BeginNormalPaletteFade(PALETTES_ALL & ~1, 0, 16, 0, RGB_WHITEALPHA);
@@ -2129,8 +2127,7 @@ static void Task_Scene3_Kyogre(u8 taskId)
             {
                 tDelay = 1;
                 tState++;
-                if (IsSpeciesEnabled(SPECIES_KYOGRE))
-                    PlayCryInternal(SPECIES_KYOGRE, 0, 120, CRY_PRIORITY_NORMAL, CRY_MODE_NORMAL);
+                PlayCryInternal(SPECIES_GROUDON, 0, 120, CRY_PRIORITY_NORMAL, CRY_MODE_NORMAL);
             }
         }
         break;
