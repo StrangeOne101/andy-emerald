@@ -33,6 +33,8 @@ build/
 .DS_Store
 *.ddump
 .idea/
+.idea_/
+.porydaw/
 porymap.*.cfg
 prefabs.json
 .vscode/
