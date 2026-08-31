@@ -76,7 +76,6 @@
 #include "intro.h"
 #include "load_save.h"
 #include "title_screen.h"
-#include "test/test_runner_battle.h"
 
 // Helper for accessing command arguments and advancing gBattlescriptCurrInstr.
 //
