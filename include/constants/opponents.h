@@ -140,7 +140,7 @@
 #define TRAINER_JESSICA_3                   133
 #define TRAINER_JESSICA_4                   134
 #define TRAINER_JESSICA_5                   135
-#define TRAINER_WINSTON_1                   136
+#define TRAINER_WINSTON_1                   136 //TODO Mike
 #define TRAINER_MOLLIE                      137
 #define TRAINER_GARRET                      138
 #define TRAINER_WINSTON_2                   139
@@ -524,24 +524,24 @@
 #define TRAINER_EDWIN_4                     517
 #define TRAINER_EDWIN_5                     518
 #define TRAINER_WALLY_VR_1                  519
-#define TRAINER_BRENDAN_ROUTE_103_MUDKIP    520
-#define TRAINER_BRENDAN_ROUTE_110_MUDKIP    521
-#define TRAINER_BRENDAN_ROUTE_119_MUDKIP    522
-#define TRAINER_BRENDAN_ROUTE_103_TREECKO   523
-#define TRAINER_BRENDAN_ROUTE_110_TREECKO   524
-#define TRAINER_BRENDAN_ROUTE_119_TREECKO   525
-#define TRAINER_BRENDAN_ROUTE_103_TORCHIC   526
-#define TRAINER_BRENDAN_ROUTE_110_TORCHIC   527
-#define TRAINER_BRENDAN_ROUTE_119_TORCHIC   528
+#define TRAINER_BRENDAN_ROUTE_103_MUDKIP    520 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_110_MUDKIP    521 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_119_MUDKIP    522 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_103_TREECKO   523 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_110_TREECKO   524 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_119_TREECKO   525 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_103_TORCHIC   526 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_110_TORCHIC   527 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_119_TORCHIC   528 //TODO #UNUSED
 #define TRAINER_MAY_ROUTE_103_MUDKIP        529
-#define TRAINER_MAY_ROUTE_110_MUDKIP        530
-#define TRAINER_MAY_ROUTE_119_MUDKIP        531
+#define TRAINER_MAY_ROUTE_110_MUDKIP        530 //TODO #UNUSED
+#define TRAINER_MAY_ROUTE_119_MUDKIP        531 //TODO #UNUSED
 #define TRAINER_MAY_ROUTE_103_TREECKO       532
-#define TRAINER_MAY_ROUTE_110_TREECKO       533
-#define TRAINER_MAY_ROUTE_119_TREECKO       534
+#define TRAINER_MAY_ROUTE_110_TREECKO       533 //TODO #UNUSED
+#define TRAINER_MAY_ROUTE_119_TREECKO       534 //TODO #UNUSED
 #define TRAINER_MAY_ROUTE_103_TORCHIC       535
-#define TRAINER_MAY_ROUTE_110_TORCHIC       536
-#define TRAINER_MAY_ROUTE_119_TORCHIC       537
+#define TRAINER_MAY_ROUTE_110_TORCHIC       536 //TODO #UNUSED
+#define TRAINER_MAY_ROUTE_119_TORCHIC       537 //TODO #UNUSED
 #define TRAINER_ISAAC_1                     538
 #define TRAINER_DAVIS                       539
 #define TRAINER_MITCHELL                    540
@@ -596,15 +596,15 @@
 #define TRAINER_GRUNT_SPACE_CENTER_6        589
 #define TRAINER_GRUNT_SPACE_CENTER_7        590
 #define TRAINER_MACEY                       591
-#define TRAINER_BRENDAN_RUSTBORO_TREECKO    592
-#define TRAINER_BRENDAN_RUSTBORO_MUDKIP     593
+#define TRAINER_BRENDAN_RUSTBORO_TREECKO    592 //TODO #UNUSED
+#define TRAINER_BRENDAN_RUSTBORO_MUDKIP     593 //TODO #UNUSED
 #define TRAINER_PAXTON                      594
 #define TRAINER_ISABELLA                    595
 #define TRAINER_GRUNT_WEATHER_INST_5        596
 #define TRAINER_TABITHA_MT_CHIMNEY          597
 #define TRAINER_JONATHAN                    598
-#define TRAINER_BRENDAN_RUSTBORO_TORCHIC    599
-#define TRAINER_MAY_RUSTBORO_MUDKIP         600
+#define TRAINER_BRENDAN_RUSTBORO_TORCHIC    599 //TODO #UNUSED
+#define TRAINER_MAY_RUSTBORO_MUDKIP         600 //TODO #UNUSED
 #define TRAINER_MAXIE_MAGMA_HIDEOUT         601
 #define TRAINER_MAXIE_MT_CHIMNEY            602
 #define TRAINER_TIANA                       603
@@ -665,12 +665,12 @@
 #define TRAINER_WALLY_VR_3                  658
 #define TRAINER_WALLY_VR_4                  659
 #define TRAINER_WALLY_VR_5                  660
-#define TRAINER_BRENDAN_LILYCOVE_MUDKIP     661
-#define TRAINER_BRENDAN_LILYCOVE_TREECKO    662
-#define TRAINER_BRENDAN_LILYCOVE_TORCHIC    663
-#define TRAINER_MAY_LILYCOVE_MUDKIP         664
-#define TRAINER_MAY_LILYCOVE_TREECKO        665
-#define TRAINER_MAY_LILYCOVE_TORCHIC        666
+#define TRAINER_BRENDAN_LILYCOVE_MUDKIP     661 //TODO #UNUSED
+#define TRAINER_BRENDAN_LILYCOVE_TREECKO    662 //TODO #UNUSED
+#define TRAINER_BRENDAN_LILYCOVE_TORCHIC    663 //TODO #UNUSED
+#define TRAINER_MAY_LILYCOVE_MUDKIP         664 //TODO #UNUSED
+#define TRAINER_MAY_LILYCOVE_TREECKO        665 //TODO #UNUSED
+#define TRAINER_MAY_LILYCOVE_TORCHIC        666 //TODO #UNUSED
 #define TRAINER_JONAH                       667
 #define TRAINER_HENRY                       668
 #define TRAINER_ROGER                       669
@@ -772,8 +772,8 @@
 #define TRAINER_MYLES                       765
 #define TRAINER_PAT                         766
 #define TRAINER_CRISTIN_1                   767
-#define TRAINER_MAY_RUSTBORO_TREECKO        768
-#define TRAINER_MAY_RUSTBORO_TORCHIC        769
+#define TRAINER_MAY_RUSTBORO_TREECKO        768 //TODO #UNUSED
+#define TRAINER_MAY_RUSTBORO_TORCHIC        769 //TODO #UNUSED
 #define TRAINER_ROXANNE_2                   770
 #define TRAINER_ROXANNE_3                   771
 #define TRAINER_ROXANNE_4                   772
@@ -857,15 +857,17 @@
 #define TRAINER_EVERETT                     850
 #define TRAINER_RED                         851
 #define TRAINER_LEAF                        852
-#define TRAINER_BRENDAN_PLACEHOLDER         853
-#define TRAINER_MAY_PLACEHOLDER             854
+#define TRAINER_BRENDAN_PLACEHOLDER         853 //TODO #UNUSED
+#define TRAINER_MAY_PLACEHOLDER             854 //TODO #UNUSED
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     855
-#define MAX_TRAINERS_COUNT_EMERALD 864
+#define TRAINER_TOBY_1 855
+#define TRAINER_RUEBEN 856
+#define TRAINERS_COUNT 857
+#define MAX_TRAINERS_COUNT 866
 
 #if IS_FRLG
 #define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG
