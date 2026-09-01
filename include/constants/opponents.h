@@ -140,7 +140,7 @@
 #define TRAINER_JESSICA_3                   133
 #define TRAINER_JESSICA_4                   134
 #define TRAINER_JESSICA_5                   135
-#define TRAINER_WINSTON_1                   136 //TODO Mike
+#define TRAINER_WINSTON_1                   136
 #define TRAINER_MOLLIE                      137
 #define TRAINER_GARRET                      138
 #define TRAINER_WINSTON_2                   139
@@ -864,11 +864,20 @@
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINER_TOBY_1 855
-#define TRAINER_RUEBEN 856
+#define TRAINER_TOBY_1      855
+#define TRAINER_RL_REUBEN   856
+#define TRAINER_RL_MIKE     857 //Work mate
+#define TRAINER_RL_KARL     858 //Work mate
+#define TRAINER_RL_CRAIG    859 //Work mate
+#define TRAINER_RL_TJ       860
+#define TRAINER_ADAM_1      861
+#define TRAINER_ELLY        862
+#define TRAINER_CAITLIN     863
+#define TRAINER_BEN_G       864
+#define TRAINER_JACOB_G     865
 
-#define TRAINERS_COUNT_EMERALD     857
-#define MAX_TRAINERS_COUNT_EMERALD 866
+#define TRAINERS_COUNT_EMERALD     (TRAINER_JACOB_G + 1)
+#define MAX_TRAINERS_COUNT_EMERALD (TRAINERS_COUNT_EMERALD + 9)
 
 #if IS_FRLG
 #define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG

@@ -17102,3 +17102,53 @@ Double Battle: No
 Kyogre
 Level: 5
 
+
+=== TRAINER_TOBY_1 ===
+Name: Toby
+Class: Toby
+Pic: toby
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move
+
+Mimikyu
+Level: 9
+
+
+=== TRAINER_RL_REUBEN ===
+Name: Reuben
+Class: Youngster
+Pic: rich_boy
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Torchic
+Level: 8
+
+=== TRAINER_RL_MIKE ===
+Name: Mike
+Class: Worker
+Pic: Cooltrainer M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Mr_Mime
+Level: 10
+
+=== TRAINER_RL_KARL ===
+Name: Mike
+Class: Worker
+Pic: Cooltrainer M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Mr_Mime
+Level: 10
+
