@@ -894,7 +894,7 @@ Route104_EventScript_RematchHaley::
 	end
 
 Route104_EventScript_Winston::
-	trainerbattle_single TRAINER_WINSTON_1, Route104_Text_WinstonIntro, Route104_Text_WinstonDefeat, Route104_EventScript_TryRegisterWinstonAfterBattle
+	trainerbattle_single TRAINER_RL_MIKE, Route104_Text_WinstonIntro, Route104_Text_WinstonDefeat, Route104_EventScript_TryRegisterWinstonAfterBattle
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, Route104_EventScript_RematchWinston
 	setvar VAR_0x8004, TRAINER_WINSTON_1
@@ -995,8 +995,38 @@ Route104_EventScript_Darian::
 	end
 
 Route104_EventScript_Rueben::
-
+    trainerbattle_single TRAINER_RL_REUBEN, Route104_Text_ReubenIntro, Route104_Text_ReubenDefeat
+    msgbox Route104_Text_ReubenPostBattle, MSGBOX_AUTOCLOSE
     end
+
+Route104_EventScript_Karl::
+    trainerbattle_single TRAINER_RL_KARL, Route104_Text_KarlIntro, Route104_Text_KarlDefeat
+    msgbox Route104_Text_KarlPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+Route104_Text_ReubenIntro::
+    .string "Hey Andrew! Isn't this so cool!?\n"
+    .string "Toby added us to the game!\p"
+    .string "I have to beat you now, so no\n"
+    .string "hard feelings, okay?$"
+
+Route104_Text_ReubenDefeat::
+    .string "Haha, well, you were meant to win…$"
+
+Route104_Text_ReubenPostBattle::
+    .string "Good luck, mate! There is many\n"
+    .string "others you know on ahead!$"
+
+
+Route104_Text_KarlIntro::
+    .string "Game on, Andrew!$"
+
+Route104_Text_KarlDefeat::
+    .string "GG!$"
+
+Route104_Text_KarlPostBattle::
+    .string "Sadly, BMO isn't obtainable. Because\n"
+    .string "Toby ran out of time.$"
 
 Route104_Text_BrineyLivesInSeasideCottage:
 	.string "That seaside cottage is where\n"

@@ -176,64 +176,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     /* You may add any custom species below this point based on the following structure: */
 
+    #include "species_info/gen_custom_families.h"
 
-    [SPECIES_YOURSELF] =
-    {
-        .baseHP        = 1,
-        .baseAttack    = 1,
-        .baseDefense   = 1,
-        .baseSpeed     = 1,
-        .baseSpAttack  = 1,
-        .baseSpDefense = 1,
-        .types = MON_TYPES(TYPE_MYSTERY),
-        .catchRate = 255,
-        .expYield = 0,
-        .evYield_HP = 1,
-        .evYield_Defense = 1,
-        .evYield_SpDefense = 1,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 1,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_NONE, ABILITY_STALL },
-        .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("Yourself"),
-        .cryId = CRY_YOURSELF,
-        .natDexNum = NATIONAL_DEX_NONE,
-        .categoryName = _("Unknown"),
-        .height = 0,
-        .weight = 0,
-        .description = COMPOUND_STRING(
-            "You scanned yourself with the pokedex.\n"
-            "Good job."
-            ),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonBackPic_Yourself,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Yourself,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 7,
-        .backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Yourself,
-        .shinyPalette = gMonShinyPalette_CircledQuestionMark,
-        .iconSprite = gMonIcon_QuestionMark,
-        .iconPalIndex = 0,
-        FOOTPRINT(QuestionMark)
-        .levelUpLearnset = sNoneLevelUpLearnset,
-        .teachableLearnset = sNoneTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 100, SPECIES_NONE},
-                                {EVO_ITEM, ITEM_MOOMOO_MILK, SPECIES_NONE}),
-        //.formSpeciesIdTable = sNoneFormSpeciesIdTable,
-        //.formChangeTable = sNoneFormChangeTable,
-        //.perfectIVCount = NUM_STATS,
-    },
 };
 
 const struct EggData gEggDatas[EGG_ID_COUNT] =

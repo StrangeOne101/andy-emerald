@@ -7,6 +7,9 @@
 const u32 gMonBackPic_Yourself[] = INCGFX_U32("graphics/pokemon/yourself/back.png", ".4bpp.smol");
 const u16 gMonPalette_Yourself[] = INCGFX_U16("graphics/pokemon/yourself/normal.pal", ".gbapal");
 
+const u32 gMonFrontPic_BMO[] = INCGFX_U32("graphics/pokemon/bmo/anim_front.png", ".4bpp.smol");
+const u16 gMonPalette_BMO[] = INCGFX_U16("graphics/pokemon/bmo/normal.pal", ".gbapal");
+const u16 gMonShinyPalette_BMO[] = INCGFX_U16("graphics/pokemon/bmo/shiny.pal", ".gbapal");
 
 const u32 gMonFrontPic_CircledQuestionMark[] = INCGFX_U32("graphics/pokemon/question_mark/circled/anim_front.png", ".4bpp.smol");
 const u32 gMonBackPic_CircledQuestionMark[] = INCGFX_U32("graphics/pokemon/question_mark/circled/back.png", ".4bpp.smol");

@@ -647,6 +647,7 @@ EventScript_WhiteOut::
 
 EventScript_AfterWhiteOutHeal::
 	lockall
+	setspeaker SP_NAME_NURSE_JOY
 	msgbox gText_FirstShouldRestoreMonsHealth
 	call EventScript_PkmnCenterNurse_TakeAndHealPkmn
 	call_if_unset FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsgPreFirstBoss
@@ -658,10 +659,12 @@ EventScript_AfterWhiteOutHeal::
 	end
 
 EventScript_AfterWhiteOutHealMsgPreFirstBoss::
+    setspeaker SP_NAME_NURSE_JOY
 	msgbox gText_MonsHealedShouldBuyPotions
 	return
 
 EventScript_AfterWhiteOutHealMsg::
+    setspeaker SP_NAME_NURSE_JOY
 	msgbox gText_MonsHealed
 	return
 
@@ -670,6 +673,7 @@ EventScript_AfterWhiteOutMomHeal::
 	textcolor NPC_TEXT_COLOR_FEMALE
 	applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
+	setspeaker SP_NAME_MOM
 	msgbox gText_HadQuiteAnExperienceTakeRest
 	call Common_EventScript_OutOfCenterPartyHeal
 	msgbox gText_MomExplainHPGetPotions
@@ -1008,27 +1012,18 @@ gText_MonsHealed::
 	.string "We hope you excel!$"
 
 gText_HadQuiteAnExperienceTakeRest::
-	.string "MOM: {PLAYER}!\n"
-	.string "Welcome home.\p"
-	.string "It sounds like you had quite\n"
-	.string "an experience.\p"
-	.string "Maybe you should take a quick\n"
-	.string "rest.$"
+	.string "{PLAYER}! What are you doing here?\p"
+	.string "…\p"
+	.string "You got a POKéMON? And it fainted?\n"
+	.string "Seriously?! Come on, you can do\n"
+	.string "better than that!$"
 
 gText_MomExplainHPGetPotions::
-	.string "MOM: Oh, good! You and your\n"
-	.string "POKéMON are looking great.\p"
-	.string "I just heard from {STR_VAR_1}.\p"
-	.string "He said that POKéMON's energy is\n"
-	.string "measured in HP.\p"
-	.string "If your POKéMON lose their HP,\n"
-	.string "you can restore them at any\l"
-	.string "POKéMON CENTER.\p"
-	.string "If you're going to travel far away,\n"
-	.string "the smart TRAINER stocks up on\l"
-	.string "POTIONS at the POKéMON MART.\p"
-	.string "Make me proud, honey!\p"
-	.string "Take care!$"
+	.string "There. Now stop fainting so much.\n"
+	.string "The game isn't THAT hard…\p"
+	.string "…\p"
+	.string "Come on, now! Shoo! I have things\n"
+	.string "to do!$"
 
 gText_RegisteredTrainerinPokeNav::
 	.string "Registered {STR_VAR_1} {STR_VAR_2}\n"

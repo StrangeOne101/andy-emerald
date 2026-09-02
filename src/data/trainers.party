@@ -2166,7 +2166,7 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 
 === TRAINER_CINDY_1 ===
-Name: CINDY
+Name: NPC D
 Class: Lady
 Pic: Lady
 Gender: Female
@@ -2272,7 +2272,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 
 === TRAINER_CINDY_3 ===
-Name: CINDY
+Name: NPC D
 Class: Lady
 Pic: Lady
 Gender: Female
@@ -2287,7 +2287,7 @@ IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
 
 === TRAINER_CINDY_4 ===
-Name: CINDY
+Name: NPC D
 Class: Lady
 Pic: Lady
 Gender: Female
@@ -2302,7 +2302,7 @@ IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
 
 === TRAINER_CINDY_5 ===
-Name: CINDY
+Name: NPC D
 Class: Lady
 Pic: Lady
 Gender: Female
@@ -2317,7 +2317,7 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 
 === TRAINER_CINDY_6 ===
-Name: CINDY
+Name: NPC D
 Class: Lady
 Pic: Lady
 Gender: Female
@@ -2582,7 +2582,7 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 
 === TRAINER_WINSTON_1 ===
-Name: WINSTON
+Name: NPC F
 Class: Rich Boy
 Pic: Rich Boy
 Gender: Male
@@ -2627,7 +2627,7 @@ Level: 45
 
 
 === TRAINER_WINSTON_2 ===
-Name: WINSTON
+Name: NPC F
 Class: Rich Boy
 Pic: Rich Boy
 Gender: Male
@@ -2641,7 +2641,7 @@ Level: 27
 
 
 === TRAINER_WINSTON_3 ===
-Name: WINSTON
+Name: NPC F
 Class: Rich Boy
 Pic: Rich Boy
 Gender: Male
@@ -2655,7 +2655,7 @@ Level: 30
 
 
 === TRAINER_WINSTON_4 ===
-Name: WINSTON
+Name: NPC F
 Class: Rich Boy
 Pic: Rich Boy
 Gender: Male
@@ -2669,7 +2669,7 @@ Level: 33
 
 
 === TRAINER_WINSTON_5 ===
-Name: WINSTON
+Name: NPC F
 Class: Rich Boy
 Pic: Rich Boy
 Gender: Male
@@ -6467,7 +6467,7 @@ Level: 15
 
 
 === TRAINER_IVAN ===
-Name: IVAN
+Name: NPC Fisherman
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
@@ -13145,7 +13145,7 @@ Level: 8
 
 
 === TRAINER_DARIAN ===
-Name: DARIAN
+Name: NPC E
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
@@ -17149,6 +17149,59 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Mr_Mime
+BMO
 Level: 10
 
+=== TRAINER_RL_CRAIG ===
+Name: Craig
+Class: Worker
+Pic: Cooltrainer M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Vulpix
+Level: 10
+
+=== TRAINER_RL_TJ ===
+Name: TJ
+Class: Youngster
+Pic: rich_boy
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Komala
+Level: 10
+
+=== TRAINER_ELLY ===
+Name: Elly
+Class: Youngster
+Pic: rich_girl
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Umbreon
+Level: 12
+
+Loudred
+Level: 12
+
+=== TRAINER_CAITLIN ===
+Name: Caitlin
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Miltank
+Level: 12
+
+Snorlax
+Level: 12
