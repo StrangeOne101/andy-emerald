@@ -122,6 +122,8 @@ const u16 gFacilityClassToPicIndex[] =
     [FACILITY_CLASS_TOBY]               = TRAINER_PIC_TOBY,
     [FACILITY_CLASS_ADAM]               = TRAINER_PIC_ADAM,
     [FACILITY_CLASS_BB_PRIVATE]         = TRAINER_PIC_BB_PRIVATE,
+    [FACILITY_CLASS_SKULL_GRUNT]        = TRAINER_PIC_SKULL_GRUNT_F,
+    [FACILITY_CLASS_WORKER]             = TRAINER_PIC_WORKER,
 };
 
 const enum TrainerClassID gFacilityClassToTrainerClass[] =
@@ -248,4 +250,8 @@ const enum TrainerClassID gFacilityClassToTrainerClass[] =
     [FACILITY_CLASS_BB_PRIVATE]         = TRAINER_CLASS_BB_PRIVATE,
     [FACILITY_CLASS_ADAM]               = TRAINER_CLASS_ADAM,
     [FACILITY_CLASS_TOBY]               = TRAINER_CLASS_TOBY,
+    [FACILITY_CLASS_SKULL_GRUNT]        = TRAINER_CLASS_SKULL_GRUNT,
+    [FACILITY_CLASS_SKULL_LEADER]       = TRAINER_CLASS_SKULL_LEADER,
+    [FACILITY_CLASS_WORKER]             = TRAINER_CLASS_WORKER,
+
 };

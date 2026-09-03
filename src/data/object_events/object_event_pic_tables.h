@@ -652,6 +652,22 @@ static const struct SpriteFrameImage sPicTable_Jennifer[] = {
         overworld_ascending_frames(gObjectEventPic_Jennifer, 2, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_SkullGruntF[] = {
+    overworld_ascending_frames(gObjectEventPic_SkullGruntF, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SkullGruntM[] = {
+    overworld_ascending_frames(gObjectEventPic_SkullGruntM, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SkullLeader[] = {
+    overworld_ascending_frames(gObjectEventPic_SkullLeader, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SamsonOak[] = {
+    overworld_ascending_frames(gObjectEventPic_SamsonOak, 2, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_Max[] = {
     overworld_ascending_frames(gObjectEventPic_Max, 2, 2),
 };

@@ -256,6 +256,15 @@ PetalburgWoods_EventScript_Girl::
 	release
 	end
 
+PetalburgWoods_EventScript_Beedrill::
+    lock
+    faceplayer
+    setwildbattle SPECIES_BEEDRILL, 15
+    dowildbattle
+    setflag FLAG_HIDDEN_ITEM_PETALBURG_WOODS_POTION
+    release
+    end
+
 PetalburgWoods_EventScript_ExplainMiracleSeed::
 	msgbox PetalburgWoods_Text_MiracleSeedExplanation, MSGBOX_DEFAULT
 	release
@@ -320,57 +329,55 @@ PetalburgWoods_Text_NotAOneToBeFound:
 	.string "Not a one to be found…$"
 
 PetalburgWoods_Text_HaveYouSeenShroomish:
-	.string "Hello, have you seen any POKéMON\n"
-	.string "called SHROOMISH around here?\p"
-	.string "I really love that POKéMON.$"
+	.string "Have you seen any POKéMON called\n"
+	.string "SHROOMISH around here?\p"
+	.string "It's spores are top notch.$"
 
 PetalburgWoods_Text_IWasGoingToAmbushYou:
-	.string "I was going to ambush you, but you\n"
-	.string "had to dawdle in PETALBURG WOODS\l"
-	.string "forever, didn't you?\p"
-	.string "I got sick of waiting, so here I am!$"
+	.string "Yo-yo-yo! What's up, y'all?\n"
+	.string "There's just so many trainers\l"
+	.string "in PETALBURG WOODS, y'know?$"
 
 PetalburgWoods_Text_HandOverThosePapers:
-	.string "You! DEVON RESEARCHER!\p"
-	.string "Hand over those papers!$"
+	.string "So! You! Hand over your lunch money!$"
 
 PetalburgWoods_Text_YouHaveToHelpMe:
-	.string "Aiyeeeh!\p"
-	.string "You're a POKéMON TRAINER, aren't you?\n"
-	.string "You've got to help me, please!$"
+	.string "Huh? My… lunch money?\p"
+	.string "Hey, do you know this guy? What\n"
+	.string "is up with him?$"
 
 PetalburgWoods_Text_NoOneCrossesTeamAqua:
-	.string "Hunh? What do you think you're doing?\n"
-	.string "What, you're going to protect him?\p"
-	.string "No one who crosses TEAM AQUA\n"
-	.string "gets any mercy, not even a kid!\p"
-	.string "Come on and battle me!$"
+	.string "MORE lunch money? Lucky me!\p"
+	.string "…\l"
+	.string "Actually, you look kind of poor.\p"
+	.string "Do you even own a house? I bet not.\n"
+	.string "Well, time to battle! If you loose,\p"
+	.string "I get your money! Rules are rules!$"
 
 PetalburgWoods_Text_YoureKiddingMe:
 	.string "You're kidding me! You're tough!$"
 
 PetalburgWoods_Text_YouveGotSomeNerve:
-	.string "Grrr… You've got some nerve\n"
-	.string "meddling with TEAM AQUA!\l"
-	.string "Come on and battle me again!\p"
-	.string "I wish I could say that, but I'm out of\n"
-	.string "POKéMON…\p"
-	.string "And, hey, we of TEAM AQUA are also\n"
-	.string "after something in RUSTBORO.\p"
-	.string "I'll let you go today!$"
+	.string "Wow, yo! I did not expect this kid\l"
+	.string "…sorry, {LQ}young adult{RQ}, to be\n"
+	.string "this intense!\p"
+	.string "…\p"
+	.string "Well, I lost, and by the rules, that\n"
+	.string "means I gotta skedaddle!"
+	.string "…\p"
+	.string "How am I going to pay rent now!?$"
 
 PetalburgWoods_Text_ThatWasAwfullyClose:
-	.string "Whew…\n"
-	.string "That was awfully close!\p"
-	.string "Thanks to you, he didn't rob me of\n"
-	.string "these important papers.\p"
-	.string "I know, I'll give you a GREAT BALL as\n"
-	.string "my thanks!$"
+	.string "…\l"
+	.string "I'm so confused.\p"
+	.string "Well, thanks to you, he didn't rob me\n"
+	.string "of my {LQ}lunch money{RQ}. He didn't even\p"
+	.string "seem interested in the important\n"
+	.string "research papers I had on me! Smh my head.$"
 
 PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro:
-	.string "Didn't that TEAM AQUA thug say\n"
-	.string "they were after something in\l"
-	.string "RUSTBORO, too?$"
+	.string "Did that dude escape some institute\n"
+	.string "or something? Crazy.$"
 
 PetalburgWoods_Text_ICantBeWastingTime:
 	.string "Uh-oh! It's a crisis!\n"
@@ -427,17 +434,15 @@ PetalburgWoods_Text_IveBeenTrainingHard:
 	.string "So, I've been training hard.$"
 
 PetalburgWoods_Text_StayOutOfTallGrass:
-	.string "Yo, there!\n"
-	.string "Your POKéMON doing okay?\p"
-	.string "If your POKéMON are weak and you want\n"
-	.string "to avoid battles, you should stay out\l"
-	.string "of tall grass.$"
+	.string "Careful around here!\n"
+	.string "Someone recently imported a ton of\p"
+	.string "BUG type POKéMON from other regions\n"
+	.string "and dumped them in PETALBURG WOODS.\p"
+	.string "So watch your step!$"
 
 PetalburgWoods_Text_HiddenItemsExplanation:
-	.string "Sometimes, there are things on the\n"
-	.string "ground even if you can't see them.\p"
-	.string "That's why I always check where I'm\n"
-	.string "walking.$"
+	.string "I saw a weird guy hanging around here…\n"
+	.string "But then he just up and disappeared!$"
 
 PetalburgWoods_Text_TryUsingThisItem:
 	.string "Oh, neat!\n"

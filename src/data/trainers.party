@@ -221,15 +221,18 @@ Level: 26
 
 === TRAINER_GRUNT_PETALBURG_WOODS ===
 Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Class: Team Skull
+Pic: Skull Grunt M
 Gender: Male
 Music: Aqua
 Double Battle: No
 AI: Check Bad Move
 
-Poochyena
-Level: 9
+Rattata Alola
+Level: 8
+
+Yungoos
+Level: 8
 
 
 === TRAINER_MARCEL ===
@@ -6467,7 +6470,7 @@ Level: 15
 
 
 === TRAINER_IVAN ===
-Name: NPC Fisherman
+Name: NPC Fisher
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
@@ -11455,7 +11458,7 @@ Level: 4
 
 
 === TRAINER_LYLE ===
-Name: LYLE
+Name: NPE LYLE
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -11466,13 +11469,13 @@ AI: Check Bad Move
 Wurmple
 Level: 3
 
-Wurmple
+Weedle
 Level: 3
 
-Wurmple
+Caterpie
 Level: 3
 
-Wurmple
+Spinarak
 Level: 3
 
 
@@ -11540,7 +11543,7 @@ Level: 25
 
 
 === TRAINER_JAMES_1 ===
-Name: JAMES
+Name: NPC JAMES
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -11551,7 +11554,7 @@ AI: Check Bad Move
 Nincada
 Level: 6
 
-Nincada
+Ledyba
 Level: 6
 
 
@@ -17179,7 +17182,7 @@ Level: 10
 === TRAINER_ELLY ===
 Name: Elly
 Class: Youngster
-Pic: rich_girl
+Pic: Lass2
 Gender: Female
 Music: Female
 Double Battle: No

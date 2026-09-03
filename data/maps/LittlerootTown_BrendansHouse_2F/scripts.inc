@@ -293,6 +293,7 @@ PlayersHouse_2F_EventScript_GameCube::
 	end
 
 PlayersHouse_2F_EventScript_MewTwo::
+    faceplayer
     setwildbattle SPECIES_MEWTWO, 50
     dowildbattle
     setflag FLAG_LITTLEROOT_MEWTWO
