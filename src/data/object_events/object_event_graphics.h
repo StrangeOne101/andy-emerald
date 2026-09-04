@@ -46,6 +46,7 @@ const u16 gObjectEventPal_SkullGruntF[] = INCGFX_U16("graphics/object_events/pal
 const u16 gObjectEventPal_SkullGruntM[] = INCGFX_U16("graphics/object_events/palettes/skull_grunt_m.pal", ".gbapal");
 const u16 gObjectEventPal_SkullLeader[] = INCGFX_U16("graphics/object_events/palettes/guzma.pal", ".gbapal");
 const u16 gObjectEventPal_SamsonOak[] = INCGFX_U16("graphics/object_events/palettes/samson_oak.pal", ".gbapal");
+const u16 gObjectEventPal_Toby[] = INCGFX_U16("graphics/object_events/palettes/toby.pal", ".gbapal");
 const u16 gObjectEventPal_Null16[16] = {};
 const u16 gObjectEventPal_Null17[16] = {};
 const u16 gObjectEventPal_Null18[16] = {};
@@ -407,6 +408,7 @@ const u32 gObjectEventPic_SkullGruntF[] = INCGFX_U32("graphics/object_events/pic
 const u32 gObjectEventPic_SkullGruntM[] = INCGFX_U32("graphics/object_events/pics/people/team_skull/skull_member_m.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_SkullLeader[] = INCGFX_U32("graphics/object_events/pics/people/team_skull/skull_leader.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_SamsonOak[] = INCGFX_U32("graphics/object_events/pics/people/samson_oak.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_Toby[] = INCGFX_U32("graphics/object_events/pics/people/toby.png", ".4bpp", "-mwidth 2 -mheight 4");
 
 #if OW_FOLLOWERS_POKEBALLS
 const u32 gObjectEventPic_MasterBall[] = INCGFX_U32("graphics/object_events/pics/misc/ball_master.png", ".4bpp", "-mwidth 2 -mheight 4");

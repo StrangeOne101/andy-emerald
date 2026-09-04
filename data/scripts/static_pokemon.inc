@@ -21,3 +21,30 @@ EventScript_AwakenSnorlax::
 	waitfanfare
 	msgbox Text_SnorlaxWokeUp
 	return
+
+Common_EventScript_Marill::
+    lock
+    faceplayer
+    waitse
+    playmoncry SPECIES_MARILL, CRY_MODE_NORMAL
+    msgbox Common_Text_Marill, MSGBOX_DEFAULT
+    waitmoncry
+    release
+    end
+
+Common_Text_Marill:
+    .string "Marill!$"
+
+Common_EventScript_Skitty::
+    lock
+    faceplayer
+    waitse
+    playmoncry SPECIES_SKITTY, CRY_MODE_NORMAL
+    msgbox Common_Text_Skitty, MSGBOX_DEFAULT
+    waitmoncry
+    release
+    end
+
+Common_Text_Marill:
+    .string "Skiii!$"
+

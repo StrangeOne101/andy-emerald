@@ -221,7 +221,7 @@ Level: 26
 
 === TRAINER_GRUNT_PETALBURG_WOODS ===
 Name: GRUNT
-Class: Team Skull
+Class: Skull Grunt
 Pic: Skull Grunt M
 Gender: Male
 Music: Aqua
@@ -17111,12 +17111,16 @@ Name: Toby
 Class: Toby
 Pic: toby
 Gender: Male
-Music: Intense
+Music: Gym
 Double Battle: No
 AI: Check Bad Move
 
 Mimikyu
 Level: 9
+
+Wooper Paldean
+Level: 9
+Gender: Male
 
 
 === TRAINER_RL_REUBEN ===

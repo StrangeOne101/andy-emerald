@@ -23,11 +23,11 @@ LittlerootTown_MaysHouse_1F_ReprintMay:
     @applymovement LOCALID_RIVALS_HOUSE_1F_MOM, LittlerootTown_MaysHouse_1F_Movement_RivalMomApproach
     @waitmovement 0
     setspeaker MaysMumName
-    msgbox RivalsHouse_1F_Text_RivalMum_KidnappedMay, MSGBOX_DEFAULT
+    msgbox RivalsHouse_1F_Text_RivalMum_KidnappedMay, MSGBOX_NPC
     applymovement LOCALID_PLAYER, LittlerootTown_MaysHouse_1F_Movement_PlayerSitDown
     waitmovement 0
     setspeaker MaysMumName
-    msgbox RivalsHouse_1F_Text_RivalMum_KidnappedMay2, MSGBOX_DEFAULT
+    msgbox RivalsHouse_1F_Text_RivalMum_KidnappedMay2, MSGBOX_NPC
     applymovement LOCALID_RIVALS_HOUSE_1F_MOM, LittlerootTown_MaysHouse_1F_Movement_ApproachButton
     waitmovement 0
     applymovement LOCALID_PLAYER, Common_Movement_FaceUp
@@ -92,7 +92,7 @@ LittlerootTown_MaysHouse_1F_ReprintMay:
     delay 80
     applymovement LOCALID_RIVALS_HOUSE_1F_MOM, LittlerootTown_MaysHouse_1F_Movement_MumSitDownAgain
     setspeaker MaysMumName
-    msgbox LittlerootTown_MaysHouse_1F_Text_MayReborn5, MSGBOX_DEFAULT
+    msgbox LittlerootTown_MaysHouse_1F_Text_MayReborn5, MSGBOX_NPC
     setflag FLAG_MAY_REPRINTED
     setflag FLAG_ADVENTURE_STARTED
     setvar VAR_OLDALE_TOWN_STATE, 2

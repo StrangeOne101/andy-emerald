@@ -3,7 +3,6 @@
   "name": "OldaleTown",
   "layout": "LAYOUT_OLDALE_TOWN",
   "music": "MUS_OLDALE",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_OLDALE_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -87,10 +86,10 @@
       "flag": "FLAG_HIDE_OLDALE_TOWN_RIVAL"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SKITTY",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SKITTY)",
       "x": 14,
       "y": 14,
-      "elevation": 0,
+      "elevation": 5,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
@@ -249,5 +248,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "Common_EventScript_ShowPokemartSign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

@@ -668,6 +668,10 @@ static const struct SpriteFrameImage sPicTable_SamsonOak[] = {
     overworld_ascending_frames(gObjectEventPic_SamsonOak, 2, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Toby[] = {
+    overworld_ascending_frames(gObjectEventPic_Toby, 2, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_Max[] = {
     overworld_ascending_frames(gObjectEventPic_Max, 2, 2),
 };

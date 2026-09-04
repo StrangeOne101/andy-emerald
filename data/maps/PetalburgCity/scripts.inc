@@ -9,7 +9,12 @@ PetalburgCity_OnTransition:
 	call_if_eq VAR_PETALBURG_CITY_STATE, 2, PetalburgCity_EventScript_DisableMapNameAndMusic
 	call_if_eq VAR_PETALBURG_CITY_STATE, 4, PetalburgCity_EventScript_DisableMapNameAndMusic
 	call_if_eq VAR_PETALBURG_GYM_STATE, 8, PetalburgCity_EventScript_SetGymDoorsUnlocked
+	call_if_set FLAG_TOBY_PETALBURG, PetalburgCity_SetToby
 	end
+
+PetalburgCity_SetToby:
+    setvar VAR_TEMP_2, 1
+    end
 
 PetalburgCity_EventScript_MoveGymBoyToWestEntrance::
 	setobjectxyperm LOCALID_GYM_BOY, 5, 11
@@ -92,6 +97,39 @@ PetalburgCity_EventScript_Boy::
 PetalburgCity_EventScript_WallysMom::
 	msgbox PetalburgCity_Text_WhereIsWally, MSGBOX_NPC
 	end
+
+PetalburgCity_EventScript_TobyTrigger::
+    lockall
+    setvar VAR_0x8004, 11
+    setvar VAR_0x8005, 28
+    opendoor VAR_0x8004, VAR_0x8005
+    addobject LOCALID_PETALBURG_TOBY
+    setobjectxy LOCALID_PETALBURG_TOBY, 11, 28
+    applymovement LOCALID_PETALBURG_TOBY, Common_Movement_WalkDown
+    waitmovement 0
+    closedoor VAR_0x8004, VAR_0x8005
+    msgbox PetalburgCity_Text_TobyGreet, MSGBOX_DEFAULT
+    closemessage
+    trainerbattle_no_intro TRAINER_TOBY_1, BattleStrings_Toby_Defeat
+    msgbox PetalburgCity_Text_TobyGreet2, MSGBOX_NPC
+    applymovement LOCALID_PETALBURG_TOBY, PetalburgCity_Movement_TobyWalkOff
+    setflag FLAG_TOBY_PETALBURG
+    setvar VAR_TEMP_2, 1
+    removeobject LOCALID_PETALBURG_TOBY
+    waitmovement 0
+    releaseall
+    end
+
+PetalburgCity_Movement_TobyWalkOff:
+    walk_left
+    walk_left
+    walk_left
+    walk_left
+    walk_left
+    walk_left
+    walk_left
+    walk_left
+    step_end
 
 PetalburgCity_Movement_WalkToWallyHousePlayer:
 	delay_8
@@ -586,12 +624,6 @@ PetalburgCity_EventScript_ScottExit3::
 	return
 
 PetalburgCity_Movement_ScottStartWalkLeft:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
 PetalburgCity_Movement_ScottApproachPlayer:
 	walk_left
 	walk_left
@@ -758,3 +790,62 @@ PetalburgCity_Text_ImLookingForTalentedTrainers:
 	.string "I'm roaming the land in search of\n"
 	.string "talented TRAINERS.\p"
 	.string "I'm sorry to have taken your time.$"
+
+PetalburgCity_Text_TobyGreet:
+    .string "Hey there, mate.\n"
+    .string "Surprised to see me?\p"
+    .string "Indeed, it is I! Tobias Maximus\n"
+    .string "the Third!\p"
+    .string "…\p"
+    .string "Anyway, it was about time for me\n"
+    .string "to show up. I made this entire\p"
+    .string "game, after all. So why, you may\n"
+    .string "ask?\p"
+    .string "For a battle, of course!\p"
+    .string "…\p"
+    .string "Come on! You totally expected\n"
+    .string "that! This IS a POKéMON game,\l"
+    .string "after all.\p"
+    .string "Also, from this point on, some\n"
+    .string "people, myself included, will\l"
+    .string "use POKéMON from other regions.\p"
+    .string "My favourites are diverse! Of\n"
+    .string "I'm going to spend effort adding\l"
+    .string "them in!"
+    .string "(Like Mimikyu)\p"
+    .string "If you beat me, I'll give you\n"
+    .string "some high quality information\l"
+    .string "about this ROM. Trust!\p"
+    .string "Now, battle me!$".
+
+BattleStrings_PetalburgToby_Defeat::
+    .string "Nicely done!$"
+
+PetalburgCity_Text_TobyGreet2:
+    .string "Good job! As you saw, I had\n"
+    .string "Mimikyu and Paldean Wooper.\p"
+    .string "Wooper evolves into the most\n"
+    .string "handsome boy, so I'll use him\l"
+    .string "again later on.\p"
+    .string "Now onto what I promised!\p"
+    .string "From now on, you will encounter\n"
+    .string "trainers that are people you\l"
+    .string "know IRL.\p"
+    .string "Some of these people have parts\n"
+    .string "to play, some are just trainers.\p"
+    .string "Some will use their favourite\n"
+    .string "POKéMON, some I had to guess.\p"
+    .string "Additionally, I have hidden\n"
+    .string "myself on a random tile in each\l"
+    .string "route.\p"
+    .string "If you walk across said tile, I\n"
+    .string "will appear and battle you.\p"
+    .string "Each time you defeat me, I will\n"
+    .string "unlock something special in the\l"
+    .string "game. This time around, it was\p"
+    .string "just information. Other times,\n"
+    .string "it can be quite significant.\p"
+    .string "So see if you can find me in\n"
+    .string "each route!\p"
+    .string "That's all for now. Best of\n"
+    .string "luck, Andrew!$"
