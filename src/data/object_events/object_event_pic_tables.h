@@ -676,6 +676,10 @@ static const struct SpriteFrameImage sPicTable_Max[] = {
     overworld_ascending_frames(gObjectEventPic_Max, 2, 2),
 };
 
+static const struct SpriteFrameImage sPicTable_Fire[] = {
+    overworld_ascending_frames(gObjectEventPic_Fire, 2, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_RubySapphireLittleBoy[] = {
     overworld_ascending_frames(gObjectEventPic_RubySapphireLittleBoy, 2, 2),
 };

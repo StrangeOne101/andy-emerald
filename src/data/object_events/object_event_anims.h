@@ -1424,6 +1424,38 @@ static const union AnimCmd sAnim_RayquazaFaceEast[] =
     ANIMCMD_JUMP(0),
 };
 
+static const union AnimCmd sAnim_Fire[] =
+{
+    ANIMCMD_FRAME(0, 4),
+    ANIMCMD_FRAME(1, 4),
+    ANIMCMD_FRAME(2, 4),
+    ANIMCMD_FRAME(3, 4),
+    ANIMCMD_FRAME(4, 4),
+    ANIMCMD_FRAME(5, 4),
+    ANIMCMD_FRAME(6, 4),
+    ANIMCMD_FRAME(7, 4),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_Fire[] = {
+    sAnim_Fire,
+    sAnim_Fire,
+    sAnim_Fire,
+    sAnim_Fire,
+    sAnim_Fire,
+    sAnim_Fire,
+    sAnim_Fire,
+    sAnim_Fire,
+    sAnim_Fire,
+    sAnim_Fire,
+    sAnim_Fire,
+    sAnim_Fire,
+    sAnim_Fire,
+    sAnim_Fire,
+    sAnim_Fire,
+    sAnim_Fire
+};
+
 // Though they correspond to facing/walking movements, Rayquaza doesn't have
 // equivalent images aside from flying up. Its other frames aside from the 'normal'
 // frame are for the sequence where it awakens on Sky Pillar.

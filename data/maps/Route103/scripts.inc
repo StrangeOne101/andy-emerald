@@ -109,7 +109,6 @@ Route103_EventScript_RivalMay::
     setvar VAR_OLDALE_TOWN_STATE, 1
     fadescreen FADE_TO_BLACK
     special ChooseStarter
-    waitstate
     fadescreen FADE_FROM_BLACK
     setspeaker SP_NAME_MAY
     msgbox Route103_Text_MayRoute103Bag3, MSGBOX_NPC

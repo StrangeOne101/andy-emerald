@@ -13,7 +13,7 @@ PetalburgCity_OnTransition:
 	end
 
 PetalburgCity_SetToby:
-    setvar VAR_TEMP_2, 1
+    setvar VAR_TEMP_1, 1
     end
 
 PetalburgCity_EventScript_MoveGymBoyToWestEntrance::
@@ -41,11 +41,14 @@ PetalburgCity_EventScript_WallyTutorial::
 	applymovement LOCALID_PETALBURG_WALLY, PetalburgCity_Movement_WallyTutorialWally
 	applymovement LOCALID_PLAYER, PetalburgCity_Movement_WallyTutorialPlayer
 	waitmovement 0
+	setspeaker SP_NAME_WALLY
 	msgbox Route102_Text_WatchMeCatchPokemon, MSGBOX_DEFAULT
 	special StartWallyTutorialBattle
+	setspeaker SP_NAME_WALLY
 	msgbox Route102_Text_WallyIDidIt, MSGBOX_DEFAULT
 	applymovement LOCALID_PETALBURG_WALLY, Common_Movement_WalkInPlaceFasterLeft, MAP_PETALBURG_CITY
 	waitmovement LOCALID_PETALBURG_WALLY, MAP_PETALBURG_CITY
+	setspeaker SP_NAME_WALLY
 	msgbox Route102_Text_LetsGoBack, MSGBOX_DEFAULT
 	closemessage
 	clearflag FLAG_HIDE_MAP_NAME_POPUP
@@ -98,27 +101,49 @@ PetalburgCity_EventScript_WallysMom::
 	msgbox PetalburgCity_Text_WhereIsWally, MSGBOX_NPC
 	end
 
+PetalburgCity_EventScript_TobyTrigger2::
+    setvar VAR_TEMP_3, 1
+
 PetalburgCity_EventScript_TobyTrigger::
     lockall
-    setvar VAR_0x8004, 11
-    setvar VAR_0x8005, 28
+    setvar VAR_0x8004, 25
+    setvar VAR_0x8005, 12
     opendoor VAR_0x8004, VAR_0x8005
+    waitdooranim
     addobject LOCALID_PETALBURG_TOBY
-    setobjectxy LOCALID_PETALBURG_TOBY, 11, 28
+    setobjectxy LOCALID_PETALBURG_TOBY, 25, 12
     applymovement LOCALID_PETALBURG_TOBY, Common_Movement_WalkDown
     waitmovement 0
     closedoor VAR_0x8004, VAR_0x8005
+    waitdooranim
+    applymovement LOCALID_PETALBURG_TOBY, Common_Movement_FacePlayer
+    waitmovement 0
+    playse SE_PIN
+    applymovement LOCALID_PETALBURG_TOBY, Common_Movement_ExclamationMark
+    waitmovement 0
+    applymovement LOCALID_PETALBURG_TOBY, Common_Movement_Delay48
+    waitmovement 0
+    setspeaker SP_NAME_TOBY
     msgbox PetalburgCity_Text_TobyGreet, MSGBOX_DEFAULT
     closemessage
-    trainerbattle_no_intro TRAINER_TOBY_1, BattleStrings_Toby_Defeat
+    trainerbattle_no_intro TRAINER_TOBY_1, BattleStrings_PetalburgToby_Defeat
+    setspeaker SP_NAME_TOBY
     msgbox PetalburgCity_Text_TobyGreet2, MSGBOX_NPC
+    call_if_eq VAR_TEMP_3, 1, PetalburgCity_Movement_TobyWalkOff0
     applymovement LOCALID_PETALBURG_TOBY, PetalburgCity_Movement_TobyWalkOff
-    setflag FLAG_TOBY_PETALBURG
-    setvar VAR_TEMP_2, 1
-    removeobject LOCALID_PETALBURG_TOBY
     waitmovement 0
+    setflag FLAG_TOBY_PETALBURG
+    setvar VAR_TEMP_1, 1
+    removeobject LOCALID_PETALBURG_TOBY
+
     releaseall
     end
+
+PetalburgCity_Movement_TobyWalkOff0:
+    applymovement LOCALID_PLAYER, Common_Movement_WalkDown
+    applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+    waitmovement 0
+    return
 
 PetalburgCity_Movement_TobyWalkOff:
     walk_left
@@ -322,9 +347,36 @@ PetalburgCity_EventScript_ShowGymToPlayer::
 	closemessage
 	applymovement LOCALID_GYM_BOY, PetalburgCity_Movement_BoyWalkAway
 	waitmovement 0
+	msgbox PetalburgCity_Text_DidIAsk, MSGBOX_DEFAULT
 	fadedefaultbgm
 	releaseall
 	end
+
+Common_EventScript_Marill::
+    lock
+    faceplayer
+    waitse
+    playmoncry SPECIES_MARILL, CRY_MODE_NORMAL
+    msgbox Common_Text_Marill, MSGBOX_DEFAULT
+    waitmoncry
+    release
+    end
+
+Common_Text_Marill:
+    .string "Marill!$"
+
+Common_EventScript_Skitty::
+    lock
+    faceplayer
+    waitse
+    playmoncry SPECIES_SKITTY, CRY_MODE_NORMAL
+    msgbox Common_Text_Skitty, MSGBOX_DEFAULT
+    waitmoncry
+    release
+    end
+
+Common_Text_Skitty:
+    .string "Skiii!$"
 
 PetalburgCity_EventScript_BoyApproachPlayer0::
 	applymovement LOCALID_GYM_BOY, PetalburgCity_Movement_BoyApproachPlayer0
@@ -578,16 +630,19 @@ PetalburgCity_EventScript_Scott::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	setvar VAR_SCOTT_STATE, 1
+	setspeaker SP_NAME_SCOTT
 	msgbox PetalburgCity_Text_AreYouATrainer, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_PETALBURG_SCOTT, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	delay 30
+	setspeaker SP_NAME_SCOTT
 	msgbox PetalburgCity_Text_WellMaybeNot, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_PETALBURG_SCOTT, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	delay 30
+	setspeaker SP_NAME_SCOTT
 	msgbox PetalburgCity_Text_ImLookingForTalentedTrainers, MSGBOX_DEFAULT
 	closemessage
 	call_if_eq VAR_0x8008, 0, PetalburgCity_EventScript_ScottExit0
@@ -750,17 +805,16 @@ PetalburgCity_Text_ThisIsGymSign:
 	.string "whenever you're looking for a GYM.$"
 
 PetalburgCity_Text_WaterReflection:
-	.string "My face is reflected in the water.\p"
-	.string "It's a shining grin full of hope…\p"
-	.string "Or it could be a look of somber silence\n"
-	.string "struggling with fear…\p"
-	.string "What do you see reflected in your face?$"
+	.string "If I jumped in the water, do you think\p"
+	.string "I'd drown?\p"
+	.string "…\p"
+	.string "Probably not… Sigh…$"
 
 PetalburgCity_Text_FullPartyExplanation:
-	.string "Let's say you have six POKéMON.\n"
-	.string "If you catch another one…\p"
-	.string "It is automatically sent to a STORAGE\n"
-	.string "BOX over a PC connection.$"
+	.string "It's been very interesting here since\n"
+	.string "Samson Oak came to visit.\p"
+	.string "It's great for new trainers that need\n"
+	.string "a POKéDEX, too.$"
 
 PetalburgCity_Text_GymSign:
 	.string "PETALBURG CITY POKéMON GYM\n"
@@ -811,22 +865,22 @@ PetalburgCity_Text_TobyGreet:
     .string "use POKéMON from other regions.\p"
     .string "My favourites are diverse! Of\n"
     .string "I'm going to spend effort adding\l"
-    .string "them in!"
+    .string "them into Emerald!\p"
     .string "(Like Mimikyu)\p"
     .string "If you beat me, I'll give you\n"
     .string "some high quality information\l"
     .string "about this ROM. Trust!\p"
-    .string "Now, battle me!$".
+    .string "Now, battle me!$"
 
 BattleStrings_PetalburgToby_Defeat::
     .string "Nicely done!$"
 
 PetalburgCity_Text_TobyGreet2:
     .string "Good job! As you saw, I had\n"
-    .string "Mimikyu and Paldean Wooper.\p"
+    .string "a Paldean Wooper from Gen IX.\p"
     .string "Wooper evolves into the most\n"
     .string "handsome boy, so I'll use him\l"
-    .string "again later on.\p"
+    .string "again later on when he evolves.\p"
     .string "Now onto what I promised!\p"
     .string "From now on, you will encounter\n"
     .string "trainers that are people you\l"
@@ -849,3 +903,9 @@ PetalburgCity_Text_TobyGreet2:
     .string "each route!\p"
     .string "That's all for now. Best of\n"
     .string "luck, Andrew!$"
+
+PetalburgCity_Text_DidIAsk:
+    .string "(Did I ask?)$"
+
+SP_NAME_SCOTT::
+    .string "Scott$"

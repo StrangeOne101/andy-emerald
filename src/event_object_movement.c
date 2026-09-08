@@ -556,6 +556,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_SkullLeader,           OBJ_EVENT_PAL_TAG_SKULL_LEADER},
     {gObjectEventPal_SamsonOak,             OBJ_EVENT_PAL_TAG_SAMSON_OAK},
     {gObjectEventPal_Toby,                  OBJ_EVENT_PAL_TAG_TOBY},
+    {gObjectEventPal_Fire,                  OBJ_EVENT_PAL_TAG_FIRE},
 #if OW_FOLLOWERS_POKEBALLS
     {gObjectEventPal_MasterBall,            OBJ_EVENT_PAL_TAG_BALL_MASTER},
     {gObjectEventPal_UltraBall,             OBJ_EVENT_PAL_TAG_BALL_ULTRA},

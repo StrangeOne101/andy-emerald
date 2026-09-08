@@ -326,7 +326,7 @@ PetalburgWoods_EventScript_JamesRematch::
 
 PetalburgWoods_Text_NotAOneToBeFound:
 	.string "Hmmm…\n"
-	.string "Not a one to be found…$"
+	.string "Not a single one to be found…$"
 
 PetalburgWoods_Text_HaveYouSeenShroomish:
 	.string "Have you seen any POKéMON called\n"

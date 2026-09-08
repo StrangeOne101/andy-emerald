@@ -596,15 +596,15 @@
 #define TRAINER_GRUNT_SPACE_CENTER_6        589
 #define TRAINER_GRUNT_SPACE_CENTER_7        590
 #define TRAINER_MACEY                       591
-#define TRAINER_BRENDAN_RUSTBORO_TREECKO    592 //TODO #UNUSED
-#define TRAINER_BRENDAN_RUSTBORO_MUDKIP     593 //TODO #UNUSED
+#define TRAINER_UNUSED_592                  592 //TODO #UNUSED
+#define TRAINER_UNUSED_593                  593 //TODO #UNUSED
 #define TRAINER_PAXTON                      594
 #define TRAINER_ISABELLA                    595
 #define TRAINER_GRUNT_WEATHER_INST_5        596
 #define TRAINER_TABITHA_MT_CHIMNEY          597
 #define TRAINER_JONATHAN                    598
-#define TRAINER_BRENDAN_RUSTBORO_TORCHIC    599 //TODO #UNUSED
-#define TRAINER_MAY_RUSTBORO_MUDKIP         600 //TODO #UNUSED
+#define TRAINER_UNUSED_599                  599 //TODO #UNUSED
+#define TRAINER_UNUSED_600                  600 //TODO #UNUSED
 #define TRAINER_MAXIE_MAGMA_HIDEOUT         601
 #define TRAINER_MAXIE_MT_CHIMNEY            602
 #define TRAINER_TIANA                       603
@@ -665,12 +665,12 @@
 #define TRAINER_WALLY_VR_3                  658
 #define TRAINER_WALLY_VR_4                  659
 #define TRAINER_WALLY_VR_5                  660
-#define TRAINER_BRENDAN_LILYCOVE_MUDKIP     661 //TODO #UNUSED
-#define TRAINER_BRENDAN_LILYCOVE_TREECKO    662 //TODO #UNUSED
-#define TRAINER_BRENDAN_LILYCOVE_TORCHIC    663 //TODO #UNUSED
-#define TRAINER_MAY_LILYCOVE_MUDKIP         664 //TODO #UNUSED
-#define TRAINER_MAY_LILYCOVE_TREECKO        665 //TODO #UNUSED
-#define TRAINER_MAY_LILYCOVE_TORCHIC        666 //TODO #UNUSED
+#define TRAINER_TOBY_2                      661
+#define TRAINER_TOBY_3                      662 //TODO TOBY
+#define TRAINER_TOBY_4                      663
+#define TRAINER_TOBY_5                      664
+#define TRAINER_TOBY_6                      665
+#define TRAINER_MAY_LILYCOVE                666
 #define TRAINER_JONAH                       667
 #define TRAINER_HENRY                       668
 #define TRAINER_ROGER                       669
@@ -772,8 +772,8 @@
 #define TRAINER_MYLES                       765
 #define TRAINER_PAT                         766
 #define TRAINER_CRISTIN_1                   767
-#define TRAINER_MAY_RUSTBORO_TREECKO        768 //TODO #UNUSED
-#define TRAINER_MAY_RUSTBORO_TORCHIC        769 //TODO #UNUSED
+#define TRAINER_MAY_RUSTBORO                768
+#define TRAINER_UNUSED_769                  769 //TODO #UNUSED
 #define TRAINER_ROXANNE_2                   770
 #define TRAINER_ROXANNE_3                   771
 #define TRAINER_ROXANNE_4                   772
