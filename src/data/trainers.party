@@ -315,13 +315,16 @@ Level: 34
 === TRAINER_GRUNT_RUSTURF_TUNNEL ===
 Name: GRUNT
 Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
+Pic: Aqua Grunt F
+Gender: Female
 Music: Aqua
 Double Battle: No
 AI: Check Bad Move
 
-Poochyena
+Zubat
+Level: 11
+
+Drowzee
 Level: 11
 
 
