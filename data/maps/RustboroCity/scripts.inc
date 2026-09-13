@@ -216,7 +216,7 @@ RustboroCity_EventScript_GymSign::
 	end
 
 RustboroCity_EventScript_GymDoor::
-    goto_if_lt VAR_RUSTBORO_CITY_STATE, 4, RustboroCity_EventScript_GymDoorLocked
+    goto_if_lt VAR_RUSTBORO_CITY_STATE, 5, RustboroCity_EventScript_GymDoorLocked
     goto_if_eq VAR_RUSTBORO_CITY_STATE, 4, RustboroCity_EventScript_GymDoorLocked4
     end @ Do nothing if the door is unlocked
 
@@ -249,6 +249,7 @@ RustboroCity_EventScript_GymDoorLocked5:
     delay 20
     msgbox RustboroCity_Text_GymDoorKey3, MSGBOX_SIGN
     setmetatile 27, 19, 0x1CD, 0 @Set the tile back to gym
+    setvar VAR_RUSTBORO_CITY_STATE, 5
     end
 
 @ Unused
@@ -346,21 +347,25 @@ RustboroCity_EventScript_Rival::
 
 RustboroCity_EventScript_RivalHint1::
     goto_if_unset FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1, RustboroCity_EventScript_MayBrineyHint
+    setspeaker SP_NAME_MAY2
     msgbox RustboroCity_Text_TownHint1, MSGBOX_NPC
     releaseall
     end
 
 RustboroCity_EventScript_RivalHint2::
+    setspeaker SP_NAME_MAY2
     msgbox RustboroCity_Text_TownHint2, MSGBOX_NPC
     releaseall
     end
 
 RustboroCity_EventScript_RivalHint3::
+    setspeaker SP_NAME_MAY2
     msgbox RustboroCity_Text_TownHint3, MSGBOX_NPC
     releaseall
     end
 
 RustboroCity_EventScript_RivalHint4::
+    setspeaker SP_NAME_MAY2
     msgbox RustboroCity_Text_TownHint4, MSGBOX_NPC
     releaseall
     end
@@ -537,6 +542,7 @@ RustboroCity_EventScript_BattleMayTreecko::
 RustboroCity_EventScript_Grunt::
     lock
     trainerbattle_single TRAINER_GRUNT_RUSTURF_TUNNEL, RusturfTunnel_Text_GruntIntro, RusturfTunnel_Text_GruntDefeat
+    msgbox RusturfTunnel_Text_GruntPostDefeat, MSGBOX_DEFAULT
     release
     end
 
@@ -548,7 +554,7 @@ RustboroCity_EventScript_JacobG::
 
 RustboroCity_EventScript_BenG::
     lock
-    trainerbattle_single TRAINER_Ben_G, RusturfTunnel_Text_BenIntro, RusturfTunnel_Text_BenDefeat
+    trainerbattle_single TRAINER_BEN_G, RusturfTunnel_Text_BenIntro, RusturfTunnel_Text_BenDefeat
     release
     end
 
@@ -891,7 +897,6 @@ RustboroCity_Text_GymDoorKey2:
 RustboroCity_Text_GymDoorKey3:
     .string "You unlock the Gym!$"
 
-
 RusturfTunnel_Text_JacobIntro:
     .string "I don't want to work$"
 
@@ -910,5 +915,9 @@ RusturfTunnel_Text_GruntIntro:
 	.string "now, punk!$"
 
 RusturfTunnel_Text_GruntDefeat:
-	.string "Urrrggh! There's nothing I can do\n"
+	.string "Ugh! There's nothing I can do\n"
 	.string "to you with your strength!$"
+
+RusturfTunnel_Text_GruntPostDefeat:
+	.string "I thought trainers in the first GYM\n"
+	.string "area would be easy pickings…$"

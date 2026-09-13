@@ -17,6 +17,7 @@ script RustboroCity_House3_2F_Adam {
     if (var(VAR_RUSTBORO_CITY_STATE) == 3) {
         msgbox(RustboroCity_House3_2F_AdamBattle, MSGBOX_NPC)
         trainerbattle_no_intro(TRAINER_ADAM_1, RustboroCity_House3_2F_AdamBatteDefeat)
+        setspeaker("Adam")
         msgbox(RustboroCity_House3_2F_AdamBattleWin, MSGBOX_NPC)
         closemessage
         playfanfare(MUS_OBTAIN_ITEM)
@@ -52,6 +53,7 @@ script RustboroCity_House3_2F_CharmanderEgg {
     playfanfare(MUS_OBTAIN_ITEM)
     message("Andrew picked up the figure(?)!")
     waitfanfare
+    closemessage
     giveegg(SPECIES_CHARMANDER)
     setflag(FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT)
     removeobject(LOCALID_ADAMS_CHARMANDER_EGG)

@@ -314,19 +314,15 @@ Level: 34
 
 === TRAINER_GRUNT_RUSTURF_TUNNEL ===
 Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt F
+Class: Skull Grunt
+Pic: Skull Grunt F
 Gender: Female
-Music: Aqua
+Music: Female
 Double Battle: No
 AI: Check Bad Move
 
 Zubat
 Level: 11
-
-Drowzee
-Level: 11
-
 
 === TRAINER_GRUNT_WEATHER_INST_1 ===
 Name: GRUNT

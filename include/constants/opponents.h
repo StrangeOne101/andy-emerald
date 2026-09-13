@@ -524,24 +524,9 @@
 #define TRAINER_EDWIN_4                     517
 #define TRAINER_EDWIN_5                     518
 #define TRAINER_WALLY_VR_1                  519
-#define TRAINER_BRENDAN_ROUTE_103_MUDKIP    520 //TODO #UNUSED
-#define TRAINER_BRENDAN_ROUTE_110_MUDKIP    521 //TODO #UNUSED
-#define TRAINER_BRENDAN_ROUTE_119_MUDKIP    522 //TODO #UNUSED
-#define TRAINER_BRENDAN_ROUTE_103_TREECKO   523 //TODO #UNUSED
-#define TRAINER_BRENDAN_ROUTE_110_TREECKO   524 //TODO #UNUSED
-#define TRAINER_BRENDAN_ROUTE_119_TREECKO   525 //TODO #UNUSED
-#define TRAINER_BRENDAN_ROUTE_103_TORCHIC   526 //TODO #UNUSED
-#define TRAINER_BRENDAN_ROUTE_110_TORCHIC   527 //TODO #UNUSED
-#define TRAINER_BRENDAN_ROUTE_119_TORCHIC   528 //TODO #UNUSED
 #define TRAINER_MAY_ROUTE_103_MUDKIP        529
-#define TRAINER_MAY_ROUTE_110_MUDKIP        530 //TODO #UNUSED
-#define TRAINER_MAY_ROUTE_119_MUDKIP        531 //TODO #UNUSED
 #define TRAINER_MAY_ROUTE_103_TREECKO       532
-#define TRAINER_MAY_ROUTE_110_TREECKO       533 //TODO #UNUSED
-#define TRAINER_MAY_ROUTE_119_TREECKO       534 //TODO #UNUSED
 #define TRAINER_MAY_ROUTE_103_TORCHIC       535
-#define TRAINER_MAY_ROUTE_110_TORCHIC       536 //TODO #UNUSED
-#define TRAINER_MAY_ROUTE_119_TORCHIC       537 //TODO #UNUSED
 #define TRAINER_ISAAC_1                     538
 #define TRAINER_DAVIS                       539
 #define TRAINER_MITCHELL                    540
@@ -572,7 +557,6 @@
 #define TRAINER_CATHERINE_5                 565
 #define TRAINER_JULIO                       566
 #define TRAINER_GRUNT_SEAFLOOR_CAVERN_5     567
-#define TRAINER_GRUNT_UNUSED                568
 #define TRAINER_GRUNT_MT_PYRE_4             569
 #define TRAINER_GRUNT_JAGGED_PASS           570
 #define TRAINER_MARC                        571
@@ -596,15 +580,11 @@
 #define TRAINER_GRUNT_SPACE_CENTER_6        589
 #define TRAINER_GRUNT_SPACE_CENTER_7        590
 #define TRAINER_MACEY                       591
-#define TRAINER_UNUSED_592                  592 //TODO #UNUSED
-#define TRAINER_UNUSED_593                  593 //TODO #UNUSED
 #define TRAINER_PAXTON                      594
 #define TRAINER_ISABELLA                    595
 #define TRAINER_GRUNT_WEATHER_INST_5        596
 #define TRAINER_TABITHA_MT_CHIMNEY          597
 #define TRAINER_JONATHAN                    598
-#define TRAINER_UNUSED_599                  599 //TODO #UNUSED
-#define TRAINER_UNUSED_600                  600 //TODO #UNUSED
 #define TRAINER_MAXIE_MAGMA_HIDEOUT         601
 #define TRAINER_MAXIE_MT_CHIMNEY            602
 #define TRAINER_TIANA                       603
@@ -773,7 +753,6 @@
 #define TRAINER_PAT                         766
 #define TRAINER_CRISTIN_1                   767
 #define TRAINER_MAY_RUSTBORO                768
-#define TRAINER_UNUSED_769                  769 //TODO #UNUSED
 #define TRAINER_ROXANNE_2                   770
 #define TRAINER_ROXANNE_3                   771
 #define TRAINER_ROXANNE_4                   772
@@ -863,6 +842,30 @@
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
+
+
+
+#define TRAINER_BRENDAN_ROUTE_103_MUDKIP    520 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_110_MUDKIP    521 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_119_MUDKIP    522 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_103_TREECKO   523 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_110_TREECKO   524 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_119_TREECKO   525 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_103_TORCHIC   526 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_110_TORCHIC   527 //TODO #UNUSED
+#define TRAINER_BRENDAN_ROUTE_119_TORCHIC   528 //TODO #UNUSED
+#define TRAINER_MAY_ROUTE_110_TREECKO       533 //TODO #UNUSED
+#define TRAINER_MAY_ROUTE_119_TREECKO       534 //TODO #UNUSED
+#define TRAINER_MAY_ROUTE_110_MUDKIP        530 //TODO #UNUSED
+#define TRAINER_MAY_ROUTE_119_MUDKIP        531 //TODO #UNUSED
+#define TRAINER_MAY_ROUTE_110_TORCHIC       536 //TODO #UNUSED
+#define TRAINER_MAY_ROUTE_119_TORCHIC       537 //TODO #UNUSED
+#define TRAINER_GRUNT_UNUSED                568 //TODO #UNUSED
+#define TRAINER_UNUSED_592                  592 //TODO #UNUSED
+#define TRAINER_UNUSED_593                  593 //TODO #UNUSED
+#define TRAINER_UNUSED_599                  599 //TODO #UNUSED
+#define TRAINER_UNUSED_600                  600 //TODO #UNUSED
+#define TRAINER_UNUSED_769                  769 //TODO #UNUSED
 
 #define TRAINER_TOBY_1      855
 #define TRAINER_RL_REUBEN   856

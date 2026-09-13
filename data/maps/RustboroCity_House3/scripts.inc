@@ -1,16 +1,9 @@
 RustboroCity_House3_MapScripts::
+    map_script MAP_SCRIPT_ON_FRAME_TABLE, RustboroCity_House3_OnEnter
 	.byte 0
 
-RustboroCity_House3_EventScript_OldMan::
-	@msgbox RustboroCity_House3_Text_IGivePerfectlySuitedNicknames, MSGBOX_NPC
-	end
-
-RustboroCity_House3_EventScript_OldWoman::
-	@msgbox RustboroCity_House3_Text_NamingPikachuPekachu, MSGBOX_NPC
-	end
-
 RustboroCity_House3_OnEnter::
-    call_if_eq VAR_RUSTBORO_CITY_STATE, 2, RustboroCity_House3_CaitlinBattle
+    map_script_2 VAR_RUSTBORO_CITY_STATE, 2, RustboroCity_House3_CaitlinBattle0
     end
 
 RustboroCity_House3_Caitlin::
@@ -27,8 +20,13 @@ RustboroCity_House3_Elly::
     release
     end
 
+RustboroCity_House3_CaitlinBattle0::
+    call_if_unset FLAG_TEMP_9, RustboroCity_House3_CaitlinBattle
+    end
+
 RustboroCity_House3_CaitlinBattle::
     lock
+    setflag FLAG_TEMP_9
     setspeaker SP_NAME_CAITLIN
     applymovement LOCALID_RUSTBORO_HOUSE3_CAITLIN, Common_Movement_FaceDown
     waitmovement 0
@@ -74,7 +72,12 @@ RustboroCity_House3_CaitlinBattle::
     msgbox RustboroCity_House3_Text_Caitlin4, MSGBOX_DEFAULT
     trainerbattle_no_intro TRAINER_CAITLIN, RustboroCity_House3_Text_CaitlinDefeat
     setvar VAR_RUSTBORO_CITY_STATE, 3 @ Mark Caitlin and Elly defeated
-    release
+    setspeaker SP_NAME_CAITLIN
+    msgbox RustboroCity_House3_Text_CaitlinPostBattle, MSGBOX_DEFAULT
+    applymovement LOCALID_RUSTBORO_HOUSE3_ELLY, RustboroCity_House3_Movement_EllyReturnToSeat
+    applymovement LOCALID_RUSTBORO_HOUSE3_CAITLIN, RustboroCity_House3_Movement_CaitlinReturnToSeat
+    waitmovement 0
+    releaseall
     end
 
 RustboroCity_House3_MovementCaitlin:
@@ -91,13 +94,13 @@ RustboroCity_House3_MovementCaitlin2:
     step_end
 
 RustboroCity_House3_MovementElly:
-    walk_faster_down
-    walk_faster_down
+    walk_fast_down
+    walk_fast_down
     face_right
     step_end
 
 RustboroCity_House3_MovementElly2:
-    walk_faster_right
+    walk_fast_right
     face_down
     step_end
 
@@ -111,6 +114,19 @@ RustboroCity_House3_MovementCaitlinBattle:
     face_down
     step_end
 
+RustboroCity_House3_Movement_EllyReturnToSeat:
+    walk_left
+    walk_up
+    face_right
+    step_end
+
+RustboroCity_House3_Movement_CaitlinReturnToSeat:
+    walk_up
+    walk_right
+    walk_right
+    walk_up
+    face_left
+    step_end
 
 SP_NAME_CAITLIN::
     .string "Caitlin$"
@@ -154,6 +170,13 @@ RustboroCity_House3_Text_Caitlin4:
 
 RustboroCity_House3_Text_CaitlinDefeat:
     .string "Impressive!$"
+
+RustboroCity_House3_Text_CaitlinPostBattle:
+    .string "Your POKéMON are so strong!\n"
+    .string "Anyway, Adam is downstairs in the\p"
+    .string "D&D room if you want to see him.\n"
+    .string "I think he's working on stuff for\p"
+    .string "next session. Why don't you say hi?$"
 
 RustboroCity_House3_Text_EllyGeneric:
     .string "If you find any more Miku\n"

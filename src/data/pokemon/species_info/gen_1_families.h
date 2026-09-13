@@ -5685,7 +5685,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .cryId = CRY_JIGGLYPUFF,
         .natDexNum = NATIONAL_DEX_JIGGLYPUFF,
         .categoryName = _("Balloon"),
-        .height = 5,
+        .height = 7,
         .weight = 55,
         .description = COMPOUND_STRING(
             "Nothing can avoid falling asleep hearing a\n"
@@ -5693,7 +5693,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             "singing voice match the brain waves of\n"
             "someone in a deep sleep."),
         .pokemonScale = 433,
-        .pokemonOffset = 2,
+        .pokemonOffset = 5,
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Jigglypuff,
