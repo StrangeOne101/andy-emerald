@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_RUSTBORO_HOUSE3_ADAM",
       "graphics_id": "OBJ_EVENT_GFX_POKEFAN_M",
       "x": 5,
       "y": 7,
@@ -24,8 +25,22 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_House3_EventScript_OldWoman",
+      "script": "RustboroCity_House3_2F_Adam",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ADAMS_CHARMANDER_EGG",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(EGG)",
+      "x": 10,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RustboroCity_House3_2F_CharmanderEgg",
+      "flag": "FLAG_TEMP_1"
     }
   ],
   "warp_events": [

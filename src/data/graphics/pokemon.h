@@ -6288,7 +6288,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 
 #if P_FAMILY_MOLTRES
 #if !P_GBA_STYLE_SPECIES_GFX
-    const u32 gMonFrontPic_Moltres[] = INCGFX_U32("graphics/pokemon/moltres/front.png", ".4bpp.smol");
+    const u32 gMonFrontPic_Moltres[] = INCGFX_U32("graphics/pokemon/moltres/anim_front.png", ".4bpp.smol");
     const u16 gMonPalette_Moltres[] = INCGFX_U16("graphics/pokemon/moltres/normal.pal", ".gbapal");
     const u32 gMonBackPic_Moltres[] = INCGFX_U32("graphics/pokemon/moltres/back.png", ".4bpp.smol");
     const u16 gMonShinyPalette_Moltres[] = INCGFX_U16("graphics/pokemon/moltres/shiny.pal", ".gbapal");

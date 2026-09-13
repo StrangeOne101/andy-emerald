@@ -27,36 +27,43 @@ RustboroCity_House1_EventScript_TradeCompleted::
 	end
 
 RustboroCity_House1_EventScript_Hiker::
-	msgbox RustboroCity_House1_Text_AllSortsOfPlaces, MSGBOX_NPC
+    goto_if_set FLAG_RUSTBORO_NPC_TRADE_COMPLETED, RustboroCity_House1_EventScript_Hiker2
+	msgbox RustboroCity_House1_Text_AllSortsOfPlaces0, MSGBOX_NPC
 	end
 
+RustboroCity_House1_EventScript_Hiker2::
+    msgbox RustboroCity_House1_Text_AllSortsOfPlaces, MSGBOX_NPC
+    end
+
 RustboroCity_House1_Text_IllTradeIfYouWant:
-	.string "Huh? My POKéMON is cute?\n"
-	.string "Sure, I knew that.\p"
-	.string "But if you really want, I'm willing\n"
-	.string "to trade it to you.\p"
-	.string "I'll trade you my {STR_VAR_2} for\n"
-	.string "a {STR_VAR_1} if you want.$"
+	.string "Hey! Yeah, you!\p"
+	.string "I have a KADABRA that I want to\n"
+	.string "evolve. So how about it?\p"
+	.string "I'll trade you my KADABRA for\p"
+	.string "another KADABRA!\n"
+	.string "How about it?$"
 
 RustboroCity_House1_Text_PleaseBeGoodToMyPokemon:
-	.string "Eheheh…\n"
-	.string "Please be good to my POKéMON.$"
+	.string "Enjoy!$"
 
 RustboroCity_House1_Text_DoesntLookLikeMonToMe:
 	.string "Huh? That doesn't look anything like\n"
 	.string "a {STR_VAR_1} to me.$"
 
 RustboroCity_House1_Text_YouDontWantToThatsOkay:
-	.string "Oh, if you don't want to, that's okay.\n"
-	.string "But my POKéMON is cute, you know…$"
+	.string "No worries. I will be here if\n"
+	.string "you change your mind.$"
 
 RustboroCity_House1_Text_AnyPokemonCanBeCute:
-	.string "Any POKéMON can be cute if you raise\n"
-	.string "it with care and kindness.$"
+    .string "Hahahaha! Sucker!\n"
+    .string "I got an Alakazam now! Hahahahaha!$"
+
+RustboroCity_House1_Text_AllSortsOfPlaces0:
+    .string "Sigh… My brother will not listen\n"
+    .string "to me…$"
 
 RustboroCity_House1_Text_AllSortsOfPlaces:
-	.string "In all sorts of places, there are all\n"
-	.string "sorts of POKéMON and people.\p"
-	.string "I find that fascinating, so I go to all\n"
-	.string "sorts of places.$"
+	.string "My brother is an idiot. You don't even\n"
+	.string "need to trade KADABRA to evolve it in\p"
+	.string "this ROM hack.$"
 

@@ -1,7 +1,7 @@
 {
   "id": "MAP_RUSTBORO_CITY_HOUSE3",
   "name": "RustboroCity_House3",
-  "layout": "LAYOUT_RUSTBORO_CITY_HOUSE",
+  "layout": "LAYOUT_RUSTBORO_CITY_HOUSE3_1F",
   "music": "MUS_RUSTBORO",
   "region_map_section": "MAPSEC_RUSTBORO_CITY",
   "requires_flash": false,
@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_RUSTBORO_HOUSE3_ELLY",
       "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
       "x": 4,
       "y": 5,
@@ -24,10 +25,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_House3_EventScript_OldMan",
+      "script": "RustboroCity_House3_Elly",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_RUSTBORO_HOUSE3_CAITLIN",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(MILTANK)",
       "x": 7,
       "y": 5,
@@ -37,7 +39,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_House3_EventScript_OldWoman",
+      "script": "RustboroCity_House3_Caitlin",
       "flag": "0"
     }
   ],

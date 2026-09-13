@@ -61,8 +61,8 @@
 #define FLAG_TOBY_PETALBURG_WOODS    0x27
 #define FLAG_TOBY_ODALE        0x28
 #define FLAG_TOBY_RUSTBORO     0x29
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
+#define FLAG_TOBY_ROUTE_115    0x2A
+#define FLAG_TOBY_ROUTE_116    0x2B
 #define FLAG_UNUSED_0x02C    0x2C // Unused Flag
 #define FLAG_UNUSED_0x02D    0x2D // Unused Flag
 #define FLAG_UNUSED_0x02E    0x2E // Unused Flag
@@ -779,8 +779,8 @@
 #define FLAG_LITTLEROOT_MEWTWO                                      0x2D9 // TODO MEWTWO FLAG
 
 #define FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER                     0x2DA
-#define FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT                          0x2DB
-#define FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1                    0x2DC
+#define FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT                          0x2DB //TODO REMAPPED TO EGG OF CHARMANDER
+#define FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1                    0x2DC //TODO Seen the inside of ITM
 #define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_ASLEEP              0x2DD
 #define FLAG_HIDE_PLAYERS_HOUSE_DAD                                 0x2DE
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING      0x2DF

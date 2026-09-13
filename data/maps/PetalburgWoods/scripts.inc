@@ -294,6 +294,18 @@ PetalburgWoods_EventScript_James::
 	release
 	end
 
+PetalburgWoods_EventScript_TJ::
+	trainerbattle_single TRAINER_RL_TJ, PetalburgWoods_Text_TJIntro, PetalburgWoods_Text_TJDefeat
+	msgbox PetalburgWoods_Text_TJPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+PetalburgWoods_EventScript_Craig::
+	trainerbattle_single TRAINER_RL_CRAIG, PetalburgWoods_Text_CraigIntro, PetalburgWoods_Text_CraigDefeat
+	msgbox PetalburgWoods_Text_CraigPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
 PetalburgWoods_EventScript_TryRegisterJames::
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
@@ -475,4 +487,27 @@ PetalburgWoods_Text_TrainerTipsPP:
 	.string "make moves during battle.\p"
 	.string "If a POKéMON runs out of PP, it must be\n"
 	.string "taken to a POKéMON CENTER.$"
+
+PetalburgWoods_Text_TJIntro:
+    .string "Living in Australia doesn't stop me\n"
+    .string "from being in this ROM hack!$"
+
+PetalburgWoods_Text_TJDefeat:
+    .string "It does apparently stop me from\n"
+    .string "winning though!$"
+
+PetalburgWoods_Text_TJPostBattle:
+    .string "I mostly got the Furfrou because I\n"
+    .string "can test my hairstyling on it.$"
+
+PetalburgWoods_Text_CraigIntro:
+    .string "Fire pokemon in a forest! Definitely\n"
+    .string "a good idea!$"
+
+PetalburgWoods_Text_CraigDefeat:
+    .string "You put out my fire!$"
+
+PetalburgWoods_Text_CraigPostBattle:
+    .string "I don't know why Toby put me in\n"
+    .string "a forest when I have a FIRE pokemon.$"
 

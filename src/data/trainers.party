@@ -4902,35 +4902,35 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 
 === TRAINER_ROXANNE_1 ===
-Name: ROXANNE
+Name: BROCK
 Class: Leader
-Pic: Leader Roxanne
-Gender: Female
-Music: Female
+Pic: Leader Brock FRLG
+Gender: Male
+Music: Intense
 Double Battle: No
 Items: Potion / Potion
-AI: Basic Trainer
+AI: Basic Trainer / Check Bad Move / Try to Faint
 
-Geodude
-Level: 12
+Sudowoodo
+Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Tackle
-- Defense Curl
-- Rock Throw
+- Mud Slap
+- Fake Tears
+- Taunt
+- Mimic
+
+Aerodactyl
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Agility
+- Bite
+- Wing Attack
 - Rock Tomb
 
-Geodude
-Level: 12
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Tackle
-- Defense Curl
-- Rock Throw
-- Rock Tomb
-
-Nosepass @ Oran Berry
-Level: 15
+Onix @ Oran Berry
+Level: 16
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Block
+- Bind
 - Harden
 - Tackle
 - Rock Tomb
@@ -6118,7 +6118,7 @@ Level: 7
 
 
 === TRAINER_JOSH ===
-Name: JOSH
+Name: NPC RG 1
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -6133,7 +6133,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 
 === TRAINER_TOMMY ===
-Name: TOMMY
+Name: NPC RG 2
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -10562,7 +10562,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 
 === TRAINER_MARC ===
-Name: MARC
+Name: NPC RG 3
 Class: Hiker
 Pic: Hiker
 Gender: Male
@@ -16776,15 +16776,18 @@ Level: 10
 
 === TRAINER_RL_TJ ===
 Name: TJ
-Class: Youngster
-Pic: rich_boy
+Class: Stylist
+Pic: stylist
 Gender: Male
 Music: Male
 Double Battle: No
 AI: Basic Trainer
 
 Komala
-Level: 10
+Level: 6
+
+Furfrou
+Level: 8
 
 === TRAINER_ELLY ===
 Name: Elly
@@ -16798,7 +16801,7 @@ AI: Basic Trainer
 Umbreon
 Level: 12
 
-Loudred
+Jigglypuff
 Level: 12
 
 === TRAINER_CAITLIN ===
@@ -16815,3 +16818,45 @@ Level: 12
 
 Snorlax
 Level: 12
+
+=== TRAINER_ADAM_1 ===
+Name: Adam
+Class: Adam
+Pic: Adam
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer / Check Bad Move
+
+Beldum
+Level: 13
+
+Lucario
+Level: 13
+
+Gardevoir
+Level: 13
+
+=== TRAINER_JACOB_G ===
+Name: Jacob G
+Class: Unemployed
+Pic: Unemployed
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Stunfisk
+Level: 10
+
+=== TRAINER_BEN_G ===
+Name: Ben G
+Class: Officer
+Pic: Leader Koga FRLG
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Heracross
+Level: 14

@@ -2,10 +2,12 @@ RustboroCity_Gym_MapScripts::
 	.byte 0
 
 RustboroCity_Gym_EventScript_Roxanne::
+    setspeaker SP_NAME_BROCK
 	trainerbattle_single TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneIntro, RustboroCity_Gym_Text_RoxanneDefeat, RustboroCity_Gym_EventScript_RoxanneDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, RustboroCity_Gym_EventScript_RoxanneRematch
 	goto_if_unset FLAG_RECEIVED_TM_ROCK_TOMB, RustboroCity_Gym_EventScript_GiveRockTomb
+	setspeaker SP_NAME_BROCK
 	msgbox RustboroCity_Gym_Text_RoxannePostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -14,10 +16,12 @@ RustboroCity_Gym_EventScript_RoxanneDefeated::
 	message RustboroCity_Gym_Text_ReceivedStoneBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
+	setspeaker SP_NAME_BROCK
 	msgbox RustboroCity_Gym_Text_StoneBadgeInfoTakeThis, MSGBOX_DEFAULT
 	setflag FLAG_DEFEATED_RUSTBORO_GYM
 	setflag FLAG_BADGE01_GET
-	setvar VAR_RUSTBORO_CITY_STATE, 1
+	setvar VAR_RUSTBORO_CITY_STATE, 5
+	setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
 	addvar VAR_PETALBURG_GYM_STATE, 1
 	setvar VAR_0x8008, 1
 	call Common_EventScript_SetGymTrainers
@@ -29,11 +33,13 @@ RustboroCity_Gym_EventScript_GiveRockTomb::
 	giveitem ITEM_TM_ROCK_TOMB
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM_ROCK_TOMB
+	setspeaker SP_NAME_BROCK
 	msgbox RustboroCity_Gym_Text_ExplainRockTomb, MSGBOX_DEFAULT
 	release
 	end
 
 RustboroCity_Gym_EventScript_RoxanneRematch::
+    setspeaker SP_NAME_BROCK
 	trainerbattle_rematch_double TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxannePreRematch, RustboroCity_Gym_Text_RoxanneRematchDefeat, RustboroCity_Gym_Text_RoxanneRematchNeedTwoMons
 	msgbox RustboroCity_Gym_Text_RoxannePostRematch, MSGBOX_AUTOCLOSE
 	end
@@ -175,26 +181,22 @@ RustboroCity_Gym_Text_MarcPostBattle:
 	.string "It took smarts and sense for her to\n"
 	.string "pick the ROCK type at her young age.$"
 
+SP_NAME_BROCK:
+    .string "Brock$"
+
 RustboroCity_Gym_Text_RoxanneIntro:
-	.string "Hello, I am ROXANNE, the RUSTBORO\n"
-	.string "POKéMON GYM LEADER.\p"
-	.string "I became a GYM LEADER so that I might\n"
-	.string "apply what I learned at the POKéMON\l"
-	.string "TRAINER'S SCHOOL in battle.\p"
-	.string "Would you kindly demonstrate how you\n"
-	.string "battle, and with which POKéMON?$"
+	.string "Oh, finally! I was getting worried.\n"
+	.string "I've been standing here ALL DAY, yet\p"
+	.string "no one was turning up! I was beginning\n"
+	.string "to think something happened outside.\p"
+	.string "Anyway! I am BROCK! Do you know\n"
+	.string "NURSE JOY? Introduce me!!!!$"
 
 RustboroCity_Gym_Text_RoxanneDefeat:
-	.string "So…\n"
-	.string "I lost…\p"
-	.string "It seems that I still have much more\n"
-	.string "to learn…\p"
-	.string "I understand.\p"
-	.string "The POKéMON LEAGUE's rules state\n"
-	.string "that TRAINERS are to be given this\l"
-	.string "if they defeat a GYM LEADER.\p"
-	.string "Please accept the official POKéMON\n"
-	.string "LEAGUE STONE BADGE.$"
+	.string "That was some battle!\p"
+	.string "As the GYM LEADER of RUSTBURO CITY,\n"
+	.string "it is my privlidge to present to you\l"
+	.string "the STONE BADGE!$"
 
 RustboroCity_Gym_Text_ReceivedStoneBadge:
 	.string "{PLAYER} received the STONE BADGE\n"
@@ -218,17 +220,20 @@ RustboroCity_Gym_Text_ExplainRockTomb:
 	.string "so think before you use it.$"
 
 RustboroCity_Gym_Text_RoxannePostBattle:
-	.string "Since you are so strong, you should\n"
-	.string "challenge other GYM LEADERS.\p"
-	.string "By battling many TRAINERS, you should\n"
-	.string "learn many things.$"
+	.string "Now that the boring stuff is over,\n"
+	.string "introduce me!\p"
+	.string "I KNOW you've been to the POKéMON\n"
+	.string "CENTER before, right? For some reason\p"
+	.string "I am banned from going in, so could\n"
+	.string "you bring out NURSE JOY and set me\l"
+	.string "up with her?$"
 
 RustboroCity_Gym_Text_GymStatue:
 	.string "RUSTBORO CITY POKéMON GYM$"
 
 RustboroCity_Gym_Text_GymStatueCertified:
 	.string "RUSTBORO CITY POKéMON GYM\p"
-	.string "ROXANNE'S CERTIFIED TRAINERS:\n"
+	.string "BROCK'S CERTIFIED TRAINERS:\n"
 	.string "{PLAYER}$"
 
 RustboroCity_Gym_Text_RoxanneRegisterCall:
@@ -249,7 +254,7 @@ RustboroCity_Gym_Text_RoxanneRegisterCall:
 	.string "… … … … … Click!$"
 
 RustboroCity_Gym_Text_RegisteredRoxanne:
-	.string "Registered GYM LEADER ROXANNE\n"
+	.string "Registered GYM LEADER BROCK\n"
 	.string "in the POKéNAV.$"
 
 RustboroCity_Gym_Text_RoxannePreRematch:

@@ -1,4 +1,5 @@
 RustboroCity_Flat1_1F_MapScripts::
+    map_script MAP_SCRIPT_ON_LOAD, RustboroCity_Flat1_SetDoor
     map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_Flat1_SetFires
 	.byte 0
 
@@ -48,30 +49,27 @@ RustboroCity_Flat1_FireInteract11::
    goto RustboroCity_Flat1_FireInteract
 
 RustboroCity_Flat1_FireInteract::
-    lock
     goto_if_set FLAG_RECEIVED_WAILMER_PAIL, RustboroCity_Flat1_PutOutFire
-    msgbox RustboroCity_Flat1_Text_FireHot, MSGBOX_SIGN
-    closemessage
+    msgbox RustboroCity_Flat1_Text_FireHot, MSGBOX_AUTOCLOSE
     release
     end
 
 RustboroCity_Flat1_PutOutFire::
-    msgbox RustboroCity_Flat1_Text_FireHot, MSGBOX_SIGN
-    closemessage
+    msgbox RustboroCity_Flat1_Text_FireHot, MSGBOX_DEFAULT
     msgbox RustboroCity_Flat1_Text_FireInteract, MSGBOX_YESNO
     goto_if_eq VAR_RESULT, YES, RustboroCity_Flat1_PutOutFireForReal
     release
     end
 
 RustboroCity_Flat1_PutOutFireForReal::
-    msgbox RustboroCity_Flat1_Text_FireInteract2, MSGBOX_SIGN
+    msgbox RustboroCity_Flat1_Text_FireInteract2, MSGBOX_AUTOCLOSE
     closemessage
     playse SE_PUDDLE  @Temp sound
     special DoWateringBerryTreeAnim
     removeobject VAR_LAST_TALKED
     applymovement VAR_LAST_TALKED, Common_Movement_SetInvisible
     setflag VAR_TEMP_2
-    msgbox RustboroCity_Flat1_Text_FireInteract3, MSGBOX_SIGN
+    msgbox RustboroCity_Flat1_Text_FireInteract3, MSGBOX_AUTOCLOSE
     closemessage
     addvar VAR_RUSTBORO_FIRES_EXTINGUISHED, 1
     call_if_eq VAR_RUSTBORO_FIRES_EXTINGUISHED, 11, RustboroCity_Flat1_YouSavedUs
@@ -83,6 +81,10 @@ RustboroCity_Flat1_YouSavedUs::
     setobjectmovementtype 4, MOVEMENT_TYPE_WANDER_AROUND
     setobjectmovementtype 2, MOVEMENT_TYPE_LOOK_AROUND
     setobjectmovementtype 3, MOVEMENT_TYPE_LOOK_AROUND
+    applymovement 1, Common_Movement_FaceLeft
+    applymovement 2, Common_Movement_FaceLeft
+    applymovement 3, Common_Movement_FaceRight
+    applymovement 4, Common_Movement_FaceDown
     msgbox RustboroCity_Flat1_Text_YouSavedUs1, MSGBOX_DEFAULT
     closemessage
     end
@@ -101,12 +103,22 @@ RustboroCity_Flat1_SetFires::
     goto_if_eq VAR_RUSTBORO_FIRES_EXTINGUISHED, 1, RustboroCity_Flat1_DeleteFire1
     end
 
+RustboroCity_Flat1_SetDoor::
+    goto_if_unset FLAG_ITM_DOOR_UNLOCKED, RustboroCity_Flat1_SetDoo2
+    setflag FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1
+    end
+
+RustboroCity_Flat1_SetDoo2::
+    setmetatile 8, 9, 0x2CE, 0x00
+    setmetatile 9, 9, 0x2CF, 0x00
+    end
+
 RustboroCity_Flat1_LockedDoor::
     goto_if_unset FLAG_ITM_DOOR_UNLOCKED, RustboroCity_Flat1_LockedDoor2
     end
 
 RustboroCity_Flat1_LockedDoor2::
-    msgbox RustboroCity_Flat1_Text_DoorLocked, MSGBOX_DEFAULT
+    msgbox RustboroCity_Flat1_Text_DoorLocked, MSGBOX_SIGN
     end
 
 RustboroCity_Flat1_DeleteFire11::
@@ -155,7 +167,10 @@ RustboroCity_Flat1_DeleteFire1::
     end
 
 RustboroCity_Flat1_RightPerson::
-    goto_if_eq VAR_RUSTBORO_FIRES_EXTINGUISHED, 10, RustboroCity_Flat1_WrongPerson2
+    goto_if_eq VAR_RUSTBORO_FIRES_EXTINGUISHED, 11, RustboroCity_Flat1_RightPerson2
+    lock
+    msgbox RustboroCity_Flat1_Text_WrongPerson1OnFire, MSGBOX_NPC
+    release
     end
 
 RustboroCity_Flat1_RightPerson2::
@@ -178,7 +193,7 @@ RustboroCity_Flat1_RightPerson3::
     end
 
 RustboroCity_Flat1_WrongPerson::
-    goto_if_eq VAR_RUSTBORO_FIRES_EXTINGUISHED, 10, RustboroCity_Flat1_WrongPerson2
+    goto_if_eq VAR_RUSTBORO_FIRES_EXTINGUISHED, 11, RustboroCity_Flat1_WrongPerson2
     lock
     msgbox RustboroCity_Flat1_Text_WrongPerson1OnFire, MSGBOX_NPC
     release
@@ -190,24 +205,27 @@ RustboroCity_Flat1_WrongPerson2::
     call_if_eq VAR_TEMP_1, 1, RustboroCity_Flat1_WrongPersonMsg2
     call_if_eq VAR_TEMP_1, 2, RustboroCity_Flat1_WrongPersonMsg3
     call_if_gt VAR_TEMP_1, 2, RustboroCity_Flat1_WrongPersonMsg4
-    addvar VAR_TEMP_1, 1
     release
     end
 
 RustboroCity_Flat1_WrongPersonMsg1::
     msgbox RustboroCity_Flat1_Text_WrongPerson1, MSGBOX_NPC
+    addvar VAR_TEMP_1, 1
     end
 
 RustboroCity_Flat1_WrongPersonMsg2::
     msgbox RustboroCity_Flat1_Text_WrongPerson2, MSGBOX_NPC
+    addvar VAR_TEMP_1, 1
     end
 
 RustboroCity_Flat1_WrongPersonMsg3::
     msgbox RustboroCity_Flat1_Text_WrongPerson3, MSGBOX_NPC
+    addvar VAR_TEMP_1, 1
     end
 
 RustboroCity_Flat1_WrongPersonMsg4::
     msgbox RustboroCity_Flat1_Text_WrongPerson4, MSGBOX_NPC
+    addvar VAR_TEMP_1, 1
     end
 
 RustboroCity_Flat1_Text_FireHot:

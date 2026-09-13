@@ -489,6 +489,8 @@ const u32 gObjectEventPic_ApricornTree[] = INCGFX_U32("graphics/object_events/pi
 
 const u32 gFieldEffectObjectPic_ShinySparkle[] = INCGFX_U32("graphics/field_effects/pics/shiny_sparkle.png", ".4bpp", "-mwidth 2 -mheight 4");
 
+const u16 gObjectEventPic_Brock[] = INCGFX_U16("graphics/object_events/pics/people/brock.png", ".4bpp", "-mwidth 2 -mheight 4");
+
 #if IS_FRLG
 
 const u16 gObjectEventPic_RedNormal[] = INCGFX_U16("graphics/object_events/pics/people/red/red_normal.png", ".4bpp", "-mwidth 2 -mheight 4");
@@ -526,7 +528,7 @@ const u16 gObjectEventPic_Daisy[] = INCGFX_U16("graphics/object_events/pics/peop
 const u16 gObjectEventPic_Lorelei[] = INCGFX_U16("graphics/object_events/pics/people/lorelei.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_Erika[] = INCGFX_U16("graphics/object_events/pics/people/erika.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_Koga[] = INCGFX_U16("graphics/object_events/pics/people/koga.png", ".4bpp", "-mwidth 2 -mheight 4");
-const u16 gObjectEventPic_Brock[] = INCGFX_U16("graphics/object_events/pics/people/brock.png", ".4bpp", "-mwidth 2 -mheight 4");
+
 const u16 gObjectEventPic_LtSurge[] = INCGFX_U16("graphics/object_events/pics/people/lt_surge.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_Bill[] = INCGFX_U16("graphics/object_events/pics/people/bill.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_LittleBoyFrlg[] = INCGFX_U16("graphics/object_events/pics/people/little_boy_frlg.png", ".4bpp", "-mwidth 2 -mheight 2");

@@ -1,0 +1,93 @@
+raw `
+RustboroCity_House3_2F_MapScripts::
+    map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_House3_2F_SetObjects
+    .byte 0
+`
+
+script RustboroCity_House3_2F_SetObjects {
+    if (!flag(FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT) && flag(FLAG_TOBY_ROUTE_115)) {
+        setflag(FLAG_TEMP_1)
+        addobject(LOCALID_ADAMS_CHARMANDER_EGG)
+    }
+}
+
+script RustboroCity_House3_2F_Adam {
+    setspeaker("Adam")
+    lock
+    if (var(VAR_RUSTBORO_CITY_STATE) == 3) {
+        msgbox(RustboroCity_House3_2F_AdamBattle, MSGBOX_NPC)
+        trainerbattle_no_intro(TRAINER_ADAM_1, RustboroCity_House3_2F_AdamBatteDefeat)
+        msgbox(RustboroCity_House3_2F_AdamBattleWin, MSGBOX_NPC)
+        closemessage
+        playfanfare(MUS_OBTAIN_ITEM)
+        message(format("Andrew swapped keys and got the GYM KEY!"))
+        waitfanfare
+        setspeaker("Adam")
+        msgbox(RustboroCity_House3_2F_AdamBattleWin2, MSGBOX_NPC)
+        applymovement(LOCALID_RUSTBORO_HOUSE3_ADAM, Common_Movement_FaceUp)
+        setvar(VAR_RUSTBORO_CITY_STATE, 4)
+        release
+        end
+    }
+    
+    lockall
+    msgbox(RustboroCity_House3_2F_Adam_Generic, MSGBOX_NPC)
+    release
+    end
+}
+
+script RustboroCity_House3_2F_CharmanderEgg {
+    setspeaker("Adam")
+    lockall
+    applymovement(LOCALID_ADAMS_CHARMANDER_EGG, Common_Movement_FaceUp)
+    msgbox(RustboroCity_House3_2F_AdamCharmander, MSGBOX_DEFAULT)
+    closemessage
+    releaseall
+    getpartysize
+    if (var(VAR_RESULT) == 6) {
+        msgbox(format("Oh, your party is full! Come back when you have room for it."), MSGBOX_DEFAULT)
+        release
+        end
+    }
+    playfanfare(MUS_OBTAIN_ITEM)
+    message("Andrew picked up the figure(?)!")
+    waitfanfare
+    giveegg(SPECIES_CHARMANDER)
+    setflag(FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT)
+    removeobject(LOCALID_ADAMS_CHARMANDER_EGG)
+    clearflag(FLAG_TEMP_1)
+    end
+}
+
+text RustboroCity_House3_2F_AdamCharmander {
+    "Oh, that's a new figure I got for D&D.\p"
+    "It isn't painted yet. Take it\nif you want!"
+}
+
+text RustboroCity_House3_2F_AdamBattle {
+    format("Oh, hi Andrew! What are you doing here?\p"
+    "You found my house key in ITM?\p"
+    "Haha, oops. Guess it fell out of my pocket again.\p"
+    "Wait, I already have a key in my pocket. What is this one for?\p"
+    "…\p"
+    "You might know? Alright, I'll swap you, then.\p"
+    "BUT! This is a POKéMON game! So I will give it to you after a battle!")
+}
+
+text RustboroCity_House3_2F_Adam_Generic {
+    format("I'm busy preparing for the upcoming D&D game. You're coming, right?")
+}
+
+text RustboroCity_House3_2F_AdamBatteDefeat {
+    "Don't tell Caitlin I still use Gardevoir."
+}
+
+text RustboroCity_House3_2F_AdamBattleWin {
+    format("Well, here you go! Use it, well, for whatever.")
+}
+
+text RustboroCity_House3_2F_AdamBattleWin2 {
+    format("I'm going to continue working on D&D stuff. See you later!")
+}
+
+
