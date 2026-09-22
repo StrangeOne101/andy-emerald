@@ -1,4 +1,5 @@
-Route102_MapScripts::
+raw `Route102_MapScripts::
+    map_script MAP_SCRIPT_ON_TRANSITION, Route102_OnTransition
 	.byte 0
 
 Route102_EventScript_LittleBoy::
@@ -107,3 +108,61 @@ Route102_Text_RouteSignOldale:
 Route102_Text_RouteSignPetalburg:
 	.string "ROUTE 102\n"
 	.string "{LEFT_ARROW} PETALBURG CITY$"
+
+`
+
+script Route102_OnTransition {
+    call_if_set(FLAG_TRAINER_TOBY_ROUTE_102, Route102_ShowToby)
+}
+
+script Route102_ShowToby {
+    addobject(LOCALID_ROUTE102_TOBY)
+    setvar(VAR_TEMP_A, 1)
+}
+
+script Route102_EventScript_TobyEncounter {
+    lock
+    addobject(LOCALID_ROUTE102_TOBY)
+    setspeaker(SP_NAME_TOBY)
+    playse(SE_PIN)
+    applymovement(LOCALID_ROUTE102_TOBY, moves(reveal_trainer face_left emote_exclamation_mark delay_16))
+    waitmovement(0)
+    msgbox(Route102_Text_TobyEncounter, MSGBOX_NPC)
+    trainerbattle_no_intro(TRAINER_TOBY_ROUTE_102, Route102_Text_TobyDefeat)
+    setspeaker(SP_NAME_TOBY)
+    msgbox(Route102_Text_TobyEncounter2, MSGBOX_NPC)
+    giveitem(ITEM_EXP_CANDY_S, 5)
+    release
+    end
+}
+
+script Route102_Toby_Talk {
+    lock
+    faceplayer
+    setspeaker(SP_NAME_TOBY)
+    msgbox(Route102_Text_TobyPostDefeat, MSGBOX_NPC)
+    release
+    end
+}
+
+text Route102_Text_TobyEncounter {
+    format("Not many locations to hide on this route!"
+    "Well, let's get this battle underway!")
+}
+
+text Route102_Text_TobyEncounter2 {
+    "Nice one! This route's reward:\n"
+    "5 SMALL EXP CANDIES!\p"
+    "EXP Candies are from RAID battles in\n"
+    "newer games. They are like RARE CANDIES,"
+    "but they provide EXP instead of a"
+    "level up."
+}
+
+text Route102_Text_TobyDefeat {
+    "Hahahahahahahaha!"
+}
+
+text Route102_Text_TobyPostDefeat {
+    format("You might be able to catch a Rick later on.")
+}

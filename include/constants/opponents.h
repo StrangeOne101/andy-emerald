@@ -645,11 +645,11 @@
 #define TRAINER_WALLY_VR_3                  658
 #define TRAINER_WALLY_VR_4                  659
 #define TRAINER_WALLY_VR_5                  660
-#define TRAINER_TOBY_2                      661
-#define TRAINER_TOBY_3                      662 //TODO TOBY
-#define TRAINER_TOBY_4                      663
-#define TRAINER_TOBY_5                      664
-#define TRAINER_TOBY_6                      665
+#define TRAINER_TOBY_ROUTE_101              661
+#define TRAINER_TOBY_ROUTE_102              662 //TODO TOBY
+#define TRAINER_TOBY_ROUTE_103              663
+#define TRAINER_TOBY_ROUTE_104              664
+#define TRAINER_TOBY_ROUTE_105              665
 #define TRAINER_MAY_LILYCOVE                666
 #define TRAINER_JONAH                       667
 #define TRAINER_HENRY                       668
@@ -845,9 +845,9 @@
 
 
 
-#define TRAINER_BRENDAN_ROUTE_103_MUDKIP    520 //TODO #UNUSED
-#define TRAINER_BRENDAN_ROUTE_110_MUDKIP    521 //TODO #UNUSED
-#define TRAINER_BRENDAN_ROUTE_119_MUDKIP    522 //TODO #UNUSED
+#define TRAINER_TOBY_ODALE_TOWN             520
+#define TRAINER_TOBY_PETALBURG_WOODS        521
+#define TRAINER_TOBY_RUSTBORO_CITY          522
 #define TRAINER_BRENDAN_ROUTE_103_TREECKO   523 //TODO #UNUSED
 #define TRAINER_BRENDAN_ROUTE_110_TREECKO   524 //TODO #UNUSED
 #define TRAINER_BRENDAN_ROUTE_119_TREECKO   525 //TODO #UNUSED
@@ -878,8 +878,10 @@
 #define TRAINER_CAITLIN     863
 #define TRAINER_BEN_G       864
 #define TRAINER_JACOB_G     865
+#define TRAINER_FINN        866
+#define TRAINER_MARIE       867
 
-#define TRAINERS_COUNT_EMERALD     (TRAINER_JACOB_G + 1)
+#define TRAINERS_COUNT_EMERALD     (TRAINER_MARIE + 1)
 #define MAX_TRAINERS_COUNT_EMERALD (TRAINERS_COUNT_EMERALD + 9)
 
 #if IS_FRLG

@@ -287,7 +287,7 @@
 #define FLAG_ENABLE_RIVAL_MATCH_CALL         0xFD
 #define FLAG_RECEIVED_CHARCOAL               0xFE
 #define FLAG_LATIOS_OR_LATIAS_ROAMING        0xFF
-#define FLAG_RECEIVED_REPEAT_BALL            0x100
+#define FLAG_RECEIVED_REPEAT_BALL            0x100 //TODO UNUSED
 #define FLAG_RECEIVED_OLD_ROD                0x101
 #define FLAG_RECEIVED_COIN_CASE              0x102
 #define FLAG_RETURNED_RED_OR_BLUE_ORB        0x103
@@ -318,7 +318,7 @@
 #define FLAG_DECLINED_WALLY_BATTLE_MAUVILLE  0x11C
 #define FLAG_RECEIVED_DEVON_SCOPE            0x11D
 #define FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE  0x11E
-#define FLAG_MET_DEVON_EMPLOYEE              0x11F
+#define FLAG_MET_DEVON_EMPLOYEE              0x11F //TODO UNUSED
 #define FLAG_MET_RIVAL_RUSTBORO              0x120
 #define FLAG_RECEIVED_SILK_SCARF             0x121
 #define FLAG_NOT_READY_FOR_BATTLE_ROUTE_120  0x122
@@ -859,8 +859,8 @@
 #define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND     0x328
 #define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE         0x329
 #define FLAG_HIDE_SS_TIDAL_CORRIDOR_SCOTT                           0x32A
-#define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_POKEBALL_CYNDAQUIL     0x32B
-#define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_POKEBALL_TOTODILE      0x32C
+#define FLAG_HIDE_STARTER_BAG                                       0x32B
+#define FLAG_UNUSED_0x32C                                           0x32C //UNUSED
 #define FLAG_HIDE_ROUTE_116_DROPPED_GLASSES_MAN                     0x32D
 #define FLAG_HIDE_RUSTBORO_CITY_RIVAL                               0x32E
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_SWABLU_DOLL     0x32F
@@ -886,13 +886,13 @@
 #define FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY                       0x343
 #define FLAG_HIDE_BATTLE_FRONTIER_RECEPTION_GATE_SCOTT              0x344
 #define FLAG_HIDE_ROUTE_110_BIRCH                                   0x345
-#define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_POKEBALL_CHIKORITA     0x346
+#define FLAG_UNUSED_0x346                                           0x346 //UNUSED
 #define FLAG_HIDE_SOOTOPOLIS_CITY_MAN_1                             0x347
 #define FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN                      0x348
 #define FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN               0x349
 #define FLAG_HIDE_BATTLE_FRONTIER_SUDOWOODO                         0x34A
 #define FLAG_HIDE_ROUTE_111_ROCK_SMASH_TIP_GUY                      0x34B
-#define FLAG_HIDE_RUSTBORO_CITY_SCIENTIST                           0x34C
+#define FLAG_HIDE_RUSTBORO_CITY_SCIENTIST                           0x34C //UNUSED
 #define FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT                  0x34D
 #define FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE                      0x34E
 #define FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD                           0x34F
@@ -997,7 +997,7 @@
 #define FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS                       0x3B2
 #define FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE                          0x3B3
 #define FLAG_HIDE_SLATEPORT_CITY_TM_SALESMAN                        0x3B4
-#define FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_EMPLOYEE              0x3B5
+#define FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_EMPLOYEE              0x3B5 //TODO UNUSED
 #define FLAG_HIDE_SS_TIDAL_CORRIDOR_MR_BRINEY                       0x3B6
 #define FLAG_HIDE_SS_TIDAL_ROOMS_SNATCH_GIVER                       0x3B7
 #define FLAG_RECEIVED_SHOAL_SALT_1                                  0x3B8
@@ -1342,6 +1342,14 @@
 // See constants/opponents.h. The values there + FLAG_TRAINER_FLAG_START are the flag IDs
 
 #define TRAINER_FLAGS_START                                         0x450 //Old Value: 0x500
+#define FLAG_TRAINER_TOBY_ROUTE_101                                 (TRAINER_FLAGS_START + TRAINER_TOBY_ROUTE_101)
+#define FLAG_TRAINER_TOBY_ROUTE_102                                 (TRAINER_FLAGS_START + TRAINER_TOBY_ROUTE_102)
+#define FLAG_TRAINER_TOBY_ROUTE_103                                 (TRAINER_FLAGS_START + TRAINER_TOBY_ROUTE_103)
+#define FLAG_TRAINER_TOBY_ROUTE_104                                 (TRAINER_FLAGS_START + TRAINER_TOBY_ROUTE_104)
+#define FLAG_TRAINER_TOBY_ROUTE_105                                 (TRAINER_FLAGS_START + TRAINER_TOBY_ROUTE_105)
+#define FLAG_TRAINER_TOBY_ODALE_TOWN                                (TRAINER_FLAGS_START + TRAINER_TOBY_ODALE_TOWN)
+#define FLAG_TRAINER_TOBY_PETALBURG_WOODS                           (TRAINER_FLAGS_START + TRAINER_TOBY_PETALBURG_WOODS)
+#define FLAG_TRAINER_TOBY_RUSTBORO_CITY                             (TRAINER_FLAGS_START + TRAINER_TOBY_RUSTBORO_CITY)
 #define TRAINER_FLAGS_END                                           (TRAINER_FLAGS_START + MAX_TRAINERS_COUNT - 1) // 0x85F
 
 // System Flags

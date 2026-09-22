@@ -423,6 +423,7 @@ enum
     OBJ_EVENT_GFX_TOBY,
     OBJ_EVENT_GFX_FIRE,
     OBJ_EVENT_GFX_BRENDAN_SLEEPING,
+    OBJ_EVENT_GFX_BOAT_BOY,
     NUM_OBJ_EVENT_GFX,
 };
 
@@ -589,6 +590,7 @@ enum
 #define OBJ_EVENT_PAL_TAG_SAMSON_OAK              0x113A
 #define OBJ_EVENT_PAL_TAG_TOBY                    0x113B
 #define OBJ_EVENT_PAL_TAG_FIRE                    0x113C
+#define OBJ_EVENT_PAL_TAG_BOAT_BOY                0x113D
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

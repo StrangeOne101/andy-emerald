@@ -12,5 +12,6 @@ void Script_GetChosenMonOffensiveEVs(void);
 void Script_GetChosenMonDefensiveEVs(void);
 void Script_GetChosenMonOffensiveIVs(void);
 void Script_GetChosenMonDefensiveIVs(void);
+u32 ScriptGiveStarter(enum Species species, u8 level);
 
 #endif // GUARD_SCRIPT_POKEMON_UTIL_H

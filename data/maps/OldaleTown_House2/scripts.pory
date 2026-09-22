@@ -1,0 +1,87 @@
+raw `OldaleTown_House2_MapScripts::
+    map_script MAP_SCRIPT_ON_TRANSITION, OdaleTown_OnTransition
+	.byte 0
+
+OldaleTown_House2_EventScript_Woman::
+	msgbox OldaleTown_House2_Text_PokemonLevelUp, MSGBOX_NPC
+	end
+
+OldaleTown_House2_EventScript_Man::
+	msgbox OldaleTown_House2_Text_YoullGoFurtherWithStrongPokemon, MSGBOX_NPC
+	end
+
+OldaleTown_House2_Text_PokemonLevelUp:
+	.string "My husband is so fucking useless. Such\n"
+	.string "a useless bum!$"
+
+OldaleTown_House2_Text_YoullGoFurtherWithStrongPokemon:
+	.string "All my wife does is COMPLAIN! Holy shit,\n"
+	.string "I feel like my ears have stage 4 cancer\l"
+	.string "just from listening to her.$"
+`
+
+script OdaleTown_OnTransition{
+    call_if_set(FLAG_TRAINER_TOBY_ODALE_TOWN, OdaleTown_ShowToby)
+}
+
+script OdaleTown_ShowToby {
+    addobject(LOCALID_ODALE_TOWN_TOBY)
+    setvar(VAR_TEMP_A, 1)
+}
+
+script OldaleTown_EventScript_TobyEncounter {
+    lock
+    addobject(LOCALID_ODALE_TOWN_TOBY)
+    setspeaker(SP_NAME_TOBY)
+    playse(SE_PIN)
+    applymovement(LOCALID_ODALE_TOWN_TOBY, moves(reveal_trainer face_left emote_exclamation_mark delay_16))
+    waitmovement(0)
+    msgbox(OldaleTown_Text_TobyEncounter, MSGBOX_NPC)
+    trainerbattle_no_intro(TRAINER_TOBY_ODALE_TOWN, OldaleTown_Text_TobyDefeat)
+    setspeaker(SP_NAME_TOBY)
+    msgbox(OldaleTown_Text_TobyEncounter2, MSGBOX_NPC)
+    givemon(SPECIES_SHELLOS_EAST, 7, ITEM_NONE, BALL_DIVE)
+    playfanfare(MUS_OBTAIN_ITEM)
+    if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY) {
+        message("Shellos was added to your party!")
+    }
+    elif (var(VAR_RESULT) == MON_GIVEN_TO_PC) {
+        message("Shellos was sent to the PC Box!")
+    }
+    else {
+        message("Your party and PC are completely full!\n(Reload from save - its now broken).")
+    }
+    release
+    end
+}
+
+script OldaleTown_Toby_Talk {
+    lock
+    faceplayer
+    setspeaker(SP_NAME_TOBY)
+    msgbox(OldaleTown_Text_TobyPostDefeat, MSGBOX_NPC)
+    release
+    end
+}
+
+text OldaleTown_Text_TobyEncounter {
+    format("Nice find! Did it take you a while to find me?"
+    "Well, let's get this battle underway!")
+}
+
+text OldaleTown_Text_TobyEncounter2 {
+    "Nice one! This route (well, town)'s reward:\n"
+    "My Shellos!\p"
+    "It originates in the Sinnoh region, and\p"
+    "has two forms - EAST and WEST. This is the\n"
+    "EAST form! Enjoy!"
+}
+
+text OldaleTown_Text_TobyDefeat {
+    "Did you like the POK\eMON I just used?"
+}
+
+text OldaleTown_Text_TobyPostDefeat {
+    format("That Shellos is the only one in the game (so far). No where else has them, so take good care of it!")
+}
+

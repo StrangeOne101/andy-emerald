@@ -5,7 +5,7 @@ Route116_MapScripts::
 	.byte 0
 
 Route116_OnTransition:
-	call_if_set FLAG_RECOVERED_DEVON_GOODS, Route116_EventScript_SetWandasBoyfriendPos
+	call Route116_EventScript_SetWandasBoyfriendPos
 	call_if_eq VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_HideMapNamePopup
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_116_NORTH, AbnormalWeather_StartGroudonWeather
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_116_SOUTH, AbnormalWeather_StartGroudonWeather
@@ -27,8 +27,6 @@ Route116_OnFrame:
 Route116_EventScript_WandasBoyfriend::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECOVERED_DEVON_GOODS, Route116_EventScript_BoyfriendGruntLeftTunnel
-	goto_if_set FLAG_DEVON_GOODS_STOLEN, Route116_EventScript_BoyfriendGruntInTunnel
 	msgbox Route116_Text_WantToDigTunnel, MSGBOX_DEFAULT
 	release
 	end
@@ -43,44 +41,11 @@ Route116_EventScript_BoyfriendGruntInTunnel::
 	release
 	end
 
-Route116_EventScript_DevonEmployee::
-	lock
-	faceplayer
-	goto_if_set FLAG_MET_DEVON_EMPLOYEE, Route116_EventScript_TryGiveRepeatBallAgain
-	msgbox Route116_Text_ThankYouTokenOfAppreciation, MSGBOX_DEFAULT
-	goto Route116_EventScript_GiveRepeatBall
-	end
-
-Route116_EventScript_GiveRepeatBall::
-	setflag FLAG_MET_DEVON_EMPLOYEE
-	giveitem ITEM_REPEAT_BALL
-	goto_if_eq VAR_RESULT, FALSE, Route116_EventScript_NoRoomForRepeatBall
-	msgbox Route116_Text_NewBallAvailableAtMart, MSGBOX_DEFAULT
-	closemessage
-	call_if_eq VAR_FACING, DIR_NORTH, Route116_EventScript_DevonEmployeeExit
-	call_if_eq VAR_FACING, DIR_SOUTH, Route116_EventScript_DevonEmployeeExit
-	call_if_eq VAR_FACING, DIR_WEST, Route116_EventScript_DevonEmployeeExit
-	call_if_eq VAR_FACING, DIR_EAST, Route116_EventScript_DevonEmployeeExitEast
-	removeobject VAR_LAST_TALKED
-	clearflag FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_EMPLOYEE
-	setflag FLAG_RECEIVED_REPEAT_BALL
-	release
-	end
-
-Route116_EventScript_DevonEmployeeExit::
-	applymovement VAR_LAST_TALKED, Route116_Movement_DevonEmployeeExit
-	waitmovement 0
-	return
-
-Route116_EventScript_DevonEmployeeExitEast::
-	applymovement VAR_LAST_TALKED, Route116_Movement_DevonEmployeeExitEast
-	waitmovement 0
-	return
-
-Route116_EventScript_TryGiveRepeatBallAgain::
-	msgbox Route116_Text_TokenOfAppreciation, MSGBOX_DEFAULT
-	goto Route116_EventScript_GiveRepeatBall
-	end
+Route116_EventScript_TobyTunnel::
+    setspeaker SP_NAME_TOBY
+    msgbox Route116_Text_TobyTunnel, MSGBOX_NPC
+    release
+    end
 
 Route116_EventScript_NoRoomForRepeatBall::
 	msgbox Route116_Text_BagIsJamPacked, MSGBOX_DEFAULT
@@ -129,24 +94,6 @@ Route116_EventScript_TrainerTipsBToStopEvolution::
 
 Route116_EventScript_TrainerTipsBagHasPockets::
 	msgbox Route116_Text_TrainerTipsBagHasPockets, MSGBOX_SIGN
-	end
-
-Route116_EventScript_Briney::
-	lock
-	faceplayer
-	msgbox Route116_Text_ScoundrelMadeOffWithPeeko, MSGBOX_DEFAULT
-	setvar VAR_ROUTE116_STATE, 2
-	release
-	end
-
-Route116_EventScript_BrineyTrigger::
-	lockall
-	applymovement LOCALID_ROUTE116_BRINEY, Common_Movement_WalkInPlaceFasterRight
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	msgbox Route116_Text_ScoundrelMadeOffWithPeeko, MSGBOX_DEFAULT
-	setvar VAR_ROUTE116_STATE, 2
-	releaseall
 	end
 
 Route116_EventScript_GlassesMan::
@@ -245,6 +192,16 @@ Route116_EventScript_Jerry::
 	goto_if_eq VAR_RESULT, FALSE, Route116_EventScript_TryRegisterJerry
 	msgbox Route116_Text_JerryPostBattle, MSGBOX_DEFAULT
 	release
+	end
+
+Route116_EventScript_Finn::
+	trainerbattle_single TRAINER_FINN, Route116_Text_FinnIntro, Route116_Text_FinnDefeat
+	msgbox Route116_Text_FinnPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route116_EventScript_Marie::
+	trainerbattle_single TRAINER_FINN, Route116_Text_MarieIntro, Route116_Text_MarieDefeat
+	msgbox Route116_Text_MariePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route116_EventScript_TryRegisterJerryAfterBattle::
@@ -467,4 +424,39 @@ Route116_Text_TrainerTipsBagHasPockets:
 	.string "placed in the appropriate POCKETS.\p"
 	.string "No TRAINER can afford to be without\n"
 	.string "a BAG of their own.$"
+
+
+Route116_Text_FinnIntro:
+    .string "Marie made me come here.$"
+
+Route116_Text_FinnDefeat:
+    .string "I wish there was a drone POKéMON…$"
+
+Route116_Text_FinnPostBattle:
+    .string "Toby should have put in more effort\nand added a drone POKéMON.$"
+
+Route116_Text_MarieIntro:
+    .string "Finn can be so dramatic sometimes.\n"
+    .string "I didn't make him do ANYTHING.$"
+
+Route116_Text_MarieDefeat:
+    .string "I don't even know these POKéMON. Toby\n"
+    .string "suggested them.$"
+
+Route116_Text_MariePostBattle:
+    .string "Bring down your GBAs to Young Adults\n"
+    .string "more often!$"
+
+Route116_Text_TobyTunnel::
+    .string "Hi there. Here marks the end of the\n"
+    .string "current progress of the ROM.\p"
+    .string "This boulder can be removed by\n"
+    .string "defeating the TOBY of RUSTBORO\l"
+    .string "CITY.\p"
+    .string "However, I haven't coded the boulder\n"
+    .string "to remove yet. Nor can the me in\l"
+    .string "RUSTBORO CITY even be found.\p"
+    .string "Lots more is planned for the ROM.\n"
+    .string "I just ran out of time. Sorry about\l"
+    .string "that!$"
 

@@ -1,4 +1,4 @@
-Route104_MapScripts::
+raw `Route104_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route104_OnFrame
 	map_script MAP_SCRIPT_ON_TRANSITION, Route104_OnTransition
 	.byte 0
@@ -16,6 +16,7 @@ Route104_OnTransition:
 	call Common_EventScript_SetupRivalGfxId
 	call Route104_EventScript_TrySetRivalPos
 	call Route104_EventScript_ShowOrHideWhiteHerbFlorist
+	call_if_set FLAG_TRAINER_TOBY_ROUTE_104, Route104_ShowToby
 	end
 
 Route104_EventScript_ShowOrHideWhiteHerbFlorist::
@@ -1113,3 +1114,54 @@ Route104_Text_BrendanPostBattle:
 	.string "making POKéMON battle.\p"
 	.string "Like MR. BRINEY, it's important to\n"
 	.string "become friends with your POKéMON.$"
+`
+
+script Route104_ShowToby {
+    addobject(LOCALID_ROUTE104_TOBY)
+    setvar(VAR_TEMP_A, 1)
+}
+
+script Route104_EventScript_TobyEncounter {
+    lock
+    addobject(LOCALID_ROUTE104_TOBY)
+    setspeaker(SP_NAME_TOBY)
+    playse(SE_PIN)
+    applymovement(LOCALID_ROUTE104_TOBY, moves(reveal_trainer face_left emote_exclamation_mark delay_16))
+    waitmovement(0)
+    msgbox(Route104_Text_TobyEncounter, MSGBOX_NPC)
+    trainerbattle_no_intro(TRAINER_TOBY_ROUTE_104, Route104_Text_TobyDefeat)
+    setspeaker(SP_NAME_TOBY)
+    msgbox(Route104_Text_TobyEncounter2, MSGBOX_NPC)
+    release
+    end
+}
+
+script Route104_Toby_Talk {
+    lock
+    faceplayer
+    setspeaker(SP_NAME_TOBY)
+    msgbox(Route104_Text_TobyPostDefeat, MSGBOX_NPC)
+    release
+    end
+}
+
+text Route104_Text_TobyEncounter {
+    format("Isn't this beach huge! Guess I will use a water POK\eMON this time.")
+}
+
+text Route104_Text_TobyEncounter2 {
+    format("Yeah, Maril is pretty easy. But it's cute!\p"
+    "Anyway, the reward:\p"
+    "You get to the last remaining JOHTO starter!!!\p"
+    "If you go back to ROUTE 103, you can claim the last starter from the bag.\p"
+    "Have fun!")
+}
+
+text Route104_Text_TobyDefeat {
+    "Marill!!"
+}
+
+text Route104_Text_TobyPostDefeat {
+    format("If you go back to ROUTE 103, you can claim the last starter from the bag.\p"
+    "Have fun!")
+}

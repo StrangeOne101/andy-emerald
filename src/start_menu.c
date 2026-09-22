@@ -653,7 +653,8 @@ static bool8 HandleStartMenuInput(void)
             if (GetNationalPokedexCount(FLAG_GET_SEEN) == 0)
                 return FALSE;
         }
-        if (sCurrentStartMenuActions[sStartMenuCursorPos] == MENU_ACTION_DEXNAV
+        if ((sCurrentStartMenuActions[sStartMenuCursorPos] == MENU_ACTION_DEXNAV ||
+        sCurrentStartMenuActions[sStartMenuCursorPos] == MENU_ACTION_POKENAV)
           && MapHasNoEncounterData())
             return FALSE;
 

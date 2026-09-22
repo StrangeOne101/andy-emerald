@@ -3,21 +3,27 @@ Route103_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, Route103_OnLoad
 	.byte 0
 
-Route103_OnTransition:
-	call Common_EventScript_SetupRivalGfxId
+Route103_OnTransition::
 	@call ProfBirch_EventScript_UpdateLocation
 	hideobjectat LOCALID_ROUTE103_LATIAS, MAP_ROUTE103
-	call_if_unset FLAG_SYS_POKEMON_GET, Route103_HideBag
+	call_if_unset FLAG_GOT_SECOND_STARTER, Route103_CheckShowBag
+	call Common_EventScript_SetupRivalGfxId
 	end
 
-Route103_HideBag:
-    removeobject LOCALID_ROUTE103_BAG
+Route103_CheckShowBag::
+    goto_if_set FLAG_TRAINER_TOBY_ROUTE_104, Route103_ShowBag
+    end
+
+Route103_ShowBag::
+    clearflag FLAG_HIDE_STARTER_BAG
+    addobject LOCALID_ROUTE103_BAG
+    setobjectxy LOCALID_ROUTE103_BAG, 8, 15
+    showobjectat LOCALID_ROUTE103_BAG, MAP_ROUTE103
     end
 
 Route103_OnLoad:
 	call_if_set FLAG_SYS_GAME_CLEAR, Route103_EventScript_OpenAlteringCave
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
-	call_if_unset FLAG_SYS_POKEMON_GET, Route103_HideBag
+	@setflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
 	end
 
 Route103_EventScript_OpenAlteringCave::
@@ -79,6 +85,7 @@ Route103_EventScript_RivalMay::
     playmoncry SPECIES_LATIAS, 0
     addobject LOCALID_ROUTE103_BAG
     setobjectxy LOCALID_ROUTE103_BAG, 8, 12
+    clearflag FLAG_HIDE_STARTER_BAG
     playse SE_FALL
     getplayerxy VAR_TEMP_0, VAR_TEMP_1
     call_if_eq VAR_TEMP_0, 8, Route103_CheckPlayerY
@@ -181,7 +188,7 @@ Route103_EventScript_AfterMayBattle::
 	end
 
 Route103_EventScript_Bag::
-    call_if_set FLAG_VISITED_RUSTBORO_CITY, Route103_GetSecondMon
+    goto_if_set FLAG_TRAINER_TOBY_ROUTE_104, Route103_GetSecondMon
     msgbox Route103_Text_BagNotEmpty, MSGBOX_DEFAULT
     closemessage
     delay 60
@@ -190,28 +197,34 @@ Route103_EventScript_Bag::
     end
 
 Route103_GetSecondMon:
-    call_if_unset FLAG_GOT_SECOND_STARTER, Route103_BattleSecondMon
-    setflag FLAG_GOT_SECOND_STARTER
+    goto_if_unset FLAG_GOT_SECOND_STARTER, Route103_BattleSecondMon
     msgbox Route103_Text_BagEmpty, MSGBOX_DEFAULT
     closemessage
     end
 
 Route103_BattleSecondMon:
+    setflag FLAG_GOT_SECOND_STARTER
+    msgbox Route103_Text_BagExtraStarter, MSGBOX_DEFAULT
     switch VAR_STARTER_MON
     case 0, Route103_Prepare_Totodile
     case 1, Route103_Prepare_Chikorita
     case 2, Route103_Prepare_Cyndaquil
-    dowildbattle
     return
 
 Route103_Prepare_Chikorita::
     setwildbattle SPECIES_CHIKORITA, 5
+    dowildbattle
+    end
 
 Route103_Prepare_Totodile::
     setwildbattle SPECIES_TOTODILE, 5
+    dowildbattle
+    end
 
 Route103_Prepare_Cyndaquil::
     setwildbattle SPECIES_CYNDAQUIL, 5
+    dowildbattle
+    end
 
 Route103_EventScript_Boy::
 	msgbox Route103_Text_ShouldHaveBroughtPotion, MSGBOX_NPC
@@ -345,6 +358,9 @@ Route103_Text_BagNotEmpty:
 
 Route103_Text_BagNotEmpty2:
 	.string "(Check back later…)$"
+
+Route103_Text_BagExtraStarter:
+	.string "(You look in the bag)\pOh?$"
 
 Route103_Text_MayTimeToHeadBack:
 	.string "That was some nice battling! Are you\n"

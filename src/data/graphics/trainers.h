@@ -503,6 +503,24 @@ const u16 gTrainerPalette_Unemployed[] = INCGFX_U16("graphics/trainers/palettes/
 const u32 gTrainerFrontPic_Stylist[] = INCGFX_U32("graphics/trainers/front_pics/stylist.png", ".4bpp.smol");
 const u16 gTrainerPalette_Stylist[] = INCGFX_U16("graphics/trainers/palettes/stylist.pal", ".gbapal");
 
+const u32 gTrainerFrontPic_Gamer[] = INCGFX_U32("graphics/trainers/front_pics/gamer.png", ".4bpp.smol");
+const u16 gTrainerPalette_Gamer[] = INCGFX_U16("graphics/trainers/palettes/gamer.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_Dungeonmaster[] = INCGFX_U32("graphics/trainers/front_pics/dungeonmaster.png", ".4bpp.smol");
+const u16 gTrainerPalette_Dungeonmaster[] = INCGFX_U16("graphics/trainers/palettes/dungeonmaster.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_CoolGirl[] = INCGFX_U32("graphics/trainers/front_pics/cool_girl.png", ".4bpp.smol");
+const u16 gTrainerPalette_CoolGirl[] = INCGFX_U16("graphics/trainers/palettes/cool_girl.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_Bulk[] = INCGFX_U32("graphics/trainers/front_pics/bulk.png", ".4bpp.smol");
+const u16 gTrainerPalette_Bulk[] = INCGFX_U16("graphics/trainers/palettes/bulk.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_CarGuy[] = INCGFX_U32("graphics/trainers/front_pics/car_guy.png", ".4bpp.smol");
+const u16 gTrainerPalette_CarGuy[] = INCGFX_U16("graphics/trainers/palettes/car_guy.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_Matt[] = INCGFX_U32("graphics/trainers/front_pics/matt.png", ".4bpp.smol");
+const u16 gTrainerPalette_Matt[] = INCGFX_U16("graphics/trainers/palettes/matt.pal", ".gbapal");
+
 const u8 gTrainerBackPic_Brendan[] = INCGFX_U8("graphics/trainers/back_pics/brendan.png", ".4bpp");
 const u8 gTrainerBackPic_May[] = INCGFX_U8("graphics/trainers/back_pics/may.png", ".4bpp");
 const u8 gTrainerBackPic_Red[] = INCGFX_U8("graphics/trainers/back_pics/red.png", ".4bpp");
@@ -1301,5 +1319,29 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_STYLIST] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Stylist, gTrainerPalette_Stylist),
+    },
+    [TRAINER_PIC_COOL_GIRL] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_CoolGirl, gTrainerPalette_CoolGirl),
+    },
+    [TRAINER_PIC_DUNGEONMASTER] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Dungeonmaster, gTrainerPalette_Dungeonmaster),
+    },
+    [TRAINER_PIC_MATT] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Matt, gTrainerPalette_Matt),
+    },
+    [TRAINER_PIC_GAMER] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Gamer, gTrainerPalette_Gamer),
+    },
+    [TRAINER_PIC_CAR_GUY] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_CarGuy, gTrainerPalette_CarGuy),
+    },
+    [TRAINER_PIC_BULK] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Bulk, gTrainerPalette_Bulk),
     }
 };

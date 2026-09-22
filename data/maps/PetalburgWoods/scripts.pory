@@ -1,4 +1,5 @@
-PetalburgWoods_MapScripts::
+raw `PetalburgWoods_MapScripts::
+    map_script MAP_SCRIPT_ON_TRANSITION, PetalburgWoods_OnTransition
 	.byte 0
 
 PetalburgWoods_EventScript_DevonResearcherLeft::
@@ -510,4 +511,94 @@ PetalburgWoods_Text_CraigDefeat:
 PetalburgWoods_Text_CraigPostBattle:
     .string "I don't know why Toby put me in\n"
     .string "a forest when I have a FIRE pokemon.$"
+`
 
+script PetalburgWoods_OnTransition {
+    call_if_set(FLAG_TRAINER_TOBY_PETALBURG_WOODS, PetalburgWoods_ShowToby)
+}
+
+script PetalburgWoods_ShowToby {
+    addobject(LOCALID_PETALBURGWOODS_TOBY)
+    setvar(VAR_TEMP_A, 1)
+}
+
+script PetalburgWoods_EventScript_TobyEncounter {
+    lock
+    addobject(LOCALID_PETALBURGWOODS_TOBY)
+    setspeaker(SP_NAME_TOBY)
+    playse(SE_PIN)
+    applymovement(LOCALID_PETALBURGWOODS_TOBY, moves(reveal_trainer face_left emote_exclamation_mark delay_16))
+    waitmovement(0)
+    msgbox(PetalburgWoods_Text_TobyEncounter, MSGBOX_NPC)
+    trainerbattle_no_intro(TRAINER_TOBY_PETALBURG_WOODS, PetalburgWoods_Text_TobyDefeat)
+    setspeaker(SP_NAME_TOBY)
+    msgbox(PetalburgWoods_Text_TobyEncounter2, MSGBOX_NPC)
+    random(100)
+    copyvar(VAR_RESULT, VAR_GUARANTEED_SHINY)
+    addvar(VAR_GUARANTEED_SHINY, 1) //Make sure it can't be 0
+    release
+    end
+}
+
+script PetalburgWoods_Toby_Talk {
+    lock
+    faceplayer
+    setspeaker(SP_NAME_TOBY)
+
+    if (var(VAR_GUARANTEED_SHINY) == 0) {
+        msgbox(PetalburgWoods_Text_TobyShinyPast, MSGBOX_NPC)
+    } elif (var(VAR_GUARANTEED_SHINY) > 45) {
+        msgbox(PetalburgWoods_Text_TobyShinyHintLong, MSGBOX_NPC)
+    } elif (var(VAR_GUARANTEED_SHINY) > 30) {
+        msgbox(PetalburgWoods_Text_TobyShinyHintMedium, MSGBOX_NPC)
+    } elif (var(VAR_GUARANTEED_SHINY) > 15) {
+        msgbox(PetalburgWoods_Text_TobyShinyHintClose, MSGBOX_NPC)
+    } elif (var(VAR_GUARANTEED_SHINY) > 5) {
+        msgbox(PetalburgWoods_Text_TobyShinyHintRealClose, MSGBOX_NPC)
+    } else {
+        msgbox(PetalburgWoods_Text_TobyShinyHintExtremelyClose, MSGBOX_NPC)
+    }
+    release
+    end
+}
+
+text PetalburgWoods_Text_TobyEncounter {
+    "Welcome! Time for a hard trial!\n"
+    "I promise this one will be worth it!"
+}
+
+text PetalburgWoods_Text_TobyEncounter2 {
+    format("Bravo! This battle would have been a bit difficult this early in the game.\n"
+    "Anyway!\n"
+    "As a reward, I will guarantee you ONE shiny encounter!\n"
+    "In the next 100 wild encounters, ONE of these will be shiny! It's completely random! So not even I know what the number is!\n"
+    "But I will give you hints on how soon it is if you talk to me again. Because I'm so nice! Better not screw up and fail to catch it!")
+}
+
+text PetalburgWoods_Text_TobyDefeat {
+    "GG!"
+}
+
+text PetalburgWoods_Text_TobyShinyHintLong {
+    format("The shiny encounter is still quite far away.")
+}
+
+text PetalburgWoods_Text_TobyShinyHintMedium {
+    format("The shiny encounter is getting closer, but not that close.")
+}
+
+text PetalburgWoods_Text_TobyShinyHintClose {
+    format("The shiny encounter is getting closer!")
+}
+
+text PetalburgWoods_Text_TobyShinyHintRealClose {
+    format("The shiny encounter is getting real close!")
+}
+
+text PetalburgWoods_Text_TobyShinyHintExtremelyClose {
+    format("The shiny encounter is right around the corner! It could happen any second now!")
+}
+
+text PetalburgWoods_Text_TobyShinyPast {
+    format("Did you manage to catch it? The shiny has been and gone - and there is no second chances!")
+}

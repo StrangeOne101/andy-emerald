@@ -25,3 +25,9 @@ EventScript_ObjectApproachPlayer::
 	lock
 	special DoTrainerApproach
 	gotonative LoadTrainerObjectScript
+
+EventScript_TrainerPostBattle::
+    special PlayerFaceTrainerAfterBattle
+    waitmovement 0
+    release
+    end

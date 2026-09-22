@@ -13,7 +13,8 @@ RustboroCity_OnTransition:
 	end
 
 RustboroCity_OnLoad::
-    call_if_lt VAR_RUSTBORO_CITY_STATE, 4, RustboroCity_LockGym
+    call_if_lt VAR_RUSTBORO_CITY_STATE, 3, RustboroCity_LockHouse
+    call_if_lt VAR_RUSTBORO_CITY_STATE, 5, RustboroCity_LockGym
     end
 
 RustboroCity_EventScript_HideMapNamePopup::
@@ -30,6 +31,11 @@ RustboroCity_OnFrame:
 
 RustboroCity_LockGym:
     setmetatile 27, 19, 0x1E3, 0x10
+    end
+
+RustboroCity_LockHouse:
+    setmetatile 26, 46, 0x202, 0x10 @Set to fake door
+    return
     end
 
 @RustboroCity_EventScript_ScientistAddMatchCall::
@@ -196,6 +202,7 @@ RustboroCity_EventScript_Boy2BrineyLeftTunnel::
 	end
 
 RustboroCity_EventScript_Twin::
+    bufferleadmonspeciesname 0
 	msgbox RustboroCity_Text_WowYouHavePokemon, MSGBOX_NPC
 	end
 
@@ -211,6 +218,28 @@ RustboroCity_EventScript_DevonCorpSign::
 	msgbox RustboroCity_Text_DevonCorpSign, MSGBOX_SIGN
 	end
 
+RustboroCity_EventScript_AdamDoor::
+    goto_if_lt VAR_RUSTBORO_CITY_STATE, 3, RustboroCity_EventScript_AdamDoorLocked
+    end @ Do nothing if the door is unlocked
+
+RustboroCity_EventScript_AdamDoorLocked::
+    msgbox RustboroCity_Text_GymDoor, MSGBOX_SIGN
+    call_if_gt VAR_RUSTBORO_CITY_STATE, 1, RustboroCity_EventScript_AdamDoorLockedPrompt
+    end
+
+RustboroCity_EventScript_AdamDoorLockedPrompt::
+    msgbox RustboroCity_Text_GymDoorKey1, MSGBOX_YESNO
+    call_if_eq VAR_RESULT, YES, RustboroCity_EventScript_AdamDoorUnlocked
+    end
+
+RustboroCity_EventScript_AdamDoorUnlocked::
+    playse SE_DOOR
+    delay 20
+    msgbox RustboroCity_Text_AdamDoorUnlock, MSGBOX_SIGN
+    setmetatile 26, 46, 0x22F, 0 @Set the tile back to regular door
+    setvar VAR_RUSTBORO_CITY_STATE, 5
+    end
+
 RustboroCity_EventScript_GymSign::
 	msgbox RustboroCity_Text_GymSign, MSGBOX_SIGN
 	end
@@ -225,6 +254,7 @@ RustboroCity_EventScript_GymDoorLocked::
     msgbox RustboroCity_Text_GymDoor, MSGBOX_SIGN
     call_if_gt VAR_RUSTBORO_CITY_STATE, 1, RustboroCity_EventScript_GymDoorLocked2
     end
+
 @Ask the player if they want to open
 RustboroCity_EventScript_GymDoorLocked2:
     msgbox RustboroCity_Text_GymDoorKey1, MSGBOX_YESNO
@@ -540,21 +570,20 @@ RustboroCity_EventScript_BattleMayTreecko::
 	end
 
 RustboroCity_EventScript_Grunt::
-    lock
-    trainerbattle_single TRAINER_GRUNT_RUSTURF_TUNNEL, RusturfTunnel_Text_GruntIntro, RusturfTunnel_Text_GruntDefeat
+    trainerbattle_single TRAINER_GRUNT_RUSTURF_TUNNEL, RusturfTunnel_Text_GruntIntro, RusturfTunnel_Text_GruntDefeat, EventScript_TrainerPostBattle
     msgbox RusturfTunnel_Text_GruntPostDefeat, MSGBOX_DEFAULT
     release
     end
 
 RustboroCity_EventScript_JacobG::
-    lock
-    trainerbattle_single TRAINER_JACOB_G, RusturfTunnel_Text_JacobIntro, RusturfTunnel_Text_JacobDefeat
+    trainerbattle_single TRAINER_JACOB_G, RusturfTunnel_Text_JacobIntro, RusturfTunnel_Text_JacobDefeat, EventScript_TrainerPostBattle
+    msgbox RusturfTunnel_Text_JacobDefeat, MSGBOX_DEFAULT
     release
     end
 
 RustboroCity_EventScript_BenG::
-    lock
-    trainerbattle_single TRAINER_BEN_G, RusturfTunnel_Text_BenIntro, RusturfTunnel_Text_BenDefeat
+    trainerbattle_single TRAINER_BEN_G, RusturfTunnel_Text_BenIntro, RusturfTunnel_Text_BenDefeat, EventScript_TrainerPostBattle
+    msgbox RusturfTunnel_Text_BenDefeat, MSGBOX_DEFAULT
     release
     end
 
@@ -671,7 +700,7 @@ RustboroCity_Text_MrBrineyLovesPeeko:
 
 RustboroCity_Text_WowYouHavePokemon:
 	.string "Wow, you have POKéMON with you, too.\p"
-	.string "What kind of POKEMON is {B_PLAYER_MON1_NAME}?\n"
+	.string "What kind of POKEMON is {STR_VAR_1}?\n"
 	.string "I've never seen it before!$"
 
 RustboroCity_Text_CatchRarePokemonIfIGoToSchool:
@@ -723,7 +752,7 @@ RustboroCity_Text_PleaseComeWithMe:
 	.string "Please come with me!$"
 
 RustboroCity_Text_MayHiLetsRegister:
-	.string "MAY: Oh, hi, {PLAYER}{KUN}!\p"
+	.string "Oh, hi, {PLAYER}{KUN}!\p"
 	.string "You had a MATCH CALL feature put\n"
 	.string "on your POKéNAV!\p"
 	.string "Let's register each other so we can\n"
@@ -759,7 +788,7 @@ RustboroCity_Text_MayWantToBattle:
 	.string "have a POKéMON! You ready?$"
 
 RustboroCity_Text_MayImNotGoingToLose:
-	.string "MAY: You just became a TRAINER,\n"
+	.string "You just became a TRAINER,\n"
 	.string "{PLAYER}{KUN}. I'm not going to lose!$"
 
 RustboroCity_Text_MayDefeat:
@@ -896,9 +925,11 @@ RustboroCity_Text_GymDoorKey2:
     .string "It doesn't fit the lock.$"
 RustboroCity_Text_GymDoorKey3:
     .string "You unlock the Gym!$"
+RustboroCity_Text_AdamDoorUnlock:
+    .string "You unlock the house!$"
 
 RusturfTunnel_Text_JacobIntro:
-    .string "I don't want to work$"
+    .string "I don't want to work.$"
 
 RusturfTunnel_Text_JacobDefeat:
     .string "I still refuse to get a job…$"

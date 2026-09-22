@@ -492,6 +492,15 @@ u32 ScriptGiveMon(enum Species species, u8 level, enum Item item)
     return GiveScriptedMonToPlayer(&mon, PARTY_SIZE);
 }
 
+u32 ScriptGiveStarter(enum Species species, u8 level)
+{
+    struct Pokemon mon;
+
+    CreateRandomMonWithIVs(&mon, species, level, 3);
+
+    return GiveScriptedMonToPlayer(&mon, PARTY_SIZE);
+}
+
 #define PARSE_FLAG(n, default_) (flags & (1 << (n))) ? VarGet(ScriptReadHalfword(ctx)) : (default_)
 
 /* Give or create a mon to either player or opponent

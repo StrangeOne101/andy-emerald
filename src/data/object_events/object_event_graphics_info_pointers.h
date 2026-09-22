@@ -143,6 +143,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SkullLeader
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SamsonOak;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Toby;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Fire;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BoatBoy;
 
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RubySapphireLittleBoy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanFishing;
@@ -812,6 +813,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SAMSON_OAK] =               &gObjectEventGraphicsInfo_SamsonOak,
     [OBJ_EVENT_GFX_TOBY] =                     &gObjectEventGraphicsInfo_Toby,
     [OBJ_EVENT_GFX_FIRE] =                     &gObjectEventGraphicsInfo_Fire,
+    [OBJ_EVENT_GFX_BOAT_BOY] =                 &gObjectEventGraphicsInfo_BoatBoy,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

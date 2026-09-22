@@ -4942,24 +4942,32 @@ Double Battle: No
 Items: Super Potion / Super Potion
 AI: Basic Trainer
 
-Machop
-Level: 16
+Machoke
+Level: 18
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Karate Chop
 - Low Kick
 - Seismic Toss
 - Bulk Up
 
-Meditite
-Level: 16
+Machamp
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Karate Chop
+- Low Kick
+- Seismic Toss
+- Bulk Up
+
+Hitmonchan
+Level: 18
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Focus Punch
 - Light Screen
 - Reflect
 - Bulk Up
 
-Makuhita @ Sitrus Berry
-Level: 19
+Iron Hands @ Sitrus Berry
+Level: 21
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Arm Thrust
 - Vital Throw
@@ -5242,7 +5250,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
 
 === TRAINER_JERRY_1 ===
-Name: JERRY
+Name: NPC JERRY
 Class: School Kid
 Pic: School Kid M
 Gender: Male
@@ -5368,7 +5376,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 
 === TRAINER_KAREN_1 ===
-Name: KAREN
+Name: NPC K
 Class: School Kid
 Pic: School Kid F
 Gender: Female
@@ -6147,7 +6155,7 @@ IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
 
 
 === TRAINER_JOEY ===
-Name: JOEY
+Name: NPC JOEY
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -11038,7 +11046,7 @@ Level: 6
 
 
 === TRAINER_JANICE ===
-Name: JANICE
+Name: NPC I
 Class: Lass
 Pic: Lass
 Gender: Female
@@ -11251,7 +11259,7 @@ Level: 3
 
 
 === TRAINER_JOSE ===
-Name: JOSE
+Name: NPC J
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -11496,7 +11504,7 @@ Level: 22
 
 
 === TRAINER_CLARK ===
-Name: CLARK
+Name: NPC H
 Class: Hiker
 Pic: Hiker
 Gender: Male
@@ -12755,7 +12763,7 @@ Level: 23
 
 
 === TRAINER_DAWSON ===
-Name: DAWSON
+Name: NPC M
 Class: Rich Boy
 Pic: Rich Boy
 Gender: Male
@@ -12771,7 +12779,7 @@ Level: 8
 
 
 === TRAINER_SARAH ===
-Name: SARAH
+Name: NPC L
 Class: Lady
 Pic: Lady
 Gender: Female
@@ -13653,7 +13661,7 @@ Level: 18
 
 
 === TRAINER_DEVAN ===
-Name: DEVAN
+Name: NPC Devan
 Class: Hiker
 Pic: Hiker
 Gender: Male
@@ -13669,7 +13677,7 @@ Level: 8
 
 
 === TRAINER_JOHNSON ===
-Name: JOHNSON
+Name: NPC G
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -16724,8 +16732,8 @@ Level: 8
 
 === TRAINER_RL_REUBEN ===
 Name: Reuben
-Class: Youngster
-Pic: rich_boy
+Class: Youtuber
+Pic: gamer
 Gender: Male
 Music: Male
 Double Battle: No
@@ -16737,7 +16745,7 @@ Level: 8
 === TRAINER_RL_MIKE ===
 Name: Mike
 Class: Worker
-Pic: Cooltrainer M
+Pic: Worker
 Gender: Male
 Music: Male
 Double Battle: No
@@ -16749,7 +16757,7 @@ Level: 10
 === TRAINER_RL_KARL ===
 Name: Mike
 Class: Worker
-Pic: Cooltrainer M
+Pic: Worker
 Gender: Male
 Music: Male
 Double Battle: No
@@ -16761,7 +16769,7 @@ Level: 10
 === TRAINER_RL_CRAIG ===
 Name: Craig
 Class: Worker
-Pic: Cooltrainer M
+Pic: Worker
 Gender: Male
 Music: Male
 Double Battle: No
@@ -16794,10 +16802,10 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Umbreon
+Espeon
 Level: 12
 
-Jigglypuff
+Jigglypuff (F)
 Level: 12
 
 === TRAINER_CAITLIN ===
@@ -16856,3 +16864,91 @@ AI: Basic Trainer
 
 Heracross
 Level: 14
+
+=== TRAINER_TOBY_ROUTE_101 ===
+Name: Toby
+Class: Toby
+Pic: toby
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move
+
+Treecko
+Level: 6
+
+=== TRAINER_TOBY_ROUTE_102 ===
+Name: Toby
+Class: Toby
+Pic: toby
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move
+
+Gastly
+Level: 8
+
+=== TRAINER_TOBY_ODALE_TOWN ===
+Name: Toby
+Class: Toby
+Pic: toby
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move
+
+Shellos West
+Level: 7
+
+=== TRAINER_TOBY_ROUTE_104 ===
+Name: Toby
+Class: Toby
+Pic: toby
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move
+
+Marill
+Level: 9
+
+=== TRAINER_TOBY_PETALBURG_WOODS ===
+Name: Toby
+Class: Toby
+Pic: toby
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move
+
+Shedinja
+Level: 8
+
+=== TRAINER_FINN ===
+Name: Finn
+Class: ELECTRICIAN
+Pic: Bulk
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Marshtomp
+Level: 12
+
+=== TRAINER_MARIE ===
+Name: Marie
+Class: Lass
+Pic: Lady frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Floette
+Level: 10
+
+Mesprit
+Level: 12
+

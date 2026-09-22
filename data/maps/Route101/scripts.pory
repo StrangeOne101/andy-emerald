@@ -1,15 +1,24 @@
-Route101_MapScripts::
+raw `Route101_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route101_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route101_OnFrame
 	.byte 0
 
 Route101_OnTransition:
 	@call ProfBirch_EventScript_UpdateLocation
+	call_if_set FLAG_TRAINER_TOBY_ROUTE_101, Route101_ShowToby
 	end
 
 Route101_OnFrame:
 	@map_script_2 VAR_ROUTE101_STATE, 0, Route101_EventScript_HideMapNamePopup
 	.2byte 0
+
+Route101_ShowToby::
+    addobject LOCALID_ROUTE101_TOBY
+    setvar VAR_TEMP_A, 1
+    end
+
+
+
 
 Route101_EventScript_HideMapNamePopup::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
@@ -108,4 +117,61 @@ Route101_Text_WildPokemonInTallGrass:
 Route101_Text_RouteSign:
 	.string "ROUTE 101\n"
 	.string "Beware of the beast!$"
+`
+
+script Route101_EventScript_TobyEncounter {
+    lock
+    addobject(LOCALID_ROUTE101_TOBY)          // Instantiates it onto the map
+    setspeaker(SP_NAME_TOBY)
+    playse(SE_PIN)
+    // Animate the spawn (e.g., emerging from an exclamation point, or jumping out)
+    applymovement(LOCALID_ROUTE101_TOBY, moves(reveal_trainer face_down emote_exclamation_mark delay_16))
+    waitmovement(0)
+    msgbox(Route101_Text_TobyEncounter, MSGBOX_NPC)
+    trainerbattle_no_intro(TRAINER_TOBY_ROUTE_101, Route101_Text_TobyDefeat)
+    setspeaker(SP_NAME_TOBY)
+    msgbox(Route101_Text_TobyEncounter2, MSGBOX_NPC)
+    giveitem(ITEM_LINKING_CORD)
+    release
+    end
+}
+
+script Route101_Toby_Talk {
+    lock
+    faceplayer
+    setspeaker(SP_NAME_TOBY)
+    msgbox(Route101_Text_TobyPostDefeat, MSGBOX_NPC)
+    release
+    end
+}
+
+text Route101_Text_TobyEncounter {
+    format("Sup, Andrew! Going back to find every location of me, aye?"
+    "Well, let's get this battle underway!")
+}
+
+text Route101_Text_TobyEncounter2 {
+    "Nicely done! This routes reward: \n"
+    "A LINKING CORD!\p"
+    "...\p"
+    "...\p"
+    "...\p"
+    "Oh, right. These weren't in the original\n"
+    "EMERALD. Silly me!\p"
+    "LINKING CORDS are items that can be used\n"
+    "on certain POK\eMON.\p"
+    "They will probably come in handy later!"
+    "What POK\eMON? Well, it's more fun if\n"
+    "I don't tell you!"
+    "But it will be useful!"
+}
+
+text Route101_Text_TobyDefeat {
+    "Nice one!"
+}
+
+text Route101_Text_TobyPostDefeat {
+    format("That LINKING CORD can be used on certain POK\eMON."
+     "It will probably come in handy later!")
+}
 
