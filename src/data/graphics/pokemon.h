@@ -7944,6 +7944,8 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 #if P_FAMILY_UNOWN
     const u16 gMonPalette_Unown[] = INCGFX_U16("graphics/pokemon/unown/normal.pal", ".gbapal");
     const u16 gMonShinyPalette_Unown[] = INCGFX_U16("graphics/pokemon/unown/shiny.pal", ".gbapal");
+    const u16 gMonPalette_UnownE[] = INCGFX_U16("graphics/pokemon/unown/e/normal.pal", ".gbapal");
+    const u16 gMonShinyPalette_UnownE[] = INCGFX_U16("graphics/pokemon/unown/e/shiny.pal", ".gbapal");
 #if P_FOOTPRINTS
     const u8 gMonFootprint_Unown[] = INCGFX_U8("graphics/pokemon/unown/footprint.png", ".1bpp");
 #endif //P_FOOTPRINTS

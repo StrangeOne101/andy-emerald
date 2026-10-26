@@ -679,16 +679,13 @@ RustboroCity_Text_YoureNewAroundHere:
 	.string "Wish I could see inside…$"
 
 RustboroCity_Text_GymLeaderIsntEasyWithFire:
-	.string "I challenged the GYM LEADER, but…\p"
-	.string "It's not going to be easy winning with\n"
-	.string "my FIRE-type POKéMON…\p"
-	.string "FIRE-type POKéMON don't match up\n"
-	.string "well against ROCK-type POKéMON…$"
+	.string "Do you have a WAILMER PAIL? They\n"
+	.string "are super useful!$"
 
 RustboroCity_Text_MrBrineyWalksInTheTunnel:
 	.string "Some crazy people live in this city!\n"
 	.string "I can't wait to move out of home\l"
-	.string "as soon as I turn 18…"
+	.string "as soon as I turn 18…$"
 
 RustboroCity_Text_MrBrineyLovesPeeko:
 	.string "The old sailor MR. BRINEY lives in\n"
