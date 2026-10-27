@@ -121,6 +121,20 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .battleIntroSlide = BattleIntroSlide2,
     },
 
+    [BATTLE_ENVIRONMENT_BEACH_SAND] =
+    {
+        .name = _("Beach Sand"),
+        .naturePower = B_NATURE_POWER_MOVES >= GEN_6 ? MOVE_SURF : MOVE_EARTHQUAKE,
+        .secretPowerAnimation = B_SECRET_POWER_ANIMATION >= GEN_4 ? gBattleAnimMove_MudSlap : gBattleAnimMove_MudShot,
+        .secretPowerEffect = SECRET_POWER_ACC_MINUS_1,
+        .camouflageType = TYPE_GROUND,
+        .camouflageBlend = RGB(30, 24, 11),
+        .entry = ENVIRONMENT_ENTRY(Sand),
+        .background = ENVIRONMENT_BACKGROUND(BeachSand),
+        .palette = {gBattleEnvironmentPaletteMorning_BeachSand, gBattleEnvironmentPalette_BeachSand, gBattleEnvironmentPalette_BeachSand, gBattleEnvironmentPaletteNight_BeachSand},
+        .battleIntroSlide = BattleIntroSlide2,
+    },
+
     [BATTLE_ENVIRONMENT_UNDERWATER] =
     {
         .name = _("Underwater"),

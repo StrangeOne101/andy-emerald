@@ -327,8 +327,9 @@ Route103_EventScript_Isabelle::
 
 Route103_Text_MayRoute103Pokemon:
 	.string "So… I think I screwed up coming here.\l"
-	.string "There is no way back for you without\n"
-	.string "going through the grass…\lOops.$"
+	.string "I thought there was a route down from\n"
+	.string "here, but there isn't. And you can't\p"
+	.string "go through the grass…\lOops.$"
 
 Route103_Text_MayRoute103Bag:
     .string "What the heck!?\p"

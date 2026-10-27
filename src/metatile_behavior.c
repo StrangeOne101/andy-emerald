@@ -200,6 +200,14 @@ bool8 MetatileBehavior_IsSandOrDeepSand(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsBeachSand(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_BEACH_SAND)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 MetatileBehavior_IsDeepSand(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_DEEP_SAND)
@@ -250,14 +258,6 @@ bool8 MetatileBehavior_IsEscalator(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_UP_ESCALATOR
      || metatileBehavior == MB_DOWN_ESCALATOR)
-        return TRUE;
-    else
-        return FALSE;
-}
-
-bool8 Unref_MetatileBehavior_IsUnused04(u8 metatileBehavior)
-{
-    if (metatileBehavior == MB_UNUSED_04)
         return TRUE;
     else
         return FALSE;
