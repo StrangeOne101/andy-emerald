@@ -510,8 +510,8 @@ Route104_Movement_SailToDewfordAfterDadCalls:
 	walk_right
 	walk_right
 	walk_right
-	walk_slower_right
-	walk_slower_right
+	walk_slow_right
+	walk_slow_right
 	walk_slow_down
 	walk_slow_down
 	walk_down
@@ -707,8 +707,8 @@ Route104_Movement_SailToDewford:
 	walk_right
 	walk_right
 	walk_right
-	walk_slower_right
-	walk_slower_right
+	walk_slow_right
+	walk_slow_right
 	walk_slow_down
 	walk_slow_down
 	walk_down
@@ -999,7 +999,8 @@ Route104_Text_FlowerShopSellingSaplings:
 	.string "shopping. Where should I put them?$"
 
 Route104_Text_MrBrineysCottage:
-	.string "BRINEY SEA VOYAGES$"
+	.string "BRINEY SEA VOYAGES\n"
+	.string "Cheap ferry to DEWFORD & SLATEPORT.$"
 
 Route104_Text_RouteSignPetalburg:
 	.string "ROUTE 1O4\n"

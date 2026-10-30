@@ -79,7 +79,7 @@ Route104_PrettyPetalFlowerShop_EventScript_GiveWailmerPail::
 Route104_PrettyPetalFlowerShop_EventScript_FLABABE::
     lock
     faceplayer
-    playmoncry FLABABE_RED, 0
+    playmoncry SPECIES_FLABEBE_RED, 0
     msgbox Route104_PrettyPetalFlowerShop_Text_Flababe, MSGBOX_DEFAULT
     waitmoncry
     release
