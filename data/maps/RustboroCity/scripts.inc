@@ -237,7 +237,7 @@ RustboroCity_EventScript_AdamDoorUnlocked::
     delay 20
     msgbox RustboroCity_Text_AdamDoorUnlock, MSGBOX_SIGN
     setmetatile 26, 46, 0x22F, 0 @Set the tile back to regular door
-    setvar VAR_RUSTBORO_CITY_STATE, 5
+    setvar VAR_RUSTBORO_CITY_STATE, 2
     end
 
 RustboroCity_EventScript_GymSign::
@@ -889,17 +889,14 @@ RustboroCity_Text_IdBetterGetBackToWork:
 	.string "Please take care, {PLAYER}!$"
 
 RustboroCity_Text_YouCanHave2On2Battle:
-	.string "Did you know this?\p"
-	.string "You can have a 2-on-2 battle even\n"
-	.string "if you're not with another TRAINER.\p"
-	.string "If you catch the eyes of two TRAINERS\n"
-	.string "when you have two or more POKéMON,\l"
-	.string "they'll both challenge you.\p"
-	.string "Don't you think it'd be cool if you\n"
-	.string "could beat two TRAINERS by yourself?$"
+	.string "Did you see that person in the\n"
+	.string "fountain? They had their pants\l"
+	.string "down with their butt on the jet!\p"
+	.string "Well, they did until the police took\n"
+	.string "them away…$"
 
 RustboroCity_Text_ITM_Blocker1:
-    .string "I've been here for hours...\p"
+    .string "I've been here for hours…\p"
     .string "What is taking them so long?$"
 
 RustboroCity_Text_ITM_Blocker2:

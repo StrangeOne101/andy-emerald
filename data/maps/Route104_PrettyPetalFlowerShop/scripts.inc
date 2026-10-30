@@ -76,6 +76,16 @@ Route104_PrettyPetalFlowerShop_EventScript_GiveWailmerPail::
 	release
 	end
 
+Route104_PrettyPetalFlowerShop_EventScript_FLABABE::
+    lock
+    faceplayer
+    playmoncry FLABABE_RED, 0
+    msgbox Route104_PrettyPetalFlowerShop_Text_Flababe, MSGBOX_DEFAULT
+    waitmoncry
+    release
+    end
+
+
 Route104_PrettyPetalFlowerShop_EventScript_RandomBerryGirl::
 	lock
 	faceplayer
@@ -93,3 +103,6 @@ Route104_PrettyPetalFlowerShop_EventScript_AlreadyReceivedBerry::
 	msgbox Route104_PrettyPetalFlowerShop_Text_MachineMixesBerries, MSGBOX_DEFAULT
 	release
 	end
+
+Route104_PrettyPetalFlowerShop_Text_Flababe::
+    .string "Fliiii!$"

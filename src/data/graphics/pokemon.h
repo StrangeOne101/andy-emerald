@@ -16,6 +16,9 @@ const u32 gMonBackPic_CircledQuestionMark[] = INCGFX_U32("graphics/pokemon/quest
 const u16 gMonPalette_CircledQuestionMark[] = INCGFX_U16("graphics/pokemon/question_mark/circled/normal.pal", ".gbapal");
 const u16 gMonShinyPalette_CircledQuestionMark[] = INCGFX_U16("graphics/pokemon/question_mark/circled/shiny.pal", ".gbapal");
 const u8 gMonIcon_QuestionMark[] = INCGFX_U8("graphics/pokemon/question_mark/icon.png", ".4bpp");
+
+const u16 gOverworldPalette_Egg[] = INCGFX_U16("graphics/pokemon/egg/overworld.pal", ".gbapal");
+
 #if P_FOOTPRINTS
 #if !P_GBA_STYLE_SPECIES_FOOTPRINTS
     const u8 gMonFootprint_QuestionMark[] = INCGFX_U8("graphics/pokemon/question_mark/footprint.png", ".1bpp");

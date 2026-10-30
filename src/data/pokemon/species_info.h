@@ -172,6 +172,26 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .shinyPalette = gMonPalette_Egg,
         .iconSprite = gMonIcon_Egg,
         .iconPalIndex = 1,
+        #if OW_POKEMON_OBJECT_EVENTS
+        .overworldData = {
+            .tileTag = TAG_NONE,
+            .paletteTag = OBJ_EVENT_PAL_TAG_DYNAMIC,
+            .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+            .size = 512,
+            .width = 32,
+            .height = 32,
+            .paletteSlot = PALSLOT_NPC_1,
+            .shadowSize = SHADOW_SIZE_M,
+            .inanimate = FALSE,
+            .tracks = TRACKS_FOOT,
+            .oam = &gObjectEventBaseOam_32x32,
+            .subspriteTables = sOamTables_32x32,
+            .anims = sAnimTable_Following,
+            .images = sPicTable_Egg,
+        },
+        .overworldPalette = gOverworldPalette_Egg,
+        .overworldShinyPalette = gOverworldPalette_Egg,
+        #endif
     },
 
     /* You may add any custom species below this point based on the following structure: */

@@ -17,10 +17,10 @@
     {
       "local_id": "LOCALID_BRINEYS_HOUSE_BRINEY",
       "graphics_id": "OBJ_EVENT_GFX_BOAT_BOY",
-      "x": 9,
-      "y": 5,
+      "x": 4,
+      "y": 2,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 3,
       "movement_range_y": 3,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -31,8 +31,8 @@
     {
       "local_id": "LOCALID_BRINEYS_HOUSE_PEEKO",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PELIPPER)",
-      "x": 9,
-      "y": 4,
+      "x": 5,
+      "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 3,
@@ -41,19 +41,33 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route104_MrBrineysHouse_EventScript_Peeko",
       "flag": "FLAG_HIDE_BRINEYS_HOUSE_PEEKO"
+    },
+    {
+      "local_id": "LOCALID_BRINEYSHOUSE_RIVAL",
+      "graphics_id": "OBJ_EVENT_GFX_MAY_NORMAL",
+      "x": 5,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN"
     }
   ],
   "warp_events": [
     {
-      "x": 5,
-      "y": 8,
+      "x": 4,
+      "y": 5,
       "elevation": 0,
       "dest_map": "MAP_ROUTE104",
       "dest_warp_id": "0"
     },
     {
-      "x": 6,
-      "y": 8,
+      "x": 5,
+      "y": 5,
       "elevation": 0,
       "dest_map": "MAP_ROUTE104",
       "dest_warp_id": "0"

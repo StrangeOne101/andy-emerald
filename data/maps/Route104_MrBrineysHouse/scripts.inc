@@ -4,13 +4,8 @@ Route104_MrBrineysHouse_MapScripts::
 
 Route104_MrBrineysHouse_OnTransition:
 	setflag FLAG_LANDMARK_MR_BRINEY_HOUSE
-	call_if_eq VAR_BRINEY_HOUSE_STATE, 1, Route104_MrBrineysHouse_EventScript_SetBrineyPeekoPos
-	call_if_set FLAG_RECEIVED_POKENAV, Route104_MrBrineysHouse_EventScript_HideRustboroRival
+	@call_if_eq VAR_BRINEY_HOUSE_STATE, 1, Route104_MrBrineysHouse_EventScript_SetBrineyPeekoPos
 	end
-
-Route104_MrBrineysHouse_EventScript_HideRustboroRival::
-	setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
-	return
 
 Route104_MrBrineysHouse_EventScript_SetBrineyPeekoPos::
 	setobjectxyperm LOCALID_BRINEYS_HOUSE_BRINEY, 9, 3
@@ -23,17 +18,20 @@ Route104_MrBrineysHouse_EventScript_Briney::
 	lock
 	faceplayer
 	call_if_unset FLAG_MR_BRINEY_SAILING_INTRO, Route104_MrBrineysHouse_EventScript_SailingIntro
-	goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, Route104_MrBrineysHouse_EventScript_SailBothDeliveries
-	goto_if_unset FLAG_DELIVERED_DEVON_GOODS, Route104_MrBrineysHouse_EventScript_SailDeliverPackage
-	goto Route104_MrBrineysHouse_EventScript_WhereAreWeBound
+	@goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, Route104_MrBrineysHouse_EventScript_SailBothDeliveries
+	@goto_if_unset FLAG_DELIVERED_DEVON_GOODS, Route104_MrBrineysHouse_EventScript_SailDeliverPackage
+	setspeaker SP_NAME_BOATBOY
+	msgbox Route104_MrBrineysHouse_Text_Intro, MSGBOX_YES_NO
+	goto_if_eq VAR_RESULT, NO, Route104_MrBrineysHouse_EventScript_DeclineDeliverySailing
+    goto Route104_MrBrineysHouse_EventScript_WhereAreWeBound
 	end
 
 Route104_MrBrineysHouse_EventScript_SailingIntro::
 	setflag FLAG_MR_BRINEY_SAILING_INTRO
-	msgbox Route104_MrBrineysHouse_Text_WaitUpPeeko, MSGBOX_DEFAULT
-	msgbox Route104_MrBrineysHouse_Text_ItsYouLetsSailToDewford, MSGBOX_YESNO
+	setspeaker SP_NAME_BOATBOY
+	msgbox Route104_MrBrineysHouse_Text_NewIntro, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route104_MrBrineysHouse_EventScript_DeclineDeliverySailing
-	goto Route104_MrBrineysHouse_EventScript_SailToDewford
+	goto Route104_MrBrineysHouse_EventScript_WhereAreWeBound
 	end
 
 Route104_MrBrineysHouse_EventScript_WhereAreWeBound::
@@ -59,6 +57,7 @@ Route104_MrBrineysHouse_EventScript_SailDeliverPackage::
 	end
 
 Route104_MrBrineysHouse_EventScript_DeclineDeliverySailing::
+    setspeaker SP_NAME_BOATBOY
 	msgbox Route104_MrBrineysHouse_Text_DeclineDeliverySail, MSGBOX_DEFAULT
 	release
 	end
@@ -88,15 +87,24 @@ Route104_MrBrineysHouse_EventScript_Peeko::
 	lock
 	faceplayer
 	waitse
-	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL
+	setspeaker SP_NAME_PEEKO
+	playmoncry SPECIES_PELLIPER, CRY_MODE_NORMAL
 	msgbox Route104_MrBrineysHouse_Text_Peeko, MSGBOX_DEFAULT
 	waitmoncry
 	release
 	end
 
-Route104_MrBrineysHouse_Text_WaitUpPeeko:
-	.string "MR. BRINEY: Hold on, lass!\n"
-	.string "Wait up, PEEKO!$"
+SP_NAME_PEEKO::
+    .string "Peeko$"
+
+Route104_MrBrineysHouse_Text_NewIntro::
+    .string "Welcome to Briney Sea Voyages.\p"
+    .string "I haven't seen you before. Are you\n"
+    .string "looking to travel by sea?$"
+
+Route104_MrBrineysHouse_Text_Intro::
+    .string "Welcome back.\n"
+    .string "Are you looking to travel by sea?$"
 
 Route104_MrBrineysHouse_Text_ItsYouLetsSailToDewford:
 	.string "Hm? You're {PLAYER}{KUN}!\n"
@@ -114,15 +122,14 @@ Route104_MrBrineysHouse_Text_ItsYouLetsSailToDewford:
 	.string "We'll set sail for DEWFORD.$"
 
 Route104_MrBrineysHouse_Text_SetSailForDewford:
-	.string "MR. BRINEY: DEWFORD it is, then!\p"
-	.string "Anchors aweigh!\n"
-	.string "PEEKO, we're setting sail, my darling!$"
+	.string "Alright, let's set sail to DEWFORD.\p"
+	.string "Please keep your hands in the boat at\n"
+	.string "all times! And do not put your fingers\p$"
+	.string "in the cracks!"
 
 Route104_MrBrineysHouse_Text_DeclineDeliverySail:
-	.string "MR. BRINEY: Is that so?\n"
-	.string "Your deliveries can wait?\p"
-	.string "You just go on and tell me whenever\n"
-	.string "you want to set sail!$"
+	.string "No worries. I'll be here if you ever\n"
+	.string "need to sail.$"
 
 Route104_MrBrineysHouse_Text_NeedToMakeDeliveriesSailToDewford:
 	.string "MR. BRINEY: Ahoy!\n"
@@ -154,5 +161,8 @@ Route104_MrBrineysHouse_Text_TellMeWheneverYouWantToSail:
 	.string "you want to set sail!$"
 
 Route104_MrBrineysHouse_Text_Peeko:
-	.string "PEEKO: Pii piihyoro!$"
+	.string "Pa pa palll!$"
+
+SP_NAME_BOATBOY::
+    .string "Gray$"
 

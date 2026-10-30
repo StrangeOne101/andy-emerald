@@ -263,6 +263,7 @@ PetalburgWoods_EventScript_Beedrill::
     setwildbattle SPECIES_BEEDRILL, 15
     dowildbattle
     setflag FLAG_HIDDEN_ITEM_PETALBURG_WOODS_POTION
+    removeobject LOCALID_PETALBURGWOODS_BEEDRILL
     release
     end
 
@@ -458,10 +459,9 @@ PetalburgWoods_Text_HiddenItemsExplanation:
 	.string "But then he just up and disappeared!$"
 
 PetalburgWoods_Text_TryUsingThisItem:
-	.string "Oh, neat!\n"
-	.string "That's the BADGE from RUSTBORO GYM!\p"
-	.string "You must be a TRAINER.\n"
-	.string "You should try using this item.$"
+	.string "My sole purpose in this game is to\n"
+	.string "give you this item. Thank you for\l"
+	.string "letting me fulfill my purpose.$"
 
 PetalburgWoods_Text_MiracleSeedExplanation:
 	.string "It's a MIRACLE SEED.\n"

@@ -169,14 +169,14 @@
 #define FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY   0x8B
 #define FLAG_RECEIVED_6_SODA_POP             0x8C
 #define FLAG_DEFEATED_SEASHORE_HOUSE         0x8D
-#define FLAG_DEVON_GOODS_STOLEN              0x8E
-#define FLAG_RECOVERED_DEVON_GOODS           0x8F
-#define FLAG_RETURNED_DEVON_GOODS            0x90
+#define FLAG_DEVON_GOODS_STOLEN              0x8E //TODO UNUSED
+#define FLAG_RECEIVED_DEVON_GOODS            0x8F
+#define FLAG_RETURNED_DEVON_GOODS            0x90 //TODO UNUSED
 #define FLAG_CAUGHT_LUGIA                    0x91
 #define FLAG_CAUGHT_HO_OH                    0x92
 #define FLAG_MR_BRINEY_SAILING_INTRO         0x93
-#define FLAG_DOCK_REJECTED_DEVON_GOODS       0x94
-#define FLAG_DELIVERED_DEVON_GOODS           0x95
+#define FLAG_DOCK_REJECTED_DEVON_GOODS       0x94 //TODO UNUSED
+#define FLAG_DELIVERED_DEVON_GOODS           0x95 //TODO UNUSED
 #define FLAG_RECEIVED_CONTEST_PASS           0x96 // Unused, leftover from R/S
 #define FLAG_RECEIVED_CASTFORM               0x97
 #define FLAG_RECEIVED_SUPER_ROD              0x98

@@ -1,15 +1,17 @@
 @ Interact with cuttable tree
 EventScript_CutTree::
 	lockall
-	checkfieldmove FIELD_MOVE_CUT, TRUE
-	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CheckTreeCantCut
-	setfieldeffectargument 0, VAR_RESULT
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	buffermovename STR_VAR_2, MOVE_CUT
 	msgbox Text_WantToCut, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_CancelCut
 	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
 	closemessage
+	getobjectfacingdirection LOCALID_PLAYER, VAR_TEMP_1
+	goto_if_eq VAR_TEMP_1, DIR_NORTH, EventScript_TreeWalk_North
+    goto_if_eq VAR_TEMP_1, DIR_SOUTH, EventScript_TreeWalk_South
+    goto_if_eq VAR_TEMP_1, DIR_WEST,  EventScript_TreeWalk_West
+    goto_if_eq VAR_TEMP_1, DIR_EAST,  EventScript_TreeWalk_East
+    releaseall
+    end
 EventScript_CutTreeCommon:
 	isfollowerfieldmoveuser VAR_0x8004
 	setfieldeffectargument 3, VAR_0x8004 @ skip pose if so
@@ -23,6 +25,58 @@ EventScript_CutTreeDown:: @ fallthrough
 	removeobject VAR_LAST_TALKED
 	releaseall
 	end
+
+EventScript_TreeWalk_South:
+    applymovement LOCALID_PLAYER, MovementScript_TreeWalk_South
+    waitmovement 0
+    goto EventScript_CancelCut
+
+EventScript_TreeWalk_North:
+    applymovement LOCALID_PLAYER, MovementScript_TreeWalk_North
+    waitmovement 0
+    goto EventScript_CancelCut
+
+EventScript_TreeWalk_East:
+    applymovement LOCALID_PLAYER, MovementScript_TreeWalk_East
+    waitmovement 0
+    goto EventScript_CancelCut
+
+EventScript_TreeWalk_West:
+    applymovement LOCALID_PLAYER, MovementScript_TreeWalk_West
+    waitmovement 0
+    goto EventScript_CancelCut
+
+MovementScript_TreeWalk_South:
+    walk_right
+    walk_down
+    walk_down
+    walk_left
+    face_down
+    step_end
+
+MovementScript_TreeWalk_North:
+    walk_left
+    walk_up
+    walk_up
+    walk_right
+    face_up
+    step_end
+
+MovementScript_TreeWalk_East:
+    walk_up
+    walk_right
+    walk_right
+    walk_down
+    face_right
+    step_end
+
+MovementScript_TreeWalk_West:
+    walk_down
+    walk_left
+    walk_left
+    walk_up
+    face_left
+    step_end
 
 @ Use cut from party menu
 EventScript_UseCut::
@@ -44,12 +98,11 @@ EventScript_CancelCut::
 	end
 
 Text_WantToCut:
-	.string "This tree looks like it can be\n"
-	.string "CUT down!\p"
-	.string "Would you like to CUT it?$"
+	.string "This tree is so tiny!\l"
+	.string "Want to walk around it?$"
 
 Text_MonUsedFieldMove:
-	.string "{STR_VAR_1} used {STR_VAR_2}!$"
+	.string "You walk around the tree!$"
 
 Text_CantCut:
 	.string "This tree looks like it can be\n"

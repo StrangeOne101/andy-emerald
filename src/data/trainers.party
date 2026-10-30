@@ -6106,7 +6106,7 @@ Level: 4
 
 
 === TRAINER_BILLY ===
-Name: BILLY
+Name: NPC EUGENE
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -6114,10 +6114,7 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Zigzagoon
-Level: 5
-
-Seedot
+Krabby
 Level: 7
 
 
@@ -11030,7 +11027,7 @@ Level: 5
 
 
 === TRAINER_HALEY_1 ===
-Name: HALEY
+Name: NPC JERRY
 Class: Lass
 Pic: Lass
 Gender: Female
@@ -16863,7 +16860,7 @@ Double Battle: No
 AI: Basic Trainer
 
 Heracross
-Level: 14
+Level: 10
 
 === TRAINER_TOBY_ROUTE_101 ===
 Name: Toby

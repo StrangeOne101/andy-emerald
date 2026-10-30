@@ -6,9 +6,12 @@ RustboroCity_House3_2F_MapScripts::
 
 script RustboroCity_House3_2F_SetObjects {
     if (!flag(FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT) && flag(FLAG_TOBY_ROUTE_115)) {
-        setflag(FLAG_TEMP_1)
         addobject(LOCALID_ADAMS_CHARMANDER_EGG)
+    } else {
+        setflag(FLAG_TEMP_1)
+        removeobject(LOCALID_ADAMS_CHARMANDER_EGG)
     }
+
 }
 
 script RustboroCity_House3_2F_Adam {
@@ -40,7 +43,7 @@ script RustboroCity_House3_2F_Adam {
 script RustboroCity_House3_2F_CharmanderEgg {
     setspeaker("Adam")
     lockall
-    applymovement(LOCALID_ADAMS_CHARMANDER_EGG, Common_Movement_FaceUp)
+    applymovement(LOCALID_RUSTBORO_HOUSE3_ADAM, Common_Movement_FaceUp)
     msgbox(RustboroCity_House3_2F_AdamCharmander, MSGBOX_DEFAULT)
     closemessage
     releaseall
