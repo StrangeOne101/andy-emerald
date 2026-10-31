@@ -9344,6 +9344,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/RustboroCity_House3_1F/border.bin",
       "blockdata_filepath": "data/layouts/RustboroCity_House3_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEWFORD_INLAND",
+      "name": "DEWFORD_INLAND",
+      "width": 30,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/DEWFORD_INLAND/border.bin",
+      "blockdata_filepath": "data/layouts/DEWFORD_INLAND/map.bin"
     }
   ]
 }

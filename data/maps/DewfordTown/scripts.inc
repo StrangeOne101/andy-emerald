@@ -69,44 +69,25 @@ DewfordTown_EventScript_HallSign::
 	msgbox DewfordTown_Text_HallSign, MSGBOX_SIGN
 	end
 
-DewfordTown_EventScript_OldRodFisherman::
-	lock
-	faceplayer
-	goto_if_set FLAG_RECEIVED_OLD_ROD, DewfordTown_EventScript_HowsFishing
-	msgbox DewfordTown_Text_GettingItchToFish, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, DewfordTown_EventScript_GiveOldRod
-	goto_if_eq VAR_RESULT, NO, DewfordTown_EventScript_NotGettingItchToFish
-	end
-
 DewfordTown_EventScript_GiveOldRod::
-	msgbox DewfordTown_Text_GiveYouOneOfMyRods, MSGBOX_DEFAULT
+    lock
+	faceplayer
+    goto_if_set FLAG_RECEIVED_OLD_ROD, DewfordTown_EventScript_GiveOldRod_After
+	msgbox DewfordTown_Text_GiveYouOneOfMyRods, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, DewfordTown_Text_GiveYouOneOfMyRods_No
+	checkmoney 2000, FALSE
+    goto_if_eq VAR_RESULT, NO, DewfordTown_Text_GiveYouOneOfMyRods_CantAfford
+    removemoney 2000
+    updatemoneybox
 	giveitem ITEM_OLD_ROD
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_OLD_ROD
-	msgbox DewfordTown_Text_ThrowInFishingAdvice, MSGBOX_DEFAULT
+	msgbox DewfordTown_Text_GiveYouOneOfMyRods_Bought, MSGBOX_DEFAULT
 	release
 	end
 
-DewfordTown_EventScript_NotGettingItchToFish::
-	msgbox DewfordTown_Text_ThatsTooBadThen, MSGBOX_DEFAULT
-	release
-	end
-
-DewfordTown_EventScript_HowsFishing::
-	message DewfordTown_Text_HowsYourFishing
-	waitmessage
-	multichoice 20, 8, MULTI_HOWS_FISHING, TRUE
-	goto_if_eq VAR_RESULT, 0, DewfordTown_EventScript_FishingExcellent
-	goto_if_eq VAR_RESULT, 1, DewfordTown_EventScript_FishingNotSoGood
-	end
-
-DewfordTown_EventScript_FishingExcellent::
-	msgbox DewfordTown_Text_GreatHaulInSomeBigOnes, MSGBOX_DEFAULT
-	release
-	end
-
-DewfordTown_EventScript_FishingNotSoGood::
-	msgbox DewfordTown_Text_FishingAdvice, MSGBOX_DEFAULT
+DewfordTown_EventScript_GiveOldRod_After::
+	msgbox DewfordTown_Text_GiveYouOneOfMyRods_After, MSGBOX_DEFAULT
 	release
 	end
 
@@ -667,15 +648,19 @@ DewfordTown_Text_GoDeliverIllBeWaiting:
 	.string "the LETTER. I'll be waiting.$"
 
 DewfordTown_Text_BrineyLandedInDewford:
-	.string "MR. BRINEY: Ahoy!\n"
-	.string "We've hit land in DEWFORD!\p"
-	.string "You just go on and tell me whenever\n"
-	.string "you want to set sail again!$"
+	.string "And, we're here!\n"
+	.string "Welcome to DEWFORD!\p"
+	.string "Make sure you rate us 5 stars on\n"
+	.string "TRUSTPILOT to get 20% off your\l"
+	.string "next fare!\p"
+	.string "I will be here waiting for you.\p"
+	.string "(Business isn't exactly booming,\n"
+	.string "at the moment…)$"
+
 
 DewfordTown_Text_WhereAreWeBound:
-	.string "MR. BRINEY: Ahoy!\n"
-	.string "For you, I'll go out to sea anytime!\p"
-	.string "Now, my friend, where are we bound?$"
+	.string "Welcome back!\n"
+	.string "Where would you like to go today?$"
 
 DewfordTown_Text_PetalburgWereSettingSail:
 	.string "MR. BRINEY: PETALBURG, is it?\p"
@@ -691,50 +676,42 @@ DewfordTown_Text_JustTellMeWhenYouNeedToSetSail:
 	.string "MR. BRINEY: You just tell me whenever\n"
 	.string "you need to set sail again!$"
 
-DewfordTown_Text_GettingItchToFish:
-	.string "This is a renowned fishing spot.\n"
-	.string "Are you getting the itch to fish?$"
-
 DewfordTown_Text_GiveYouOneOfMyRods:
-	.string "I hear you, and I like what\n"
-	.string "you're saying!\p"
-	.string "I'll give you one of my fishing RODS.$"
+	.string "Hey you! Yeah, you!\n"
+	.string "I got just the thing for you!\p"
+	.string "I know the look of someone that desires\n"
+	.string "to fish! To cast their rod into the deep\l"
+	.string "and catch POKeMON of Legends!\p"
+	.string "I see that TRAINER PASS on you, too,\n"
+	.string "so I got just the deal for you!\p"
+	.string "For the small price of ¥2000, I can\n"
+	.string "give you a brand new Legends Rod!\p"
+	.string "It's the best in the business! I bet\n"
+	.string "you could even catch a MILOTIC\l"
+	.string "with it!\p"
+	.string "So what do you say? Do you want to\n"
+	.string "buy it?$"
 
-DewfordTown_Text_ThrowInFishingAdvice:
-	.string "And, as an added bonus, I'll even throw\n"
-	.string "in a little fishing advice!\p"
-	.string "First, you want to face the water,\n"
-	.string "then use the ROD.\p"
-	.string "Focus your mind…\n"
-	.string "If you get a bite, pull on the ROD.\p"
-	.string "Sometimes you can snag something\n"
-	.string "immediately, but with bigger catches,\l"
-	.string "you need to time the pulls on your ROD\l"
-	.string "to haul them in.$"
+DewfordTown_Text_GiveYouOneOfMyRods_ChangedYourMind::
+    .string "Did you change your mind? Finally want\n"
+    .string "to get your hands on this Legends Rod\p"
+    .string "for the small price of ¥2000?$"
 
-DewfordTown_Text_ThatsTooBadThen:
-	.string "Oh, is that so?\n"
-	.string "That's too bad, then.$"
+DewfordTown_Text_GiveYouOneOfMyRods_No::
+    .string "You don't? Well, then.\p"
+    .string "I'll be here if you ever change your\n"
+    .string "mind!$"
 
-DewfordTown_Text_HowsYourFishing:
-	.string "Yo!\n"
-	.string "How's your fishing?$"
+DewfordTown_Text_GiveYouOneOfMyRods_CantAfford::
+    .string "Huh? You can't afford ¥2000?\p"
+    .string "Well come back when you can, then!$"
 
-DewfordTown_Text_GreatHaulInSomeBigOnes:
-	.string "Is that right! That's great!\n"
-	.string "Haul in some big ones!$"
+DewfordTown_Text_GiveYouOneOfMyRods_Bought:
+    .string "Good choice! Here you go!$"
 
-DewfordTown_Text_FishingAdvice:
-	.string "Oh, hey, don't get down on yourself!\n"
-	.string "I'll give you a little fishing advice.\p"
-	.string "First, you want to face the water,\n"
-	.string "then use the ROD.\p"
-	.string "Focus your mind…\n"
-	.string "If you get a bite, pull the ROD.\p"
-	.string "Sometimes you can snag something\n"
-	.string "immediately, but with bigger catches,\l"
-	.string "you need to time the pulls on your ROD\l"
-	.string "to haul them in.$"
+DewfordTown_Text_GiveYouOneOfMyRods_After::
+    .string "(Hehe, sucker.)$"
+
 
 DewfordTown_Text_XIsTheBiggestHappeningThingRight:
 	.string "I like what's hip, happening, and trendy.\n"

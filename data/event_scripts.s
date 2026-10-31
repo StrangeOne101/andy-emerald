@@ -1317,3 +1317,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/wild_encounter.inc"
 
 	.include "data/maps/RustboroCity_House3_2F/scripts.inc"
+
+	.include "data/maps/DewfordInland/scripts.inc"

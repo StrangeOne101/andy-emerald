@@ -48,5 +48,8 @@ RustboroCity_CuttersHouse_Text_DadHelpedClearLandOfTrees:
 	.string "When they were expanding the city of\n"
 	.string "RUSTBORO, my dad helped out.\p"
 	.string "He made his POKéMON use CUT to clear\n"
-	.string "the land of trees.$"
+	.string "the land of trees.\p"
+	.string "That said, CUT is kind of useless\n"
+	.string "nowadays. You can just walk around\l"
+	.string "the trees since they are tiny.$"
 
