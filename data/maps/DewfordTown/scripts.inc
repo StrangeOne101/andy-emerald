@@ -1,10 +1,25 @@
 DewfordTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, DewfordTown_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, DewfordTown_OnLoad
 	.byte 0
 
 DewfordTown_OnTransition:
 	setflag FLAG_VISITED_DEWFORD_TOWN
+    end
+
+DewfordTown_OnLoad:
+    call_if_unset FLAG_DELIVERED_STEVEN_LETTER, DewfordTown_EventScript_SetBoatCollision
 	end
+
+DewfordTown_EventScript_SetBoatCollision::
+    setmetatile 4, 17, 0x124, 0x10        @Left side upper, sand
+    setmetatile 4, 18, 0x124, 0x10        @Left side mid, sand
+    setmetatile 4, 19, 0x239, 0x10        @Left side lower, tree
+
+    setmetatile 10, 17, 0x124, 0x10       @Right side upper, sand
+    setmetatile 10, 18, 0x124, 0x10       @Right side middle, sand
+    setmetatile 10, 19, 0x239, 0x10       @Right side lower, tree
+    end
 
 DewfordTown_EventScript_Briney::
 	lock

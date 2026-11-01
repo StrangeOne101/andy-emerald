@@ -5,6 +5,12 @@ Route106_EventScript_TrainerTipsSign::
 	msgbox Route106_Text_TrainerTips, MSGBOX_SIGN
 	end
 
+Route106_EventScript_GraniteCave::
+    showmonpic SPECIES_GRANITE, 10, 3
+	msgbox Route106_Text_GraniteCave, MSGBOX_SIGN
+	hidemonpic
+	end
+
 Route106_EventScript_Douglas::
 	trainerbattle_single TRAINER_DOUGLAS, Route106_Text_DouglasIntro, Route106_Text_DouglasDefeated
 	msgbox Route106_Text_DouglasPostBattle, MSGBOX_AUTOCLOSE
@@ -45,4 +51,8 @@ Route106_Text_TrainerTips:
 	.string "TRAINER TIPS\p"
 	.string "MONKEY SEE, MONKEY DO\n"
 	.string "JUST LIKE HARAMBE DID$"
+
+Route106_Text_GraniteCave:
+    .string "GRANITE CAVE\n"
+    .string "(Contains Granite)$"
 

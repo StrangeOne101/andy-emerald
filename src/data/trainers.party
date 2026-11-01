@@ -16726,6 +16726,45 @@ AI: Check Bad Move
 Wooper Paldea (M)
 Level: 8
 
+=== TRAINER_TOBY_2 ===
+Name: Toby
+Class: Toby
+Pic: toby
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move
+
+Grimer
+Level: 16
+
+Nosepass
+Level: 17
+
+Voltorb
+Level: 18
+
+=== TRAINER_TOBY_3 ===
+Name: Toby
+Class: Toby
+Pic: toby
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move
+
+Grimer
+Level: 21
+
+Nosepass
+Level: 22
+
+Voltorb
+Level: 23
+
+Mimikyu
+Level: 23
+
 
 === TRAINER_RL_REUBEN ===
 Name: Reuben
@@ -16909,6 +16948,9 @@ AI: Check Bad Move
 
 Marill
 Level: 9
+
+Marill
+Level: 10
 
 === TRAINER_TOBY_PETALBURG_WOODS ===
 Name: Toby

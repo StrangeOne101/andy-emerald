@@ -46,19 +46,26 @@ Route104_MrBrineysHouse_EventScript_WhereAreWeBound::
 
 Route104_MrBrineysHouse_EventScript_CostToDewford::
     goto_if_set FLAG_RECEIVED_DEVON_GOODS, Route104_MrBrineysHouse_EventScript_CostToDewford2 @
+    showmoneybox 0, 0
     msgbox Route104_MrBrineysHouse_Text_DewfordCost, MSGBOX_YESNO
+    hidemoneybox
     goto_if_set FLAG_DEFEATED_RUSTBORO_GYM, Route104_MrBrineysHouse_EventScript_BringInMay
     goto_if_eq VAR_RESULT, NO, Route104_MrBrineysHouse_EventScript_DeclineDeliverySailing
     msgbox Route104_MrBrineysHouse_Text_NoMoney, MSGBOX_DEFAULT
     end
 
 Route104_MrBrineysHouse_EventScript_CostToDewford2::
+    showmoneybox 0, 0
     msgbox Route104_MrBrineysHouse_Text_DewfordCostDiscounted, MSGBOX_YESNO
     goto_if_eq VAR_RESULT, NO, Route104_MrBrineysHouse_EventScript_DeclineDeliverySailing
     checkmoney 800, FALSE
     goto_if_eq VAR_RESULT, NO, Route104_MrBrineysHouse_EventScript_NoMoney
     removemoney 800
     updatemoneybox
+    playse SE_SHOP
+    waitse
+    delay 16
+    hidemoneybox
     goto Route104_MrBrineysHouse_EventScript_SailToDewford
     end
 
@@ -189,7 +196,7 @@ Route104_MrBrineysHouse_Text_ItsYouLetsSailToDewford:
 Route104_MrBrineysHouse_Text_SetSailForDewford:
 	.string "Alright, let's set sail to DEWFORD.\p"
 	.string "Please keep your hands in the boat at\n"
-	.string "all times! And do not put your fingers\p"
+	.string "all times! And do not put your fingers\l"
 	.string "in the cracks!$"
 
 Route104_MrBrineysHouse_Text_DeclineDeliverySail:

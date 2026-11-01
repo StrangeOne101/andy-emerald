@@ -1694,6 +1694,7 @@ enum __attribute__((packed)) Species
     // Add any custom species between here and SPECIES_CUSTOM_END
     SPECIES_YOURSELF,
     SPECIES_BMO,
+    SPECIES_GRANITE, //For a granite showmonpic macro
     SPECIES_CUSTOM_END,
 
     SPECIES_EGG = SPECIES_CUSTOM_END,

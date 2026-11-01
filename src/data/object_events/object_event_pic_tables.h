@@ -1415,6 +1415,18 @@ static const struct SpriteFrameImage sPicTable_Brock[] = {
     overworld_frame(gObjectEventPic_Brock, 2, 4, 2),
 };
 
+static const struct SpriteFrameImage sPicTable_SSAnne[] = {
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+};
+
 #if IS_FRLG
 
 static const struct SpriteFrameImage sPicTable_RedNormal[] = {
@@ -2576,18 +2588,6 @@ static const struct SpriteFrameImage sPicTable_Seagallop[] = {
     overworld_frame(gObjectEventPic_Seagallop, 4, 16, 0),
     overworld_frame(gObjectEventPic_Seagallop, 4, 16, 0),
     overworld_frame(gObjectEventPic_Seagallop, 4, 16, 0),
-};
-
-static const struct SpriteFrameImage sPicTable_SSAnne[] = {
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
 };
 
 static const struct SpriteFrameImage sPicTable_Snorlax[] = {
