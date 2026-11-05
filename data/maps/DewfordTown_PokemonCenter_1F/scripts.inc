@@ -25,13 +25,18 @@ DewfordTown_PokemonCenter_1F_EventScript_Man::
 	end
 
 DewfordTown_PokemonCenter_1F_Text_StoneCavern:
-	.string "There's a stone cavern at the edge\n"
-	.string "of town.\p"
-	.string "I've heard you can find rare stones\n"
-	.string "there.$"
+	.string "Did you know GRAY is Mr. Briney's\n"
+	.string "Grandson? He took over after\l"
+	.string "Mr. Briney, well… You know…\p"
+	.string "Although GRAY charges for his fares,\n"
+	.string "that money is going towards buying a\l"
+	.string "new boat - or so I heard!\p"
+	.string "The old boat is looking a bit old…$"
 
 DewfordTown_PokemonCenter_1F_Text_FaintedMonCanUseHM:
-	.string "Even if a POKéMON faints and can't\n"
-	.string "battle, it can still use a move learned\l"
-	.string "from a HIDDEN MACHINE (HM).$"
+	.string "Did you know that if a POKéMON faints\n"
+	.string "and can't battle, it can still use a\l"
+	.string "HM? This is because you pick up said\p"
+	.string "POKéMON and bash the obstacle until its\n"
+	.string "gone!$"
 

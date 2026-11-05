@@ -254,6 +254,121 @@ DewfordTown_Hall_EventScript_ReceivedSludgeBomb::
 	release
 	end
 
+DewfordTown_Hall_EventScript_Hivemind::
+    lock
+    faceplayer
+    call_if_eq VAR_DEWFORD_HIVEMIND, 0, DewfordTown_Hall_EventScript_Hivemind1
+    call_if_eq VAR_DEWFORD_HIVEMIND, 1, DewfordTown_Hall_EventScript_Hivemind2
+    call_if_eq VAR_DEWFORD_HIVEMIND, 2, DewfordTown_Hall_EventScript_Hivemind3
+    call_if_eq VAR_DEWFORD_HIVEMIND, 3, DewfordTown_Hall_EventScript_Hivemind4
+    call_if_eq VAR_DEWFORD_HIVEMIND, 4, DewfordTown_Hall_EventScript_Hivemind5
+    call_if_eq VAR_DEWFORD_HIVEMIND, 5, DewfordTown_Hall_EventScript_Hivemind6
+    call_if_eq VAR_DEWFORD_HIVEMIND, 6, DewfordTown_Hall_EventScript_Hivemind7
+    call_if_eq VAR_DEWFORD_HIVEMIND, 7, DewfordTown_Hall_EventScript_Hivemind8
+    call_if_eq VAR_DEWFORD_HIVEMIND, 8, DewfordTown_Hall_EventScript_Hivemind9
+    addvar VAR_DEWFORD_HIVEMIND, 1
+    release
+    end
+
+
+DewfordTown_Hall_EventScript_Hivemind1::
+    msgbox DewfordTown_Hall_Text_Hivemind1, MSGBOX_DEFAULT
+    return
+    end
+
+DewfordTown_Hall_EventScript_Hivemind2::
+    msgbox DewfordTown_Hall_Text_Hivemind2, MSGBOX_DEFAULT
+    return
+    end
+
+DewfordTown_Hall_EventScript_Hivemind3::
+    msgbox DewfordTown_Hall_Text_Hivemind3, MSGBOX_DEFAULT
+    return
+    end
+
+DewfordTown_Hall_EventScript_Hivemind4::
+    msgbox DewfordTown_Hall_Text_Hivemind4, MSGBOX_DEFAULT
+    return
+    end
+
+DewfordTown_Hall_EventScript_Hivemind5::
+    msgbox DewfordTown_Hall_Text_Hivemind5, MSGBOX_DEFAULT
+    return
+    end
+
+DewfordTown_Hall_EventScript_Hivemind6::
+    msgbox DewfordTown_Hall_Text_Hivemind6, MSGBOX_DEFAULT
+    return
+    end
+
+DewfordTown_Hall_EventScript_Hivemind7::
+    msgbox DewfordTown_Hall_Text_Hivemind7, MSGBOX_DEFAULT
+    return
+    end
+
+DewfordTown_Hall_EventScript_Hivemind8::
+    msgbox DewfordTown_Hall_Text_Hivemind8, MSGBOX_DEFAULT
+    return
+    end
+
+DewfordTown_Hall_EventScript_Hivemind9::
+    msgbox DewfordTown_Hall_Text_Hivemind9, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, YES, DewfordTown_Hall_EventScript_HivemindJoin
+    goto_if_eq VAR_RESULT, NO, DewfordTown_Hall_EventScript_HivemindDecline
+    release
+    end
+
+DewfordTown_Hall_EventScript_HivemindJoin::
+    msgbox DewfordTown_Hall_Text_HivemindJoin, MSGBOX_AUTOCLOSE
+    fadescreen 1
+    delay 200
+    special DoSoftReset
+
+DewfordTown_Hall_EventScript_HivemindDecline::
+    msgbox DewfordTown_Hall_Text_HivemindDecline, MSGBOX_DEFAULT
+    release
+    end
+
+DewfordTown_Hall_Text_Hivemind1::
+    .string "Everything is so simple. When we\n"
+    .string "all have the same mind.$"
+
+DewfordTown_Hall_Text_Hivemind2::
+    .string "There is no more fighting.$"
+
+DewfordTown_Hall_Text_Hivemind3::
+    .string "There is no split opinions.$"
+
+DewfordTown_Hall_Text_Hivemind4::
+    .string "Just consensus.$"
+
+DewfordTown_Hall_Text_Hivemind5::
+    .string "No matter who you talk to.$"
+
+DewfordTown_Hall_Text_Hivemind6::
+    .string "No matter where you talk to us.$"
+
+DewfordTown_Hall_Text_Hivemind7::
+    .string "{LQ}{LQ}{LQ}Because we are one.{RQ}{RQ}{RQ}$"
+
+DewfordTown_Hall_Text_Hivemind8::
+    .string "I think you would work well with\n"
+    .string "us.$"
+
+DewfordTown_Hall_Text_Hivemind9::
+    .string "Would you like to join? Don't be\nshy!$"
+
+DewfordTown_Hall_Text_HivemindJoin::
+    .string "{LQ}{LQ}{LQ}Welcome!{RQ}{RQ}{RQ}$"
+
+DewfordTown_Hall_Text_HivemindDecline::
+    .string "It's too late! We have already poisoned\n"
+    .string "your mind!\p"
+    .string "… … …\p"
+    .string "Just kidding! We respect people's\n"
+    .string "freedom if they wish to keep it.\p"
+    .string "Have a nice day!$"
+
 DewfordTown_Hall_Text_CantImagineLifeWithoutTrend:
 	.string "What's in vogue? Why, it has to be\n"
 	.string "“{STR_VAR_1}”!\p"

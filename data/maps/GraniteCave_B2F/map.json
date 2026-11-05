@@ -3,7 +3,6 @@
   "name": "GraniteCave_B2F",
   "layout": "LAYOUT_GRANITE_CAVE_B2F",
   "music": "MUS_PETALBURG_WOODS",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_GRANITE_CAVE",
   "requires_flash": true,
   "weather": "WEATHER_NONE",
@@ -24,7 +23,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_REPEL",
+      "trainer_sight_or_berry_tree_id": "ITEM_RARE_CANDY",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_GRANITE_CAVE_B2F_REPEL"
     },
@@ -37,7 +36,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_RARE_CANDY",
+      "trainer_sight_or_berry_tree_id": "ITEM_EXP_CANDY_XL",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_GRANITE_CAVE_B2F_RARE_CANDY"
     },
@@ -131,6 +130,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
       "flag": "FLAG_TEMP_17"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 9,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_SEE_ALL_DIRECTIONS",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "GraniteCave_B2F_Louis",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 21,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_SUPER_REPEL",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_RECEIVED_CONTEST_PASS"
     }
   ],
   "warp_events": [
@@ -188,5 +213,6 @@
       "item": "ITEM_EVERSTONE",
       "flag": "FLAG_HIDDEN_ITEM_GRANITE_CAVE_B2F_EVERSTONE_2"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

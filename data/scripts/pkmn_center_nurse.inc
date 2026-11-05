@@ -3,6 +3,7 @@ Common_EventScript_PkmnCenterNurse::
 	faceplayer
 	setvar VAR_0x8004, 0
 	specialvar VAR_RESULT, CountPlayerTrainerStars
+	goto_if_set FLAG_HEALED_POKEMON_RECENTLY, EventScript_PkmnCenterNurse_Goodbye
 	goto_if_eq VAR_RESULT, 4, EventScript_PkmnCenterNurse_GoldCard
 	setspeaker SP_NAME_NURSE_JOY
 	msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
@@ -51,6 +52,7 @@ EventScript_PkmnCenterNurse_TakeAndHealPkmn::
 	waitmovement 0
 	special HealPlayerParty
 	callnative UpdateFollowingPokemon
+	setflag FLAG_HEALED_POKEMON_RECENTLY
 	return
 
 EventScript_PkmnCenterNurse_CheckTrainerHillAndUnionRoom::

@@ -3229,7 +3229,7 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 
 === TRAINER_TAKAO ===
-Name: TAKAO
+Name: NPC FG 1
 Class: Black Belt
 Pic: Black Belt
 Gender: Male
@@ -3237,7 +3237,7 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Machop
+Gastly
 Level: 13
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 
@@ -6512,7 +6512,7 @@ Level: 18
 
 
 === TRAINER_ELLIOT_1 ===
-Name: ELLIOT
+Name: NPC ELLIOT
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
@@ -6531,7 +6531,7 @@ Level: 10
 
 
 === TRAINER_NED ===
-Name: NED
+Name: NPC NED
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
@@ -6627,7 +6627,7 @@ IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
 
 === TRAINER_ELLIOT_2 ===
-Name: ELLIOT
+Name: NPC ELLIOT
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
@@ -8000,7 +8000,7 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 
 === TRAINER_JOCELYN ===
-Name: JOCELYN
+Name: NPC FG 2
 Class: Battle Girl
 Pic: Battle Girl
 Gender: Female
@@ -8008,13 +8008,13 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Meditite
+Bellsprout
 Level: 13
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 
 
 === TRAINER_LAURA ===
-Name: LAURA
+Name: NPC FG 3
 Class: Battle Girl
 Pic: Battle Girl
 Gender: Female
@@ -8022,7 +8022,7 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Meditite
+Grimer Alola
 Level: 13
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
@@ -10581,7 +10581,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 
 
 === TRAINER_BRENDEN ===
-Name: BRENDEN
+Name: NPC FG 4
 Class: Sailor
 Pic: Sailor
 Gender: Male
@@ -10589,13 +10589,13 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Machop
+Carkol
 Level: 13
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 
 === TRAINER_LILITH ===
-Name: LILITH
+Name: NPC FG 6
 Class: Battle Girl
 Pic: Battle Girl
 Gender: Female
@@ -10603,13 +10603,13 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Meditite
+Psyduck
 Level: 13
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 
 === TRAINER_CRISTIAN ===
-Name: CRISTIAN
+Name: NPC FG 5
 Class: Black Belt
 Pic: Black Belt
 Gender: Male
@@ -10617,7 +10617,7 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Makuhita
+Elgyem
 Level: 13
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
@@ -16737,12 +16737,20 @@ AI: Check Bad Move
 
 Grimer
 Level: 16
+- Sludge
+- Pound
+- Poison Gas
+- Minimize
 
 Nosepass
 Level: 17
 
 Voltorb
 Level: 18
+- Explosion
+- Thunder Shock
+- Screech
+- Taunt
 
 === TRAINER_TOBY_3 ===
 Name: Toby
@@ -16755,12 +16763,21 @@ AI: Check Bad Move
 
 Grimer
 Level: 21
+- Sludge
+- Disable
+- Poison Gas
+- Minimize
 
 Nosepass
 Level: 22
+- Rock Tomb
 
 Voltorb
 Level: 23
+- Explosion
+- Thunder Shock
+- Screech
+- Taunt
 
 Mimikyu
 Level: 23
@@ -16990,4 +17007,51 @@ Level: 10
 
 Mesprit
 Level: 12
+
+=== TRAINER_MATT_P ===
+Name: Matt P
+Class: Matt
+Pic: dragon tamer
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Ludicolo
+Level: 16
+
+=== TRAINER_SAM_H ===
+Name: Sam H
+Class: Carguy
+Pic: car guy
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Luxio
+Level: 14
+
+Primeape
+Level: 15
+
+=== TRAINER_LOUIS ===
+Name: Louis
+Class: Dungeonmaster
+Pic: Dungeonmaster
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Magmar
+Level: 12
+
+Dragonite
+Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Wing Attack
+- Twister
+- Thunder Wave
+- Wrap
 

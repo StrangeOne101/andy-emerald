@@ -16,9 +16,9 @@ DewfordTown_EventScript_SetBoatCollision::
     setmetatile 4, 18, 0x124, 0x10        @Left side mid, sand
     setmetatile 4, 19, 0x239, 0x10        @Left side lower, tree
 
-    setmetatile 10, 17, 0x124, 0x10       @Right side upper, sand
-    setmetatile 10, 18, 0x124, 0x10       @Right side middle, sand
-    setmetatile 10, 19, 0x239, 0x10       @Right side lower, tree
+    setmetatile 11, 17, 0x124, 0x10       @Right side upper, sand
+    setmetatile 11, 18, 0x124, 0x10       @Right side middle, sand
+    setmetatile 11, 19, 0x239, 0x10       @Right side lower, tree
     end
 
 DewfordTown_EventScript_Briney::
@@ -69,7 +69,12 @@ DewfordTown_EventScript_SailBackToPetalburg::
 	end
 
 DewfordTown_EventScript_Woman::
+    goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, DewfordTown_EventScript_Woman2
 	msgbox DewfordTown_Text_TinyIslandCommunity, MSGBOX_NPC
+	end
+
+DewfordTown_EventScript_Woman2::
+    msgbox DewfordTown_Text_WhatTheBoat, MSGBOX_NPC
 	end
 
 DewfordTown_EventScript_TownSign::
@@ -624,22 +629,26 @@ DewfordTown_EventScript_PhraseNotTrendyEnough::
 	end
 
 DewfordTown_Text_TinyIslandCommunity:
-	.string "DEWFORD is a tiny island community.\n"
-	.string "If something gets trendy here,\l"
-	.string "everyone picks up on it right away.$"
+	.string "DEWFORD is a tiny island.\p"
+	.string "You'd know that if you used your\n"
+	.string "eyes.$"
 
 DewfordTown_Text_TownSign:
 	.string "DEWFORD TOWN\n"
-	.string "“A tiny island in the blue sea.”$"
+	.string "“A tiny island and some rocks.”$"
 
 DewfordTown_Text_GymSign:
 	.string "DEWFORD TOWN POKéMON GYM\n"
 	.string "LEADER: BRAWLY\l"
-	.string "“A big wave in fighting!”$"
+	.string "“Fighting memes since 2005!”$"
 
 DewfordTown_Text_HallSign:
 	.string "DEWFORD HALL\n"
 	.string "“Everyone's information exchange!”$"
+
+DewfordTown_Text_WhatTheBoat::
+    .string "Is everyone else going to ignore the\n"
+    .string "giant boat in front of the GYM???$"
 
 Route104_Text_LandedInDewfordDeliverLetter:
 	.string "MR. BRINEY: Ahoy!\n"

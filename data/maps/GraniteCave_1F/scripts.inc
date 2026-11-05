@@ -7,8 +7,10 @@ GraniteCave_1F_EventScript_Hiker::
 	goto_if_set FLAG_RECEIVED_HM_FLASH, GraniteCave_1F_EventScript_ReceivedFlash
 	setspeaker SP_NAME_FLASHER
 	msgbox GraniteCave_1F_Text_GetsDarkAheadHereYouGo, MSGBOX_DEFAULT
+	setspeaker 0
 	giveitem ITEM_HM_FLASH
 	setflag FLAG_RECEIVED_HM_FLASH
+	setspeaker SP_NAME_FLASHER
 	msgbox GraniteCave_1F_Text_ExplainFlash, MSGBOX_DEFAULT
 	release
 	end

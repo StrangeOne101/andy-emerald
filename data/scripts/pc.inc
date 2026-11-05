@@ -36,6 +36,7 @@ EventScript_AccessPokemonStorage::
 	call_if_set FLAG_SYS_PC_LANETTE, EventScript_AccessLanettesPC
 	msgbox gText_StorageSystemOpened, MSGBOX_DEFAULT
 	special ShowPokemonStorageSystemPC
+	clearflag FLAG_HEALED_POKEMON_RECENTLY
 	goto EventScript_PCMainMenu
 	end
 

@@ -206,10 +206,13 @@ Debug_EventScript_Script_1::
 	end
 
 Debug_EventScript_Script_2::
+    additem ITEM_EXP_CANDY_XS, 30
+    additem ITEM_EXP_CANDY_S, 30
 	release
 	end
 
 Debug_EventScript_Script_3::
+    goto GraniteCave_StevensRoom_EventScript_DebugLabel
 	release
 	end
 
