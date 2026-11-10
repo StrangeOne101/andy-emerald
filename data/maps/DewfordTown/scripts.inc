@@ -24,6 +24,7 @@ DewfordTown_EventScript_SetBoatCollision::
 DewfordTown_EventScript_Briney::
 	lock
 	faceplayer
+	setspeaker SP_NAME_BOATBOY
 	goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, DewfordTown_EventScript_ReturnToPetalburgPrompt
 	message DewfordTown_Text_WhereAreWeBound
 	waitmessage
@@ -36,6 +37,17 @@ DewfordTown_EventScript_Briney::
 	end
 
 DewfordTown_EventScript_ChoosePetalburg::
+    showmoneybox 0, 0
+    msgbox Route104_MrBrineysHouse_Text_DewfordCostDiscounted, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, NO, Route104_MrBrineysHouse_EventScript_DeclineDeliverySailing
+    checkmoney 800, FALSE
+    goto_if_eq VAR_RESULT, NO, Route104_MrBrineysHouse_EventScript_NoMoney
+    removemoney 800
+    updatemoneybox
+    playse SE_SHOP
+    waitse
+    delay 16
+    hidemoneybox
 	msgbox DewfordTown_Text_PetalburgWereSettingSail, MSGBOX_DEFAULT
 	closemessage
 	goto DewfordTown_EventScript_SailToPetalburg
@@ -43,6 +55,17 @@ DewfordTown_EventScript_ChoosePetalburg::
 	end
 
 DewfordTown_EventScript_ChooseSlateport::
+    showmoneybox 0, 0
+    msgbox DewfordTown_Text_SlateportCostDiscounted, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, NO, Route104_MrBrineysHouse_EventScript_DeclineDeliverySailing
+    checkmoney 1200, FALSE
+    goto_if_eq VAR_RESULT, NO, Route104_MrBrineysHouse_EventScript_NoMoney
+    removemoney 1200
+    updatemoneybox
+    playse SE_SHOP
+    waitse
+    delay 16
+    hidemoneybox
 	msgbox DewfordTown_Text_SlateportWereSettingSail, MSGBOX_DEFAULT
 	closemessage
 	goto DewfordTown_EventScript_SailToSlateport
@@ -651,10 +674,14 @@ DewfordTown_Text_WhatTheBoat::
     .string "giant boat in front of the GYM???$"
 
 Route104_Text_LandedInDewfordDeliverLetter:
-	.string "MR. BRINEY: Ahoy!\n"
+	.string "Ahoy!\n"
 	.string "We've hit land in DEWFORD.\p"
 	.string "I suppose you're off to deliver that\n"
 	.string "LETTER to, who was it now, STEVEN!$"
+
+DewfordTown_Text_SlateportCostDiscounted::
+    .string "Alright. With your trainer pass, that\n"
+    .string "will cost ¥1200. That okay?$"
 
 DewfordTown_Text_SetSailBackToPetalburg:
 	.string "MR. BRINEY: Have you delivered your\n"
@@ -687,18 +714,20 @@ DewfordTown_Text_WhereAreWeBound:
 	.string "Where would you like to go today?$"
 
 DewfordTown_Text_PetalburgWereSettingSail:
-	.string "MR. BRINEY: PETALBURG, is it?\p"
-	.string "Anchors aweigh!\n"
-	.string "PEEKO, we're setting sail, my darling!$"
+    .string "Alright, let's set sail to PETALBURG.\p"
+	.string "Please keep your hands in the boat at\n"
+	.string "all times! And do not put your fingers\l"
+	.string "in the cracks!$"
 
 DewfordTown_Text_SlateportWereSettingSail:
-	.string "MR. BRINEY: SLATEPORT, is it?\p"
-	.string "Anchors aweigh!\n"
-	.string "PEEKO, we're setting sail, my darling!$"
+	.string "Alright, let's set sail to SLATEPORT.\p"
+    .string "Please keep your hands in the boat at\n"
+    .string "all times! And do not put your fingers\l"
+    .string "in the cracks!$"
 
 DewfordTown_Text_JustTellMeWhenYouNeedToSetSail:
-	.string "MR. BRINEY: You just tell me whenever\n"
-	.string "you need to set sail again!$"
+	.string "No worries. I'll be here if you ever\n"
+	.string "need to sail.$"
 
 DewfordTown_Text_GiveYouOneOfMyRods:
 	.string "Hey you! Yeah, you!\n"

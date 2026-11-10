@@ -360,11 +360,23 @@ Route109_EventScript_Zigzagoon::
 	lock
 	faceplayer
 	waitse
-	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL
+	playmoncry SPECIES_ZIGZAGOON_GALAR, CRY_MODE_NORMAL
 	msgbox Route109_Text_ZigzagoonCry, MSGBOX_DEFAULT
 	waitmoncry
 	release
 	end
+
+Route109_EventScript_ImportantRock::
+    msgbox Route109_Text_SeashoreHouseSign, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, NO, Route109_EventScript_ImportantRock2
+    closemessage
+    delay 40
+    playse SE_M_HEADBUTT
+    delay 40
+    fadescreen FADE_TO_BLACK
+    special DoSoftReset
+Route109_EventScript_ImportantRock2::
+    end
 
 Route109_EventScript_SeashoreHouseSign::
 	msgbox Route109_Text_SeashoreHouseSign, MSGBOX_SIGN
@@ -395,9 +407,7 @@ Route109_EventScript_Edmond::
 	end
 
 Route109_EventScript_Ricky::
-	trainerbattle_single TRAINER_RICKY_1, Route109_Text_RickyIntro, Route109_Text_RickyDefeated, Route109_EventScript_RickyRegisterMatchCallAfterBattle
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route109_EventScript_RickyRematch
+	trainerbattle_single TRAINER_RICKY_1, Route109_Text_RickyIntro, Route109_Text_RickyDefeated
 	msgbox Route109_Text_RickyPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -406,7 +416,7 @@ Route109_EventScript_RickyRegisterMatchCallAfterBattle::
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route109_Text_RickyRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_RICKY_1
+	@register_matchcall TRAINER_RICKY_1
 	release
 	end
 
@@ -555,6 +565,10 @@ Route109_Text_SeashoreHouseSign:
 	.string "SEASHORE HOUSE\p"
 	.string "“May hot battles rage on hot sands!\n"
 	.string "The place for hot TRAINERS!”$"
+
+Route109_Text_ImportantRock:
+	.string "This rock looks important.\p"
+	.string "Smash your head against it?$"
 
 Route109_Text_TrainerTipsSign:
 	.string "TRAINER TIPS\p"

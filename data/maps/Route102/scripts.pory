@@ -98,8 +98,14 @@ Route102_Text_ImNotVeryTall:
 	.string "Fwatchoo!$"
 
 Route102_Text_CatchWholeBunchOfPokemon:
-	.string "I'm going to catch a whole bunch of\n"
-	.string "POKéMON!$"
+	.string "Did you know? POKéMON with the\n"
+	.string "ability QUICK FEET are harder to\p"
+	.string "slow down? PARALYSIS will not slow\n"
+	.string "them and when BURNED or POISONED,\l"
+	.string "their speed increases by 50%!\p"
+	.string "AND! Having them at the front of\n"
+	.string "your party will make it harder\l"
+	.string "for wild POKéMON to attack you!$"
 
 Route102_Text_RouteSignOldale:
 	.string "ROUTE 102\n"
@@ -110,6 +116,13 @@ Route102_Text_RouteSignPetalburg:
 	.string "{LEFT_ARROW} PETALBURG CITY$"
 
 `
+
+script Route102_Poochyena {
+    lock
+    playmoncry(SPECIES_POOCHYENA, 0)
+    msgbox("Rrufff!", MSGBOX_NPC)
+    release
+}
 
 script Route102_OnTransition {
     call_if_set(FLAG_TRAINER_TOBY_ROUTE_102, Route102_ShowToby)

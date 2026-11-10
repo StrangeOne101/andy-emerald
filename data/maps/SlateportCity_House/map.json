@@ -1,9 +1,8 @@
 {
   "id": "MAP_SLATEPORT_CITY_HOUSE",
   "name": "SlateportCity_House",
-  "layout": "LAYOUT_HOUSE2",
+  "layout": "LAYOUT_SLATEPORT_CITY_HOUSE_WITH_HOLE",
   "music": "MUS_SLATEPORT",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SLATEPORT_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -56,8 +55,16 @@
       "elevation": 0,
       "dest_map": "MAP_SLATEPORT_CITY",
       "dest_warp_id": "10"
+    },
+    {
+      "x": 5,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_SLATEPORT_CITY",
+      "dest_warp_id": "11"
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

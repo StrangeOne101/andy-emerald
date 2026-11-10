@@ -9354,6 +9354,17 @@
       "secondary_tileset": "gTileset_Dewford",
       "border_filepath": "data/layouts/DEWFORD_INLAND/border.bin",
       "blockdata_filepath": "data/layouts/DEWFORD_INLAND/map.bin"
+    },
+    {
+      "id": "LAYOUT_SLATEPORT_CITY_HOUSE_WITH_HOLE",
+      "name": "SlateportCity_HouseWithHole",
+      "width": 11,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/SlateportCity_HouseWithHole/border.bin",
+      "blockdata_filepath": "data/layouts/SlateportCity_HouseWithHole/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

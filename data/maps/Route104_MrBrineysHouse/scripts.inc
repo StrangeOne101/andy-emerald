@@ -222,7 +222,7 @@ Route104_MrBrineysHouse_Text_DewfordCost:
     .string "Alright. That will cost ¥8000.\n"
     .string "That okay?$"
 
-Route104_MrBrineysHouse_Text_DewfordCostDiscounted:
+Route104_MrBrineysHouse_Text_DewfordCostDiscounted::
     .string "Alright. With your trainer pass, that\n"
     .string "will cost ¥800. That okay?$"
 

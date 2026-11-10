@@ -368,6 +368,44 @@ VF_Cash_Out::
 	hidecoinsbox 0, 5
 	releaseall
 	end
+
+MauvilleCity_GameCorner_EventScript_Toby::
+    lock
+    faceplayer
+    setspeaker SP_NAME_TOBY
+    goto_if_unset FLAG_TOBY_EXPLAINED_COINS, MauvilleCity_GameCorner_EventScript_TobyExplainFreeCoins
+    goto_if_set FLAG_TEMP_C, MauvilleCity_GameCorner_EventScript_TobyExplainFreeCoinsPost
+    goto_if_set FLAG_DAILY_COINS, MauvilleCity_GameCorner_EventScript_TobyPostCoins
+    showcoinsbox 1, 1
+    msgbox MauvilleCity_GameCorner_Text_TobyFreeCoins1, MSGBOX_DEFAULT
+    setflag FLAG_DAILY_COINS
+    setspeaker 0
+    addcoins 10
+    updatecoinsbox 1, 1
+    playse SE_SHOP
+    delay 40
+    setspeaker SP_NAME_TOBY
+    hidecoinsbox 0, 5
+    msgbox MauvilleCity_GameCorner_Text_TobyFreeCoins2, MSGBOX_DEFAULT
+    release
+    end
+
+MauvilleCity_GameCorner_EventScript_TobyExplainFreeCoins::
+    msgbox MauvilleCity_GameCorner_Text_TobyExplain, MSGBOX_DEFAULT
+    setflag FLAG_TEMP_C
+    setflag FLAG_TOBY_EXPLAINED_COINS
+    release
+    end
+
+MauvilleCity_GameCorner_EventScript_TobyExplainFreeCoinsPost:
+    msgbox MauvilleCity_GameCorner_Text_TobyExplainPost, MSGBOX_DEFAULT
+    release
+    end
+MauvilleCity_GameCorner_EventScript_TobyPostCoins::
+    msgbox MauvilleCity_GameCorner_Text_TobyAlreadyGotCoins, MSGBOX_DEFAULT
+    release
+    end
+
 	
 MauvilleCity_GameCorner_EventScript_Gacha_Basic::
 	lockall
@@ -1750,4 +1788,32 @@ MauvilleCity_GameCorner_Text_CantBuyWithNoCoinCase:
 	
 MauvilleCity_GameCorner_Text_Juice:
 	.string "BERRY JUICE!\n"
-	.string "Just 10 COINS.$"	
+	.string "Just 10 COINS.$"
+
+MauvilleCity_GameCorner_Text_TobyExplain:
+    .string "Hey there, Andrew!\n"
+    .string "Welcome to the GAME CORNER!\p"
+    .string "Because everyone loves Gambling, you\n"
+    .string "can talk to me each day for 10\l"
+    .string "free coins!\p"
+    .string "But because I'm hilarious, it starts\n"
+    .string "TOMORROW and not today! Hahahahah!\p"
+    .string "So come back tomorrow for free coins.\n"
+    .string "Have fun!$"
+
+MauvilleCity_GameCorner_Text_TobyExplainPost:
+    .string "Come back tomorrow!$"
+
+MauvilleCity_GameCorner_Text_TobyFreeCoins1:
+    .string "Welcome back! Here is your free\n"
+    .string "coins!$"
+
+MauvilleCity_GameCorner_Text_TobyFreeCoins2:
+    .string "Enjoy!$"
+
+MauvilleCity_GameCorner_Text_TobyAlreadyGotCoins:
+    .string "You've already got your coins for\n"
+    .string "today, but nice try!$"
+
+
+
