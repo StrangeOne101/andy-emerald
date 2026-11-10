@@ -7734,6 +7734,16 @@ static inline s32 DoMoveDamageCalc(struct DamageContext *ctx)
     if (ctx->typeEffectivenessModifier == UQ_4_12(0.0))
         return 0;
 
+    if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_MAUVILLE_CITY_GYM)) {
+        struct Pokemon *attackerMon = &gPlayerParty[gBattlerPartyIndexes[ctx->battlerAtk]];
+        u8 metLocation = GetMonData(attackerMon, MON_DATA_MET_LOCATION);
+
+        if (GetBattlerSide(ctx->battlerAtk) == B_SIDE_PLAYER && metLocation != MAPSEC_GAMECORNER) {
+            ctx->gamecornerGimmick = 1;
+            return 0;
+        }
+    }
+
     s32 dmg = DoFixedDamageMoveCalc(ctx);
     if (dmg != INT32_MAX)
         return dmg;

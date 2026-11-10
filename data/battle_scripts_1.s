@@ -1951,6 +1951,13 @@ BattleScript_EffectDoNothing::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
+BattleScript_EffectDoNothingGamecorner::
+	attackcanceler
+	waitanimation
+	printstring STRINGID_BUTNOTHINGHAPPENED
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
 BattleScript_EffectHoldHands::
 	attackcanceler
 	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_ButItFailed

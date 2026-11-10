@@ -217,6 +217,10 @@ Debug_EventScript_Script_3::
 	end
 
 Debug_EventScript_Script_4::
+    callnative PrintSlotMetLocation
+    waitmessage
+    waitbuttonpress
+    closemessage
 	release
 	end
 

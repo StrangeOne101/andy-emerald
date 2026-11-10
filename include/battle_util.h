@@ -123,6 +123,7 @@ struct DamageContext
     u32 airBalloonBlocked:1;
     u32 abilityBlocked:1;
     u32 runScript:1;  // Used during actual combat where scripts have to be run / flags need to be set
+    u32 gamecornerGimmick:1;
     u32 padding:22;
 };
 

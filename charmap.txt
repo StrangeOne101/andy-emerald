@@ -1134,4 +1134,5 @@ EMOJI_BIGANGER = F9 FE
 
 '\l' = FA @ scroll up window text
 '\p' = FB @ new paragraph
+WAITLINE = FB @ new paragraph
 '\n' = FE @ new line

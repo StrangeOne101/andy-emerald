@@ -13,6 +13,9 @@
 #include "battle_stat_change.h"
 #include "battle_move_resolution.h"
 #include "item.h"
+#include "field_message_box.h"
+#include "region_map.h"
+#include "string_util.h"
 #include "util.h"
 #include "pokemon.h"
 #include "random.h"
@@ -14000,5 +14003,39 @@ void BS_RestoreStatChangeQueue(void)
     gSpecialStatuses[gBattlerAttacker].statStageAmount = gSpecialStatuses[gBattlerAttacker].statStageAmount2;
     ClearOtherStatChangeValues(gBattlerAttacker);
     gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void PrintSlotMetLocation(void)
+{
+    NATIVE_ARGS();
+    u8 metLocationName[MAP_NAME_LENGTH + 1];
+    u8 *txtPtr = StringCopy(gStringVar4, COMPOUND_STRING(""));;
+    for (u8 i = 0; i < 6; i++) {
+        u16 metLocation = GetMonData(&gPlayerParty[i], MON_DATA_MET_LOCATION);
+
+
+        GetMapNameHandleAquaHideout(metLocationName, metLocation);
+
+        txtPtr = StringAppend(txtPtr, COMPOUND_STRING("Slot "));
+        txtPtr = ConvertIntToDecimalStringN(txtPtr, i, STR_CONV_MODE_LEFT_ALIGN, 5);
+        txtPtr = StringAppend(txtPtr, COMPOUND_STRING(", Met location: "));
+        txtPtr = ConvertIntToDecimalStringN(txtPtr, metLocation, STR_CONV_MODE_LEFT_ALIGN, 5);
+        txtPtr = StringAppend(txtPtr, COMPOUND_STRING(" ("));
+        txtPtr = StringAppend(txtPtr, metLocationName);
+        txtPtr = StringAppend(txtPtr, COMPOUND_STRING("){WAITLINE}"));
+    }
+
+    txtPtr = StringAppend(txtPtr, COMPOUND_STRING("Current Location is "));
+    u8 current = GetCurrentRegionMapSectionId();
+    GetMapNameHandleAquaHideout(metLocationName, current);
+    txtPtr = ConvertIntToDecimalStringN(txtPtr, current, STR_CONV_MODE_LEFT_ALIGN, 5);
+    txtPtr = StringAppend(txtPtr, COMPOUND_STRING(" ("));
+    txtPtr = StringAppend(txtPtr, metLocationName);
+    txtPtr = StringAppend(txtPtr, COMPOUND_STRING(")"));
+
+    ShowFieldMessage(gStringVar4);
+
+
+
 }
 

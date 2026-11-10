@@ -2070,6 +2070,11 @@ static enum CancelerResult CancelerTargetFailure(struct BattleCalcValues *cv)
                 gSpecialStatuses[ctx.battlerDef].distortedTypeMatchups = TRUE;
                 gSpecialStatuses[ctx.battlerDef].teraShellAbilityDone = TRUE;
             }
+            else if (ctx.gamecornerGimmick) {
+                gBattleStruct->moveResultFlags[cv->battlerDef] = MOVE_RESULT_FAILED;
+                BattleScriptCall(BattleScript_EffectDoNothingGamecorner);
+                targetAvoidedAttack = TRUE;
+            }
         }
 
         if (targetAvoidedAttack)
