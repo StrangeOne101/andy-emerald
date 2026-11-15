@@ -124,6 +124,21 @@ SlateportCity_EventScript_EnergyGuru::
 	end
 
 	.align 2
+SlateportCity_EventScript_Man3Crash::
+    playse SE_FAILURE
+    delay 4
+    playse SE_FAILURE
+    delay 4
+    playse SE_FAILURE
+    delay 4
+    playse SE_FAILURE
+    delay 4
+    playse SE_FAILURE
+    waitse
+    call SlateportCity_Text_TakingBattleTentChallenge
+    call gText_PlayerWhatCanIDoForYou
+    call Pokemart_DefaultItemList
+
 SlateportCity_Pokemart_EnergyGuru:
 	.2byte ITEM_PROTEIN
 	.2byte ITEM_IRON
@@ -357,8 +372,6 @@ SlateportCity_EventScript_AquaGrunt2::
 	faceplayer
 	msgbox SlateportCity_Text_AquaHasPolicy, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_SLATEPORT_GRUNT_2, Common_Movement_FaceOriginalDirection
-	waitmovement 0
 	release
 	end
 
@@ -423,37 +436,14 @@ SlateportCity_EventScript_AquaGrunt8::
 	end
 
 SlateportCity_EventScript_AquaGrunt9::
-	lock
-	faceplayer
-	playse SE_PIN
-	applymovement LOCALID_SLATEPORT_GRUNT_9, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_SLATEPORT_GRUNT_9, Common_Movement_Delay48
-	waitmovement 0
-	msgbox SlateportCity_Text_WhatDoYouWant, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_SLATEPORT_GRUNT_9, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	applymovement LOCALID_SLATEPORT_GRUNT_9, SlateportCity_Movement_DelayAquaGrunt
-	waitmovement 0
-	applymovement LOCALID_SLATEPORT_GRUNT_9, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox SlateportCity_Text_IllReadSignForYou, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_SLATEPORT_GRUNT_9, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	applymovement LOCALID_SLATEPORT_GRUNT_9, SlateportCity_Movement_DelayAquaGrunt
-	waitmovement 0
-	msgbox SlateportCity_Text_SaysSomethingLikeSeaIsEndless, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_SLATEPORT_GRUNT_9, Common_Movement_FacePlayer
-	waitmovement 0
-	applymovement LOCALID_SLATEPORT_GRUNT_9, SlateportCity_Movement_DelayAquaGrunt
-	waitmovement 0
-	applymovement LOCALID_SLATEPORT_GRUNT_9, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
+    lock
+    faceplayer
+    msgbox SlateportCity_Text_WhatDoYouWant, MSGBOX_DEFAULT
+    closemessage
+    applymovement LOCALID_SLATEPORT_GRUNT_8, Common_Movement_FaceOriginalDirection
+    waitmovement 0
+    release
+    end
 
 SlateportCity_Movement_DelayAquaGrunt:
 	delay_16
@@ -700,7 +690,9 @@ SlateportCity_EventScript_Gabby::
 	end
 
 SlateportCity_EventScript_Man3::
+    goto_if_set FLAG_TEMP_F, SlateportCity_EventScript_Man3Crash
 	msgbox SlateportCity_Text_WonderIfLighthouseStartlesPokemon, MSGBOX_NPC
+	setflag FLAG_TEMP_F
 	end
 
 SlateportCity_EventScript_BerryPowderClerk::
@@ -861,6 +853,21 @@ SlateportCity_EventScript_NotEnoughBerryPowder::
 	goto SlateportCity_EventScript_ChooseBerryPowderItem
 	end
 
+SlateportCity_EventScript_SkullMarketGrunt::
+    lock
+    faceplayer
+    playse SE_PIN
+    applymovement LOCALID_SLATEPORT_GRUNT_0, Common_Movement_ExclamationMark
+    waitmovement 0
+    applymovement LOCALID_SLATEPORT_GRUNT_0, Common_Movement_Delay48
+    waitmovement 0
+    msgbox SlateportCity_Text_SkullGruntMarket, MSGBOX_DEFAULT
+    applymovement LOCALID_SLATEPORT_GRUNT_0, Common_Movement_FaceOriginalDirection
+    applymovement LOCALID_PLAYER, Common_Movement_WalkDown
+    waitmovement 0
+    release
+    end
+
 SlateportCity_EventScript_ScottBattleTentScene::
 	lockall
 	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
@@ -947,10 +954,8 @@ SlateportCity_Text_EffortRibbonLooksGoodOnIt:
 	.string "RIBBON looks good on it!$"
 
 SlateportCity_Text_WonderIfLighthouseStartlesPokemon:
-	.string "The light of the lighthouse reaches\n"
-	.string "dozens of miles away.\p"
-	.string "I wonder if it doesn't startle POKéMON\n"
-	.string "in the sea.$"
+	.string "Talk to me again and I'll crash the\n"
+	.string "game.$"
 
 SlateportCity_Text_SeaweedFullOfLife:
 	.string "Ooh, look at this!\p"
@@ -985,21 +990,25 @@ SlateportCity_Text_GoingToCompeteInBattleTent:
 	.string "some POKéMON!$"
 
 SlateportCity_Text_BushedHikingFromMauville:
-	.string "Whew… I'm just bushed…\p"
+	.string "Whew… I'm knackered…\p"
 	.string "I hiked over from MAUVILLE CITY.\n"
-	.string "But, boy, this city's huge.\p"
-	.string "If I'd known this, I would've ridden\n"
-	.string "my BIKE here.$"
+	.string "That was already a mission, but a\l"
+	.string "cute girl popped out of the bushes\p"
+	.string "and drained me even more on the way\n"
+	.string "over here! Can you believe it?$"
 
 SlateportCity_Text_EveryoneCallsHimCaptStern:
-	.string "STERN, the fellow who built the\n"
-	.string "MUSEUM, also happens to be the leader\l"
-	.string "of an undersea exploration team.\p"
-	.string "So, everyone calls him CAPT. STERN.$"
+	.string "It's cool that people are cosplaying\n"
+	.string "TEAM AQUA all these years later.\p"
+	.string "Some people still get offended, but\n"
+	.string "like, come on! It's been 23 years,\p"
+	.string "for crying out loud! Get over\n"
+	.string "yourselves already! Sheeeeesh.$"
 
 SlateportCity_Text_WhatsLongLineOverThere:
-	.string "What is that over there?\n"
-	.string "That long line…$"
+	.string "I was a little girl when TEAM AQUA\n"
+	.string "took over SLATEPORT… I barely even\p"
+	.string "remember them.$"
 
 SlateportCity_Text_VisitedMuseumOften:
 	.string "When I was a child, I visited\n"
@@ -1009,71 +1018,58 @@ SlateportCity_Text_VisitedMuseumOften:
 
 SlateportCity_Text_QuitPushing:
 	.string "Hey, there! Quit pushing!\n"
-	.string "This is the line, can't you see?$"
+	.string "This is a bully line, idiot!$"
 
 SlateportCity_Text_AquaHasPolicy:
-	.string "TEAM AQUA has a policy of\n"
-	.string "assembling and dispersing at\l"
-	.string "the operation site.$"
+	.string "I got lost on my way to the TEAM\n"
+	.string "AQUA cosplay event… Do you know\l"
+	.string "where it is?$"
 
 SlateportCity_Text_BossIsBrilliant:
-	.string "Our BOSS is brilliant.\p"
-	.string "What would he want to do with\n"
-	.string "a MUSEUM now?$"
+	.string "Huh? You wanna cop a feel or\n"
+	.string "some shit?$"
+
+SlateportCity_Text_SkullGruntMarket:
+	.string "Oi! I am under orders not to let\n"
+	.string "anyone through! Including you, punk!"
+	.string "So back off!$"
 
 SlateportCity_Text_WhatsNewSchemeIWonder:
-	.string "What's the new scheme, I wonder?\p"
-	.string "Our BOSS is scary when he's mad, so\n"
-	.string "I'd better not screw things up…$"
+	.string "That fart stinks!$"
 
 SlateportCity_Text_ShouldTakeItAll:
-	.string "If there's something we need in\n"
-	.string "the MUSEUM, we should take it all!$"
+	.string "I need to take a fat shit…$"
 
 SlateportCity_Text_DontButtIn:
-	.string "Hey, you there!\n"
-	.string "Don't butt in!$"
+	.string "I got a bit overstimmed in the TEAM\n"
+	.string "AQUA cosplay event before…\l"
+	.string "So I came out here for a breather.\p"
+	.string "The sea is pretty, isn't it?\p"
+	.string "…$"
 
 SlateportCity_Text_RemindsMeOfLongLineForGames:
-	.string "A long line, huh?\p"
-	.string "It reminds me of the times I lined up to\n"
-	.string "buy smash-hit games…$"
+	.string "Oi, back off, mate!\n"
+	.string "Can't you see our bully line?$"
 
 SlateportCity_Text_WhyAreWeLiningUp:
-	.string "Why are we even lining up and paying?\n"
-	.string "We should just march in!$"
+	.string "You want to get through? Hah!\n"
+	.string "Too bad!$"
 
 SlateportCity_Text_WhatDoYouWant:
 	.string "What?\n"
 	.string "What do you want?$"
 
-SlateportCity_Text_IllReadSignForYou:
-	.string "You want to read this sign?\n"
-	.string "I'll read it for you!$"
-
-SlateportCity_Text_SaysSomethingLikeSeaIsEndless:
-	.string "Let's see…\p"
-	.string "Um… I think it says something like\n"
-	.string "“the life in the sea is endless.”\p"
-	.string "Yup, I'm pretty sure that's what\n"
-	.string "it says.$"
-
 SlateportCity_Text_ShouldveBroughtMyGameBoy:
-	.string "Grumble…\p"
-	.string "I should've brought my Game Boy\n"
-	.string "Advance so I wouldn't get bored in line…\p"
-	.string "Grumble…$"
+	.string "Bully line! Bully line! Bully\n"
+    .string "line! Bully line! Bulleh--OW!\p"
+    .string "I bit my tongue…$"
 
 SlateportCity_Text_HotSpringsAfterOperation:
-	.string "When this operation's over, I'll take\n"
-	.string "you to a hot spring spa!\p"
-	.string "That's what our leader said.\n"
-	.string "I can't wait!$"
+	.string "She will sleep with anyone,\n"
+	.string "swear…$"
 
 SlateportCity_Text_SeaIsSoWet:
-	.string "The sea is just so vast…\p"
-	.string "Could the sea have been made by\n"
-	.string "the tears shed by POKéMON?$"
+	.string "Water is wet!$"
 
 SlateportCity_Text_SinkOldBoats:
 	.string "Do you know what they do with old\n"
@@ -1086,9 +1082,8 @@ SlateportCity_Text_BuyTooMuch:
 	.string "away and buy too much.$"
 
 SlateportCity_Text_GetNameRaterToHelpYou:
-	.string "If you want to change your POKéMON's\n"
-	.string "nickname, you'll have to get the NAME\l"
-	.string "RATER to help you.$"
+	.string "I HAVE AUTISM!! LEAVE ME ALONE!!!!!!\n"
+	.string "REEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!!!!$"
 
 SlateportCity_Text_CantChangeTradeMonName:
 	.string "Any POKéMON you get in a trade,\n"
@@ -1247,8 +1242,8 @@ SlateportCity_Text_HarborSign:
 	.string "the ferry S.S. TIDAL.”$"
 
 SlateportCity_Text_NameRatersHouseSign:
-	.string "NAME RATER'S HOUSE\n"
-	.string "“POKéMON nicknames rated.”$"
+	.string "MICHELLE's HOUSE\n"
+	.string "“GB in SLATEPORT isn't ready yet!”$"
 
 SlateportCity_Text_ExplainBerries:
 	.string "If a wild POKéMON gets hurt, it heals\n"

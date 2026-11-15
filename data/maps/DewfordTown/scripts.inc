@@ -5,6 +5,7 @@ DewfordTown_MapScripts::
 
 DewfordTown_OnTransition:
 	setflag FLAG_VISITED_DEWFORD_TOWN
+	call_if_set FLAG_TRAINER_TOBY_DEWFORD, DewfordTown_EventScript_ShowToby
     end
 
 DewfordTown_OnLoad:
@@ -650,6 +651,67 @@ DewfordTown_EventScript_PhraseNotTrendyEnough::
 	msgbox DewfordTown_Text_XHuhIThinkYIsCool, MSGBOX_DEFAULT
 	release
 	end
+
+DewfordTown_EventScript_TobyTrigger::
+    lock
+    addobject LOCALID_ROUTE116_TOBY
+    setspeaker SP_NAME_TOBY
+    playse SE_PIN
+    applymovement LOCALID_ROUTE116_TOBY, DewfordTown_EventScript_MovementToby
+    waitmovement 0
+    msgbox DewfordTown_Text_TobyIntro, MSGBOX_NPC
+    trainerbattle_no_intro TRAINER_TOBY_RUSTBORO_CITY, DewfordTown_Text_TobyDefeat
+    setspeaker SP_NAME_TOBY
+    msgbox DewfordTown_Text_TobyAfter, MSGBOX_NPC
+    setvar VAR_RARE_ENCOUNTER, SPECIES_WOOPER_PALDEA
+    release
+    end
+
+DewfordTown_EventScript_TobyTalk::
+    lock
+    setspeaker SP_NAME_TOBY
+    goto_if_eq VAR_RARE_ENCOUNTER, 0, DewfordTown_EventScript_TobyTalkAfterCatch
+    msgbox DewfordTown_Text_TobyAfter, MSGBOX_NPC
+    release
+    end
+
+DewfordTown_EventScript_TobyTalkAfterCatch::
+    msgbox DewfordTown_Text_TobyAfterCaught, MSGBOX_NPC
+    release
+
+DewfordTown_EventScript_MovementToby::
+    reveal_trainer
+    face_left
+    emote_exclamation_mark
+    delay_16
+    step_end
+
+DewfordTown_EventScript_ShowToby::
+    addobject LOCALID_ROUTE116_TOBY
+    setvar VAR_TEMP_A, 1
+    end
+
+DewfordTown_Text_TobyIntro::
+    .string "I love this town! The boat was\n"
+    .string "just so funny.\p"
+
+DewfordTown_Text_TobyDefeat::
+    .string "Woopahhhhhhh!!$"
+
+DewfordTown_Text_TobyAfter::
+    .string "This Wooper is from Gen IX in the\n"
+    .string "Scarlet and Voilet games.\p"
+    .string "(Wait, did I already say this?)\p"
+    .string "Anyway, it's a divergent form of\n"
+    .string "normal Wooper, but is GROUND and\l"
+    .string "POISON type. BUT THE EVOLUTION!!!\p"
+    .string "Clodsire is just such a handsome boy!\n"
+    .string "I love him so much that I released a\n"
+    .string "wild Wooper around here for you!\p"
+    .string "Use the fishing rod to get it!$"
+
+DewfordTown_Text_TobyAfterCaught::
+    .string "Woopa! You found it!$"
 
 DewfordTown_Text_TinyIslandCommunity:
 	.string "DEWFORD is a tiny island.\p"

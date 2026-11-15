@@ -63,13 +63,13 @@ LittlerootTown_MayMovementPostLatias:
     walk_fast_right
     walk_fast_right
     walk_fast_right
-    walk_fast_down
-    walk_fast_down
-    walk_fast_down
-    walk_fast_down
-    walk_fast_down
-    walk_fast_down
-    walk_fast_down
+    walk_fast_up
+    walk_fast_up
+    walk_fast_up
+    walk_fast_up
+    walk_fast_up
+    walk_fast_up
+    walk_fast_up
     step_end
 
 @ State descriptions for VAR_LITTLEROOT_TOWN_STATE

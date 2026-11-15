@@ -1,3 +1,4 @@
+#include "battle_main.h"
 // multichoice lists
 static const struct MenuAction MultichoiceList_BrineyOnDewford[] =
 {
@@ -1127,6 +1128,56 @@ static const struct MenuAction MultichoiceList_Exit[] =
     {gText_Exit},
 };
 
+static const u8 sText_QuizCancel[] = _("(I GIVE UP)");
+
+//static const u8 sText_Quiz1_A[] = _("Pichu");
+//static const u8 sText_Quiz1_B[] = _("Rattata");
+//static const u8 sText_Quiz1_C[] = _("Ninjask");
+//static const u8 sText_Quiz1_D[] = _("Diglett");
+
+static const struct MenuAction MultichoiceList_PKMN_Quiz1[] =
+{
+    {gSpeciesInfo[SPECIES_PICHU].speciesName},
+    {gSpeciesInfo[SPECIES_RATTATA].speciesName},
+    {gSpeciesInfo[SPECIES_NINJASK].speciesName},
+    {gSpeciesInfo[SPECIES_DIGLETT].speciesName},
+    {sText_QuizCancel},
+};
+
+static const struct MenuAction MultichoiceList_PKMN_Quiz2[] =
+{
+    {gSpeciesInfo[SPECIES_TANGELA].speciesName},
+    {gSpeciesInfo[SPECIES_PRIMEAPE].speciesName},
+    {gSpeciesInfo[SPECIES_GOLDUCK].speciesName},
+    {gSpeciesInfo[SPECIES_DUSCLOPS].speciesName},
+    {sText_QuizCancel},
+};
+
+static const struct MenuAction MultichoiceList_PKMN_Quiz3[] =
+{
+    {gTypesInfo[TYPE_DRAGON].name},
+    {gTypesInfo[TYPE_DARK].name},
+    {gTypesInfo[TYPE_GHOST].name},
+    {gTypesInfo[TYPE_ICE].name},
+    {sText_QuizCancel},
+};
+
+static const struct MenuAction MultichoiceList_PKMN_Quiz4[] =
+{
+    {gSpeciesInfo[SPECIES_BULBASAUR].speciesName},
+    {gSpeciesInfo[SPECIES_MEW].speciesName},
+    {gSpeciesInfo[SPECIES_ARCEUS].speciesName},
+    {gSpeciesInfo[SPECIES_RHYDON].speciesName},
+    {sText_QuizCancel},
+};
+
+static const struct MenuAction MultichoiceList_PKMN_Quiz5[] =
+{
+    {gText_Yes},
+    {gText_No},
+    {sText_QuizCancel},
+};
+
 struct MultichoiceListStruct
 {
     const struct MenuAction *list;
@@ -1144,19 +1195,19 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BASE_PC_WITH_REGISTRY]      = MULTICHOICE(MultichoiceList_BasePCWithRegistry),
     [MULTI_REGISTER_MENU]              = MULTICHOICE(MultichoiceList_RegisterMenu),
     [MULTI_SSTIDAL_LILYCOVE]           = MULTICHOICE(MultichoiceList_Exit),
-    [MULTI_UNUSED_9]                   = MULTICHOICE(MultichoiceList_Exit),
-    [MULTI_UNUSED_10]                  = MULTICHOICE(MultichoiceList_Exit),
+    [MULTI_PKMN_QUIZ_1]                = MULTICHOICE(MultichoiceList_PKMN_Quiz1),
+    [MULTI_PKMN_QUIZ_2]                = MULTICHOICE(MultichoiceList_PKMN_Quiz2),
     [MULTI_FRONTIER_PASS_INFO]         = MULTICHOICE(MultichoiceList_FrontierPassInfo),
     [MULTI_BIKE]                       = MULTICHOICE(MultichoiceList_Bike),
     [MULTI_STATUS_INFO]                = MULTICHOICE(MultichoiceList_StatusInfo),
     [MULTI_BRINEY_OFF_DEWFORD]         = MULTICHOICE(MultichoiceList_BrineyOffDewford),
-    [MULTI_UNUSED_15]                  = MULTICHOICE(MultichoiceList_Exit),
+    [MULTI_PKMN_QUIZ_3]                = MULTICHOICE(MultichoiceList_PKMN_Quiz3),
     [MULTI_VIEWED_PAINTINGS]           = MULTICHOICE(MultichoiceList_ViewedPaintings),
     [MULTI_YESNOINFO]                  = MULTICHOICE(MultichoiceList_YesNoInfo),
     [MULTI_BATTLE_MODE]                = MULTICHOICE(MultichoiceList_BattleMode),
-    [MULTI_UNUSED_19]                  = MULTICHOICE(MultichoiceList_Exit),
+    [MULTI_PKMN_QUIZ_4]                = MULTICHOICE(MultichoiceList_PKMN_Quiz4),
     [MULTI_YESNOINFO_2]                = MULTICHOICE(MultichoiceList_YesNoInfo2),
-    [MULTI_UNUSED_21]                  = MULTICHOICE(MultichoiceList_Exit),
+    [MULTI_PKMN_QUIZ_5]                = MULTICHOICE(MultichoiceList_PKMN_Quiz5),
     [MULTI_UNUSED_22]                  = MULTICHOICE(MultichoiceList_Exit),
     [MULTI_CHALLENGEINFO]              = MULTICHOICE(MultichoiceList_ChallengeInfo),
     [MULTI_LEVEL_MODE]                 = MULTICHOICE(MultichoiceList_LevelMode),

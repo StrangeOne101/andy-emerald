@@ -395,7 +395,7 @@ Route110_EventScript_MayBattle::
 	end
 
 Route110_EventScript_MayBattleTorchic::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TORCHIC, Route110_Text_MayDefeated
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TREECKO, Route110_Text_MayDefeated
 	goto Route110_EventScript_MayDefeated
 	end
 

@@ -7,7 +7,6 @@
 #include "fishing.h"
 #include "follower_npc.h"
 #include "item.h"
-#include "random.h"
 #include "field_player_avatar.h"
 #include "link.h"
 #include "metatile_behavior.h"
@@ -530,6 +529,13 @@ bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum WildPok
         return FALSE;
     if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && flags & WILD_CHECK_KEEN_EYE && !IsAbilityAllowingEncounter(level))
         return FALSE;
+
+    const u16 rareEncounter = VarGet(VAR_RARE_ENCOUNTER);
+    if (rareEncounter > 0 && Random() % 5 == 0) {
+        CreateWildMon(rareEncounter, level);
+        VarSet(VAR_RARE_ENCOUNTER, 0);
+        return TRUE;
+    }
 
     CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
     return TRUE;

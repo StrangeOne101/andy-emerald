@@ -14034,8 +14034,19 @@ void PrintSlotMetLocation(void)
     txtPtr = StringAppend(txtPtr, COMPOUND_STRING(")"));
 
     ShowFieldMessage(gStringVar4);
+}
 
+void SetLastPartyMonEggCycles(void)
+{
+    NATIVE_ARGS();
+    u8 slot = gPlayerPartyCount - 1;
+    // Set VAR_0x8004 to desired cycles in your script (e.g., 1 for near-instant hatch)
+    u8 cycles = VarGet(VAR_0x8004);
+    if (cycles == 0) cycles = 16;
 
-
+    if (GetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG))
+    {
+        SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &cycles);
+    }
 }
 

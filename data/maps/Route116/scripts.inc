@@ -9,6 +9,7 @@ Route116_OnTransition:
 	call_if_eq VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_HideMapNamePopup
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_116_NORTH, AbnormalWeather_StartGroudonWeather
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_116_SOUTH, AbnormalWeather_StartGroudonWeather
+	call_if_set FLAG_TRAINER_TOBY_ROUTE_116, Route116_EventScript_ShowToby
 	end
 
 Route116_EventScript_SetWandasBoyfriendPos::
@@ -305,6 +306,64 @@ Route116_EventScript_Johnson::
 	msgbox Route116_Text_JohnsonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route116_EventScript_TobyTrigger::
+    lock
+    addobject LOCALID_ROUTE116_TOBY2
+    setspeaker SP_NAME_TOBY
+    playse SE_PIN
+    applymovement LOCALID_ROUTE116_TOBY2, Route116_EventScript_MovementToby
+    waitmovement 0
+    msgbox Route116_Text_TobyIntro, MSGBOX_NPC
+    trainerbattle_no_intro TRAINER_TOBY_RUSTBORO_CITY, Route116_Text_TobyDefeat
+    setspeaker SP_NAME_TOBY
+    msgbox Route116_Text_TobyAfter, MSGBOX_NPC
+    setvar VAR_RARE_ENCOUNTER, SPECIES_TREECKO
+    release
+    end
+
+Route116_EventScript_TobyTalk::
+    lock
+    setspeaker SP_NAME_TOBY
+    goto_if_eq VAR_RARE_ENCOUNTER, 0, Route116_EventScript_TobyTalkAfterCatch
+    msgbox Route116_Text_TobyAfter, MSGBOX_NPC
+    release
+    end
+
+Route116_EventScript_TobyTalkAfterCatch::
+    msgbox Route116_Text_TobyAfterCaught, MSGBOX_NPC
+    release
+
+Route116_EventScript_MovementToby::
+    reveal_trainer
+    face_left
+    emote_exclamation_mark
+    delay_16
+    step_end
+
+Route116_EventScript_ShowToby::
+    addobject LOCALID_ROUTE116_TOBY
+    setvar VAR_TEMP_A, 1
+    end
+
+Route116_Text_TobyIntro::
+    .string "Boo!$"
+
+Route116_Text_TobyDefeat::
+    .string "Treecko!!$"
+
+Route116_Text_TobyAfter::
+    .string "Did you find me before or after\n"
+    .string "the RUSTBORO CITY me? I could\l"
+    .string "technically figure that out with\p"
+    .string "code, but that is a pain to do.\n"
+    .string "Anyway!\p"
+    .string "Your reward this time is a TREECKO!\n"
+    .string "I've released it in the wild grass\l"
+    .string "around here! Have fun!$"
+
+Route116_Text_TobyAfterCaught::
+    .string "Oh, you found it! Wooo!$"
+
 Route116_Text_ScoundrelMadeOffWithPeeko:
 	.string "Ohhh, what am I to do?\p"
 	.string "We were on our walk, PEEKO and I, when\n"
@@ -407,7 +466,7 @@ Route116_Text_RusturfTunnelSign:
 	.string "canceled.”$"
 
 Route116_Text_TunnelersRestHouse:
-	.string "TUNNELER'S REST HOUSE$"
+	.string "GAY MANS'S HUT$"
 
 Route116_Text_TrainerTipsBToStopEvolution:
 	.string "TRAINER TIPS\p"
@@ -448,15 +507,13 @@ Route116_Text_MariePostBattle:
     .string "more often!$"
 
 Route116_Text_TobyTunnel::
-    .string "Hi there. Here marks the end of the\n"
-    .string "current progress of the ROM.\p"
+    .string "Hi there. I thought I'd give you a\n"
+    .string "hint for this one!\p"
     .string "This boulder can be removed by\n"
     .string "defeating the TOBY of RUSTBORO\l"
     .string "CITY.\p"
-    .string "However, I haven't coded the boulder\n"
-    .string "to remove yet. Nor can the me in\l"
-    .string "RUSTBORO CITY even be found.\p"
-    .string "Lots more is planned for the ROM.\n"
-    .string "I just ran out of time. Sorry about\l"
-    .string "that!$"
+    .string "This also isn't tied to progress-\n"
+    .string "ion at all - you can go straight to\l"
+    .string "DEWFORD now, if you wish.\p"
+    .string "Have fun with the search!\n"
 

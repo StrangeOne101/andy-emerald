@@ -58,6 +58,8 @@ script RustboroCity_House3_2F_CharmanderEgg {
     waitfanfare
     closemessage
     giveegg(SPECIES_CHARMANDER)
+    setvar(VAR_0x8004, 5)
+    callnative(SetLastPartyMonEggCycles)
     setflag(FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT)
     removeobject(LOCALID_ADAMS_CHARMANDER_EGG)
     clearflag(FLAG_TEMP_1)

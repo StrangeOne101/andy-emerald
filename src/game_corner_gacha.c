@@ -3246,7 +3246,8 @@ static void GachaMain(u8 taskId)
         if (gSprites[sGacha->bouncingPokeballSpriteId].callback == SpriteCallbackDummy)
         {
             CreateRandomMon(&gParties[B_TRAINER_OPPONENT_A][0], sGacha->CalculatedSpecies, GetSpeciesGachaLevel());
-            SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_MET_LOCATION, MAPSEC_GAMECORNER);
+            int mapid = MAPSEC_GAMECORNER;
+            SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_MET_LOCATION, &mapid);
             gSpecialVar_Result = GiveCapturedMonToPlayer(&gParties[B_TRAINER_OPPONENT_A][0]);
             VarSet(VAR_TEMP_TRANSFERRED_SPECIES, sGacha->CalculatedSpecies);
             GetSetPokedexFlag(SpeciesToNationalPokedexNum(sGacha->CalculatedSpecies), FLAG_SET_SEEN);

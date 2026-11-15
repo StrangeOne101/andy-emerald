@@ -13,6 +13,7 @@ Route115_OnTransition:
 	call_if_eq VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_HideMapNamePopup
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_115_WEST, AbnormalWeather_StartGroudonWeather
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_115_EAST, AbnormalWeather_StartGroudonWeather
+	call_if_set FLAG_TRAINER_TOBY_ROUTE_115, Route115_EventScript_ShowToby
 	end
 
 Route115_OnFrame:
@@ -128,6 +129,54 @@ Route115_EventScript_Marlene::
 	trainerbattle_single TRAINER_MARLENE, Route115_Text_MarleneIntro, Route115_Text_MarleneDefeat
 	msgbox Route115_Text_MarlenePostBattle, MSGBOX_AUTOCLOSE
 	end
+
+Route115_EventScript_TobyTrigger::
+    lock
+    addobject LOCALID_ROUTE115_TOBY
+    setspeaker SP_NAME_TOBY
+    playse SE_PIN
+    applymovement LOCALID_ROUTE115_TOBY, Route115_EventScript_MovementToby
+    waitmovement 0
+    msgbox Route115_Text_TobyIntro, MSGBOX_NPC
+    trainerbattle_no_intro TRAINER_TOBY_RUSTBORO_CITY, Route115_Text_TobyDefeat
+    setspeaker SP_NAME_TOBY
+    msgbox Route115_Text_TobyAfter, MSGBOX_NPC
+    release
+    end
+
+Route115_EventScript_TobyTalk::
+    lock
+    setspeaker SP_NAME_TOBY
+    msgbox Route115_Text_TobyAfter, MSGBOX_NPC
+    release
+    end
+
+Route115_EventScript_MovementToby::
+    reveal_trainer
+    face_right
+    emote_exclamation_mark
+    delay_16
+    step_end
+
+Route115_EventScript_ShowToby::
+    addobject LOCALID_ROUTE115_TOBY
+    setvar VAR_TEMP_A, 1
+    end
+
+Route115_Text_TobyIntro::
+    .string "HA!$"
+
+Route115_Text_TobyDefeat::
+    .string "Not my Sandygast!!$"
+
+Route115_Text_TobyAfter::
+    .string "Sandygast are one of my favourite\n"
+    .string "POKéMON from SUN and MOON.\p"
+    .string "Plus, the shiny variant is such\n"
+    .string "a beautiful colour!\p"
+    .string "Anyway!\p"
+    .string "I have added a surprise for you in\n"
+    .string "Adam's House. Enjoy!$"
 
 Route115_Text_NeverKnowWhenCavePokemonWillAppear:
 	.string "Exploring a cave isn't like walking\n"

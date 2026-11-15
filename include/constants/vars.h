@@ -269,7 +269,7 @@
 #define VAR_BRINEY_TICKETS                               0x40F7
 #define VAR_GUARANTEED_SHINY                             0x40F8
 #define VAR_RUSTBORO_FIRES_EXTINGUISHED                  0x40F9
-#define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
+#define VAR_RARE_ENCOUNTER                               0x40FA
 #define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
 #define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
 #define VAR_UNUSED_0x40FD                                0x40FD // Unused Var

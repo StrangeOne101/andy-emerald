@@ -850,20 +850,20 @@
 #define TRAINER_TOBY_RUSTBORO_CITY          522
 #define TRAINER_TOBY_2                      523
 #define TRAINER_TOBY_3                      524
-#define TRAINER_BRENDAN_ROUTE_119_TREECKO   525 //TODO #UNUSED
-#define TRAINER_BRENDAN_ROUTE_103_TORCHIC   526 //TODO #UNUSED
-#define TRAINER_BRENDAN_ROUTE_110_TORCHIC   527 //TODO #UNUSED
-#define TRAINER_BRENDAN_ROUTE_119_TORCHIC   528 //TODO #UNUSED
-#define TRAINER_MAY_ROUTE_110_TREECKO       533 //TODO #UNUSED
-#define TRAINER_MAY_ROUTE_119_TREECKO       534 //TODO #UNUSED
-#define TRAINER_MAY_ROUTE_110_MUDKIP        530 //TODO #UNUSED
-#define TRAINER_MAY_ROUTE_119_MUDKIP        531 //TODO #UNUSED
-#define TRAINER_MAY_ROUTE_110_TORCHIC       536 //TODO #UNUSED
-#define TRAINER_MAY_ROUTE_119_TORCHIC       537 //TODO #UNUSED
-#define TRAINER_GRUNT_UNUSED                568 //TODO #UNUSED
-#define TRAINER_UNUSED_592                  592 //TODO #UNUSED
-#define TRAINER_UNUSED_593                  593 //TODO #UNUSED
-#define TRAINER_UNUSED_599                  599 //TODO #UNUSED
+#define TRAINER_SLATEPORT_GRUNT             525
+#define TRAINER_DANIEL_Q1                   526
+#define TRAINER_DANIEL_Q2                   527
+#define TRAINER_DANIEL_Q3                   528
+#define TRAINER_DANIEL_Q4                   533
+#define TRAINER_DANIEL_Q5                   534
+#define TRAINER_DANIEL_WRONG                530
+#define TRAINER_TOBY_ROUTE_116              531
+#define TRAINER_TOBY_ROUTE_115              536
+#define TRAINER_TOBY_DEWFORD                537
+#define TRAINER_MAY_ROUTE_110_TREECKO       568 //Old May with Torchic
+#define TRAINER_MAY_ROUTE_119_TREECKO       592 //Same as above
+#define TRAINER_TOBY_SLATEPORT_CITY         593
+#define TRAINER_TOBY_RUSTBORO_TUNNEL        599
 #define TRAINER_UNUSED_600                  600 //TODO #UNUSED
 #define TRAINER_UNUSED_769                  769 //TODO #UNUSED
 

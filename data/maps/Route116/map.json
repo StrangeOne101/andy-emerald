@@ -416,6 +416,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route116_EventScript_TobyTunnel",
       "flag": "FLAG_TRAINER_TOBY_RUSTBORO_CITY"
+    },
+    {
+      "local_id": "LOCALID_ROUTE116_TOBY2",
+      "graphics_id": "OBJ_EVENT_GFX_TOBY",
+      "x": 41,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route116_EventScript_TobyTalk",
+      "flag": "FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN"
     }
   ],
   "warp_events": [
@@ -455,7 +469,17 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 41,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_TEMP_A",
+      "var_value": "0",
+      "script": "Route116_EventScript_TobyTrigger"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

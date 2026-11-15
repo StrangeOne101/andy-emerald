@@ -303,11 +303,13 @@ PlayersHouse_1F_EventScript_TryGiveAmuletCoin::
 	end
 
 PlayersHouse_1F_EventScript_MomHealsParty::
+    setspeaker SP_NAME_MUM
 	msgbox PlayersHouse_1F_Text_YouShouldRestABit, MSGBOX_DEFAULT
 	goto PlayersHouse_1F_EventScript_HealParty
 	end
 
 PlayersHouse_1F_EventScript_SeeYouHoney::
+    setspeaker SP_NAME_MUM
 	msgbox PlayersHouse_1F_Text_SeeYouHoney, MSGBOX_DEFAULT
 	release
 	end
@@ -316,11 +318,13 @@ PlayersHouse_1F_EventScript_HealParty::
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
 	incrementgamestat GAME_STAT_RESTED_AT_HOME
+	setspeaker SP_NAME_MUM
 	msgbox PlayersHouse_1F_Text_TakeCareHoney, MSGBOX_DEFAULT
 	release
 	end
 
 PlayersHouse_1F_EventScript_DidYouMeetProfBirch::
+    setspeaker SP_NAME_MUM
 	msgbox PlayersHouse_1F_Text_DidYouMeetProfBirch, MSGBOX_DEFAULT
 	release
 	end

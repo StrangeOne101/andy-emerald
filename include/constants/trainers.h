@@ -194,6 +194,7 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_DUNGEONMASTER,
     TRAINER_PIC_MATT,
     TRAINER_PIC_CAR_GUY,
+    TRAINER_PIC_DANIEL,
     TRAINER_PIC_COUNT,
 };
 

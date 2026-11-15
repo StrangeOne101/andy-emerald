@@ -324,6 +324,21 @@ AI: Check Bad Move
 Zubat
 Level: 11
 
+=== TRAINER_SLATEPORT_GRUNT ===
+Name: GRUNT
+Class: Skull Grunt
+Pic: Skull Grunt M
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Rattata Alola
+Level: 17
+
+Zubat
+Level: 17
+
 === TRAINER_GRUNT_WEATHER_INST_1 ===
 Name: GRUNT
 Class: Team Aqua
@@ -9673,51 +9688,6 @@ AI: Basic Trainer
 Chikorita
 Level: 4
 
-
-=== TRAINER_MAY_ROUTE_110_MUDKIP ===
-Name: MAY
-Class: Rival
-Pic: May
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Basic Trainer
-
-Wingull
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Slugma
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Grovyle
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-
-=== TRAINER_MAY_ROUTE_119_MUDKIP ===
-Name: MAY
-Class: Rival
-Pic: May
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Basic Trainer
-
-Slugma
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Lombre
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Grovyle
-Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-
 === TRAINER_MAY_ROUTE_103_TREECKO ===
 Name: MAY
 Class: Rival
@@ -9786,51 +9756,6 @@ AI: Basic Trainer
 
 Totodile
 Level: 4
-
-
-=== TRAINER_MAY_ROUTE_110_TORCHIC ===
-Name: MAY
-Class: Rival
-Pic: May
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Basic Trainer
-
-Lombre
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Slugma
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Marshtomp
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-
-=== TRAINER_MAY_ROUTE_119_TORCHIC ===
-Name: MAY
-Class: Rival
-Pic: May
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Basic Trainer
-
-Lombre
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Slugma
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Marshtomp
-Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
 
 === TRAINER_ISAAC_1 ===
 Name: ISAAC
@@ -10510,23 +10435,6 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Golbat
 Level: 35
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-
-=== TRAINER_GRUNT_UNUSED ===
-Name: GRUNT
-Class: Team Magma
-Pic: Aqua Grunt F
-Gender: Female
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
-
-Wailmer
-Level: 31
-
-Zubat
-Level: 31
-
 
 === TRAINER_GRUNT_MT_PYRE_4 ===
 Name: GRUNT
@@ -16930,7 +16838,7 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Treecko
+Scyther
 Level: 6
 
 === TRAINER_TOBY_ROUTE_102 ===
@@ -16983,6 +16891,66 @@ AI: Check Bad Move
 
 Shedinja
 Level: 8
+
+=== TRAINER_TOBY_RUSTBORO_CITY ===
+Name: Toby
+Class: Toby
+Pic: toby
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move
+
+Rockruff Own Tempo
+Level: 14
+
+=== TRAINER_TOBY_ROUTE_116 ===
+Name: Toby
+Class: Toby
+Pic: toby
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move
+
+Treecko
+Level: 14
+
+=== TRAINER_TOBY_ROUTE_115 ===
+Name: Toby
+Class: Toby
+Pic: toby
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move
+
+Sandygast
+Level: 14
+
+Sandygast
+Shiny: Yes
+Level: 16
+
+=== TRAINER_TOBY_DEWFORD ===
+Name: Toby
+Class: Toby
+Pic: toby
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move
+
+Wooper Paldea
+Level: 17
+
+Clodsire
+Level: 20
+- Slam
+- Mud Shot
+- Poison Tail
+- Amnesia
+
 
 === TRAINER_FINN ===
 Name: Finn
@@ -17057,4 +17025,82 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Twister
 - Thunder Wave
 - Wrap
+
+=== TRAINER_DANIEL_Q1 ===
+Name: Daniel
+Class: SCIENTIST FRLG
+Pic: Daniel
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Diglett
+Level: 15
+
+=== TRAINER_DANIEL_Q2 ===
+Name: Daniel
+Class: SCIENTIST FRLG
+Pic: Daniel
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Golduck
+Level: 15
+
+=== TRAINER_DANIEL_Q3 ===
+Name: Daniel
+Class: SCIENTIST FRLG
+Pic: Daniel
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Gastly
+Level: 15
+
+=== TRAINER_DANIEL_Q4 ===
+Name: Daniel
+Class: SCIENTIST FRLG
+Pic: Daniel
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Rhydon
+Level: 15
+
+=== TRAINER_DANIEL_Q5 ===
+Name: Daniel
+Class: SCIENTIST FRLG
+Pic: Daniel
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Entei
+Level: 15
+
+=== TRAINER_DANIEL_WRONG ===
+Name: Daniel
+Class: SCIENTIST FRLG
+Pic: Daniel
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Marshtomp
+Level: 18
+
+Beldum
+Level: 18
+
+Magneton
+Level: 18
 

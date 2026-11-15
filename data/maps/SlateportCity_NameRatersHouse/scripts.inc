@@ -61,6 +61,53 @@ SlateportCity_NameRatersHouse_EventScript_NewNameDifferent::
 	release
 	end
 
+SP_NAME_MICHELLE::
+    .string "Michelle$"
+
+SlateportCity_NameRatersHouse_Michelle::
+    lock
+    faceplayer
+    setspeaker SP_NAME_MICHELLE
+    goto_if_set FLAG_RECEIVED_EXP_SHARE, SlateportCity_NameRatersHouse_MichelleAfter
+    msgbox SlateportCity_NameRatersHouse_Text_Michelle, MSGBOX_DEFAULT
+    setspeaker 0
+    giveitem ITEM_EXP_SHARE
+    setspeaker SP_NAME_MICHELLE
+    msgbox SlateportCity_NameRatersHouse_Text_MichelleExplain, MSGBOX_DEFAULT
+    setflag FLAG_RECEIVED_EXP_SHARE
+    closemessage
+    release
+    end
+
+SlateportCity_NameRatersHouse_MichelleAfter::
+    msgbox SlateportCity_NameRatersHouse_Text_MichelleAfter, MSGBOX_DEFAULT
+    release
+    end
+
+SlateportCity_NameRatersHouse_Text_Michelle::
+    .string "Oh, hi Andrew.\n"
+    .string "Still on the hunt for a place?\p"
+    .string "This is my current place. Small,\n"
+    .string "but cozy.\p"
+    .string "Oh, and you have a POKEMON now!\n"
+    .string "I got just the thing for you.$"
+
+SlateportCity_NameRatersHouse_Text_MichelleExplain::
+    .string "That's an EXP Share. I got it from\n"
+    .string "Toby. He told me to tell you that\p"
+    .string "its a bit different from the\n"
+    .string "standard one. It's a key item now!\p"
+    .string "When toggled on, ALL POKEMON in the\n"
+    .string "party will get EXP. Much more\p"
+    .string "efficient than just one POKEMON at\n"
+    .string "a time!\p"
+    .string "Anyway, that's all for now. Drop in\n"
+    .string "again, Andrew! Hope BB is going well!$"
+
+SlateportCity_NameRatersHouse_Text_MichelleAfter::
+    .string "How is Anchor going? Hope to see\n"
+    .string "you again some time!$"
+
 SlateportCity_NameRatersHouse_Text_PleasedToRateMonNickname:
 	.string "Hi, hi! I'm the NAME RATER!\n"
 	.string "I'm the fortune-teller of names!\p"

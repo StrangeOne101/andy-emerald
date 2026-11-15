@@ -285,6 +285,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC::
 	end
 
 PlayersHouse_2F_EventScript_Notebook::
+    goto_if_set FLAG_TRAINER_TOBY_PETALBURG_CITY, TobyProgress_List
 	msgbox PlayersHouse_2F_Text_Notebook, MSGBOX_SIGN
 	end
 
