@@ -314,9 +314,10 @@ Route116_EventScript_TobyTrigger::
     applymovement LOCALID_ROUTE116_TOBY2, Route116_EventScript_MovementToby
     waitmovement 0
     msgbox Route116_Text_TobyIntro, MSGBOX_NPC
-    trainerbattle_no_intro TRAINER_TOBY_RUSTBORO_CITY, Route116_Text_TobyDefeat
+    trainerbattle_no_intro TRAINER_TOBY_ROUTE_116, Route116_Text_TobyDefeat
     setspeaker SP_NAME_TOBY
     msgbox Route116_Text_TobyAfter, MSGBOX_NPC
+    setvar VAR_TEMP_A, 1
     setvar VAR_RARE_ENCOUNTER, SPECIES_TREECKO
     release
     end
@@ -515,5 +516,5 @@ Route116_Text_TobyTunnel::
     .string "This also isn't tied to progress-\n"
     .string "ion at all - you can go straight to\l"
     .string "DEWFORD now, if you wish.\p"
-    .string "Have fun with the search!\n"
+    .string "Have fun with the search!$"
 

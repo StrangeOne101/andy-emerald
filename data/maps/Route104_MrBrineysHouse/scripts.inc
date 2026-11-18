@@ -51,7 +51,16 @@ Route104_MrBrineysHouse_EventScript_CostToDewford::
     hidemoneybox
     goto_if_set FLAG_DEFEATED_RUSTBORO_GYM, Route104_MrBrineysHouse_EventScript_BringInMay
     goto_if_eq VAR_RESULT, NO, Route104_MrBrineysHouse_EventScript_DeclineDeliverySailing
-    msgbox Route104_MrBrineysHouse_Text_NoMoney, MSGBOX_DEFAULT
+Route104_MrBrineysHouse_EventScript_CostToDewfordExpensive::
+    checkmoney 8000, FALSE
+    goto_if_eq VAR_RESULT, NO, Route104_MrBrineysHouse_EventScript_NoMoney
+    removemoney 8000
+    updatemoneybox
+    playse SE_SHOP
+    waitse
+    delay 16
+    hidemoneybox
+    goto Route104_MrBrineysHouse_EventScript_SailToDewford
     end
 
 Route104_MrBrineysHouse_EventScript_CostToDewford2::

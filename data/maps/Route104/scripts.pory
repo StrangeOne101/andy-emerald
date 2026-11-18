@@ -947,8 +947,8 @@ Route104_Text_OnlyThrowBallAtWildPokemon:
 	.string "wild POKéMON.$"
 
 Route104_Text_ImNotATrainer:
-	.string "Oh, no, I'm not a TRAINER.\p"
-	.string "I'm just taking a walk on the beach."
+	.string "Oh, no, I'm not a TRAINER.\n"
+	.string "I'm just taking a walk on the beach.\p"
 	.string "My therapist says it's good for me…$"
 
 Route104_Text_LikeFillingMouthWithSeedsTakeThis:
@@ -1108,6 +1108,7 @@ script Route104_EventScript_TobyEncounter {
     playse(SE_PIN)
     applymovement(LOCALID_ROUTE104_TOBY, moves(reveal_trainer face_left emote_exclamation_mark delay_16))
     waitmovement(0)
+    applymovement(LOCALID_PLAYER, Common_Movement_FaceRight)
     msgbox(Route104_Text_TobyEncounter, MSGBOX_NPC)
     trainerbattle_no_intro(TRAINER_TOBY_ROUTE_104, Route104_Text_TobyDefeat)
     setspeaker(SP_NAME_TOBY)
@@ -1132,7 +1133,7 @@ text Route104_Text_TobyEncounter {
 text Route104_Text_TobyEncounter2 {
     format("Yeah, Maril is pretty easy. But it's cute!\p"
     "Anyway, the reward:\p"
-    "You get to the last remaining JOHTO starter!!!\p"
+    "You get to claim the last remaining JOHTO starter!!!\p"
     "If you go back to ROUTE 103, you can claim the last starter from the bag.\p"
     "Have fun!")
 }

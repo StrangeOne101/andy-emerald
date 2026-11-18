@@ -7844,7 +7844,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     #endif
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = TRUE,
-        .speciesName = _("Presape"),
+        .speciesName = _("Primeape"),
         .cryId = CRY_PRIMEAPE,
         .natDexNum = NATIONAL_DEX_PRIMEAPE,
         .categoryName = _("Pig Monkey"),

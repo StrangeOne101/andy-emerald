@@ -155,7 +155,7 @@ RustboroCity_EventScript_Man1::
 RustboroCity_EventScript_ITM1::
     lock
     faceplayer
-    msgbox RustboroCity_Text_ITM_Blocker1, MSGBOX_DEFAULT
+    msgbox RustboroCity_Text_ITM_Blocker1, MSGBOX_NPC
     applymovement LOCALID_RUSTBURO_ITMBLOCKER_1, Common_Movement_FaceOriginalDirection
     waitmovement 0
     end
@@ -163,7 +163,7 @@ RustboroCity_EventScript_ITM1::
 RustboroCity_EventScript_ITM2::
     lock
     faceplayer
-    msgbox RustboroCity_Text_ITM_Blocker2, MSGBOX_DEFAULT
+    msgbox RustboroCity_Text_ITM_Blocker2, MSGBOX_NPC
     applymovement LOCALID_RUSTBURO_ITMBLOCKER_2, Common_Movement_FaceOriginalDirection
     waitmovement 0
     end
@@ -171,7 +171,7 @@ RustboroCity_EventScript_ITM2::
 RustboroCity_EventScript_ITM3::
     lock
     faceplayer
-    msgbox RustboroCity_Text_ITM_Blocker3, MSGBOX_DEFAULT
+    msgbox RustboroCity_Text_ITM_Blocker3, MSGBOX_NPC
     applymovement LOCALID_RUSTBURO_ITMBLOCKER_3, Common_Movement_FaceOriginalDirection
     waitmovement 0
     end
@@ -179,7 +179,7 @@ RustboroCity_EventScript_ITM3::
 RustboroCity_EventScript_ITM4::
     lock
     faceplayer
-    msgbox RustboroCity_Text_ITM_Blocker4, MSGBOX_DEFAULT
+    msgbox RustboroCity_Text_ITM_Blocker4, MSGBOX_NPC
     applymovement LOCALID_RUSTBURO_ITMBLOCKER_4, Common_Movement_FaceOriginalDirection
     waitmovement 0
     end
@@ -245,7 +245,7 @@ RustboroCity_EventScript_GymSign::
 	end
 
 RustboroCity_EventScript_GymDoor::
-    goto_if_lt VAR_RUSTBORO_CITY_STATE, 5, RustboroCity_EventScript_GymDoorLocked
+    goto_if_lt VAR_RUSTBORO_CITY_STATE, 4, RustboroCity_EventScript_GymDoorLocked
     goto_if_eq VAR_RUSTBORO_CITY_STATE, 4, RustboroCity_EventScript_GymDoorLocked4
     end @ Do nothing if the door is unlocked
 
@@ -553,7 +553,7 @@ RustboroCity_EventScript_BattleMay::
 
 RustboroCity_EventScript_MayBrineyHint::
     setspeaker SP_NAME_MAY2
-	msgbox RustboroCity_Text_MayMrBrineyHint, MSGBOX_NPC
+	msgbox RustboroCity_Text_MayMrBrineyHint, MSGBOX_DEFAULT
 	call RustboroCity_EventScript_RestoreBgm
 	releaseall
 	end

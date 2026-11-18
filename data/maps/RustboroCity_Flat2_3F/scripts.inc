@@ -37,6 +37,7 @@ RustboroCity_Flat2_3F_EventScript_TobyTrigger::
     waitmovement 0
     msgbox RustboroCity_Flat2_3F_Text_TobyIntro, MSGBOX_NPC
     trainerbattle_no_intro TRAINER_TOBY_RUSTBORO_CITY, RustboroCity_Flat2_3F_Text_TobyDefeat
+    setvar VAR_TEMP_A, 1
 RustboroCity_Flat2_3F_EventScript_TobyTalk::
     lock
     setspeaker SP_NAME_TOBY

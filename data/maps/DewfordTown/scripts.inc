@@ -664,6 +664,7 @@ DewfordTown_EventScript_TobyTrigger::
     setspeaker SP_NAME_TOBY
     msgbox DewfordTown_Text_TobyAfter, MSGBOX_NPC
     setvar VAR_RARE_ENCOUNTER, SPECIES_WOOPER_PALDEA
+    setvar VAR_TEMP_A, 1
     release
     end
 

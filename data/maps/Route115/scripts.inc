@@ -137,10 +137,12 @@ Route115_EventScript_TobyTrigger::
     playse SE_PIN
     applymovement LOCALID_ROUTE115_TOBY, Route115_EventScript_MovementToby
     waitmovement 0
+    applymovement LOCALID_PLAYER, Common_Movement_FaceLeft
     msgbox Route115_Text_TobyIntro, MSGBOX_NPC
-    trainerbattle_no_intro TRAINER_TOBY_RUSTBORO_CITY, Route115_Text_TobyDefeat
+    trainerbattle_no_intro TRAINER_TOBY_ROUTE_115, Route115_Text_TobyDefeat
     setspeaker SP_NAME_TOBY
     msgbox Route115_Text_TobyAfter, MSGBOX_NPC
+    setvar VAR_TEMP_A, 1
     release
     end
 

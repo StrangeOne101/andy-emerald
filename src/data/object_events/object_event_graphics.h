@@ -49,6 +49,7 @@ const u16 gObjectEventPal_SamsonOak[] = INCGFX_U16("graphics/object_events/palet
 const u16 gObjectEventPal_Toby[] = INCGFX_U16("graphics/object_events/palettes/toby.pal", ".gbapal");
 const u16 gObjectEventPal_Fire[] = INCGFX_U16("graphics/object_events/palettes/fire.pal", ".gbapal");
 const u16 gObjectEventPal_BoatBoy[] = INCGFX_U16("graphics/object_events/palettes/boat_boy.pal", ".gbapal");
+const u16 gObjectEventPal_Brock[] = INCGFX_U16("graphics/object_events/palettes/brock.pal", ".gbapal");
 const u16 gObjectEventPal_Null16[16] = {};
 const u16 gObjectEventPal_Null17[16] = {};
 const u16 gObjectEventPal_Null18[16] = {};

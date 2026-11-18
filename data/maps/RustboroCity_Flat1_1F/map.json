@@ -95,7 +95,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_FIRE",
       "x": 15,
-      "y": 7,
+      "y": 9,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -199,7 +199,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_FIRE",
       "x": 17,
-      "y": 9,
+      "y": 8,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,

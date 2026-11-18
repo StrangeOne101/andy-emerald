@@ -23,14 +23,15 @@ LittlerootTown_MaysHouse_1F_ReprintMay:
     @applymovement LOCALID_RIVALS_HOUSE_1F_MOM, LittlerootTown_MaysHouse_1F_Movement_RivalMomApproach
     @waitmovement 0
     setspeaker MaysMumName
-    msgbox RivalsHouse_1F_Text_RivalMum_KidnappedMay, MSGBOX_NPC
+    msgbox RivalsHouse_1F_Text_RivalMum_KidnappedMay, MSGBOX_DEFAULT
     applymovement LOCALID_PLAYER, LittlerootTown_MaysHouse_1F_Movement_PlayerSitDown
     waitmovement 0
     setspeaker MaysMumName
-    msgbox RivalsHouse_1F_Text_RivalMum_KidnappedMay2, MSGBOX_NPC
+    msgbox RivalsHouse_1F_Text_RivalMum_KidnappedMay2, MSGBOX_DEFAULT
     applymovement LOCALID_RIVALS_HOUSE_1F_MOM, LittlerootTown_MaysHouse_1F_Movement_ApproachButton
     waitmovement 0
     applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+    closemessage
     delay 30
     playse SE_SWITCH
     delay 80
@@ -91,8 +92,11 @@ LittlerootTown_MaysHouse_1F_ReprintMay:
     playse SE_EXIT
     delay 80
     applymovement LOCALID_RIVALS_HOUSE_1F_MOM, LittlerootTown_MaysHouse_1F_Movement_MumSitDownAgain
+    waitmovement 0
+    applymovement LOCALID_PLAYER, Common_Movement_FaceRight
+    waitmovement 0
     setspeaker MaysMumName
-    msgbox LittlerootTown_MaysHouse_1F_Text_MayReborn5, MSGBOX_NPC
+    msgbox LittlerootTown_MaysHouse_1F_Text_MayReborn5, MSGBOX_DEFAULT
     setflag FLAG_MAY_REPRINTED
     setflag FLAG_ADVENTURE_STARTED
     setvar VAR_OLDALE_TOWN_STATE, 2
@@ -317,12 +321,12 @@ RivalsHouse_1F_Text_RivalMum_KidnappedMay:
     .string "What brings you here?\p"
     .string "Come, grab a seat!$"
 RivalsHouse_1F_Text_RivalMum_KidnappedMay2:
-    .string "Now, what were you saying?"
+    .string "Now, what were you saying?\p"
     .string "…\p"
     .string "…\p"
     .string "…\p"
     .string "May got kidnapped? By a strange red\n"
-    .string "POKéMON?"
+    .string "POKéMON?\p"
     .string "…\p"
     .string "Not again…\p"
     .string "Oh, don't you worry, Andrew! It happens!\n"

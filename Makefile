@@ -20,6 +20,14 @@ ifeq (leafgreen, $(or $(BUILD), $(MAKECMDGOALS)))
 endif
 endif
 
+BUILD_FILE := build_number.txt
+VERSION_FILE := build_version.txt
+
+# Read the current number (default to 0 if the file doesn't exist)
+BUILD_NUM := $(shell cat $(BUILD_FILE) 2>/dev/null || echo 0)
+VERSION_NUM := $(shell cat $(BUILD_FILE) 2>/dev/null || echo 0.1)
+NEXT_NUM := $(shell echo $$(($(BUILD_NUM) + 1)))
+
 # GBA rom header
 MAKER_CODE  := 01
 REVISION    := 0
@@ -63,7 +71,7 @@ endif
 include config.mk
 
 # Default make rule
-all: rom
+all: rom increment_build
 
 # Toolchain selection
 TOOLCHAIN := $(DEVKITARM)
@@ -342,6 +350,10 @@ agbcc:
 	@echo "'make agbcc' is deprecated as of pokeemerald-expansion 1.9 and will be removed in 1.10."
 	@echo "Search for 'agbcc: all' in Makefile to reenable agbcc."
 	@exit 1
+
+increment_build:
+	@python3 -c 'import re; f="include/constants/version.h"; s=open(f).read(); open(f,"w").write(re.sub(r"(#define\s+TOBY_GAME_BUILD\s+)(\d+)", lambda m: m.group(1) + str(int(m.group(2)) + 1), s, 1))'
+
 
 LD_SCRIPT_TEST := ld_script_test.ld
 

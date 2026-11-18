@@ -591,6 +591,7 @@ enum
 #define OBJ_EVENT_PAL_TAG_TOBY                    0x113B
 #define OBJ_EVENT_PAL_TAG_FIRE                    0x113C
 #define OBJ_EVENT_PAL_TAG_BOAT_BOY                0x113D
+#define OBJ_EVENT_PAL_TAG_BROCK                   0x113E
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla
