@@ -69,6 +69,7 @@
 #include "constants/songs.h"
 #include "constants/trainer_slide.h"
 #include "constants/trainers.h"
+#include "constants/version.h"
 #include "test/battle.h"
 #include "battle_util.h"
 #include "constants/pokemon.h"
@@ -14048,5 +14049,22 @@ void SetLastPartyMonEggCycles(void)
     {
         SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &cycles);
     }
+}
+
+void GetVersion(void) {
+    NATIVE_ARGS();
+
+    u8 *string = gStringVar1;
+    *string++ = CHAR_v;
+    string = ConvertIntToDecimalStringN(string, TOBY_GAME_MAJOR, STR_CONV_MODE_LEFT_ALIGN, 3);
+    *string++ = CHAR_PERIOD;
+    string = ConvertIntToDecimalStringN(string, TOBY_GAME_MINOR, STR_CONV_MODE_LEFT_ALIGN, 3);
+    *string++ = CHAR_PERIOD;
+    string = ConvertIntToDecimalStringN(string, TOBY_GAME_FIX, STR_CONV_MODE_LEFT_ALIGN, 3);
+
+    u8 *string2 = gStringVar2;
+    string2 = ConvertIntToDecimalStringN(string2, TOBY_GAME_BUILD, STR_CONV_MODE_LEFT_ALIGN, 3);
+
+    //string = ConvertIntToDecimalStringN(string, VERSION_NUMBER, STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 

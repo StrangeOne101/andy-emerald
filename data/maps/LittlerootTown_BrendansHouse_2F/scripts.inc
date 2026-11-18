@@ -289,6 +289,12 @@ PlayersHouse_2F_EventScript_Notebook::
 	msgbox PlayersHouse_2F_Text_Notebook, MSGBOX_SIGN
 	end
 
+PlayersHouse_2F_EventScript_Map::
+    callnative GetVersion
+    delay 1
+    msgbox PlayersHouse_2F_Text_GameVersion, MSGBOX_SIGN
+    end
+
 PlayersHouse_2F_EventScript_GameCube::
 	msgbox PlayersHouse_2F_Text_ItsAGameCube, MSGBOX_SIGN
 	end
@@ -328,3 +334,7 @@ PlayersHouse_2F_Text_Wakeup:
 
 PlayersHouse_2F_Text_GetDownHere:
 	.string "{PLAYER}! Hurry up and get down here!$"
+
+PlayersHouse_2F_Text_GameVersion::
+    .string "Game Version:  {STR_VAR_1}\n"
+    .string "Game Build:      {STR_VAR_2}$"
