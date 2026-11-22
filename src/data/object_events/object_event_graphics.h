@@ -99,6 +99,7 @@ const u32 gObjectEventPic_ExpertF[] = INCGFX_U32("graphics/object_events/pics/pe
 const u32 gObjectEventPic_Man2[] = INCGFX_U32("graphics/object_events/pics/people/man_2.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_Woman3[] = INCGFX_U32("graphics/object_events/pics/people/woman_3.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_PokefanM[] = INCGFX_U32("graphics/object_events/pics/people/pokefan_m.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_PokefanMNoTop[] = INCGFX_U32("graphics/object_events/pics/people/pokefan_m_notop.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_Woman4[] = INCGFX_U32("graphics/object_events/pics/people/woman_4.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_Cook[] = INCGFX_U32("graphics/object_events/pics/people/cook.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_LinkReceptionist[] = INCGFX_U32("graphics/object_events/pics/people/link_receptionist.png", ".4bpp", "-mwidth 2 -mheight 4");

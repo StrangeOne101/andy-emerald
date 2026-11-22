@@ -25,6 +25,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ExpertF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Man2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Woman3;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokefanM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokefanMNoTop;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Woman4;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cook;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LinkReceptionist;
@@ -814,6 +815,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_TOBY] =                     &gObjectEventGraphicsInfo_Toby,
     [OBJ_EVENT_GFX_FIRE] =                     &gObjectEventGraphicsInfo_Fire,
     [OBJ_EVENT_GFX_BOAT_BOY] =                 &gObjectEventGraphicsInfo_BoatBoy,
+    [OBJ_EVENT_GFX_POKEFAN_M_NOTOP] =          &gObjectEventGraphicsInfo_PokefanMNoTop,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

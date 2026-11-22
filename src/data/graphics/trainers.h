@@ -476,6 +476,12 @@ const u16 gTrainerPalette_Toby[] = INCGFX_U16("graphics/trainers/palettes/toby.p
 const u32 gTrainerFrontPic_Daniel[] = INCGFX_U32("graphics/trainers/front_pics/daniel.png", ".4bpp.smol");
 const u16 gTrainerPalette_Daniel[] = INCGFX_U16("graphics/trainers/palettes/daniel.pal", ".gbapal");
 
+const u32 gTrainerFrontPic_Joel[] = INCGFX_U32("graphics/trainers/front_pics/joel.png", ".4bpp.smol");
+const u16 gTrainerPalette_Joel[] = INCGFX_U16("graphics/trainers/palettes/joel.pal", ".gbapal");
+
+const u32 gTrainerFrontPic_David[] = INCGFX_U32("graphics/trainers/front_pics/david.png", ".4bpp.smol");
+const u16 gTrainerPalette_David[] = INCGFX_U16("graphics/trainers/palettes/david.pal", ".gbapal");
+
 const u32 gTrainerFrontPic_Adam[] = INCGFX_U32("graphics/trainers/front_pics/adam.png", ".4bpp.smol");
 const u16 gTrainerPalette_Adam[] = INCGFX_U16("graphics/trainers/palettes/adam.pal", ".gbapal");
 
@@ -1350,5 +1356,13 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_DANIEL] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Daniel, gTrainerPalette_Daniel),
+    },
+    [TRAINER_PIC_DAVID] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_David, gTrainerPalette_David),
+    },
+    [TRAINER_PIC_JOEL] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Joel, gTrainerPalette_Joel),
     }
 };

@@ -6,7 +6,7 @@ SlateportCity_MapScripts::
 SlateportCity_OnTransition:
 	setvar VAR_SLATEPORT_MUSEUM_1F_STATE, 0
 	call SlateportCity_EventScript_EnterSlateport
-	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_MovePeopleForSternInterview
+	call_if_eq VAR_SLATEPORT_CITY_STATE, 3, SlateportCity_EventScript_MovePeopleForSternInterview
 	call_if_eq VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 1, SlateportCity_EventScript_SetReadyForScottScene
 	end
 
@@ -179,7 +179,7 @@ SlateportCity_EventScript_MonHasEffortRibbon::
 SlateportCity_EventScript_Cook::
 	lock
 	faceplayer
-	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_CookSternInterview
+	call_if_eq VAR_SLATEPORT_CITY_STATE, 3, SlateportCity_EventScript_CookSternInterview
 	msgbox SlateportCity_Text_SeaweedFullOfLife, MSGBOX_DEFAULT
 	release
 	end
@@ -192,7 +192,7 @@ SlateportCity_EventScript_CookSternInterview::
 SlateportCity_EventScript_OldWoman::
 	lock
 	faceplayer
-	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_OldWomanSternInterview
+	call_if_eq VAR_SLATEPORT_CITY_STATE, 3, SlateportCity_EventScript_OldWomanSternInterview
 	msgbox SlateportCity_Text_HowTownIsBornAndGrows, MSGBOX_DEFAULT
 	release
 	end
@@ -205,7 +205,7 @@ SlateportCity_EventScript_OldWomanSternInterview::
 SlateportCity_EventScript_Girl::
 	lock
 	faceplayer
-	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_GirlSternInterview
+	call_if_eq VAR_SLATEPORT_CITY_STATE, 3, SlateportCity_EventScript_GirlSternInterview
 	goto_if_set FLAG_RECEIVED_SECRET_POWER, SlateportCity_EventScript_GirlSecretBase
 	msgbox SlateportCity_Text_SlateportWonderfulPlace, MSGBOX_DEFAULT
 	release
@@ -224,7 +224,7 @@ SlateportCity_EventScript_GirlSecretBase::
 SlateportCity_EventScript_RichBoy::
 	lock
 	faceplayer
-	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_RichBoySternInterview
+	call_if_eq VAR_SLATEPORT_CITY_STATE, 3, SlateportCity_EventScript_RichBoySternInterview
 	msgbox SlateportCity_Text_GoingToCompeteInBattleTent, MSGBOX_DEFAULT
 	release
 	end
@@ -235,7 +235,7 @@ SlateportCity_EventScript_RichBoySternInterview::
 	end
 
 SlateportCity_EventScript_FatMan::
-	goto_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_FatManSternInterview
+	goto_if_eq VAR_SLATEPORT_CITY_STATE, 3, SlateportCity_EventScript_FatManSternInterview
 	msgbox SlateportCity_Text_BushedHikingFromMauville, MSGBOX_NPC
 	end
 
@@ -246,7 +246,7 @@ SlateportCity_EventScript_FatManSternInterview::
 SlateportCity_EventScript_Man1::
 	lock
 	faceplayer
-	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_Man1SternInterview
+	call_if_eq VAR_SLATEPORT_CITY_STATE, 3, SlateportCity_EventScript_Man1SternInterview
 	msgbox SlateportCity_Text_EveryoneCallsHimCaptStern, MSGBOX_DEFAULT
 	release
 	end
@@ -259,7 +259,6 @@ SlateportCity_EventScript_Man1SternInterview::
 SlateportCity_EventScript_Woman1::
 	lock
 	faceplayer
-	goto_if_set FLAG_DOCK_REJECTED_DEVON_GOODS, SlateportCity_EventScript_Woman1AquaGone
 	msgbox SlateportCity_Text_WhatsLongLineOverThere, MSGBOX_DEFAULT
 	release
 	end
@@ -326,7 +325,7 @@ SlateportCity_EventScript_NameRatersHouseSign::
 SlateportCity_EventScript_Maniac::
 	lock
 	faceplayer
-	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_ManiacSternInterview
+	call_if_eq VAR_SLATEPORT_CITY_STATE, 3, SlateportCity_EventScript_ManiacSternInterview
 	msgbox SlateportCity_Text_GetNameRaterToHelpYou, MSGBOX_DEFAULT
 	release
 	end
@@ -531,12 +530,107 @@ SlateportCity_Pokemart_PowerTMs:
 	.2byte ITEM_TM_SECRET_POWER
 	pokemartlistend
 
+SlateportCity_EventScript_SmokeScreenTrigger::
+    lock
+    applymovement LOCALID_SLATEPORT_GRUNT_1, Common_Movement_FaceRight
+    waitmovement 0
+    applymovement LOCALID_SLATEPORT_GRUNT_1, Common_Movement_ExclamationMark
+    waitmovement 0
+    applymovement LOCALID_SLATEPORT_GRUNT_1, Common_Movement_Delay48
+    waitmovement 0
+    msgbox SlateportCity_Text_SmokescreenTrigger, MSGBOX_DEFAULT
+    closemessage
+    playse SE_BANG
+    fadescreen FADE_TO_BLACK
+    waitse
+    delay 20
+    msgbox SlateportCity_Text_SmokescreenScatter, MSGBOX_DEFAULT
+    closemessage
+    removeobject LOCALID_SLATEPORT_GRUNT_1
+    removeobject LOCALID_SLATEPORT_GRUNT_3
+    removeobject LOCALID_SLATEPORT_GRUNT_4
+    removeobject LOCALID_SLATEPORT_GRUNT_0
+    removeobject LOCALID_SLATEPORT_GRUNT_7
+    removeobject LOCALID_SLATEPORT_GRUNT_8
+    removeobject LOCALID_SLATEPORT_GRUNT_9
+    removeobject LOCALID_SLATEPORT_GRUNT_10
+    removeobject LOCALID_SLATEPORT_GRUNT_11
+    delay 40
+    fadescreen FADE_FROM_BLACK
+    applymovement LOCALID_SLATEPORT_GRUNT_5, SlateportCity_Movement_ConfusedGrunt
+    waitmovement 0
+    msgbox SlateportCity_Text_SmokescreenGruntFail, MSGBOX_DEFAULT
+    closemessage
+    applymovement LOCALID_SLATEPORT_GRUNT_5, SlateportCity_Movement_ConfusedGruntRunning
+    waitmovement 0
+    removeobject LOCALID_SLATEPORT_GRUNT_5
+    setvar VAR_SLATEPORT_CITY_STATE, 3
+    setflag FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA
+    end
+
+SlateportCity_Movement_ConfusedGrunt::
+    face_right
+    delay_16
+    face_left
+    delay_16
+    face_right
+    delay_16
+    face_up
+    delay_16
+    step_end
+
+SlateportCity_Movement_ConfusedGruntRunning::
+    walk_fast_down
+    walk_fast_down
+    walk_fast_right
+    walk_fast_right
+    walk_fast_right
+    walk_fast_right
+    walk_fast_right
+    walk_fast_right
+    walk_fast_right
+    delay_16
+    face_left
+    delay_16
+    face_right
+    delay_16
+    face_left
+    delay_16
+    walk_fast_left
+    walk_fast_left
+    walk_fast_left
+    walk_fast_left
+    walk_fast_left
+    walk_fast_left
+    walk_fast_left
+    walk_fast_up
+    walk_fast_up
+    walk_fast_up
+    walk_fast_up
+    walk_fast_up
+    walk_fast_up
+    walk_fast_up
+    walk_fast_up
+    walk_fast_up
+    walk_fast_up
+    walk_fast_up
+    set_invisible
+    step_end
+
+
 @ Scene with Capt Sterns interview and Team Aqua announcing plans to steal Submarine
 SlateportCity_EventScript_CaptStern::
 	lockall
+	setspeaker SP_NAME_STERN
 	msgbox SlateportCity_Text_SternMoveAheadWithExploration, MSGBOX_DEFAULT
+	setspeaker SP_NAME_GABBY
 	msgbox SlateportCity_Text_GabbyWonderfulThanksForInterview, MSGBOX_DEFAULT
 	closemessage
+	setspeaker SP_NAME_STERN
+    msgbox SlateportCity_Text_SternRetirement, MSGBOX_DEFAULT
+    setspeaker SP_NAME_GABBY
+    msgbox SlateportCity_Text_GabbyOhDear, MSGBOX_DEFAULT
+    closemessage
 	applymovement LOCALID_SLATEPORT_GABBY, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	delay 10
@@ -550,44 +644,32 @@ SlateportCity_EventScript_CaptStern::
 	waitmovement 0
 	removeobject LOCALID_SLATEPORT_GABBY
 	removeobject LOCALID_SLATEPORT_TY
+	setspeaker SP_NAME_STERN
 	msgbox SlateportCity_Text_SternWhewFirstInterview, MSGBOX_DEFAULT
-	applymovement LOCALID_SLATEPORT_CAPT_STERN, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_SLATEPORT_CAPT_STERN, SlateportCity_Movement_SternLeave
 	waitmovement 0
-	msgbox SlateportCity_Text_OhPlayerWeMadeDiscovery, MSGBOX_DEFAULT
-	playbgm MUS_ENCOUNTER_AQUA, FALSE
-	msgbox SlateportCity_Text_AquaWillAssumeControlOfSubmarine, MSGBOX_DEFAULT
-	applymovement LOCALID_SLATEPORT_COOK, Common_Movement_WalkInPlaceFasterLeft
-	applymovement LOCALID_SLATEPORT_FAT_MAN, Common_Movement_WalkInPlaceFasterLeft
-	applymovement LOCALID_SLATEPORT_OLD_WOMAN, SlateportCity_Movement_OldWomanConcern
-	applymovement LOCALID_SLATEPORT_RICH_BOY, Common_Movement_QuestionMark
-	applymovement LOCALID_SLATEPORT_MAN_1, SlateportCity_Movement_ManConcern
-	waitmovement 0
-	applymovement LOCALID_SLATEPORT_CAPT_STERN, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	msgbox SlateportCity_Text_SternWhatWasAllThat, MSGBOX_DEFAULT
-	playse SE_PIN
-	applymovement LOCALID_SLATEPORT_CAPT_STERN, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_SLATEPORT_CAPT_STERN, Common_Movement_Delay48
-	waitmovement 0
-	applymovement LOCALID_SLATEPORT_CAPT_STERN, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	msgbox SlateportCity_Text_FromHarborTryingToTakeSub, MSGBOX_DEFAULT
-	msgbox SlateportCity_Text_PleaseComeWithMe, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_SLATEPORT_CAPT_STERN, SlateportCity_Movement_SternEnterHarbor
-	applymovement LOCALID_PLAYER, SlateportCity_Movement_PlayerEnterHarbor
-	waitmovement 0
-	removeobject LOCALID_SLATEPORT_CAPT_STERN
-	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN
-	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW
-	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT
-	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE
-	setvar VAR_SLATEPORT_CITY_STATE, 2
-	warp MAP_SLATEPORT_CITY_HARBOR, 11, 14
-	waitstate
+	setvar VAR_SLATEPORT_CITY_STATE, 4
 	releaseall
 	end
+
+SlateportCity_Movement_SternLeave::
+    face_down
+    delay_16
+    delay_16
+    delay_16
+    delay_16
+    delay_16
+    face_left
+    walk_slow_left
+    walk_slow_left
+    walk_slow_left
+    walk_slow_left
+    walk_slow_left
+    walk_slow_left
+    walk_slow_left
+    walk_slow_left
+    set_invisible
+    step_end
 
 SlateportCity_Movement_OldWomanConcern:
 	delay_16
@@ -682,10 +764,12 @@ SlateportCity_Movement_PlayerFaceStern:
 	step_end
 
 SlateportCity_EventScript_Ty::
+    setspeaker SP_NAME_TY
 	msgbox SlateportCity_Text_BigSmileForCamera, MSGBOX_SIGN
 	end
 
 SlateportCity_EventScript_Gabby::
+    setspeaker SP_NAME_GABBY
 	msgbox SlateportCity_Text_MostInvaluableExperience, MSGBOX_SIGN
 	end
 
@@ -1065,39 +1149,37 @@ SlateportCity_Text_ShouldveBroughtMyGameBoy:
     .string "I bit my tongue…$"
 
 SlateportCity_Text_HotSpringsAfterOperation:
-	.string "She will sleep with anyone,\n"
+	.string "She will sleep with anyone, I\n"
 	.string "swear…$"
 
 SlateportCity_Text_SeaIsSoWet:
 	.string "Water is wet!$"
 
 SlateportCity_Text_SinkOldBoats:
-	.string "Do you know what they do with old\n"
-	.string "ships that become too creaky to sail?\p"
-	.string "They sink them in the sea so they\n"
-	.string "become habitats for POKéMON.$"
+	.string "Do you think I could pay one of\n"
+	.string "the losers around here to jump\l"
+	.string "off the pier?\p"
+	.string "I'd pay to see that.$"
 
 SlateportCity_Text_BuyTooMuch:
-	.string "Whenever I visit here, I get carried\n"
-	.string "away and buy too much.$"
+	.string "I think I'm high on the herb fumes…\n"
+	.string "Hehehehehehehe.$"
 
 SlateportCity_Text_GetNameRaterToHelpYou:
 	.string "I HAVE AUTISM!! LEAVE ME ALONE!!!!!!\n"
 	.string "REEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!!!!$"
 
 SlateportCity_Text_CantChangeTradeMonName:
-	.string "Any POKéMON you get in a trade,\n"
-	.string "you can't change its nickname.\p"
-	.string "The original TRAINER's love for that\n"
-	.string "POKéMON is in the nickname.$"
+	.string "(This woman looks dangerous and\n"
+	.string "has heart eyes…)$"
 
 SlateportCity_Text_BattleTentBuiltRecently:
-	.string "Recently, a BATTLE TENT was built\n"
+	.string "Recently, a BATTLE DENT was built\n"
 	.string "in SLATEPORT.\p"
-	.string "GYMS are fun, but the BATTLE TENT's\n"
+	.string "GYMS are fun, but the BATTLE DENT's\n"
 	.string "awesome in its own way.\p"
 	.string "You should go find tough POKéMON\n"
-	.string "for the BATTLE TENT!$"
+	.string "for the BATTLE DENT!$"
 
 SlateportCity_Text_CaptSternBeingInterviewed:
 	.string "I was hoping that it was a famous star\n"
@@ -1112,15 +1194,13 @@ SlateportCity_Text_InterviewerSoCool:
 	.string "an international journalist!$"
 
 SlateportCity_Text_SternSaysDiscoveredSomething:
-	.string "CAPT. STERN says they discovered\n"
-	.string "something at the bottom of the sea.\p"
-	.string "I wonder what it is?\n"
-	.string "What could it be?$"
+	.string "CAPT. STERN says he has a big\n"
+	.string "announcement or something.\p"
+	.string "I wonder what it is?$"
 
 SlateportCity_Text_CaptainComeBackWithBigFish:
 	.string "What's going on here?\p"
-	.string "Did the good CAPTAIN come back with\n"
-	.string "a big fish from the ocean floor?$"
+	.string "Did the good CAPTAIN die???$"
 
 SlateportCity_Text_AmIOnTV:
 	.string "Hey! Are you watching?\n"
@@ -1128,31 +1208,55 @@ SlateportCity_Text_AmIOnTV:
 
 SlateportCity_Text_CaptainsACelebrity:
 	.string "A TV interview! Here!\n"
-	.string "The CAPTAIN's a celebrity!$"
+	.string "But with some old guy?$"
 
 SlateportCity_Text_BigSmileForCamera:
-	.string "TY: Okay, CAPT. STERN, a big smile\n"
+	.string "Okay, CAPT. STERN, a big smile\n"
 	.string "for the camera!$"
 
+SP_NAME_STERN:
+    .string "Capt. Stern$"
+
+SP_NAME_GABBY::
+    .string "Gabby$"
+
+SP_NAME_TY::
+    .string "Ty"
+
 SlateportCity_Text_MostInvaluableExperience:
-	.string "GABBY: I see, I see. You've had a most\n"
-	.string "invaluable experience…$"
+	.string "I've been told you have an\n"
+	.string "announcement for everyone. Is\l"
+	.string "that right, Captain Stern?$"
 
 SlateportCity_Text_SternMoveAheadWithExploration:
-	.string "CAPT. STERN: Yes, indeed. We intend to\n"
-	.string "move ahead with our exploration.$"
+	.string "Yes, that's right. I am announcing\n"
+	.string "my retirement.$"
 
 SlateportCity_Text_GabbyWonderfulThanksForInterview:
-	.string "GABBY: That's wonderful, CAPT. STERN!\n"
-	.string "Thank you for taking the time from\l"
-	.string "your busy schedule to talk to us.\p"
-	.string "We hope we can interview you again\n"
-	.string "with news of more discoveries!$"
+	.string "Retirement? But you've been the\n"
+	.string "pinnacle of ocean floor expeditions\l"
+	.string "for as long as I can remember!\p"
+	.string "You're saying you're just going to\n"
+	.string "retire?$"
+
+SlateportCity_Text_SternRetirement:
+	.string "Girl, I should have retired years\n"
+	.string "ago. I mean, look at me! I'm old!\p"
+	.string "It's time for the young folks to\n"
+	.string "continue my work. They're fully\l"
+	.string "capable. You won't even miss me!$"
+
+SlateportCity_Text_GabbyOhDear:
+    .string "This is big news! I am sure you\n"
+    .string "are going to me missed heavily,\l"
+    .string "Captain Stern - no matter what you\l"
+    .string "say! I for one will miss you, too!\p"
+    .string "Anyway, that's all for now, folks.\n"
+    .string "Back to the studio!$"
 
 SlateportCity_Text_SternWhewFirstInterview:
-	.string "CAPT. STERN: Whew…\p"
-	.string "That was my first time to be filmed for\n"
-	.string "TV. That was nerve-wracking.$"
+	.string "Phew, glad that's over.\p"
+	.string "I'm too old to be on TV.$"
 
 SlateportCity_Text_OhPlayerWeMadeDiscovery:
 	.string "Oh! {PLAYER}{KUN}!\n"
@@ -1191,7 +1295,7 @@ SlateportCity_Text_PleaseComeWithMe:
 	.string "Please, come with me!$"
 
 SlateportCity_Text_BattleTentSign:
-	.string "BATTLE TENT SLATEPORT SITE\n"
+	.string "BATTLE DENT SLATEPORT SITE\n"
 	.string "“Find it! The ultimate POKéMON!”$"
 
 SlateportCity_Text_SternsShipyardWantedSign:
@@ -1345,3 +1449,14 @@ SlateportCity_Text_TakingBattleTentChallenge:
 	.string "After all, a tough TRAINER is\n"
 	.string "the perfect fit for the BATTLE TENT!\p"
 	.string "Give it your best effort!$"
+
+SlateportCity_Text_SmokescreenTrigger::
+    .string "Ahhhh!!! Someone made it past the bully\n"
+    .string "line!\p"
+    .string "Smokebomb!$"
+SlateportCity_Text_SmokescreenScatter::
+    .string "Quick!\nEveryone, scatter!$"
+
+SlateportCity_Text_SmokescreenGruntFail:
+    .string "Guys, wait! I wasn't ready yet!$"
+

@@ -25,9 +25,9 @@ SlateportCity_House_EventScript_GameIntro::
     end
 
 SlateportCity_House_EventScript_PokefanM::
+    setspeaker SP_NAME_DANIEL
     goto_if_eq VAR_SLATEPORT_CITY_STATE, 2, SlateportCity_House_EventScript_ThanksForPlaying
     lock
-    setspeaker SP_NAME_DANIEL
     faceplayer
 	msgbox SlateportCity_House_Text_ReadyToPlay, MSGBOX_YESNO
     goto_if_eq VAR_RESULT, NO, SlateportCity_House_EventScript_GameNotReady

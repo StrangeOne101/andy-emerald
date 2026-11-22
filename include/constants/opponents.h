@@ -24,7 +24,6 @@
 #define TRAINER_GRUNT_WEATHER_INST_1         17
 #define TRAINER_GRUNT_WEATHER_INST_2         18
 #define TRAINER_GRUNT_WEATHER_INST_3         19
-#define TRAINER_GRUNT_MUSEUM_1               20
 #define TRAINER_GRUNT_MUSEUM_2               21
 #define TRAINER_GRUNT_SPACE_CENTER_1         22
 #define TRAINER_GRUNT_MT_PYRE_1              23
@@ -291,8 +290,8 @@
 #define TRAINER_KAREN_4                     284
 #define TRAINER_KAREN_5                     285
 #define TRAINER_KATE_AND_JOY                286
-#define TRAINER_ANNA_AND_MEG_1              287
-#define TRAINER_ANNA_AND_MEG_2              288
+#define TRAINER_LORALEI                     287
+#define TRAINER_RL_JOSH                     288
 #define TRAINER_ANNA_AND_MEG_3              289
 #define TRAINER_ANNA_AND_MEG_4              290
 #define TRAINER_ANNA_AND_MEG_5              291
@@ -850,7 +849,7 @@
 #define TRAINER_TOBY_RUSTBORO_CITY          522
 #define TRAINER_TOBY_2                      523
 #define TRAINER_TOBY_3                      524
-#define TRAINER_SLATEPORT_GRUNT             525
+#define TRAINER_UNUSED_525                  525 //TODO UNUSED
 #define TRAINER_DANIEL_Q1                   526
 #define TRAINER_DANIEL_Q2                   527
 #define TRAINER_DANIEL_Q3                   528
@@ -866,6 +865,7 @@
 #define TRAINER_TOBY_RUSTBORO_TUNNEL        599
 #define TRAINER_UNUSED_600                  600 //TODO #UNUSED
 #define TRAINER_UNUSED_769                  769 //TODO #UNUSED
+#define TRAINER_UNUSED_20                   20 //TODO #UNUSED
 
 #define TRAINER_TOBY_1      855
 #define TRAINER_RL_REUBEN   856

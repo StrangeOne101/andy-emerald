@@ -283,7 +283,6 @@ static const struct MatchCallRival sMayMatchCallHeader =
     .textData = (const match_call_text_data_t[]) {
         { MatchCall_Text_May1,  ALWAYS_AVAILABLE,                    NO_FLAG_TO_SET },
         { MatchCall_Text_May2,  FLAG_DEFEATED_DEWFORD_GYM,           NO_FLAG_TO_SET },
-        { MatchCall_Text_May3,  FLAG_DELIVERED_DEVON_GOODS,          NO_FLAG_TO_SET },
         { MatchCall_Text_May4,  FLAG_HIDE_MAUVILLE_CITY_WALLY,       NO_FLAG_TO_SET },
         { MatchCall_Text_May5,  FLAG_RECEIVED_HM_STRENGTH,           NO_FLAG_TO_SET },
         { MatchCall_Text_May6,  FLAG_DEFEATED_LAVARIDGE_GYM,         NO_FLAG_TO_SET },
@@ -310,7 +309,6 @@ static const struct MatchCallRival sBrendanMatchCallHeader =
     .textData = (const match_call_text_data_t[]) {
         { MatchCall_Text_Brendan1,  ALWAYS_AVAILABLE,                    NO_FLAG_TO_SET },
         { MatchCall_Text_Brendan2,  FLAG_DEFEATED_DEWFORD_GYM,           NO_FLAG_TO_SET },
-        { MatchCall_Text_Brendan3,  FLAG_DELIVERED_DEVON_GOODS,          NO_FLAG_TO_SET },
         { MatchCall_Text_Brendan4,  FLAG_HIDE_MAUVILLE_CITY_WALLY,       NO_FLAG_TO_SET },
         { MatchCall_Text_Brendan5,  FLAG_RECEIVED_HM_STRENGTH,           NO_FLAG_TO_SET },
         { MatchCall_Text_Brendan6,  FLAG_DEFEATED_LAVARIDGE_GYM,         NO_FLAG_TO_SET },

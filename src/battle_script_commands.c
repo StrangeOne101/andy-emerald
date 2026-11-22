@@ -14012,7 +14012,7 @@ void PrintSlotMetLocation(void)
     u8 metLocationName[MAP_NAME_LENGTH + 1];
     u8 *txtPtr = StringCopy(gStringVar4, COMPOUND_STRING(""));;
     for (u8 i = 0; i < 6; i++) {
-        u16 metLocation = GetMonData(&gPlayerParty[i], MON_DATA_MET_LOCATION);
+        u16 metLocation = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MET_LOCATION);
 
 
         GetMapNameHandleAquaHideout(metLocationName, metLocation);
@@ -14040,14 +14040,14 @@ void PrintSlotMetLocation(void)
 void SetLastPartyMonEggCycles(void)
 {
     NATIVE_ARGS();
-    u8 slot = gPlayerPartyCount - 1;
+    u8 slot = gPartiesCount[B_TRAINER_PLAYER] - 1;
     // Set VAR_0x8004 to desired cycles in your script (e.g., 1 for near-instant hatch)
     u8 cycles = VarGet(VAR_0x8004);
     if (cycles == 0) cycles = 16;
 
-    if (GetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG))
+    if (GetMonData(&gParties[B_TRAINER_PLAYER][slot], MON_DATA_IS_EGG))
     {
-        SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &cycles);
+        SetMonData(&gParties[B_TRAINER_PLAYER][slot], MON_DATA_FRIENDSHIP, &cycles);
     }
 }
 
@@ -14068,3 +14068,13 @@ void GetVersion(void) {
     //string = ConvertIntToDecimalStringN(string, VERSION_NUMBER, STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
+void DeleteChosenPartyMon(void)
+{
+    NATIVE_ARGS();
+    if (gSpecialVar_0x8004 < PARTY_SIZE)
+    {
+        ZeroMonData(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004]);
+        CompactPartySlots();
+        CalculatePlayerPartyCount();
+    }
+}

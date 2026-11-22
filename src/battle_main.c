@@ -387,7 +387,9 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_MATT] = {_("THE 1 & ONLY"), 20, BALL_SAFARI},
     [TRAINER_CLASS_GAMER] = {_("GAMER"), 7},
     [TRAINER_CLASS_YOUTUBER] = {_("YOUTUBER"), 5},
-
+    [TRAINER_CLASS_HANNAH] = {_("HAPPY HORSE"), 5},
+    [TRAINER_CLASS_VET_NURSE] = {_("VET NURSE"), 7, BALL_LOVE},
+    [TRAINER_CLASS_COUSIN] = {_("COUSIN"), 9},
     [TRAINER_CLASS_YOUNGSTER_FRLG] =       { _("YOUNGSTER"), 4 },
     [TRAINER_CLASS_BUG_CATCHER_FRLG] =     { _("BUG CATCHER"), 3 },
     [TRAINER_CLASS_LASS_FRLG] =            { _("LASS"), 4 },
