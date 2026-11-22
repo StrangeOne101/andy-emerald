@@ -2251,7 +2251,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Carkol,
-        .frontPicSize = MON_COORDS_SIZE(48, 56),
+        .frontPicSize = MON_COORDS_SIZE(54, 64),
         .frontPicYOffset = 8,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(0, 30),
@@ -2268,7 +2268,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .iconSprite = gMonIcon_Carkol,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 3, SHADOW_SIZE_M)
+        SHADOW(0, 3, SHADOW_SIZE_L)
         FOOTPRINT(Carkol)
         OVERWORLD(
             sPicTable_Carkol,

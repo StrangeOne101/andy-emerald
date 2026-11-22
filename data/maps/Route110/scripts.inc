@@ -27,42 +27,6 @@ Route110_EventScript_BeginCylcingRoadChallenge::
 	setvar VAR_CYCLING_CHALLENGE_STATE, 2
 	return
 
-Route110_EventScript_AquaGrunt1::
-	lock
-	faceplayer
-	msgbox Route110_Text_WeCantTalkAboutAquaActivities, MSGBOX_DEFAULT
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-Route110_EventScript_AquaGrunt2::
-	lock
-	faceplayer
-	msgbox Route110_Text_KickUpARuckus, MSGBOX_DEFAULT
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-Route110_EventScript_AquaGrunt3::
-	lock
-	faceplayer
-	msgbox Route110_Text_MyFirstJobInAqua, MSGBOX_DEFAULT
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-Route110_EventScript_AquaGrunt4::
-	lock
-	faceplayer
-	msgbox Route110_Text_AquaActionsBringSmiles, MSGBOX_DEFAULT
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
 Route110_EventScript_Boy1::
 	msgbox Route110_Text_RideBikeAtFullSpeed, MSGBOX_NPC
 	end
@@ -171,18 +135,10 @@ Route110_EventScript_Jaclyn::
 	end
 
 Route110_EventScript_Edwin::
-	trainerbattle_single TRAINER_EDWIN_1, Route110_Text_EdwinIntro, Route110_Text_EdwinDefeated, Route110_EventScript_EdwinRegisterMatchCallAfterBattle
+	trainerbattle_single TRAINER_EDWIN_1, Route110_Text_EdwinIntro, Route110_Text_EdwinDefeated
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_EdwinRematch
 	msgbox Route110_Text_EdwinPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
-Route110_EventScript_EdwinRegisterMatchCallAfterBattle::
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route110_Text_EdwinRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_EDWIN_1
 	release
 	end
 
@@ -207,18 +163,10 @@ Route110_EventScript_Anthony::
 	end
 
 Route110_EventScript_Benjamin::
-	trainerbattle_single TRAINER_BENJAMIN_1, Route110_Text_BenjaminIntro, Route110_Text_BenjaminDefeated, Route110_EventScript_BenjaminRegisterMatchCallAfterBattle
+	trainerbattle_single TRAINER_BENJAMIN_1, Route110_Text_BenjaminIntro, Route110_Text_BenjaminDefeated
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_BenjaminRematch
 	msgbox Route110_Text_BenjaminPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
-Route110_EventScript_BenjaminRegisterMatchCallAfterBattle::
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route110_Text_BenjaminRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_BENJAMIN_1
 	release
 	end
 
@@ -233,18 +181,10 @@ Route110_EventScript_Jasmine::
 	end
 
 Route110_EventScript_Abigail::
-	trainerbattle_single TRAINER_ABIGAIL_1, Route110_Text_AbigailIntro, Route110_Text_AbigailDefeated, Route110_EventScript_AbigailRegisterMatchCallAfterBattle
+	trainerbattle_single TRAINER_ABIGAIL_1, Route110_Text_AbigailIntro, Route110_Text_AbigailDefeated
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_AbigailRematch
 	msgbox Route110_Text_AbigailPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
-Route110_EventScript_AbigailRegisterMatchCallAfterBattle::
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route110_Text_AbigailRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_ABIGAIL_1
 	release
 	end
 
@@ -254,18 +194,10 @@ Route110_EventScript_AbigailRematch::
 	end
 
 Route110_EventScript_Isabel::
-	trainerbattle_single TRAINER_ISABEL_1, Route110_Text_IsabelIntro, Route110_Text_IsabelDefeated, Route110_EventScript_IsabelRegisterMatchCallAfterBattle
+	trainerbattle_single TRAINER_ISABEL_1, Route110_Text_IsabelIntro, Route110_Text_IsabelDefeated
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_IsabelRematch
 	msgbox Route110_Text_IsabelPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
-Route110_EventScript_IsabelRegisterMatchCallAfterBattle::
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route110_Text_IsabelRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_ISABEL_1
 	release
 	end
 
@@ -389,7 +321,11 @@ Route110_EventScript_PlayMayMusic::
 	playbgm MUS_ENCOUNTER_MAY, TRUE
 	return
 
+SP_NAME_MAY3::
+    .string "May 3$"
+
 Route110_EventScript_MayBattle::
+    setspeaker SP_NAME_MAY3
 	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 	goto Route110_EventScript_MayBattleTorchic
 	end
@@ -519,192 +455,14 @@ Route110_Movement_RivalExit3:
 	walk_fast_up
 	step_end
 
-Route110_EventScript_BirchScene1::
-	lockall
-	setvar VAR_0x8008, 1
-	goto Route110_EventScript_BirchScene
-
-Route110_EventScript_BirchScene2::
-	lockall
-	setvar VAR_0x8008, 2
-	goto Route110_EventScript_BirchScene
-
-Route110_EventScript_BirchScene3::
-	lockall
-	setvar VAR_0x8008, 3
-	goto Route110_EventScript_BirchScene
-
-Route110_EventScript_BirchScene4::
-	lockall
-	setvar VAR_0x8008, 4
-	goto Route110_EventScript_BirchScene
-
-Route110_EventScript_BirchScene::
-	addobject LOCALID_ROUTE110_BIRCH
-	applymovement LOCALID_ROUTE110_BIRCH, Route110_Movement_BirchEntrance
-	waitmovement 0
-	playse SE_PIN
-	applymovement LOCALID_ROUTE110_BIRCH, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_ROUTE110_BIRCH, Common_Movement_Delay48
-	waitmovement 0
-	call_if_eq VAR_0x8008, 1, Route110_EventScript_BirchApproachPlayer1
-	call_if_eq VAR_0x8008, 2, Route110_EventScript_BirchApproachPlayer2
-	call_if_eq VAR_0x8008, 3, Route110_EventScript_BirchApproachPlayer3
-	call_if_eq VAR_0x8008, 4, Route110_EventScript_BirchApproachPlayer4
-	msgbox Route110_Text_ImagineSeeingYouHere, MSGBOX_DEFAULT
-	closemessage
-	delay 20
-	applymovement LOCALID_ROUTE110_BIRCH, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	delay 10
-	applymovement LOCALID_ROUTE110_BIRCH, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	delay 20
-	applymovement LOCALID_ROUTE110_BIRCH, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	delay 30
-	msgbox Route110_Text_HeardYouInstallMatchCall, MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox Route110_Text_RegisteredBirchInPokenav, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_PROF_BIRCH_MATCH_CALL
-	msgbox Route110_Text_KeepAnEyeOutForRival, MSGBOX_DEFAULT
-	closemessage
-	call_if_eq VAR_0x8008, 1, Route110_EventScript_BirchExit1
-	call_if_eq VAR_0x8008, 2, Route110_EventScript_BirchExit2
-	call_if_eq VAR_0x8008, 3, Route110_EventScript_BirchExit3
-	call_if_eq VAR_0x8008, 4, Route110_EventScript_BirchExit4
-	removeobject LOCALID_ROUTE110_BIRCH
-	setvar VAR_REGISTER_BIRCH_STATE, 2
-	releaseall
-	end
-
-Route110_EventScript_BirchApproachPlayer1::
-	applymovement LOCALID_ROUTE110_BIRCH, Route110_Movement_BirchApproachPlayer1
-	waitmovement 0
-	return
-
-Route110_EventScript_BirchApproachPlayer2::
-	applymovement LOCALID_ROUTE110_BIRCH, Route110_Movement_BirchApproachPlayer2
-	waitmovement 0
-	return
-
-Route110_EventScript_BirchApproachPlayer3::
-	applymovement LOCALID_ROUTE110_BIRCH, Route110_Movement_BirchApproachPlayer3
-	waitmovement 0
-	return
-
-Route110_EventScript_BirchApproachPlayer4::
-	applymovement LOCALID_ROUTE110_BIRCH, Route110_Movement_BirchApproachPlayer4
-	waitmovement 0
-	return
-
-Route110_EventScript_BirchExit1::
-	applymovement LOCALID_ROUTE110_BIRCH, Route110_Movement_BirchExit1
-	waitmovement 0
-	return
-
-Route110_EventScript_BirchExit2::
-	applymovement LOCALID_ROUTE110_BIRCH, Route110_Movement_BirchExit2
-	waitmovement 0
-	return
-
-Route110_EventScript_BirchExit3::
-	applymovement LOCALID_ROUTE110_BIRCH, Route110_Movement_BirchExit3
-	waitmovement 0
-	return
-
-Route110_EventScript_BirchExit4::
-	applymovement LOCALID_ROUTE110_BIRCH, Route110_Movement_BirchExit4
-	waitmovement 0
-	return
-
-Route110_Movement_BirchEntrance:
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-Route110_Movement_BirchApproachPlayer1:
-	walk_down
-	walk_left
-	walk_left
-	walk_down
-	step_end
-
-Route110_Movement_BirchApproachPlayer2:
-	walk_down
-	walk_left
-	walk_down
-	step_end
-
-Route110_Movement_BirchApproachPlayer3:
-	walk_down
-	walk_down
-	step_end
-
-Route110_Movement_BirchApproachPlayer4:
-	walk_down
-	walk_right
-	walk_down
-	step_end
-
-Route110_Movement_BirchExit1:
-	walk_up
-	walk_up
-	walk_right
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-Route110_Movement_BirchExit2:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-Route110_Movement_BirchExit3:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-Route110_Movement_BirchExit4:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-Route110_Text_WeCantTalkAboutAquaActivities:
-	.string "TEAM AQUA's activities…\n"
-	.string "We can't talk about them yet.$"
-
-Route110_Text_KickUpARuckus:
-	.string "I want to get going to SLATEPORT and\n"
-	.string "kick up a ruckus!$"
-
-Route110_Text_MyFirstJobInAqua:
-	.string "This is my first job after joining\n"
-	.string "TEAM AQUA. It's a little scary.$"
-
-Route110_Text_AquaActionsBringSmiles:
-	.string "TEAM AQUA's actions should bring\n"
-	.string "smiles to people's faces!$"
+Route110_EventScript_BirchStatue::
+    lock
+    msgbox Route110_Text_BirchStatue, MSGBOX_DEFAULT
+    release
+    end
 
 Route110_Text_MayLetsBattle:
-	.string "MAY: Hi, {PLAYER}{KUN}, long time no see!\p"
+	.string "Hi, {PLAYER}{KUN}, long time no see!\p"
 	.string "While I was searching for other\n"
 	.string "POKéMON, my POKéMON grew stronger.\p"
 	.string "So…\n"
@@ -715,14 +473,15 @@ Route110_Text_MayDefeated:
 	.string "You're better than I expected!$"
 
 Route110_Text_MayTakeThis:
-	.string "MAY: {PLAYER}{KUN}, you've been busy\n"
+	.string "{PLAYER}{KUN}, you've been busy\n"
 	.string "training, too, haven't you?\p"
 	.string "I think you deserve a reward!\n"
 	.string "This is from me!$"
 
 Route110_Text_MayExplainItemfinder:
-	.string "MAY: That's an ITEMFINDER.\p"
-	.string "Try it out. If there is an item that's\n"
+	.string "That's an ITEMFINDER.\n"
+	.string "I stole it from some dude!\p"
+	.string "If there is an item that's\n"
 	.string "not visible, it emits a sound.\p"
 	.string "Okay, {PLAYER}{KUN}, let's meet again!\p"
 	.string "I know it's a little silly coming from\n"
@@ -730,8 +489,8 @@ Route110_Text_MayExplainItemfinder:
 	.string "harder for the next time.$"
 
 Route110_Text_RideBikeAtFullSpeed:
-	.string "Wouldn't it be great to ride a BIKE\n"
-	.string "at full speed on CYCLING ROAD?$"
+	.string "That old dude is a fucking\n"
+	.string "psychopath…$"
 
 Route110_Text_HairStreamsBehindMe:
 	.string "How do you like the way my raven-\n"
@@ -756,13 +515,18 @@ Route110_Text_YouGotBikeFromRydel:
 	.string "the place--it's good advertising!$"
 
 Route110_Text_TwoRoads:
-	.string "The two roads, one above, one below…\p"
-	.string "A road each for people and POKéMON.\n"
-	.string "Perhaps that is right and fair.$"
+	.string "Years ago, my wife spent so much\n"
+	.string "time biking that it affected out\l"
+	.string "marriage.\p"
+	.string "So I paid some kid to push her\n"
+	.string "off her bike! Hahahaha!\p"
+	.string "Only cost me like $5, too!$"
 
 Route110_Text_WalkOnTheLowRoad:
-	.string "I don't have a BIKE, so I'll take\n"
-	.string "a leisurely walk on the low road.$"
+	.string "Last time I took the bike road, I\n"
+	.string "got hit off and broke my hip.\p"
+	.string "That was 23 years ago but I still\n"
+	.string "remember the little shit that did it!$"
 
 Route110_Text_BikeTechniques:
 	.string "Learning techniques will make BIKE\n"
@@ -771,10 +535,8 @@ Route110_Text_BikeTechniques:
 	.string "reach only by using a BIKE technique.$"
 
 Route110_Text_WhichShouldIChoose:
-	.string "Which should I choose?\p"
-	.string "Make a beeline for MAUVILLE on\n"
-	.string "CYCLING ROAD, or take the low road\l"
-	.string "and look for POKéMON?$"
+	.string "Who put the creepy statue there?\p"
+	.string "Scary…$"
 
 Route110_Text_CyclingChallengeResultSummary:
 	.string "Number of collisions:\n"
@@ -882,31 +644,7 @@ Route110_Text_ThereIsNoRecord:
 	.string "No one seems to have taken the\n"
 	.string "challenge. There is no record…$"
 
-Route110_Text_ImagineSeeingYouHere:
-	.string "PROF. BIRCH: Oh, {PLAYER}{KUN}!\n"
-	.string "Imagine seeing you here!\p"
-	.string "And where might my {RIVAL} be?$"
-
-Route110_Text_HeardYouInstallMatchCall:
-	.string "Oh, I see!\n"
-	.string "You two are running separately.\l"
-	.string "Well, that's fine.\p"
-	.string "Oh, yes, I heard that your POKéNAV\n"
-	.string "had the MATCH CALL system installed.\p"
-	.string "Well, then, I should register you in\n"
-	.string "my POKéNAV as well.\p"
-	.string "That way, even when we're apart,\n"
-	.string "I can rate your POKéDEX anytime.\p"
-	.string "… … … … … …$"
-
-Route110_Text_RegisteredBirchInPokenav:
-	.string "Registered PROF. BIRCH\n"
-	.string "in the POKéNAV.$"
-
-Route110_Text_KeepAnEyeOutForRival:
-	.string "PROF. BIRCH: {PLAYER}{KUN}…\p"
-	.string "Please keep an eye out for my {RIVAL}.\n"
-	.string "… … … … … …\p"
-	.string "Well, I had better get going.\n"
-	.string "See you again, {PLAYER}{KUN}!$"
+Route110_Text_BirchStatue::
+    .string "(A statue? Who is it? And what is\n"
+    .string "it doing here?)$"
 

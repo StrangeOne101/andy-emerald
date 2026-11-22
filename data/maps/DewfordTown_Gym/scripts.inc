@@ -392,7 +392,7 @@ DewfordTown_Gym_Text_ExplainBulkUp:
 	.string "It's a move that raises both ATTACK\n"
 	.string "and DEFENSE stats.\p"
 	.string "Oh, and in case you want your own\n"
-	.string "MACHAMP, take this."
+	.string "MACHAMP, take this.$"
 
 DewfordTown_Gym_Text_Goodbye:
     .string "A LINKING CORD is used to evolve\n"

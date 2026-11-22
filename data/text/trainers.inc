@@ -1101,16 +1101,15 @@ Route110_Text_JaclynPostBattle:
 	.string "Don't think you can win all the time!$"
 
 Route110_Text_EdwinIntro:
-	.string "Could I see your POKéMON?\n"
-	.string "Just one look, please?$"
+	.string "We planned this back at Superhero\n"
+	.string "Camp!$"
 
 Route110_Text_EdwinDefeated:
-	.string "I wanted to complete\n"
-	.string "my collection…$"
+	.string "Microwave Man should have made me\n"
+	.string "invincible…$"
 
 Route110_Text_EdwinPostBattle:
-	.string "When I see a POKéMON that I don't know,\n"
-	.string "my passion as a collector is ignited!$"
+	.string "Why do I have to use the kid sprites???$"
 
 Route110_Text_EdwinRegister:
 	.string "I like collecting MATCH CALL\n"
@@ -1130,16 +1129,14 @@ Route110_Text_EdwinRematchPostBattle:
 	.string "mine!$"
 
 Route110_Text_DaleIntro:
-	.string "Hey!\n"
-	.string "Don't sneak up behind me like that!$"
+	.string "Did you know Alolan Raichu can surf\n"
+	.string "on the water?$"
 
 Route110_Text_DaleDefeated:
-	.string "I lost!\n"
-	.string "Drat!$"
+	.string "Aw man!$"
 
 Route110_Text_DalePostBattle:
-	.string "Fishing is all about concentration.\n"
-	.string "You have to focus on the floater.$"
+	.string "Raichu is so cute when it surfs!$"
 
 Route110_Text_IsabelIntro:
 	.string "Ahahaha! I would go anywhere to show\n"
@@ -1171,39 +1168,35 @@ Route110_Text_IsabelRematchPostBattle:
 	.string "But I like to battle, too!$"
 
 Route110_Text_TimmyIntro:
-	.string "I found some cool POKéMON in the grass\n"
-	.string "around here!$"
+	.string "Andrew! I can fight you here! Haha!$"
 
 Route110_Text_TimmyDefeated:
-	.string "Being cool isn't enough to win…$"
+	.string "Booo! You should have let me win!$"
 
 Route110_Text_TimmyPostBattle:
-	.string "It's hard to battle with POKéMON you\n"
-	.string "just caught.$"
+	.string "Skitty is cute!$"
 
 Route110_Text_AlyssaIntro:
-	.string "I fell off CYCLING ROAD…\p"
-	.string "I'll get over my embarrassment by\n"
-	.string "battling with you!$"
+	.string "Some car hit me off the road!\n"
+	.string "Luckily my bike is still okay this\n"
+	.string "time.$"
 
 Route110_Text_AlyssaDefeated:
-	.string "Oops!\n"
-	.string "I ended up losing!$"
+	.string "Spirit! Noooo!$"
 
 Route110_Text_AlyssaPostBattle:
-	.string "Falling… Losing…\n"
-	.string "This is so humiliating for me!$"
+	.string "Hehehehehe…$"
 
 Route110_Text_JosephIntro:
-	.string "Okay! Full-throttle time! If you can't\n"
-	.string "groove, you get left behind!$"
+	.string "Let's go, Andy-pandy!$"
 
 Route110_Text_JosephDefeated:
-	.string "You got into the groove all right…$"
+	.string "To be fair, I haven't really\n"
+	.string "played POKEMON…$"
 
 Route110_Text_JosephPostBattle:
-	.string "This isn't going to bring me down!\n"
-	.string "Losing has made me a better man!$"
+	.string "I am stuck in exam hell. But it's\n"
+	.string "almost over!$"
 
 Route110_Text_KalebIntro:
 	.string "When cute POKéMON help each other…\n"
@@ -2455,75 +2448,27 @@ Route117_Text_DerekPostBattle:
 	.string "a BUG MANIAC.$"
 
 Route117_Text_AnnaIntro:
-	.string "ANNA: I'm with my pretty junior student\n"
-	.string "partner. I have to do good!$"
+	.string "Go go, gorilla!$"
 
 Route117_Text_AnnaDefeat:
-	.string "ANNA: I'm with my pretty junior student\n"
-	.string "partner! Let me win!$"
+	.string "I should go back to GTA 6…$"
 
 Route117_Text_AnnaPostBattle:
-	.string "ANNA: Your POKéMON have some good\n"
-	.string "combinations.\p"
-	.string "I'd say you're second only to us!$"
-
-Route117_Text_AnnaAndMegRegister:
-	.string "ANNA: We can't take this lying down!\n"
-	.string "You will come back, won't you?$"
-
-Route117_Text_AnnaNotEnoughMons:
-	.string "ANNA: If you want to battle us,\n"
-	.string "bring two POKéMON with you.$"
+	.string "I think RILLABOOM fits me well.$"
 
 Route117_Text_MegIntro:
-	.string "MEG: I'm going to tag up with my super\n"
-	.string "senior student partner and beat you!$"
+	.string "I love working at the daycare!\n"
+	.string "It's like working at a POKEMON\l"
+	.string "vet clinic!$"
 
 Route117_Text_MegDefeat:
-	.string "MEG: Oh, no!\n"
-	.string "I'm sorry, ANNA! I let you down…$"
+	.string "My babies!!!!$"
 
 Route117_Text_MegPostBattle:
-	.string "MEG: I dragged ANNA down…\n"
-	.string "If I didn't, she would have won!$"
-
-Route117_Text_MegNotEnoughMons:
-	.string "MEG: Do you only have one POKéMON?\n"
-	.string "We can't battle with you, then.\p"
-	.string "We want to have a 2-on-2 battle.$"
-
-Route117_Text_AnnaRematchIntro:
-	.string "ANNA: I can't keep losing in front of\n"
-	.string "my junior partner, right?$"
-
-Route117_Text_AnnaRematchDefeat:
-	.string "ANNA: I couldn't get into the groove.$"
-
-Route117_Text_AnnaPostRematch:
-	.string "ANNA: Your POKéMON have some good\n"
-	.string "combinations.\p"
-	.string "I'd say you're second only to us!$"
-
-Route117_Text_AnnaRematchNotEnoughMons:
-	.string "ANNA: If you want to battle us,\n"
-	.string "bring two POKéMON with you.$"
-
-Route117_Text_MegRematchIntro:
-	.string "MEG: I'm going to tag up with my\n"
-	.string "senior partner and win this time!$"
-
-Route117_Text_MegRematchDefeat:
-	.string "MEG: Too strong!$"
-
-Route117_Text_MegPostRematch:
-	.string "MEG: I battled together with my\n"
-	.string "senior partner, but we lost…\p"
-	.string "That's so discouraging…$"
-
-Route117_Text_MegRematchNotEnoughMons:
-	.string "MEG: Do you only have one POKéMON?\n"
-	.string "We can't battle with you, then.\p"
-	.string "We want to have a 2-on-2 battle.$"
+	.string "Did you know that if you get\n"
+	.string "an egg from the daycare, you\l"
+	.string "can trade the egg for another\l"
+	.string "egg from a random person?$"
 
 Route117_Text_MelinaIntro:
 	.string "Isn't it nice? To battle while looking\n"

@@ -25,12 +25,7 @@
     },
     {
       "map": "MAP_DEWFORD_INLAND",
-      "offset": 32,
-      "direction": "down"
-    },
-    {
-      "map": "MAP_DEWFORD_INLAND",
-      "offset": -32,
+      "offset": 25,
       "direction": "down"
     }
   ],
