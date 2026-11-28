@@ -3,7 +3,6 @@
   "name": "MauvilleCity_Gym",
   "layout": "LAYOUT_MAUVILLE_CITY_GYM",
   "music": "MUS_GYM",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_MAUVILLE_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -81,6 +80,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_MAUVILE_GYM_TOBY",
       "graphics_id": "OBJ_EVENT_GFX_TOBY",
       "x": 7,
       "y": 20,
@@ -91,7 +91,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MauvilleCity_Gym_EventScript_GymGuide",
-      "flag": "0"
+      "flag": "FLAG_HIDE_MAUVILLE_GYM_TOBY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MANIAC",
@@ -105,18 +105,32 @@
       "trainer_sight_or_berry_tree_id": "1",
       "script": "MauvilleCity_Gym_EventScript_Angelo",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_MAUVILE_GYM_GUIDE",
+      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "x": 7,
+      "y": 20,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MauvilleCity_Gym_EventScript_GymGuide",
+      "flag": "FLAG_HIDE_MAUVILLE_GYM_GUIDE"
     }
   ],
   "warp_events": [
     {
-      "x": 4,
+      "x": 5,
       "y": 20,
       "elevation": 0,
       "dest_map": "MAP_MAUVILLE_CITY",
       "dest_warp_id": "0"
     },
     {
-      "x": 5,
+      "x": 4,
       "y": 20,
       "elevation": 0,
       "dest_map": "MAP_MAUVILLE_CITY",
@@ -178,5 +192,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "MauvilleCity_Gym_EventScript_RightGymStatue"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

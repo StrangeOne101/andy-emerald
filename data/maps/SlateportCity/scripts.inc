@@ -31,6 +31,8 @@ SlateportCity_EventScript_MovePeopleForSternInterview::
 	setobjectmovementtype LOCALID_SLATEPORT_GIRL, MOVEMENT_TYPE_FACE_UP
 	setobjectmovementtype LOCALID_SLATEPORT_FAT_MAN, MOVEMENT_TYPE_FACE_UP
 	setobjectmovementtype LOCALID_SLATEPORT_MAN_1, MOVEMENT_TYPE_FACE_LEFT
+	clearflag FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY
+	clearflag FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN
 	return
 
 SlateportCity_EventScript_SetReadyForScottScene::
@@ -534,6 +536,7 @@ SlateportCity_EventScript_SmokeScreenTrigger::
     lock
     applymovement LOCALID_SLATEPORT_GRUNT_1, Common_Movement_FaceRight
     waitmovement 0
+    playse SE_PIN
     applymovement LOCALID_SLATEPORT_GRUNT_1, Common_Movement_ExclamationMark
     waitmovement 0
     applymovement LOCALID_SLATEPORT_GRUNT_1, Common_Movement_Delay48
@@ -541,7 +544,7 @@ SlateportCity_EventScript_SmokeScreenTrigger::
     msgbox SlateportCity_Text_SmokescreenTrigger, MSGBOX_DEFAULT
     closemessage
     playse SE_BANG
-    fadescreen FADE_TO_BLACK
+    fadescreenswapbuffers FADE_TO_BLACK
     waitse
     delay 20
     msgbox SlateportCity_Text_SmokescreenScatter, MSGBOX_DEFAULT
@@ -556,7 +559,7 @@ SlateportCity_EventScript_SmokeScreenTrigger::
     removeobject LOCALID_SLATEPORT_GRUNT_10
     removeobject LOCALID_SLATEPORT_GRUNT_11
     delay 40
-    fadescreen FADE_FROM_BLACK
+    fadescreenswapbuffers FADE_FROM_BLACK
     applymovement LOCALID_SLATEPORT_GRUNT_5, SlateportCity_Movement_ConfusedGrunt
     waitmovement 0
     msgbox SlateportCity_Text_SmokescreenGruntFail, MSGBOX_DEFAULT
@@ -566,6 +569,7 @@ SlateportCity_EventScript_SmokeScreenTrigger::
     removeobject LOCALID_SLATEPORT_GRUNT_5
     setvar VAR_SLATEPORT_CITY_STATE, 3
     setflag FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA
+    call SlateportCity_EventScript_MovePeopleForSternInterview
     end
 
 SlateportCity_Movement_ConfusedGrunt::
@@ -646,9 +650,12 @@ SlateportCity_EventScript_CaptStern::
 	removeobject LOCALID_SLATEPORT_TY
 	setspeaker SP_NAME_STERN
 	msgbox SlateportCity_Text_SternWhewFirstInterview, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_SLATEPORT_CAPT_STERN, SlateportCity_Movement_SternLeave
 	waitmovement 0
 	setvar VAR_SLATEPORT_CITY_STATE, 4
+	setflag FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN
+	removeobject LOCALID_SLATEPORT_CAPT_STERN
 	releaseall
 	end
 
@@ -661,6 +668,7 @@ SlateportCity_Movement_SternLeave::
     delay_16
     face_left
     walk_slow_left
+    walk_slow_down
     walk_slow_left
     walk_slow_left
     walk_slow_left

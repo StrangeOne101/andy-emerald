@@ -3420,7 +3420,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 
 === TRAINER_KIRK ===
-Name: Kirk
+Name: GYM NPC 2
 Class: Guitarist
 Pic: Guitarist
 Gender: Male
@@ -3474,7 +3474,7 @@ Level: 32
 
 
 === TRAINER_SHAWN ===
-Name: Shawn
+Name: GYM NPC 5
 Class: Guitarist
 Pic: Guitarist
 Gender: Male
@@ -6145,7 +6145,7 @@ Level: 9
 
 
 === TRAINER_BEN ===
-Name: Ben
+Name: GYM NPC 3
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -11704,7 +11704,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 
 === TRAINER_VIVIAN ===
-Name: Vivian
+Name: GYM NPC 1
 Class: Battle Girl
 Pic: Battle Girl
 Gender: Female
@@ -15490,7 +15490,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 
 === TRAINER_ANGELO ===
-Name: Angelo
+Name: GYM NPC 4
 Class: Bug Maniac
 Pic: Bug Maniac
 Gender: Male

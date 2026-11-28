@@ -824,7 +824,7 @@ void FadeSelectedPals(u8 mode, s8 delay, u32 selectedPalettes)
 void FadeScreenHardware(u32 mode, s32 delay)
 {
     u32 bldCnt = GetGpuReg(REG_OFFSET_BLDCNT) & BLDCNT_TGT2_ALL;
-    bldCnt |= BLDCNT_TGT1_ALL;
+    bldCnt |= BLDCNT_TGT1_ALL & ~BLDCNT_TGT1_BG0;
     // enable blend in all windows
     SetGpuRegBits(REG_OFFSET_WININ, WININ_WIN0_CLR | WININ_WIN1_CLR);
     SetGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WIN01_CLR);

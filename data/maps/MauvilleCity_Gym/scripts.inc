@@ -1,5 +1,6 @@
 MauvilleCity_Gym_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, MauvilleCity_Gym_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MauvilleCity_Gym_OnFrame
 	.byte 0
 
 MauvilleCity_Gym_OnLoad:
@@ -11,6 +12,10 @@ MauvilleCity_Gym_OnLoad:
 	case 3, MauvilleCity_Gym_EventScript_Switch3Pressed
 	case 4, MauvilleCity_Gym_EventScript_Switch4Pressed
 	end
+
+MauvilleCity_Gym_OnFrame::
+    map_script_2 VAR_MAUVILLE_CITY_STATE, 1, MauvilleCity_Gym_TobyGiveCoinCase
+    end
 
 MauvilleCity_Gym_EventScript_UpdateBarriers::
 	goto_if_set FLAG_MAUVILLE_GYM_BARRIERS_STATE, MauvilleCity_Gym_EventScript_SetAltBarriers
@@ -79,6 +84,7 @@ MauvilleCity_Gym_EventScript_Wattson::
 	goto_if_eq VAR_RESULT, TRUE, MauvilleCity_Gym_EventScript_WattsonRematch
 	goto_if_unset FLAG_RECEIVED_TM_SHOCK_WAVE, MauvilleCity_Gym_EventScript_GiveShockWave2
 	goto_if_eq VAR_NEW_MAUVILLE_STATE, 2, MauvilleCity_Gym_EventScript_CompletedNewMauville
+	setspeaker SP_NAME_WATSON
 	msgbox MauvilleCity_Gym_Text_WattsonPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -87,6 +93,7 @@ MauvilleCity_Gym_EventScript_WattsonDefeated::
 	message MauvilleCity_Gym_Text_ReceivedDynamoBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
+	setspeaker SP_NAME_WATSON
 	msgbox MauvilleCity_Gym_Text_ExplainDynamoBadgeTakeThis, MSGBOX_DEFAULT
 	setvar VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 3
 	clearflag FLAG_HIDE_VERDANTURF_TOWN_SCOTT
@@ -102,11 +109,6 @@ MauvilleCity_Gym_EventScript_WattsonDefeated::
 	call MauvilleCity_Gym_EventScript_GiveShockWave
 	closemessage
 	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox MauvilleCity_Gym_Text_RegisteredWattson, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
 	setflag FLAG_ENABLE_WATTSON_MATCH_CALL
 	release
 	end
@@ -114,6 +116,7 @@ MauvilleCity_Gym_EventScript_WattsonDefeated::
 MauvilleCity_Gym_EventScript_GiveShockWave2::
 	giveitem ITEM_TM_SHOCK_WAVE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setspeaker SP_NAME_WATSON
 	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_SHOCK_WAVE
 	release
@@ -122,14 +125,50 @@ MauvilleCity_Gym_EventScript_GiveShockWave2::
 MauvilleCity_Gym_EventScript_GiveShockWave::
 	giveitem ITEM_TM_SHOCK_WAVE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	setspeaker SP_NAME_WATSON
 	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_SHOCK_WAVE
 	return
 
 MauvilleCity_Gym_EventScript_CompletedNewMauville::
+    setspeaker SP_NAME_WATSON
 	msgbox MauvilleCity_Gym_Text_WattsonGoForthAndEndeavor, MSGBOX_DEFAULT
 	release
 	end
+
+MauvilleCity_Gym_TobyGiveCoinCase::
+    setvar VAR_MAUVILLE_CITY_STATE, 2
+    lock
+    hidefollower
+    playse SE_PIN
+    applymovement LOCALID_MAUVILE_GYM_TOBY, Common_Movement_ExclamationMark
+    waitmovement 0
+    applymovement LOCALID_MAUVILE_GYM_TOBY, Common_Movement_Delay48
+    waitmovement 0
+    applymovement LOCALID_MAUVILE_GYM_TOBY, Common_Movement_WalkLeft
+    waitmovement 0
+    setspeaker SP_NAME_TOBY
+    msgbox MauvilleCity_Gym_Text_TobyCoinCase, MSGBOX_DEFAULT
+    closemessage
+    setspeaker 0
+    giveitem ITEM_COIN_CASE
+    setflag FLAG_RECEIVED_COIN_CASE
+    delay 10
+    showcoinsbox 1, 1
+    delay 20
+    addcoins 500
+    updatecoinsbox 1, 1
+    playse SE_SHOP
+    waitse
+    delay 20
+    hidecoinsbox 1, 1
+    setspeaker SP_NAME_TOBY
+    msgbox MauvilleCity_Gym_Text_TobyCoinCase2, MSGBOX_DEFAULT
+    closemessage
+    clearflag FLAG_HIDE_MAUVILLE_GYM_GUIDE
+    setflag FLAG_HIDE_MAUVILLE_GYM_TOBY
+    release
+    end
 
 MauvilleCity_Gym_EventScript_WattsonRematch::
 	trainerbattle_rematch_double TRAINER_WATTSON_1, MauvilleCity_Gym_Text_WattsonPreRematch, MauvilleCity_Gym_Text_WattsonRematchDefeat, MauvilleCity_Gym_Text_WattsonRematchNeedTwoMons
@@ -257,12 +296,12 @@ MauvilleCity_Gym_EventScript_GymStatue::
 	end
 
 MauvilleCity_Gym_Text_GymGuideAdvice:
-	.string "Hey, how's it going, CHAMPION-\n"
-	.string "bound {PLAYER}?\p"
-	.string "WATTSON, the LEADER of MAUVILLE\n"
-	.string "GYM, uses ELECTRIC-type POKéMON.\p"
-	.string "If you challenge him with WATER-type\n"
-	.string "POKéMON, he'll zap them! Bzzt!\p"
+	.string "Hey, how's it going, bumhead\n"
+	.string "Andrew?\p"
+	.string "Remember, only POKéMON gotten from\n"
+	.string "the GAMECORNER can damage POKéMON\l"
+	.string "in this GYM! Make sure you train\l"
+	.string "them up enough, too!\p"
 	.string "And, he's put in switch-controlled\n"
 	.string "doors all over his GYM! Eccentric!\p"
 	.string "Hey, go for it!$"
@@ -352,11 +391,11 @@ MauvilleCity_Gym_Text_WattsonDefeat:
 	.string "Take this BADGE!$"
 
 MauvilleCity_Gym_Text_ReceivedDynamoBadge:
-	.string "{PLAYER} received the DYNAMO BADGE\n"
+	.string "{PLAYER} received the GACHA BADGE\n"
 	.string "from WATTSON.$"
 
 MauvilleCity_Gym_Text_ExplainDynamoBadgeTakeThis:
-	.string "With the DYNAMO BADGE, POKéMON can\n"
+	.string "With the GACHA BADGE, POKéMON can\n"
 	.string "use ROCK SMASH out of battle.\p"
 	.string "And, it will make your POKéMON a little\n"
 	.string "bit faster, too.\p"
@@ -390,7 +429,7 @@ MauvilleCity_Gym_Text_GymStatueCertified:
 	.string "{PLAYER}$"
 
 MauvilleCity_Gym_Text_WattsonPreRematch:
-	.string "WATTSON: Ah-ha! Here at last!\n"
+	.string "Ah-ha! Here at last!\n"
 	.string "I know what you want.\l"
 	.string "You want to battle my POKéMON!\p"
 	.string "Wahahahaha!\p"
@@ -402,7 +441,7 @@ MauvilleCity_Gym_Text_WattsonRematchDefeat:
 	.string "Our batteries ran dry…$"
 
 MauvilleCity_Gym_Text_WattsonPostRematch:
-	.string "WATTSON: We'll have to recharge our\n"
+	.string "We'll have to recharge our\n"
 	.string "batteries again.\p"
 	.string "When we're fully charged up, we'll\n"
 	.string "gladly accept your challenge.\p"
@@ -410,7 +449,7 @@ MauvilleCity_Gym_Text_WattsonPostRematch:
 	.string "won't you?$"
 
 MauvilleCity_Gym_Text_WattsonRematchNeedTwoMons:
-	.string "WATTSON: Ah-ha! Here at last!\n"
+	.string "Ah-ha! Here at last!\n"
 	.string "I know what you want.\l"
 	.string "You want to battle my POKéMON!\p"
 	.string "Wahahahaha!\p"
@@ -418,4 +457,48 @@ MauvilleCity_Gym_Text_WattsonRematchNeedTwoMons:
 	.string "You've only one POKéMON with you!\p"
 	.string "Come see me with two or more\n"
 	.string "POKéMON, all right?$"
+
+MauvilleCity_Gym_Text_TobyCoinCase::
+    .string "Hey Andrew!\p"
+    .string "Why am I here instead of the gym\n"
+    .string "guide? Because I am going to make\l"
+    .string "things more difficult again!\p"
+    .string "Unfortunately, this is the last\n"
+    .string "modified gym in this romhack.\p"
+    .string "I'd love to have done more, but\n"
+    .string "these 3 gyms alone plus everything\l"
+    .string "else already took months of work.\p"
+    .string "So since it's the last gym, this\n"
+    .string "gym is a bit SPECIAL!\p"
+    .string "I have made it so every single\n"
+    .string "POKEMON you have caught thus far\l"
+    .string "cannot be used in the GYM!\p"
+    .string "Instead, you are going to have\n"
+    .string "to GAMBLE! And I'm not even kidding,\l"
+    .string "either! Hahahahaha!\p"
+    .string "I have completely redone the Mauville\n"
+    .string "Game Corner. Like, SERIOUSLY redone it.\p"
+    .string "There are a TON of new games to play,\n"
+    .string "including pinball, Ponyta horse racing,\l"
+    .string "Flappy Butterfree, blackjack, (more that\l"
+    .string "I forgot), and best of all, GACHA!!!!\p"
+    .string "Using coins from the GAMECORNER, you\n"
+    .string "can spin the GACHA machines to\l"
+    .string "receive a POKEMON. The Pokemon you\l"
+    .string "get depends on the tier of GACHA\l"
+    .string "machine used, and, well, luck.\p"
+    .string "In the master tier machine, it\n"
+    .string "is even possible to get legendary\l"
+    .string "Pokemon! (Yet they are still rare.)\p"
+    .string "So! Because of this, you MUST use\n"
+    .string "POKEMON obtained in the gacha for this\l"
+    .string "gym. All other Pokemon will deal zero\l"
+    .string "damage if you try use them.\p"
+    .string "So get to gambling! Hahahaha!\p"
+    .string "Oh, and here's your COIN CASE, plus\n"
+    .string "a bonus 500 coins. You'll certainly\l"
+    .string "need them to get started!$"
+
+MauvilleCity_Gym_Text_TobyCoinCase2::
+    .string "Have fun!$"
 

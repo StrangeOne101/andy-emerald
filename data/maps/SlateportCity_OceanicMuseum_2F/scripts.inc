@@ -9,120 +9,10 @@ SlateportCity_OceanicMuseum_2F_EventScript_Archie::
     msgbox SlateportCity_OceanicMuseum_2F_Text_ArchiePostBattle, MSGBOX_NPC
     end
 
-SlateportCity_OceanicMuseum_2F_EventScript_PlayerFaceGrunts::
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	return
-
-SlateportCity_OceanicMuseum_2F_EventScript_PlayerApproachGruntSouth::
-	applymovement LOCALID_PLAYER, SlateportCity_OceanicMuseum_2F_Movement_PlayerApproachGruntSouth
-	waitmovement 0
-	return
-
-SlateportCity_OceanicMuseum_2F_EventScript_PlayerApproachGruntWest::
-	applymovement LOCALID_PLAYER, SlateportCity_OceanicMuseum_2F_Movement_PlayerApproachGruntWest
-	waitmovement 0
-	return
-
-SlateportCity_OceanicMuseum_2F_Movement_PlayerApproachGruntSouth:
-	walk_left
-	walk_down
-	walk_in_place_faster_left
-	step_end
-
-SlateportCity_OceanicMuseum_2F_Movement_PlayerApproachGruntWest:
-	walk_up
-	walk_left
-	walk_left
-	walk_down
-	walk_in_place_faster_left
-	step_end
-
-SlateportCity_OceanicMuseum_2F_Movement_Unused:
-	walk_up
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	walk_up
-	walk_left
-	walk_left
-	walk_up
-	walk_up
-	delay_8
-	step_end
-
 SlateportCity_OceanicMuseum_2F_Movement_ArchieApproachPlayer:
 	walk_right
 	step_end
 
-SlateportCity_OceanicMuseum_2F_Movement_ArchieEnter:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-SlateportCity_OceanicMuseum_2F_Movement_GruntApproachToBattle:
-	walk_right
-	step_end
-
-SlateportCity_OceanicMuseum_2F_Movement_FirstGruntEnter:
-	walk_down
-	walk_right
-	walk_in_place_faster_down
-	step_end
-
-SlateportCity_OceanicMuseum_2F_Movement_FirstGruntApproach:
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-SlateportCity_OceanicMuseum_2F_Movement_GruntDefeated:
-	lock_facing_direction
-	walk_left
-	unlock_facing_direction
-	step_end
-
-SlateportCity_OceanicMuseum_2F_Movement_SecondGruntEnter:
-	walk_down
-	step_end
-
-SlateportCity_OceanicMuseum_2F_Movement_SecondGruntApproach:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-SlateportCity_OceanicMuseum_2F_Movement_GruntMoveForArchie:
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_8
-	walk_fast_down
-	walk_in_place_faster_up
-	step_end
 
 SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample1::
 	msgbox SlateportCity_OceanicMuseum_2F_Text_WaterQualitySample1, MSGBOX_SIGN
@@ -182,6 +72,14 @@ SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron3::
 	release
 	end
 
+SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron4::
+	lock
+	faceplayer
+	msgbox SlateportCity_OceanicMuseum_2F_Text_WantToRideSubmarine2, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
 
 SlateportCity_OceanicMuseum_2F_Text_ArchieWarning:
 	.string "I am so going to win the TEAM\n"
@@ -234,6 +132,11 @@ SlateportCity_OceanicMuseum_2F_Text_RemindsMeOfAbandonedShip:
 SlateportCity_OceanicMuseum_2F_Text_DontRunInMuseum:
 	.string "Don't you dare run around inside\n"
 	.string "the MUSEUM!$"
+
+SlateportCity_OceanicMuseum_2F_Text_WantToRideSubmarine2:
+    .string "Mike-- I mean, Archie, is so going\n"
+    .string "to win the cosplay competition!\p"
+    .string "You agree with me, right?$"
 
 SlateportCity_OceanicMuseum_2F_Text_WantToRideSubmarine:
 	.string "Wow, the submarine's awesome!\n"

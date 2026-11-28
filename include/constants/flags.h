@@ -163,7 +163,7 @@
 #define FLAG_RECEIVED_AMULET_COIN            0x85
 #define FLAG_PENDING_DAYCARE_EGG             0x86
 #define FLAG_THANKED_FOR_PLAYING_WITH_WALLY  0x87
-#define FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL 0x88 // Set after defeating Wally outside Mauville Gym. Will activate a call later to register Wally.
+#define FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL 0x88 //TODO UNUSED
 #define FLAG_RECEIVED_HM_CUT                 0x89
 #define FLAG_SCOTT_CALL_FORTREE_GYM          0x8A // Triggers call from Scott after defeating Winona
 #define FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY   0x8B
@@ -217,7 +217,7 @@
 #define FLAG_DECORATION_14                   0xBB
 #define FLAG_RECEIVED_POKENAV                0xBC
 #define FLAG_DELIVERED_STEVEN_LETTER         0xBD //TODO Remapped to defeated Toby in Granite Cave
-#define FLAG_DEFEATED_WALLY_MAUVILLE         0xBE
+#define FLAG_DEFEATED_WALLY_MAUVILLE         0xBE //TODO Unused
 #define FLAG_DEFEATED_GRUNT_SPACE_CENTER_1F  0xBF
 #define FLAG_RECEIVED_SUN_STONE_MOSSDEEP     0xC0
 #define FLAG_WALLY_SPEECH                    0xC1
@@ -315,7 +315,7 @@
 #define FLAG_ENABLE_PROF_BIRCH_MATCH_CALL    0x119
 #define FLAG_RECEIVED_CLEANSE_TAG            0x11A
 #define FLAG_RECEIVED_FOCUS_BAND             0x11B
-#define FLAG_DECLINED_WALLY_BATTLE_MAUVILLE  0x11C
+#define FLAG_DECLINED_WALLY_BATTLE_MAUVILLE  0x11C //TODO UNUSED
 #define FLAG_RECEIVED_DEVON_SCOPE            0x11D
 #define FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE  0x11E
 #define FLAG_MET_DEVON_EMPLOYEE              0x11F //TODO UNUSED
@@ -926,8 +926,8 @@
 #define FLAG_HIDE_ROUTE_111_PLAYER_DESCENT                          0x36B
 #define FLAG_HIDE_ROUTE_111_DESERT_FOSSIL                           0x36C
 #define FLAG_HIDE_MT_CHIMNEY_TRAINERS                               0x36D
-#define FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT                         0x36E //TODO UNUSED
-#define FLAG_HIDE_RUSTURF_TUNNEL_BRINEY                             0x36F //TODO UNUSED
+#define FLAG_HIDE_MAUVILLE_GYM_GUIDE                                0x36E
+#define FLAG_HIDE_MAUVILLE_GYM_TOBY                                 0x36F
 #define FLAG_HIDE_RUSTURF_TUNNEL_PEEKO                              0x370 //TODO UNUSED
 #define FLAG_HIDE_BRINEYS_HOUSE_PEEKO                               0x371
 #define FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA                          0x372

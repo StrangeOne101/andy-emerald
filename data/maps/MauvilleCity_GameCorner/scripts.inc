@@ -21,8 +21,8 @@ MauvilleCity_GameCorner_MapScripts::
 	.set CHOICEBAND_COINS, 4500
 	.set BRIGHTPOWDER_COINS, 4500
 
-	.set COINS_PRICE_50,  1000
-	.set COINS_PRICE_500, 10000
+	.set COINS_PRICE_50,  500
+	.set COINS_PRICE_500, 5000
 
 TrainerId_Onframe:
 .if GAME_CORNER_VAR_ID_CHECK != 0
@@ -380,7 +380,7 @@ MauvilleCity_GameCorner_EventScript_Toby::
     msgbox MauvilleCity_GameCorner_Text_TobyFreeCoins1, MSGBOX_DEFAULT
     setflag FLAG_DAILY_COINS
     setspeaker 0
-    addcoins 10
+    addcoins 50
     updatecoinsbox 1, 1
     playse SE_SHOP
     delay 40
@@ -391,7 +391,12 @@ MauvilleCity_GameCorner_EventScript_Toby::
     end
 
 MauvilleCity_GameCorner_EventScript_TobyExplainFreeCoins::
+    msgbox MauvilleCity_GameCorner_Text_TobyExplainIntro, MSGBOX_DEFAULT
+    closemessage
     msgbox MauvilleCity_GameCorner_Text_TobyExplain, MSGBOX_DEFAULT
+    closemessage
+    msgbox MauvilleCity_GameCorner_Text_TobyExplainDeal, MSGBOX_DEFAULT
+    closemessage
     setflag FLAG_TEMP_C
     setflag FLAG_TOBY_EXPLAINED_COINS
     release
@@ -403,9 +408,16 @@ MauvilleCity_GameCorner_EventScript_TobyExplainFreeCoinsPost:
     end
 MauvilleCity_GameCorner_EventScript_TobyPostCoins::
     msgbox MauvilleCity_GameCorner_Text_TobyAlreadyGotCoins, MSGBOX_DEFAULT
+    closemessage
+    msgbox MauvilleCity_GameCorner_Text_TobyExplainAgainQuestion, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, YES, MauvilleCity_GameCorner_EventScript_TobyExplainGachaAgain
     release
     end
 
+MauvilleCity_GameCorner_EventScript_TobyExplainGachaAgain::
+    msgbox MauvilleCity_GameCorner_Text_TobyExplain, MSGBOX_DEFAULT
+    release
+    end
 	
 MauvilleCity_GameCorner_EventScript_Gacha_Basic::
 	lockall
@@ -1526,7 +1538,7 @@ MauvilleCity_GameCorner_Text_Bouncer1:
 	.string "…\p"
 	.string "Hmm…\p"
 	.string "…\p"
-	.string "Everything looks good here.\n"
+	.string "Alright, it checks out.\n"
 	.string "Enjoy the GAME CORNER!$"	
 	
 MauvilleCity_GameCorner_Text_Bouncer2:
@@ -1788,18 +1800,42 @@ MauvilleCity_GameCorner_Text_CantBuyWithNoCoinCase:
 	
 MauvilleCity_GameCorner_Text_Juice:
 	.string "BERRY JUICE!\n"
-	.string "Just 10 COINS.$"
+	.string "Just 20 COINS.$"
 
-MauvilleCity_GameCorner_Text_TobyExplain:
+
+
+
+MauvilleCity_GameCorner_Text_TobyExplainIntro:
     .string "Hey there, Andrew!\n"
-    .string "Welcome to the GAME CORNER!\p"
+    .string "Welcome to the GAME CORNER!$"
+MauvilleCity_GameCorner_Text_TobyExplain:
+    .string "These are the gacha machines beside\n"
+    .string "me. Each machine requires a minimum\l"
+    .string "number of coins to be able to be\l"
+    .string "turned. You can add more if you choose\l"
+    .string "to, and the more coins you put in, the\l"
+    .string "more likely you will get a Pokemon you\l"
+    .string "haven't caught before!\p"
+    .string "The minimum price for each tier, in\n"
+    .string "order, is 50 coins, 250, 1000, and\l"
+    .string "finally, 2500 coins for master tier.\p"
+    .string "Therefore, I recommend you play some\n"
+    .string "games to get a good amount of coins\l"
+    .string "before you do the gacha!$"
+MauvilleCity_GameCorner_Text_TobyExplainDeal:
+    .string "Anyway, enough about that. I also have\n"
+    .string "a deal for you!\p"
     .string "Because everyone loves Gambling, you\n"
-    .string "can talk to me each day for 10\l"
-    .string "free coins!\p"
+    .string "can talk to me each day for 50 free\l"
+    .string "coins!\p"
     .string "But because I'm hilarious, it starts\n"
-    .string "TOMORROW and not today! Hahahahah!\p"
+    .string "TOMORROW and not today! Hahahahaha!\p"
     .string "So come back tomorrow for free coins.\n"
     .string "Have fun!$"
+
+MauvilleCity_GameCorner_Text_TobyExplainAgainQuestion:
+    .string "Do you want me to explain the gacha\n"
+    .string "machines again?$"
 
 MauvilleCity_GameCorner_Text_TobyExplainPost:
     .string "Come back tomorrow!$"

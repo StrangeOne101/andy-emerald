@@ -108,7 +108,7 @@
 #define VAR_PACIFIDLOG_TOWN_STATE                        0x4056 // Unused Var
 #define VAR_PETALBURG_CITY_STATE                         0x4057
 #define VAR_SLATEPORT_CITY_STATE                         0x4058
-#define VAR_MAUVILLE_CITY_STATE                          0x4059 // Unused Var
+#define VAR_MAUVILLE_CITY_STATE                          0x4059
 #define VAR_RUSTBORO_CITY_STATE                          0x405A
 #define VAR_FORTREE_CITY_STATE                           0x405B // Unused Var
 #define VAR_LILYCOVE_CITY_STATE                          0x405C // Unused Var
@@ -206,7 +206,7 @@
 #define VAR_UNUSED_0x40B8                                0x40B8 // Unused Var
 #define VAR_MT_PYRE_STATE                                0x40B9
 #define VAR_NEW_MAUVILLE_STATE                           0x40BA
-#define VAR_UNUSED_0x40BB                                0x40BB // Unused Var
+#define VAR_GAME_CORNER_VAR_ID                           0x40BB
 #define VAR_BRAVO_TRAINER_BATTLE_TOWER_ON                0x40BC
 #define VAR_JAGGED_PASS_ASH_WEATHER                      0x40BD
 #define VAR_GLASS_WORKSHOP_STATE                         0x40BE
